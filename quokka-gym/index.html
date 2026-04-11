@@ -852,7 +852,19 @@
 </footer>
 <script>
 const secs=['s-cover','s-overview','s-pop','s-gap','s-customer','s-trainer','s-trend','s-action','s-list'];
-function goSec(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function goSec(id){
+  const sec=document.getElementById(id);
+  if(!sec)return;
+  /* Reset fade-in animations in target section */
+  sec.querySelectorAll('.anim.visible').forEach(el=>{el.classList.remove('visible');animObs.observe(el);});
+  /* Reset bar-fill animations */
+  sec.querySelectorAll('.bar-fill.animate').forEach(el=>{el.classList.remove('animate');});
+  /* Destroy and re-queue charts in target section */
+  sec.querySelectorAll('canvas[id^="c-"]').forEach(canvas=>{
+    if(charts[canvas.id]){charts[canvas.id].destroy();delete charts[canvas.id];}
+  });
+  sec.scrollIntoView({behavior:'smooth'});
+}
 function updateNav(){const y=window.scrollY+window.innerHeight*.38;let cur=secs[0];secs.forEach(id=>{const el=document.getElementById(id);if(el&&el.offsetTop<=y)cur=id});document.querySelectorAll('.ln-item').forEach(el=>el.classList.toggle('active',el.dataset.target===cur));const snItems=document.querySelectorAll('.sn-item');snItems.forEach(el=>{const isActive=el.dataset.target===cur;el.classList.toggle('active',isActive);if(isActive){const track=document.getElementById('sn-track');if(track){const elLeft=el.offsetLeft;const elW=el.offsetWidth;const trackW=track.offsetWidth;track.scrollTo({left:elLeft-trackW/2+elW/2,behavior:'smooth'})}}})}
 window.addEventListener('scroll',updateNav,{passive:true});updateNav();
 
