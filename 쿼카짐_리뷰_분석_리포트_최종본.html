@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>쿼카짐 — 리뷰 분석 리포트</title>
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/suit-variable-font@1.0.0/suit-variable.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suit-variable-font@1.0.0/suit-variable.css"/></noscript>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+    :root {
+      /* Colors */
+      --bg:#fff;--white:#f5f5f5;--ink:#111;--ink-2:#333;--ink-3:#555;--ink-4:#6b6b6b;--ink-5:#aaa;
+      --rule:#d9d9d9;--card:#f0f0f0;--accent:#6465f5;
+      --danger:#a03030;--danger-bg:#fde8e8;--warn:#805010;--warn-bd:#d4a040;
+      --dark:#1c1c1c;--dark-2:#222;--dark-3:#999;
+      /* Spacing (8px grid) */
+      --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-6:24px;--sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-16:64px;--sp-18:72px;
+      /* Typography */
+      --fs-micro:11px;--fs-label:13px;--fs-body:15px;--fs-sub:18px;--fs-h2:20px;
+      --lh-tight:1.2;--lh-normal:1.5;--lh-loose:1.8;
+      /* Layout */
+      --nav-w:228px;--pp:64px;--r-sm:8px;--r-md:12px;--r-lg:16px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'SUIT Variable','SUIT',-apple-system,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;font-size:var(--fs-body);line-height:var(--lh-loose)}
+
+    /* ── FOCUS & A11Y ── */
+    :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+    .skip-link{position:absolute;top:-100%;left:var(--sp-4);padding:var(--sp-2) var(--sp-4);background:var(--ink);color:var(--white);font-size:var(--fs-body);font-weight:700;z-index:999;border-radius:0 0 4px 4px}
+    .skip-link:focus{top:0}
+
+    /* ── LEFT NAV ── */
+    .leftnav{position:fixed;left:0;top:0;bottom:0;width:var(--nav-w);background:#fff;border-right:1px solid var(--rule);display:flex;flex-direction:column;padding:var(--sp-10) 0;z-index:200}
+    .ln-brand{padding:0 var(--sp-8) var(--sp-8);font-size:var(--fs-micro);font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--ink);margin-bottom:var(--sp-8)}
+    .ln-sec-label{font-size:var(--fs-micro);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);padding:0 var(--sp-8);margin-bottom:var(--sp-2)}
+    .ln-items{flex:1;display:flex;flex-direction:column;padding:0 var(--sp-4);gap:2px;overflow-y:auto}
+    .ln-item{display:flex;align-items:center;gap:var(--sp-3);min-height:44px;padding:var(--sp-2) var(--sp-3);border-radius:8px;cursor:pointer;background:none;border:none;font-family:inherit;text-align:left;transition:background .15s}
+    .ln-item:hover:not(.active){background:var(--bg)}
+    .ln-item.active{background:var(--ink)}
+    .ln-num{font-size:var(--fs-micro);font-weight:700;color:var(--ink-4);width:20px;flex-shrink:0}
+    .ln-label{font-size:var(--fs-label);font-weight:600;color:var(--ink-3)}
+    .ln-item.active .ln-num{color:rgba(255,255,255,.4)}
+    .ln-item.active .ln-label{color:#fff}
+    .ln-item:hover:not(.active) .ln-label{color:var(--ink)}
+    .ln-footer{padding:var(--sp-6) var(--sp-8) 0;font-size:var(--fs-label);color:var(--ink-4);line-height:var(--lh-loose)}
+
+    /* ── STICKY HORIZONTAL NAV ── */
+    .sticky-nav{display:none;position:sticky;top:0;z-index:250;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+    .sn-track{display:flex;gap:var(--sp-1);padding:var(--sp-3) var(--sp-6);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .sn-track::-webkit-scrollbar{display:none}
+    .sn-item{flex-shrink:0;padding:var(--sp-2) var(--sp-4);min-height:44px;display:flex;align-items:center;border-radius:var(--r-sm);background:none;border:none;font-family:inherit;font-size:var(--fs-label);font-weight:600;color:var(--ink-4);cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
+    .sn-item:hover{background:var(--white);color:var(--ink-3)}
+    .sn-item.active{background:var(--ink);color:#fff}
+
+    /* ── MAIN ── */
+    .main{margin-left:var(--nav-w)}
+
+    /* ── COVER ── */
+    .cover{background:var(--ink);color:#fff;padding:var(--sp-18) var(--pp);min-height:100vh;display:flex;flex-direction:column;justify-content:space-between}
+    .cover-top{display:flex;justify-content:space-between;align-items:flex-start}
+    .c-tag{font-size:var(--fs-label);font-weight:600;color:var(--dark-3)}
+    .c-date{font-size:var(--fs-label);color:var(--dark-3);text-align:right;line-height:var(--lh-loose)}
+    .cover-body{padding:var(--sp-16) 0 var(--sp-8)}
+    .c-eye{font-size:var(--fs-body);color:var(--dark-3);margin-bottom:var(--sp-6)}
+    .c-h1{font-size:clamp(56px,6.5vw,88px);font-weight:900;letter-spacing:-3px;line-height:.97;color:#fff;margin-bottom:var(--sp-8)}
+    .c-desc{font-size:var(--fs-body);color:var(--dark-3);line-height:var(--lh-loose);max-width:480px}
+    .cover-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-8);margin-top:var(--sp-8)}
+    .ck{padding:var(--sp-4) 0}
+    .ck-val{font-size:42px;font-weight:900;letter-spacing:-2px;line-height:var(--lh-tight);color:#fff;margin-bottom:var(--sp-2)}
+    .ck-val.dim{color:var(--dark-3)}
+    .ck-name{font-size:var(--fs-label);font-weight:700;color:var(--ink-3);margin-bottom:var(--sp-1)}
+    .ck-sub{font-size:var(--fs-label);color:var(--ink-3);line-height:var(--lh-normal)}
+
+    /* ── SECTIONS ── */
+    .section{padding:var(--sp-18) var(--pp)}
+    .section-inner{max-width:960px;margin:0 auto}
+    
+    .s-eye{font-size:var(--fs-micro);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-4)}
+    .section:first-of-type .s-eye,.section:nth-of-type(8) .s-eye{color:var(--accent)}
+    .s-title{font-size:clamp(26px,3vw,38px);font-weight:900;letter-spacing:-1px;line-height:var(--lh-tight);color:var(--ink);margin-bottom:var(--sp-12)}
+
+    /* ── PERCEPTION GRID ── */
+    .perc-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-bottom:var(--sp-12)}
+    .perc-col{padding:var(--sp-10) var(--sp-12);border-radius:var(--r-lg)}
+    .perc-col.pos{background:var(--white)}
+    .perc-col.neg{background:var(--dark)}
+    .p-type{font-size:var(--fs-micro);font-weight:700;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:var(--sp-6)}
+    .perc-col.pos .p-type{color:var(--ink-4)}
+    .perc-col.neg .p-type{color:var(--ink-3)}
+    .p-body{font-size:var(--fs-body);font-weight:500;line-height:var(--lh-loose);color:var(--ink-2);margin-bottom:var(--sp-8)}
+    .perc-col.neg .p-body{color:var(--ink-5)}
+    .p-body .hi{color:var(--ink);font-weight:700}
+    .perc-col.neg .p-body .hi{color:#fff}
+    .perc-col.neg .p-body .risk{color:var(--accent);font-weight:700}
+    .p-stats{display:grid;grid-template-columns:1fr 1fr;padding-top:var(--sp-6);border-top:1px solid var(--rule)}
+    .perc-col.neg .p-stats{border-top-color:rgba(255,255,255,.08)}
+    .ps-val{font-size:28px;font-weight:900;letter-spacing:-1px;color:var(--ink);margin-bottom:var(--sp-1)}
+    .perc-col.neg .ps-val{color:#fff}
+    .perc-col.neg .ps-val.lo{color:#888}
+    .ps-lbl{font-size:var(--fs-label);color:var(--ink-3)}
+    .perc-col.neg .ps-lbl{color:var(--ink-3)}
+
+    /* ── TABLE ── */
+    .tbl-wrap{background:var(--white);overflow:hidden;margin-bottom:var(--sp-12);border-radius:var(--r-lg)}
+    .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .tbl-scroll::-webkit-scrollbar{height:4px}
+    .tbl-scroll::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+    .tbl-cap{font-size:var(--fs-micro);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-4);padding:var(--sp-4) var(--sp-8);background:var(--white);border-bottom:1px solid var(--rule);border-radius:var(--r-lg) var(--r-lg) 0 0}
+    table.dt{width:100%;border-collapse:collapse}
+    table.dt th{text-align:left;padding:var(--sp-3) var(--sp-8);font-size:var(--fs-micro);font-weight:700;letter-spacing:.5px;color:var(--ink-4);border-bottom:1px solid var(--rule)}
+    table.dt td{padding:var(--sp-4) var(--sp-8);font-size:var(--fs-body);color:var(--ink-3);border-bottom:1px solid var(--rule);vertical-align:middle;line-height:var(--lh-normal)}
+    table.dt td strong{color:var(--ink-2)}
+    table.dt tr:last-child td{border-bottom:none}
+
+    /* ── TAGS ── */
+    .tag{display:inline-block;font-size:var(--fs-micro);font-weight:700;padding:var(--sp-1) var(--sp-2);border-radius:6px}
+    .t-pop{background:#eee;color:#666}
+    .t-pod{background:var(--accent);color:#fff}
+    .t-gap{background:#f0f0f0;color:#999}
+    .t-par{color:#c03030;border:1px solid #e0a0a0}
+    .t-risk{background:#c03030;color:#fff}
+
+    /* ── CHART CARDS ── */
+    .chart-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-bottom:var(--sp-12)}
+    .chart-cards.single{grid-template-columns:1fr}
+    .sc-card{background:var(--card);padding:var(--sp-8) var(--sp-8) var(--sp-6);overflow:hidden;border-radius:var(--r-lg)}
+    .sc-eye{font-size:var(--fs-micro);font-weight:700;letter-spacing:1px;color:var(--ink-3);margin-bottom:var(--sp-2)}
+    .sc-title{font-size:var(--fs-sub);font-weight:800;color:var(--ink);line-height:var(--lh-normal);margin-bottom:var(--sp-6)}
+    .sc-ax{display:flex;justify-content:space-between;font-size:var(--fs-micro);font-weight:600;color:var(--ink-4);margin-bottom:var(--sp-2)}
+    .sc-ch{position:relative;height:180px}
+    .sc-ch.tall{height:240px}
+    .sc-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,.1);margin-top:var(--sp-6);border-top:1px solid rgba(0,0,0,.1)}
+    .sc-s{background:var(--card);padding:var(--sp-4) var(--sp-4) var(--sp-2)}
+    .sc-s-lbl{font-size:var(--fs-label);font-weight:600;color:var(--ink-3);margin-bottom:var(--sp-1)}
+    .sc-s-val{font-size:16px;font-weight:800;color:var(--ink)}
+
+    /* ── QUOTE ── */
+    .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);margin-bottom:0}
+    .q-group-title{font-size:var(--fs-micro);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-4)}
+    .quote{padding:var(--sp-6);background:#f5f5f5;margin-bottom:var(--sp-2);border-radius:var(--r-md)}
+    .q-text{font-size:var(--fs-body);font-weight:500;line-height:var(--lh-loose);color:var(--ink-2)}
+    .q-attr{font-size:var(--fs-label);color:var(--ink-4);margin-top:var(--sp-2)}
+
+    /* ── NOTE ── */
+    .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-4)}
+    .note{background:var(--white);padding:var(--sp-6);font-size:var(--fs-body);color:var(--ink-3);line-height:var(--lh-loose);border-radius:var(--r-md)}
+    .note strong{color:var(--ink-2);font-weight:700}
+
+    /* ── PERSONA ── */
+    .persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-bottom:var(--sp-12)}
+    .persona{background:var(--white);padding:var(--sp-8);border-radius:var(--r-lg)}
+    .p-pct{font-size:52px;font-weight:900;letter-spacing:-3px;line-height:1;color:var(--ink);margin-bottom:var(--sp-4)}
+    .p-name{font-size:var(--fs-body);font-weight:700;color:var(--ink-2);margin-bottom:var(--sp-1)}
+    .p-kw{font-size:var(--fs-label);color:var(--ink-4)}
+
+    /* ── FINDING HIGHLIGHT ── */
+    .f-highlight{background:var(--ink);color:#fff;padding:var(--sp-10) var(--sp-12);margin-bottom:var(--sp-12);border-radius:var(--r-lg)}
+    .fh-eye{font-size:var(--fs-micro);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-4)}
+    .fh-main{font-size:clamp(18px,2vw,22px);font-weight:700;line-height:var(--lh-loose);color:#ccc;margin-bottom:var(--sp-4)}
+    .fh-main em{font-style:normal;color:#fff}
+    .fh-note{font-size:var(--fs-body);color:#bbb;line-height:var(--lh-loose)}
+    .fh-note strong{color:#fff;font-weight:600}
+
+    /* ── TRAINER ── */
+    .trainer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4)}
+    .trainer-card{background:var(--white);padding:var(--sp-8);border-radius:var(--r-lg)}
+    .tc-name{font-size:var(--fs-h2);font-weight:900;letter-spacing:-.5px;color:var(--ink);margin-bottom:var(--sp-1)}
+    .tc-meta{font-size:var(--fs-label);color:var(--ink-4);letter-spacing:.5px;padding-bottom:var(--sp-4);margin-bottom:var(--sp-4);border-bottom:1px solid var(--rule)}
+    .tc-type{font-size:var(--fs-body);font-weight:700;color:var(--ink-2);margin-bottom:var(--sp-1);display:flex;flex-wrap:wrap;gap:4px}
+    .tc-pill{display:inline-block;font-size:var(--fs-micro);font-weight:600;padding:3px 10px;border-radius:100px;border:1px solid var(--rule);color:var(--ink-3);background:var(--bg)}
+    .tc-kw{font-size:var(--fs-label);color:var(--ink-4);margin-bottom:var(--sp-6)}
+
+    /* ── ACTION ── */
+    .action-list{display:flex;flex-direction:column;gap:var(--sp-3)}
+    .action{background:var(--white);padding:var(--sp-8) var(--sp-10);border-radius:var(--r-lg)}
+    .ac-tag{font-size:var(--fs-micro);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-2)}
+    .ac-title{font-size:var(--fs-h2);font-weight:800;color:var(--ink);letter-spacing:-.3px;margin-bottom:var(--sp-3)}
+    .ac-desc{font-size:var(--fs-body);color:var(--ink-3);line-height:var(--lh-loose);margin-bottom:var(--sp-6)}
+    .ac-desc:last-child{margin-bottom:0}
+    .ac-box{background:var(--bg);padding:var(--sp-6);font-size:var(--fs-body);line-height:var(--lh-loose);color:var(--ink-3);border-radius:var(--r-sm)}
+    .ac-box-lbl{font-size:var(--fs-micro);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-2)}
+    .ac-box strong{color:var(--ink-2);font-weight:700}
+    .ex-before{color:var(--ink-4);text-decoration:line-through}
+    .ex-after{color:var(--accent);font-weight:700}
+
+    /* ── SUPER BADGE ── */
+    .super-badge{display:inline-block;font-size:var(--fs-micro);font-weight:700;letter-spacing:1px;padding:2px var(--sp-2);background:var(--ink);color:#fff;vertical-align:middle;margin-left:var(--sp-2)}
+
+
+
+    /* ── TACTICAL NOTE ── */
+    .tac{background:var(--white);padding:var(--sp-8);margin-top:var(--sp-8);margin-bottom:var(--sp-12);border-radius:var(--r-lg)}
+    .tac-eye{font-size:var(--fs-micro);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-4)}
+    .tac-body{font-size:var(--fs-body);color:var(--ink-2);line-height:var(--lh-loose)}
+    .tac-body strong{color:var(--ink);font-size:var(--fs-sub)}
+    .tac-dir{margin-top:var(--sp-4);padding-top:var(--sp-4);border-top:1px solid var(--rule);font-size:var(--fs-body);color:var(--ink-3);line-height:var(--lh-loose)}
+    .tac-dir strong{color:var(--ink-2)}
+
+    /* ── REF GRID ── */
+    .ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-bottom:var(--sp-12)}
+    .ref-block{background:var(--white);padding:var(--sp-8);border-radius:var(--r-lg)}
+    .ref-title{font-size:var(--fs-body);font-weight:700;letter-spacing:0;text-transform:none;color:var(--ink);margin-bottom:var(--sp-6)}
+
+    /* ── TOGGLE ── */
+    .toggle{background:var(--white);overflow:hidden;border-radius:var(--r-md);margin-bottom:var(--sp-2)}
+    .toggle:last-child{}
+    .toggle-btn{width:100%;display:flex;align-items:center;min-height:44px;padding:var(--sp-4) var(--sp-8);background:none;border:none;cursor:pointer;font-family:inherit;font-size:var(--fs-body);font-weight:700;color:var(--ink);text-align:left;gap:var(--sp-3)}
+    .toggle-btn:hover{background:var(--bg)}
+    .toggle-ico{width:22px;height:22px;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;color:var(--accent);transition:background .2s,color .2s}
+    .toggle.open .toggle-ico{background:var(--accent);color:#fff}
+    .toggle-lbl{flex:1}
+    .toggle-arr{font-size:12px;color:var(--ink-4);transition:transform .25s ease;flex-shrink:0}
+    .toggle.open .toggle-arr{transform:rotate(180deg)}
+    .toggle-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+    .toggle.open .toggle-body{max-height:1200px}
+    .toggle-inner{padding:0 var(--sp-8) var(--sp-8) var(--sp-16);font-size:var(--fs-body);color:var(--ink);line-height:var(--lh-loose)}
+    .toggle-inner strong{color:var(--ink-2)}
+    .toggle-inner em{font-style:normal;font-weight:700;color:var(--ink)}
+    .toggle-tbl{width:100%;border-collapse:collapse;margin:var(--sp-6) 0 var(--sp-8);font-size:var(--fs-label)}
+    .toggle-tbl th{text-align:center;padding:var(--sp-2) var(--sp-3);background:var(--bg);font-weight:700;color:var(--accent);font-size:var(--fs-micro);letter-spacing:.5px}
+    .toggle-tbl td{padding:var(--sp-3) var(--sp-3);border-bottom:1px solid var(--rule);color:var(--ink);text-align:center}
+    .toggle-tbl td:first-child{font-weight:600;color:var(--ink);text-align:center}
+    .toggle-tbl tr:last-child td{border-bottom:none}
+
+    /* ── ANIMATIONS ── */
+    @keyframes coverSlide{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+    .cover-body{animation:coverSlide 1s cubic-bezier(.22,1,.36,1) .2s both}
+
+    /* Scroll-triggered fade-in */
+    .anim{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .anim.visible{opacity:1;transform:translateY(0)}
+    .anim-d1{transition-delay:.1s}.anim-d2{transition-delay:.2s}.anim-d3{transition-delay:.25s}
+
+    /* Bar gauge grow animation */
+    @keyframes barGrow{from{width:0}to{width:var(--bar-w)}}
+    .bar-fill{width:0;animation:barGrow .8s ease-out forwards;animation-play-state:paused}
+    .bar-fill.animate{animation-play-state:running}
+    .bar-d1{animation-delay:.1s}.bar-d2{animation-delay:.2s}.bar-d3{animation-delay:.3s}
+
+    /* ── RESPONSIVE: TABLET (1024px) ── */
+    @media(max-width:1024px){
+      :root{--pp:40px}
+    }
+
+    /* ── RESPONSIVE: MOBILE (900px) ── */
+    @media(max-width:900px){
+      :root{--nav-w:0px;--pp:var(--sp-6)}
+      .leftnav{display:none}
+      .sticky-nav{display:block}
+      .main{padding-top:0}
+      .cover{padding:var(--sp-10) var(--sp-6);min-height:auto}
+      .c-h1{font-size:44px;letter-spacing:-2px}
+      .cover-kpis{grid-template-columns:1fr 1fr}
+      .section{padding:var(--sp-12) var(--sp-6)}
+      .s-title{margin-bottom:var(--sp-8)}
+      .perc-grid,.chart-cards,.chart-cards.single,.quote-grid,.note-grid,.ref-grid{grid-template-columns:1fr}
+      .persona-grid{grid-template-columns:1fr 1fr}
+      .trainer-grid{grid-template-columns:1fr;gap:var(--sp-3)}.trainer-card{padding:var(--sp-6)}.tc-name{font-size:var(--fs-h2)}
+      .perc-col{padding:var(--sp-8) var(--sp-6)}
+      .action{padding:var(--sp-6)}
+      .f-highlight{padding:var(--sp-8) var(--sp-6)}
+      .tbl-wrap table.dt th,.tbl-wrap table.dt td{padding:var(--sp-3) var(--sp-4)}
+      table.dt{min-width:600px}
+      table.dt th:first-child,table.dt td:first-child{position:sticky;left:0;background:var(--white);z-index:1}
+      table.dt th:first-child{background:var(--white)}
+      .tac{padding:var(--sp-6)}
+      .ref-block{padding:var(--sp-6) var(--sp-4)}
+      .toggle-btn{padding:var(--sp-3) var(--sp-6)}
+      .toggle-inner{padding:0 var(--sp-6) var(--sp-6) var(--sp-6)}
+    }
+
+    /* ── RESPONSIVE: SMALL (480px) ── */
+    @media(max-width:480px){
+      .cover-kpis{grid-template-columns:1fr 1fr}
+      .persona-grid{grid-template-columns:1fr 1fr}
+      .ck-val{font-size:36px}
+      .p-pct{font-size:40px}
+      .c-h1{font-size:36px;letter-spacing:-1.5px}
+      .s-title{font-size:24px}
+      .perc-col{padding:var(--sp-6) var(--sp-4)}
+    }
+
+    /* ── SITE FOOTER ── */
+    .site-footer{background:var(--ink);color:var(--dark-3);padding:var(--sp-12) var(--pp);text-align:center;margin-left:var(--nav-w)}
+    .sf-brand{font-size:var(--fs-micro);font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:var(--sp-4)}
+    .sf-links{display:flex;justify-content:center;gap:var(--sp-8);margin-bottom:var(--sp-6)}
+    .sf-links a{font-size:var(--fs-label);font-weight:600;color:var(--dark-3);text-decoration:none;transition:color .15s}
+    .sf-links a:hover{color:#fff}
+    .sf-copy{font-size:var(--fs-micro);color:var(--ink-3)}
+
+    /* ── REDUCED MOTION ── */
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+    }
+  </style>
+</head>
+<body>
+<a href="#s-cover" class="skip-link">본문으로 건너뛰기</a>
+<!-- LEFT NAV -->
+<nav class="leftnav" id="leftnav" role="navigation" aria-label="리포트 목차">
+  <div class="ln-brand">RE:FEEEL</div>
+  <div class="ln-sec-label">쿼카짐 리뷰 분석</div>
+  <div class="ln-items">
+    <button class="ln-item active" data-target="s-cover" onclick="goSec('s-cover')"><span class="ln-num">—</span><span class="ln-label">Cover</span></button>
+    <button class="ln-item" data-target="s-overview" onclick="goSec('s-overview')"><span class="ln-num">01</span><span class="ln-label">종합 진단</span></button>
+    <button class="ln-item" data-target="s-pop" onclick="goSec('s-pop')"><span class="ln-num">02</span><span class="ln-label">POP vs POD</span></button>
+    <button class="ln-item" data-target="s-gap" onclick="goSec('s-gap')"><span class="ln-num">03</span><span class="ln-label">간극 분석</span></button>
+    <button class="ln-item" data-target="s-customer" onclick="goSec('s-customer')"><span class="ln-num">04</span><span class="ln-label">고객 분석</span></button>
+    <button class="ln-item" data-target="s-trainer" onclick="goSec('s-trainer')"><span class="ln-num">05</span><span class="ln-label">담당자 인식</span></button>
+    <button class="ln-item" data-target="s-trend" onclick="goSec('s-trend')"><span class="ln-num">06</span><span class="ln-label">리뷰 추이</span></button>
+    <button class="ln-item" data-target="s-action" onclick="goSec('s-action')"><span class="ln-num">07</span><span class="ln-label">액션 플랜</span></button>
+    <button class="ln-item" data-target="s-list" onclick="goSec('s-list')"><span class="ln-num">08</span><span class="ln-label">리뷰 목록</span></button>
+  </div>
+  <div class="ln-footer">쿼카짐 리뷰 분석<br>2026.04.08 · 37건</div>
+</nav>
+
+<main class="main" id="main-content">
+
+<!-- COVER -->
+<section id="s-cover" class="cover" role="region" aria-labelledby="s-cover-title">
+  <div class="cover-top">
+    <span class="c-tag">네이버 플레이스 리뷰 분석 리포트</span>
+    <span class="c-date">2026.04.08</span>
+  </div>
+  <div class="cover-body">
+    <div class="c-h1" id="s-cover-title">쿼카짐<br><span style="display:block;margin-top:var(--sp-1)">Review Report</span></div>
+    <div class="c-desc">플레이스 리뷰 37건 기반 분석.<br>분석 기간 2025년 10월 — 2026년 2월.</div>
+  </div>
+  <div class="cover-kpis">
+    <div class="ck"><div class="ck-val">29.0</div><div class="ck-name">SEO Score</div><div class="ck-sub">45점 만점 · 노출 기여 64%</div></div>
+    <div class="ck"><div class="ck-val dim">7.5</div><div class="ck-name">AEO Score</div><div class="ck-sub">50점 만점 · AI 참조 15%</div></div>
+    <div class="ck"><div class="ck-val">89%</div><div class="ck-name">영수증 인증률</div><div class="ck-sub">33건 / 37건</div></div>
+    <div class="ck"><div class="ck-val dim">−94%</div><div class="ck-name">리뷰 속도</div><div class="ck-sub">17건 → 1건 (5개월)</div></div>
+  </div>
+</section>
+
+<!-- STICKY HORIZONTAL NAV (mobile/tablet only) -->
+<nav class="sticky-nav" id="sticky-nav" role="navigation" aria-label="섹션 네비게이션">
+  <div class="sn-track" id="sn-track">
+    <button class="sn-item active" data-target="s-overview" onclick="goSec('s-overview')">01 종합 진단</button>
+    <button class="sn-item" data-target="s-pop" onclick="goSec('s-pop')">02 POP vs POD</button>
+    <button class="sn-item" data-target="s-gap" onclick="goSec('s-gap')">03 간극 분석</button>
+    <button class="sn-item" data-target="s-customer" onclick="goSec('s-customer')">04 고객 분석</button>
+    <button class="sn-item" data-target="s-trainer" onclick="goSec('s-trainer')">05 담당자 인식</button>
+    <button class="sn-item" data-target="s-trend" onclick="goSec('s-trend')">06 리뷰 추이</button>
+    <button class="sn-item" data-target="s-action" onclick="goSec('s-action')">07 액션 플랜</button>
+    <button class="sn-item" data-target="s-list" onclick="goSec('s-list')">08 리뷰 목록</button>
+  </div>
+</nav>
+
+<!-- SEO/AEO 개념 설명 -->
+<section class="section" style="padding-bottom:var(--sp-12)" role="region">
+<div class="section-inner">
+  <div style="font-size:var(--fs-body);color:var(--ink-2);line-height:var(--lh-loose);margin-bottom:var(--sp-8)">
+    <p style="margin-bottom:var(--sp-10)">예를 들어 네이버에서 '강남 PT'를 검색하면 플레이스 목록이 뜨죠. 그 목록에서 위에 뜨느냐 아래에 뜨느냐를 결정하는 게 <strong style="color:var(--ink)">SEO(Search Engine Optimization)</strong>입니다. 리뷰 수, 영수증 인증 비율, 키워드 태그, 재방문율 같은 요소들이 영향을 주죠. <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">검색했을 때 눈에 보이는 곳에 올라가는 것까지가 SEO의 역할</span>입니다.</p>
+    <table class="toggle-tbl" style="margin:var(--sp-10) 0">
+      <tr><th></th><th>SEO</th><th>AEO</th></tr>
+      <tr><td>목표</td><td>검색 목록에 올라가기</td><td>AI의 답변에 선택되기</td></tr>
+      <tr><td>작동 방식</td><td>리뷰 수, 인증, 키워드</td><td>리뷰의 구체성, 스토리, 숫자</td></tr>
+      <tr><td>리뷰 예시</td><td>"친절해요" (태그 수 기여)</td><td>"14회 만에 라운드숄더 호전"</td></tr>
+      <tr><td>비유</td><td>전화번호부에 이름 올리기</td><td>지인이 직접 추천해주는 것</td></tr>
+    </table>
+    <p style="margin-bottom:var(--sp-10)">이제는 검색 결과를 하나씩 보는 게 아닙니다. <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">쿠팡도, 네이버 플레이스도 AI가 리뷰 전체를 읽고 요약해주고 있거든요. 고객은 그 한 줄 요약으로 방문 여부를 판단하게 됩니다.</span> 이때 AI가 근거로 참조하는 게 리뷰입니다. 이걸 <strong style="color:var(--ink)">AEO(Answer Engine Optimization)</strong>라고 합니다.</p>
+    <p style="margin-bottom:var(--sp-10)">"6주 만에 허리 통증이 줄었어요"처럼 구체적 경험과 숫자가 있는 리뷰는 AI가 인용할 수 있죠. 반면 "좋아요 친절해요"는 AI가 가져갈 게 없습니다. 네이버 AI 브리핑도 같은 원리로, 구체적 경험이 담긴 리뷰를 근거로 참조합니다.</p>
+  </div>
+
+  <div class="ref-grid">
+    <div class="ref-block">
+      <div class="ref-title">이런 리뷰일수록 검색과 AI에 더 잘 잡힙니다</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2);margin-bottom:4px">구체적 숫자/결과 <span style="color:var(--ink);font-weight:700">+45%</span></div><div style="height:6px;border-radius:3px;background:#e5e5e5"><div class="bar-fill" style="--bar-w:100%;height:100%;border-radius:3px;background:var(--ink)"></div></div></div>
+        <div><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2);margin-bottom:4px">고화질 이미지 3장 이상 <span style="color:var(--ink-3);font-weight:700">+30%</span></div><div style="height:6px;border-radius:3px;background:#e5e5e5"><div class="bar-fill bar-d1" style="--bar-w:67%;height:100%;border-radius:3px;background:#888"></div></div></div>
+        <div><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2);margin-bottom:4px">특징적 문구 (브랜드 고유) <span style="color:var(--ink-3);font-weight:700">+25%</span></div><div style="height:6px;border-radius:3px;background:#e5e5e5"><div class="bar-fill bar-d2" style="--bar-w:56%;height:100%;border-radius:3px;background:#aaa"></div></div></div>
+        <div><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2);margin-bottom:4px">담당자 실명 언급 <span style="color:var(--ink-3);font-weight:700">+15%</span></div><div style="height:6px;border-radius:3px;background:#e5e5e5"><div class="bar-fill bar-d3" style="--bar-w:33%;height:100%;border-radius:3px;background:#ccc"></div></div></div>
+      </div>
+    </div>
+    <div class="ref-block">
+      <div class="ref-title">네이버가 순위를 매길 때 어디를 더 많이 보는지</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2)">사용자 행동 (체류, 예약, 재방문)</div><div style="white-space:nowrap"><span style="font-size:var(--fs-micro);font-weight:700;color:var(--ink);margin-right:6px">최상</span><span style="font-size:10px;letter-spacing:2px"><span style="color:var(--ink)">●●●●●</span></span></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2)">업체 유사도 (검색어 매칭)</div><div style="white-space:nowrap"><span style="font-size:var(--fs-micro);font-weight:600;color:var(--ink-3);margin-right:6px">매우 높음</span><span style="font-size:10px;letter-spacing:2px"><span style="color:var(--ink)">●●●●</span><span style="color:#ddd">●</span></span></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2)">인기도 (리뷰, 저장, 클릭률)</div><div style="white-space:nowrap"><span style="font-size:var(--fs-micro);font-weight:600;color:var(--ink-3);margin-right:6px">높음</span><span style="font-size:10px;letter-spacing:2px"><span style="color:var(--ink)">●●●</span><span style="color:#ddd">●●</span></span></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2)">정보 충실도 (설명, 사진)</div><div style="white-space:nowrap"><span style="font-size:var(--fs-micro);font-weight:600;color:var(--ink-4);margin-right:6px">중간</span><span style="font-size:10px;letter-spacing:2px"><span style="color:var(--ink)">●●</span><span style="color:#ddd">●●●</span></span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 01 종합 진단 -->
+<section id="s-overview" class="section" role="region" aria-labelledby="s-overview-title">
+<div class="section-inner">
+  <div class="s-eye">01 — 종합 진단</div>
+  <div class="s-title" id="s-overview-title">고객은 쿼카짐을<br>어떻게 인식하고 있는가</div>
+
+  <div class="perc-grid">
+    <div class="perc-col pos">
+      <span class="p-type">Strength</span>
+      <div class="p-body">리뷰에서 쿼카짐은 <span class="hi">"친절하고 꼼꼼한 PT샵"</span>으로 인식되며, <span class="hi">"아프거나 무서웠던 사람이 와서 안심하는 곳"</span>으로 느껴진다. <span style="color:var(--accent);font-weight:700">통증/질환 고객 27%</span>, <span style="color:var(--accent);font-weight:700">운동 공포형 19%</span>가 이 인식을 만들고 있다.</div>
+      <div class="p-stats">
+        <div><div class="ps-val">27%</div><div class="ps-lbl">통증/질환 고객</div></div>
+        <div><div class="ps-val">19%</div><div class="ps-lbl">운동 공포형</div></div>
+      </div>
+    </div>
+    <div class="perc-col neg">
+      <span class="p-type">Risk</span>
+      <div class="p-body">그러나 안심의 주체가 '쿼카짐'이 아니라 <span class="risk">'특정 트레이너'에게 귀속</span>되어 있다. 시스템에 대한 언급은 사실상 없고, 불만 표현도 37건 중 <span class="risk">0건</span>이다 — 이는 불만족 고객이 리뷰를 쓰지 않고 이탈했을 가능성을 의미한다.</div>
+      <div class="p-stats">
+        <div><div class="ps-val">38%</div><div class="ps-lbl">트레이너 귀속</div></div>
+        <div><div class="ps-val lo">3%</div><div class="ps-lbl">시스템 언급</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW: Tactical Note -->
+  <div class="tac">
+    <div class="tac-eye">Tactical Meaning</div>
+    <div class="tac-body"><strong>"친절하고 꼼꼼한 PT샵"이라는 인식은 다른 PT샵도 똑같이 받을 수 있는 인식이다.</strong> 이것이 플레이스 대표 문구나 인스타 프로필에 그대로 적혀 있다면, 경쟁자와 같은 말을 하고 있는 것이다. 2025년 이후 네이버 알고리즘은 누적 데이터(리뷰 수, 저장 수)보다 실시간 사용자 행동(클릭, 예약, 체류 시간)을 더 중요하게 평가한다. 리뷰가 많아도 사용자의 반응이 저조하면 순위가 하락할 수 있다.</div>
+    <div class="tac-dir"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M5 12h14M12 5l7 7-7 7"/></svg> 지금 플레이스 소개 문구가 "체계적인 1대1 PT", "꼼꼼한 자세 교정" 같은 표현이라면 → POP로 경쟁하고 있는 것. 뒤의 POP/POD 분석과 액션 플랜을 참고.</div>
+  </div>
+
+
+  <div class="chart-cards">
+    <div class="sc-card">
+      <div class="sc-eye">Score Distribution</div>
+      <div class="sc-title">SEO 평균 29.0점,<br>AEO는 겨우 7.5점</div>
+      <div class="sc-ax"><span>AEO Score →</span><span>SEO 20–45 · AEO 0–25</span></div>
+      <div class="sc-ch"><canvas id="c-scatter" role="img" aria-label="SEO 점수와 AEO 점수의 상관관계를 보여주는 산점도. 대부분의 리뷰가 AEO 0~10점 구간에 몰려 있다."></canvas></div>
+      <div class="sc-stats">
+        <div class="sc-s"><div class="sc-s-lbl">SEO 평균</div><div class="sc-s-val">29.0 / 45</div></div>
+        <div class="sc-s"><div class="sc-s-lbl">AEO 평균</div><div class="sc-s-val">7.5 / 50</div></div>
+        <div class="sc-s" style="padding-top:10px"><div class="sc-s-lbl">검색 노출 기여</div><div class="sc-s-val">64%</div></div>
+        <div class="sc-s" style="padding-top:10px"><div class="sc-s-lbl">AI 답변 참조율</div><div class="sc-s-val">15%</div></div>
+      </div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-eye">Keyword Frequency</div>
+      <div class="sc-title">상위 키워드 7개,<br>전부 POP — 차별화가 없다</div>
+      <div class="sc-ax"><span>Keyword →</span><span>건수 / 37건</span></div>
+      <div class="sc-ch"><canvas id="c-kw" role="img" aria-label="키워드 태그 빈도 차트. 꼼꼼한 자세 34건, 체계적 수업 32건, 친절 30건 순."></canvas></div>
+      <div class="sc-stats">
+        <div class="sc-s"><div class="sc-s-lbl">최다 언급</div><div class="sc-s-val">꼼꼼한 자세 34건</div></div>
+        <div class="sc-s"><div class="sc-s-lbl">POD 후보</div><div class="sc-s-val">상담 자세 6건</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW: Time-to-Value & 불만 0건 alerts -->
+  <div class="note-grid" style="margin-top:0;margin-bottom:48px">
+    <div class="note">📌 <strong>Time-to-Value</strong> 리뷰에서 구체적 기간/횟수를 언급한 건은 <strong>37건 중 3건(8%)</strong>뿐이다. "6주 만에 통증 해소", "14회 만에 라운드숄더 호전", "1년 18kg 감량 요요 없이 유지" — 이 3건이 AEO 최고 점수를 받았다. 구체적 숫자가 포함된 리뷰는 SEO/AI 중요도에 <strong>+45%</strong> 영향을 주는 것으로 추정된다. 나머지 92%는 AI가 인용할 수 있는 증거가 없다.</div>
+    <div class="note">📌 <strong>불만 리뷰 0건</strong> 37건 중 부정 표현("아쉬움", "다만", "불편" 등)이 단 한 건도 없다. 서비스가 완벽할 수도 있지만, 불만족 고객이 리뷰 없이 이탈했을 가능성도 있다. 상담→등록 전환률, 재등록률 데이터와 교차 분석이 필요하다.</div>
+  </div>
+
+</div>
+</section>
+<!-- 02 POP vs POD -->
+<section id="s-pop" class="section" role="region" aria-labelledby="s-pop-title">
+<div class="section-inner">
+  <div class="s-eye">02 — POP vs POD</div>
+  <div class="s-title" id="s-pop-title">기본 기대치와<br>차별화 지점을 구분한다</div>
+
+  <!-- POP/POD 개념 설명 -->
+  <div style="margin-bottom:var(--sp-8);font-size:var(--fs-body);color:var(--ink-2);line-height:var(--lh-loose)">
+    <p style="margin-bottom:var(--sp-10)">카페에 들어갔는데 커피가 맛없으면 다시 가지 않겠죠. 그런데 커피가 맛있다고 해서 "여기를 꼭 가야 해"라고 추천하지는 않습니다. 커피가 맛있는 건 카페라면 당연한 거니까요. 이게 <strong style="color:var(--ink)">POP(Point of Parity)</strong>입니다. <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">없으면 탈락하지만, 있어도 선택 이유가 되지 않는 것. PT샵에서 "친절해요", "체계적이에요"가 대부분의 리뷰에서 나온다면, 그건 경쟁자도 똑같이 받을 수 있는 평가입니다.</span></p>
+    <p style="margin-bottom:var(--sp-10)">반면 같은 카페인데 "여기는 원두를 매주 직접 로스팅해요"라고 하면 이야기가 달라지죠. 다른 카페에서는 들을 수 없는 말이니까요. 이게 <strong style="color:var(--ink)">POD(Point of Difference)</strong>입니다. <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">경쟁자는 줄 수 없는, 여기를 골라야 하는 이유. 리뷰에서 "도수치료를 전전하다가 여기서 해결됐다"는 표현이 나온다면, 이건 다른 PT샵 리뷰에서는 나오기 어려운 말입니다.</span></p>
+    <table class="toggle-tbl" style="margin:var(--sp-10) 0">
+      <tr><th></th><th>POP</th><th>POD</th></tr>
+      <tr><td>의미</td><td>기본 기대치</td><td>차별화 지점</td></tr>
+      <tr><td>없으면?</td><td>탈락</td><td>선택지에는 들어감</td></tr>
+      <tr><td>있으면?</td><td>선택지에 들어감</td><td>선택의 이유가 됨</td></tr>
+      <tr><td>리뷰 예시</td><td>"친절해요", "깔끔해요"</td><td>"도수치료 대신 여기서 해결"</td></tr>
+    </table>
+    <p style="margin:0;color:var(--ink-2)">이 리포트에서 POP로 분류된 항목을 플레이스 대표 문구로 쓰고 있다면, <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">아주 당연한 것을 차별점이라고 내세우는 것과 같습니다</span>. 모두가 친절하고 좋다면, 고객은 리뷰에서 전환될 이유가 없는 거죠. POD로 분류된 항목이 마케팅의 핵심 소재가 되어야 합니다.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <div class="tbl-cap">키워드 태그 기반 분류</div>
+    <div class="tbl-scroll"><table class="dt">
+      <tr><th>키워드</th><th>건수</th><th>비율</th><th>분류</th><th>근거</th></tr>
+      <tr><td><strong>자세를 꼼꼼히 봐주세요</strong></td><td>34</td><td>92%</td><td><span class="tag t-pop">POP</span></td><td>PT 선택 시 기본 기대치</td></tr>
+      <tr><td><strong>수업이 체계적이에요</strong></td><td>32</td><td>86%</td><td><span class="tag t-pop">POP</span></td><td>업종 공통 기대값</td></tr>
+      <tr><td><strong>친절해요</strong></td><td>30</td><td>81%</td><td><span class="tag t-pop">POP</span></td><td>서비스업 보편 기대치</td></tr>
+      <tr><td><strong>맞춤 케어를 잘해줘요</strong></td><td>24</td><td>65%</td><td><span class="tag t-pop">POP</span></td><td>본문과 결합 시 POD 전환 가능</td></tr>
+      <tr><td><strong>시설이 깔끔해요</strong></td><td>17</td><td>46%</td><td><span class="tag t-par">경계</span></td><td>신규 오픈 효과. 시간 경과 시 소멸</td></tr>
+      <tr><td><strong>선생님 실력이 좋아요</strong></td><td>15</td><td>41%</td><td><span class="tag t-par">경계</span></td><td>통증/재활 맥락과 결합 시 POD</td></tr>
+      <tr><td><strong>상담이 자세해요</strong></td><td>6</td><td>16%</td><td><span class="tag t-pod">POD</span></td><td>첫 방문 전환 기여</td></tr>
+    </table></div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-eye">Tactical Meaning</div>
+    <div class="tac-body"><strong>상위 4개 키워드가 전부 POP(기본 기대치)라는 것은, 고객이 쿼카짐의 차별점을 키워드 태그로는 표현할 수 없었다는 뜻이다.</strong> 네이버가 제공하는 태그 선택지 자체가 업종 공통이기 때문이다. 차별점은 본문 언어에서만 드러난다.</div>
+    <div class="tac-dir"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M5 12h14M12 5l7 7-7 7"/></svg><strong>POD는 아래 본문 클러스터에서 나온다.</strong> "도수치료 대신", "우물쭈물했지만 괜찮다고" — 이런 표현은 태그에 없고, 고객이 자발적으로 쓴 것이다. 이것이 진짜 차별점이다. 단답형 리뷰("좋아요")는 리뷰 수에만 기여하고 키워드 검색 노출에는 거의 기여하지 못하는 반면, <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">스토리 구조 리뷰(문제→해결→결과)는 AI에게 복수의 강력한 태그를 동시에 제공한다.</span></div>
+  </div>
+
+  <div class="chart-cards single">
+    <div class="sc-card">
+      <div class="sc-eye">POD Cluster</div>
+      <div class="sc-title">본문 언어 기반 POD 클러스터</div>
+      <div class="sc-ch tall"><canvas id="c-pod" role="img" aria-label="POD 클러스터 차트. 트레이너 팬덤 14건, 통증/재활 해결 9건, 초보/공포 극복 8건 순."></canvas></div>
+    </div>
+  </div>
+  <div class="quote-grid">
+    <div>
+      <div class="q-group-title">POD 1 · 통증 해결자 (24%)</div>
+
+      <div style="background:var(--white);padding:var(--sp-6) var(--sp-8);border-radius:var(--r-lg);margin-bottom:var(--sp-3)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-4)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0112 0v1"/></svg></div>
+            <div><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2)">achieve23</div><div style="font-size:var(--fs-micro);color:var(--ink-4)">2025.12.19</div></div>
+          </div>
+
+        </div>
+        <div style="font-size:var(--fs-body);line-height:var(--lh-loose);color:var(--ink-2);margin-bottom:var(--sp-4)">"허리 통증으로 도수 치료와 필라테스를 전전했던 제가 고민 끝에 찾은 쿼카짐"</div>
+        <div style="display:flex;align-items:center;font-size:var(--fs-label);color:var(--ink-4)"><span style="margin-left:auto">— achieve23</span></div>
+      </div>
+
+      <div style="background:var(--white);padding:var(--sp-6) var(--sp-8);border-radius:var(--r-lg);margin-bottom:var(--sp-3)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-4)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0112 0v1"/></svg></div>
+            <div><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2)">madnet21</div><div style="font-size:var(--fs-micro);color:var(--ink-4)">2025.12.08</div></div>
+          </div>
+
+        </div>
+        <div style="font-size:var(--fs-body);line-height:var(--lh-loose);color:var(--ink-2);margin-bottom:var(--sp-4)">"디스크 터진 직장인 살려낸 GOD&amp;GOOD 쿼카짐"</div>
+        <div style="display:flex;align-items:center;font-size:var(--fs-label);color:var(--ink-4)"><span style="margin-left:auto">— madnet21</span></div>
+      </div>
+
+      <div style="background:var(--white);padding:var(--sp-6) var(--sp-8);border-radius:var(--r-lg)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-4)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0112 0v1"/></svg></div>
+            <div><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2)">dbsenfl509</div><div style="font-size:var(--fs-micro);color:var(--ink-4)">2025.11.14</div></div>
+          </div>
+
+        </div>
+        <div style="font-size:var(--fs-body);line-height:var(--lh-loose);color:var(--ink-2);margin-bottom:var(--sp-4)">"14회만에 라운드 숄더, 거북목 호전됐습니다"</div>
+        <div style="display:flex;align-items:center;font-size:var(--fs-label);color:var(--ink-4)"><span style="margin-left:auto">— dbsenfl509</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="q-group-title">POD 2 · 운동 공포 해소자 (22%)</div>
+
+      <div style="background:var(--white);padding:var(--sp-6) var(--sp-8);border-radius:var(--r-lg);margin-bottom:var(--sp-3)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-4)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0112 0v1"/></svg></div>
+            <div><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2)">수니87</div><div style="font-size:var(--fs-micro);color:var(--ink-4)">2025.10.20</div></div>
+          </div>
+
+        </div>
+        <div style="font-size:var(--fs-body);line-height:var(--lh-loose);color:var(--ink-2);margin-bottom:var(--sp-4)">"어떻게 하는지 모르겠어서 우물쭈물했지만 괜찮다고 해주시면서"</div>
+        <div style="display:flex;align-items:center;font-size:var(--fs-label);color:var(--ink-4)"><span style="margin-left:auto">— 수니87</span></div>
+      </div>
+
+      <div style="background:var(--white);padding:var(--sp-6) var(--sp-8);border-radius:var(--r-lg);margin-bottom:var(--sp-3)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-4)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0112 0v1"/></svg></div>
+            <div><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2)">goh****</div><div style="font-size:var(--fs-micro);color:var(--ink-4)">2026.01.27</div></div>
+          </div>
+
+        </div>
+        <div style="font-size:var(--fs-body);line-height:var(--lh-loose);color:var(--ink-2);margin-bottom:var(--sp-4)">"금쪽이라 불리던 저를 웃으면서 끌고 와주신"</div>
+        <div style="display:flex;align-items:center;font-size:var(--fs-label);color:var(--ink-4)"><span style="margin-left:auto">— goh****</span></div>
+      </div>
+
+      <div style="background:var(--white);padding:var(--sp-6) var(--sp-8);border-radius:var(--r-lg)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-4)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0112 0v1"/></svg></div>
+            <div><div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-2)">yoo****</div><div style="font-size:var(--fs-micro);color:var(--ink-4)">2025.10.17</div></div>
+          </div>
+
+        </div>
+        <div style="font-size:var(--fs-body);line-height:var(--lh-loose);color:var(--ink-2);margin-bottom:var(--sp-4)">"운동이 처음이라 긴장했는데, 이젠 운동이 무섭지 않아요"</div>
+        <div style="display:flex;align-items:center;font-size:var(--fs-label);color:var(--ink-4)"><span style="margin-left:auto">— yoo****</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 03 간극 분석 -->
+<section id="s-gap" class="section" role="region" aria-labelledby="s-gap-title">
+<div class="section-inner">
+  <div class="s-eye">03 — 간극 분석</div>
+  <div class="s-title" id="s-gap-title">전달하고 싶은 것과<br>실제로 전달된 것의 차이</div>
+  <div class="note" style="margin-bottom:40px">
+    <strong>ⓘ 안내</strong> 아래 "전달 의도"는 리뷰 본문, 플레이스 키워드, 예약 상품명 등 공개 데이터를 기반으로 AI가 추정한 것입니다. 실제 의도와 일치하는지 비교해보세요. <strong>차이가 있다면, 그 차이 자체가 가장 중요한 인사이트입니다.</strong>
+  </div>
+  <div class="chart-cards single" style="margin-bottom:40px">
+    <div class="sc-card">
+      <div class="sc-eye">Gap Analysis</div>
+      <div class="sc-title">전달 의도 vs 리뷰 반영률</div>
+      <div class="sc-ch tall"><canvas id="c-gap" role="img" aria-label="전달 의도 대비 리뷰 반영률 비교 차트. 트레이너 전문성 38%, 통증/재활 24%, 1대1 맞춤 19%."></canvas></div>
+    </div>
+  </div>
+  <div class="tbl-wrap">
+    <div class="tbl-cap">간극 상세</div>
+    <div class="tbl-scroll"><table class="dt">
+      <tr><th>전달 의도</th><th>리뷰 언급</th><th>비율</th><th>판정</th></tr>
+      <tr><td><strong>라포 앱 (수업 외 관리)</strong></td><td>1건</td><td>3%</td><td><span class="tag t-gap">미전달</span></td></tr>
+      <tr><td><strong>프로그램/상품 체계</strong></td><td>0건</td><td>0%</td><td><span class="tag t-gap">미전달</span></td></tr>
+      <tr><td><strong>1대1 맞춤 케어</strong></td><td>7건</td><td>19%</td><td><span class="tag t-par">부분</span></td></tr>
+      <tr><td><strong>통증/재활 전문성</strong></td><td>9건</td><td>24%</td><td><span class="tag t-par">부분</span></td></tr>
+      <tr><td><strong>트레이너 전문성</strong></td><td>14건</td><td>38%</td><td><span class="tag t-risk">과잉 귀속</span></td></tr>
+      <tr><td><strong>가격 대비 가치</strong></td><td>4건</td><td>11%</td><td><span class="tag t-par">부분</span></td></tr>
+    </table></div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-eye">Tactical Meaning</div>
+    <div class="tac-body"><strong>"미전달" 항목은 두 가지 가능성이 있다.</strong> 하나는 고객이 그 가치를 정말 느끼지 못한 것이고, 다른 하나는 느꼈지만 리뷰에 쓸 언어가 없었던 것이다. 라포 앱처럼 고객이 이름조차 모르는 시스템은 후자일 가능성이 높다.</div>
+    <div class="tac-dir"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M5 12h14M12 5l7 7-7 7"/></svg> 리뷰 유도 시 "수업 외에 도움이 된 경험이 있으면 알려주세요"처럼 시스템 <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">경험을 떠올리게 하는 질문을 던져라. 고객이 그 가치를 언어화할 계기를 만들어줘야 한다.</span></div>
+  </div>
+</div>
+</section>
+
+<!-- 04 고객 분석 -->
+<section id="s-customer" class="section" role="region" aria-labelledby="s-customer-title">
+<div class="section-inner">
+  <div class="s-eye">04 — 고객 분석</div>
+  <div class="s-title" id="s-customer-title">누가, 왜,<br>어디서 왔는가</div>
+  <div class="persona-grid">
+    <div class="persona"><div class="p-pct">27%</div><div class="p-name">통증/질환 보유자</div><div class="p-kw">디스크, 거북목, 측만, 재활</div></div>
+    <div class="persona"><div class="p-pct">19%</div><div class="p-name">운동 초보 (공포형)</div><div class="p-kw">처음, 헬린이, 무서움</div></div>
+    <div class="persona"><div class="p-pct">16%</div><div class="p-name">기존 운동자 (한계형)</div><div class="p-kw">혼자 운동, 습관 교정</div></div>
+    <div class="persona"><div class="p-pct">14%</div><div class="p-name">출산/육아 여성</div><div class="p-kw">산후, 체력저하</div></div>
+    <div class="persona"><div class="p-pct">8%</div><div class="p-name">중년/체력저하</div><div class="p-kw">체력 바닥, 무기력</div></div>
+    <div class="persona"><div class="p-pct">5%</div><div class="p-name">직장인 (좌식)</div><div class="p-kw">목디스크, 8시간 앉아서</div></div>
+  </div>
+  <div class="f-highlight">
+    <div class="fh-eye">Key Finding</div>
+    <div class="fh-main">통증/질환(27%) + 출산/육아(14%) = <em>41%가 "문제 해결"이 목적이다.</em> 이 사람들에게 운동은 수단이지 목적이 아니다.</div>
+    <div class="fh-note"><strong>그리고 가격으로 선택한 고객은 0명이다.</strong> 오픈세일 이용자조차 본문에서 가격을 이유로 쓰지 않았다. 프로모션은 유입의 문이지 전환의 이유가 아니다.</div>
+  </div>
+  <div class="chart-cards">
+    <div class="sc-card">
+      <div class="sc-eye">Before State</div>
+      <div class="sc-title">경쟁 구도 — 어디서 왔는가</div>
+      <div class="sc-ch"><canvas id="c-before" role="img" aria-label="고객 이전 상태 분포. 아무것도 안 함 37%, 혼자 운동 32%, 도수/필라테스 16%."></canvas></div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-eye">Decision Trigger</div>
+      <div class="sc-title">쿼카짐을 선택한 이유</div>
+      <div class="sc-ch"><canvas id="c-trigger" role="img" aria-label="선택 이유 차트. 트레이너 신뢰 16건이 압도적. 가격 0건."></canvas></div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-eye">Tactical Meaning</div>
+    <div class="tac-body"><strong>다른 PT에서 이전한 고객은 37건 중 2건(5%)뿐이다.</strong> 경쟁 상대는 "다른 PT"가 아니라 "도수치료", "혼자 운동", "아무것도 안 하기"다. 고객의 머릿속에서 쿼카짐은 다른 PT와 비교되는 게 아니라, <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">의료적 접근의 대안으로 포지셔닝되고 있다.</span></div>
+    <div class="tac-dir"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M5 12h14M12 5l7 7-7 7"/></svg> "우리가 다른 PT보다 낫다"는 잘못된 싸움판에 서는 것이다. "도수치료를 받아도 낫지 않았다면", "혼자 운동의 한계를 느꼈다면"이 맞는 포지셔닝 언어다. 플레이스 문구, 릴스 훅, 상담 스크립트 모두 이 프레임으로 바꿔야 한다.</div>
+  </div>
+</div>
+</section>
+<!-- 05 담당자 인식 -->
+<section id="s-trainer" class="section" role="region" aria-labelledby="s-trainer-title">
+<div class="section-inner">
+  <div class="s-eye">05 — 담당자별 인식</div>
+  <div class="s-title" id="s-trainer-title">트레이너별 고객 인식과<br>브랜드 귀속 구조</div>
+  <div class="chart-cards single" style="margin-bottom:48px">
+    <div class="sc-card">
+      <div class="sc-eye">Attribution</div>
+      <div class="sc-title">귀속 구조 — 누구에게 점수가 가는가</div>
+      <div class="sc-ch"><canvas id="c-attr" role="img" aria-label="귀속 구조 차트. 트레이너 실명 38%, 브랜드 30%, 시스템 3%."></canvas></div>
+    </div>
+  </div>
+  <div class="trainer-grid">
+    <div class="trainer-card">
+      <div class="tc-name">희재</div>
+      <div class="tc-meta">5건 · 14% · 감정 케어형</div>
+      <div class="tc-type"><span class="tc-pill">세심</span><span class="tc-pill">정확</span><span class="tc-pill">긍정에너지</span><span class="tc-pill">꼼꼼</span></div>
+      <div class="tc-kw">초보 고객에게 강한 인상</div>
+      <div class="quote"><div class="q-text">"금쪽이라 불리던 저를 웃으면서 끌고 와주신"</div></div>
+    </div>
+    <div class="trainer-card">
+      <div class="tc-name">상현</div>
+      <div class="tc-meta">6건 · 16% · 기술+관계형</div>
+      <div class="tc-type"><span class="tc-pill">교정</span><span class="tc-pill">통증해소</span><span class="tc-pill">재미</span><span class="tc-pill">체계</span></div>
+      <div class="tc-kw">재방문·장기 고객 다수</div>
+      <div class="quote"><div class="q-text">"상현쌤을 만난 건 신의 한 수?!"</div></div>
+    </div>
+    <div class="trainer-card">
+      <div class="tc-name">상진</div>
+      <div class="tc-meta">3건 · 8% · 전문성형</div>
+      <div class="tc-type"><span class="tc-pill">체계</span><span class="tc-pill">재활</span><span class="tc-pill">다이어트</span><span class="tc-pill">점진적</span></div>
+      <div class="tc-kw">전문성 중심 언급</div>
+      <div class="quote"><div class="q-text">"10년 전부터 센터를 따라다니면서 꾸준히"</div></div>
+    </div>
+  </div>
+
+  <div class="tac" style="margin-top:48px">
+    <div class="tac-eye">Tactical Meaning</div>
+    <div class="tac-body"><strong>트레이너 실명 38% vs 브랜드 30% vs 시스템 3%.</strong> 고객의 신뢰가 "쿼카짐"이 아니라 "희재쌤", "상현쌤"에게 붙어 있다. 현재 구조에서 트레이너 1명이 이직하면 해당 고객의 이탈 확률이 높다.</div>
+    <div class="tac-dir"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M5 12h14M12 5l7 7-7 7"/></svg> "쿼카짐에서는 모든 트레이너가 동일한 시스템으로 수업합니다"라는 메시지를 만들어야 한다. 라포 앱, 커리큘럼 체계 같은 시스템을 콘텐츠에서 반복 노출하고, 리뷰 유도 시에도 "쿼카짐만의 방식"을 떠올리게 하는 질문을 던져라.</div>
+  </div>
+</div>
+</section>
+
+<!-- 06 리뷰 추이 -->
+<section id="s-trend" class="section" role="region" aria-labelledby="s-trend-title">
+<div class="section-inner">
+  <div class="s-eye">06 — 리뷰 추이</div>
+  <div class="s-title" id="s-trend-title">오픈 버프 소멸과<br>리뷰 속도 급락</div>
+  <div class="chart-cards single" style="margin-bottom:48px">
+    <div class="sc-card">
+      <div class="sc-eye">Monthly Reviews</div>
+      <div class="sc-title">월별 리뷰 건수 — 5개월간 94% 감소</div>
+      <div class="sc-ch tall"><canvas id="c-monthly" role="img" aria-label="월별 리뷰 추이. 2025년 10월 17건에서 2026년 2월 1건으로 94% 감소."></canvas></div>
+      <div class="sc-stats">
+        <div class="sc-s"><div class="sc-s-lbl" style="font-weight:400">오픈월 (10월)</div><div class="sc-s-val">17건</div></div>
+        <div class="sc-s"><div class="sc-s-lbl" style="font-weight:400">최근월 (2월)</div><div class="sc-s-val">1건</div></div>
+        <div class="sc-s"><div class="sc-s-lbl" style="font-weight:400">감소율</div><div class="sc-s-val" style="color:#c03030">−94%</div></div>
+        <div class="sc-s"><div class="sc-s-lbl" style="font-weight:400">사장님 답글</div><div class="sc-s-val" style="color:#c03030">0건 (미작성)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="f-highlight">
+    <div class="fh-eye">Verdict</div>
+    <div class="fh-main" style="color:#fff">오픈 버프 소멸 후 자생적 리뷰 유입 구조가 없다.</div>
+    <div class="fh-note">오픈월(10월) 17건에서 5개월 만에 1건으로 94% 감소. <strong>현재 추세 유지 시 6개월 내 플레이스 순위 하락이 예상된다.</strong></div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-eye">Tactical Meaning</div>
+    <div class="tac-body"><strong>리뷰 유도 시스템을 별도로 설계해야 한다.</strong> 네이버 AI는 최근 3개월 이내의 리뷰를 핵심 데이터로 활용한다. <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">2월에 1건이면 AI 답변 데이터셋에서 사실상 소멸된 것이다.</span> 카운터에 '리뷰 이벤트' 팻말을 놓으면 "친절해요, 잘 알려주세요" 같은 평균 20자짜리 POP 리뷰만 쌓인다. 반면 회원과 직접 대화하며 유도한 리뷰는 평균 120자 이상이고, AI 브리핑 채택률도 압도적으로 높다.</div>
+    <div class="tac-dir"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M5 12h14M12 5l7 7-7 7"/></svg> PT샵이라면 회원 한 분 한 분에게 직접 이야기하면서 1회를 추가 제공하는 방식이 효과적이다. "처음과 지금, 뭐가 달라졌어요?"라는 질문 하나가 스토리 구조 리뷰를 만든다. 그 1회 추가 제공은 나중에 재등록으로 돌아온다.<br><br><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M5 12h14M12 5l7 7-7 7"/></svg> <strong>현재 37건 중 사장님 답글은 0건이다.</strong> 답글이 24시간 이내 작성된 업체는 인터랙션 점수에서 가점을 받고, 전환율이 약 20% 상승하는 것으로 분석된다. 네이버 AI 브리핑은 리뷰뿐 아니라 사장님 답글 내용도 분석해서 요약에 포함한다. 답글에 위치 정보와 업종 키워드를 자연스럽게 포함하면 검색 로봇의 키워드 확장에도 도움이 된다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 07 액션 플랜 -->
+<section id="s-action" class="section" role="region" aria-labelledby="s-action-title">
+<div class="section-inner">
+  <div class="s-eye">07 — 액션 플랜</div>
+  <div class="s-title" id="s-action-title">리뷰 데이터에서 도출된<br>구체적 실행 항목</div>
+  <div class="action-list">
+    <div class="action">
+      <div class="ac-tag">Action 01 · Urgent</div>
+      <div class="ac-title">플레이스 대표 문구 전환</div>
+      <div class="ac-desc">POP를 강점으로 내세우고 있을 가능성이 높다. 고객의 실제 비교 대상에 맞게 포지셔닝 언어를 바꿔야 한다.</div>
+      <div class="ac-box">
+        <div class="ac-box-lbl">Before → After</div>
+        <div class="ex-before">"체계적인 1대1 PT, 꼼꼼한 자세 교정"</div>
+        <div class="ex-after">"도수치료 대신, 운동으로 통증을 해결합니다"</div>
+      </div>
+    </div>
+    <div class="action">
+      <div class="ac-tag">Action 02 · Urgent</div>
+      <div class="ac-title">리뷰 유도 질문 적용</div>
+      <div class="ac-desc">"리뷰 써주세요" 대신, 회원 한 분 한 분에게 직접 이야기하면서 스토리 구조를 유도하는 질문을 던져라. 1회 추가 제공이 결국 재등록으로 돌아온다. 보상형 이벤트 리뷰는 평균 20자, 개별 요청 리뷰는 평균 120자 이상이며, AI 브리핑 채택률도 개별 요청이 압도적으로 높다.</div>
+      <div class="ac-box">
+        <div class="ac-box-lbl" style="color:var(--accent)">유도 질문 5개</div>
+        1. "시작하기 전과 지금, 가장 달라진 점이 뭐예요?"<br>
+        2. "수업 외 관리에서 가장 도움된 경험은?"<br>
+        3. "쿼카짐만의 방식이라고 느낀 점이 있다면?"<br>
+        4. "처음 왔을 때 어떤 마음이었고, 지금은 어때요?"<br>
+        5. "다른 데서 운동해봤다면, 여기서 달랐던 점은?"
+      </div>
+    </div>
+    <div class="action">
+      <div class="ac-tag">Action 03 · Urgent</div>
+      <div class="ac-title">사장님 답글 작성 시작</div>
+      <div class="ac-desc">37건 중 답글 0건. 답글이 24시간 이내 작성된 업체는 인터랙션 점수에서 가점을 받고, 전환율이 약 20% 상승하는 것으로 분석된다. 네이버 AI 브리핑은 리뷰뿐 아니라 사장님 답글 내용도 분석해서 "적극적으로 소통하는 업체"라는 요약을 생성할 수 있다. 답글에 위치 정보와 업종 키워드를 자연스럽게 포함하면 검색 노출에도 도움이 된다.</div>
+      <div class="ac-box">
+        <div class="ac-box-lbl">Before → After</div>
+        <div class="ex-before">(답글 없음)</div>
+        <div class="ex-after">"6주간 꾸준히 오셨던 게 가장 큰 이유예요. 허리 통증이 줄어든 건 OO 프로그램의 단계별 접근 덕분이었습니다."</div>
+      </div>
+    </div>
+    <div class="action">
+      <div class="ac-tag">Action 04 · Important</div>
+      <div class="ac-title">트레이너 → 브랜드 귀속 전환</div>
+      <div class="ac-desc">"희재쌤이 좋아요"를 "쿼카짐의 방식이 좋아요"로 바꿔야 한다. 모든 트레이너가 동일한 시스템으로 운영된다는 메시지를 심어야 한다.</div>
+    </div>
+    <div class="action">
+      <div class="ac-tag">Action 05 · Growth</div>
+      <div class="ac-title">콘텐츠 퍼널 소재 활용</div>
+      <div class="ac-box">
+        <div class="ac-box-lbl">리뷰에서 추출된 마케팅 소재</div>
+        <span style="color:var(--accent);font-size:8px;vertical-align:middle">●</span> <strong>릴스 훅:</strong> "PT센터 홍수 속에서, 정착할 수밖에 없었던 이유."<br>
+        <span style="color:var(--accent);font-size:8px;vertical-align:middle">●</span> <strong>케이스 스터디:</strong> "14회 만에 라운드숄더 호전 / 6주 통증 해소"<br>
+        <span style="color:var(--accent);font-size:8px;vertical-align:middle">●</span> <strong>안심 메시지:</strong> "우물쭈물했지만 괜찮다고 해주셨어요"<br>
+        <span style="color:var(--accent);font-size:8px;vertical-align:middle">●</span> <strong>고객 헤드라인:</strong> "디스크 터진 직장인 살려낸 GOD&amp;GOOD 쿼카짐"
+      </div>
+    </div>
+    <div class="action">
+      <div class="ac-tag">Action 06 · Growth</div>
+      <div class="ac-title">슈퍼 리뷰어 활용 — achieve23</div>
+      <div class="ac-desc">3회 방문, 리뷰 2건, 통합 점수 64점(1위). 라포 앱을 유일하게 언급한 고객. 번호 매기기 형식으로 구조화된 리뷰를 작성하는 사람.<span class="super-badge">SUPER REVIEWER</span></div>
+      <div class="ac-box">
+        <div class="ac-box-lbl">활용 방안</div>
+        <strong>인스타 스토리 멘션, 회원 인터뷰 콘텐츠 출연 요청.</strong> 이런 고객은 자발적으로 고품질 콘텐츠를 만들어줄 가능성이 높다. 브랜드 앰배서더 후보.
+      </div>
+    </div>
+    <div class="action">
+      <div class="ac-tag">Action 07 · Monitoring</div>
+      <div class="ac-title">이탈 사유 조사</div>
+      <div class="ac-desc">37건 중 불만/아쉬움 표현이 0건이다. 서비스가 완벽할 수도 있지만, 불만족 고객이 리뷰 없이 이탈했을 가능성도 있다. 상담→등록 전환률, 재등록률 데이터와 교차 분석해서 보이지 않는 이탈 사유를 파악해야 한다.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 08 리뷰 목록 -->
+<section id="s-list" class="section" role="region" aria-labelledby="s-list-title">
+<div class="section-inner">
+  <div class="s-eye">08 — 리뷰 목록</div>
+  <div class="s-title" id="s-list-title">통합 점수 순 정렬 —<br>상위 리뷰가 SEO/AEO 기여도가 높다</div>
+
+  <div class="tbl-wrap">
+    <div class="tbl-cap">Top 10 리뷰</div>
+    <div class="tbl-scroll"><table class="dt">
+      <tr><th style="width:10%;font-size:var(--fs-label)">닉네임</th><th style="width:8%">방문</th><th style="width:10%">SEO</th><th style="width:10%">AEO</th><th style="width:10%;color:var(--accent)">통합</th><th>본문 요약</th></tr>
+      <tr><td style="font-size:var(--fs-label)"><strong>achieve23</strong><span class="super-badge">SUPER</span></td><td>3</td><td>44</td><td>20</td><td style="color:var(--accent)"><strong>64</strong></td><td>PT센터 홍수 속에 정착, 라포 앱, 세심한 공간, 1대1</td></tr>
+      <tr><td style="font-size:var(--fs-label)"><strong>옥수수패밀리</strong></td><td>2</td><td>38</td><td>19</td><td style="color:var(--accent)"><strong>57</strong></td><td>허리 통증 없어지고 자세가 바르게 잡혀진다는 느낌</td></tr>
+      <tr><td style="font-size:var(--fs-label)">achieve23</td><td>2</td><td>34</td><td>16</td><td style="color:var(--accent)"><strong>50</strong></td><td>도수 치료와 필라테스를 전전… 희재님을 만난 건 행운</td></tr>
+      <tr><td style="font-size:var(--fs-label)">dbsenfl509</td><td>1</td><td>31</td><td>18</td><td style="color:var(--accent)"><strong>49</strong></td><td>14회만에 라운드 숄더, 거북목 호전</td></tr>
+      <tr><td style="font-size:var(--fs-label)">베이글쏠27</td><td>1</td><td>30</td><td>15</td><td style="color:var(--accent)"><strong>45</strong></td><td>목디스크 진단, 주사·도수치료 별 효과 없었고… 운동으로 변화</td></tr>
+      <tr><td style="font-size:var(--fs-label)">아리1014</td><td>1</td><td>29</td><td>13</td><td style="color:var(--accent)"><strong>42</strong></td><td>1년 꾸준히 18kg 감량, 요요 없이 유지</td></tr>
+      <tr><td style="font-size:var(--fs-label)">noljakr5</td><td>1</td><td>27</td><td>13</td><td style="color:var(--accent)"><strong>40</strong></td><td>10년 전부터 따라다니며 꾸준히, 뇌질환 재활까지</td></tr>
+      <tr><td style="font-size:var(--fs-label)">madnet21</td><td>1</td><td>29</td><td>10</td><td style="color:var(--accent)"><strong>39</strong></td><td>디스크 터진 직장인 살려낸, 도수치료보다 나음</td></tr>
+      <tr><td style="font-size:var(--fs-label)">goh****</td><td>2</td><td>29</td><td>10</td><td style="color:var(--accent)"><strong>39</strong></td><td>금쪽이라 불리던 저를 웃으면서 끌고 와주신</td></tr>
+      <tr><td style="font-size:var(--fs-label)">ly01</td><td>2</td><td>31</td><td>5</td><td style="color:var(--accent)"><strong>36</strong></td><td>내 몸을 이해하고 교정도 하고 싶어서</td></tr>
+    </table></div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-eye">Reading Guide</div>
+    <div class="tac-body"><strong>통합 점수 40점 이상 리뷰가 AI 답변에 인용될 가능성이 높다.</strong> 현재 37건 중 40점 이상은 7건(19%)뿐이다. 리뷰 유도 질문을 적용하면 이 비율을 구조적으로 올릴 수 있다.</div>
+    <div class="tac-dir"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M5 12h14M12 5l7 7-7 7"/></svg><strong>achieve23(1위, 64점)</strong>의 리뷰 구조를 벤치마크로 삼아라. 번호 매기기 + 구체적 경험 + 시스템 언급 + 감정 표현 — 이 구조가 모든 채점 항목에서 높은 점수를 받는 패턴이다.</div>
+  </div>
+</div>
+</section>
+
+</main><!-- /main -->
+
+<footer class="site-footer">
+  <div class="sf-brand">RE:FEEEL</div>
+  <div class="sf-links">
+    <a href="https://refeeel.com" target="_blank" rel="noopener">refeeel.com</a>
+    <a href="https://instagram.com/nak__ta__" target="_blank" rel="noopener">@nak__ta__</a>
+  </div>
+  <div class="sf-copy">© RE:FEEEL. All rights reserved.</div>
+</footer>
+<script>
+const secs=['s-cover','s-overview','s-pop','s-gap','s-customer','s-trainer','s-trend','s-action','s-list'];
+function goSec(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function updateNav(){const y=window.scrollY+window.innerHeight*.38;let cur=secs[0];secs.forEach(id=>{const el=document.getElementById(id);if(el&&el.offsetTop<=y)cur=id});document.querySelectorAll('.ln-item').forEach(el=>el.classList.toggle('active',el.dataset.target===cur));const snItems=document.querySelectorAll('.sn-item');snItems.forEach(el=>{const isActive=el.dataset.target===cur;el.classList.toggle('active',isActive);if(isActive){const track=document.getElementById('sn-track');if(track){const elLeft=el.offsetLeft;const elW=el.offsetWidth;const trackW=track.offsetWidth;track.scrollTo({left:elLeft-trackW/2+elW/2,behavior:'smooth'})}}})}
+window.addEventListener('scroll',updateNav,{passive:true});updateNav();
+
+/* Read CSS vars for chart colors */
+const cs=getComputedStyle(document.documentElement);
+const CV={ink:cs.getPropertyValue('--ink').trim(),ink3:cs.getPropertyValue('--ink-3').trim(),ink4:cs.getPropertyValue('--ink-4').trim(),accent:cs.getPropertyValue('--accent').trim(),rule:cs.getPropertyValue('--rule').trim()};
+Chart.defaults.font.family="'SUIT Variable','SUIT',-apple-system,sans-serif";
+Chart.defaults.font.size=12;Chart.defaults.plugins.legend.display=false;Chart.defaults.color=CV.ink4;
+Chart.defaults.animation={duration:1400,easing:'easeOutQuart'};
+Chart.defaults.transitions={active:{animation:{duration:200}}};
+const G='rgba(0,0,0,0.07)',GD=[4,4],INK='#999999',INKD='#d0d0d0';
+
+/* ── LAZY CHART FACTORY ── */
+const charts={};
+const chartFactory={
+  'c-scatter':()=>{charts['c-scatter']=new Chart(document.getElementById('c-scatter'),{type:'scatter',data:{datasets:[{data:[{x:44,y:20},{x:38,y:19},{x:34,y:16},{x:31,y:18},{x:30,y:15},{x:31,y:10},{x:30,y:10},{x:29,y:10},{x:27,y:10},{x:29,y:5},{x:28,y:5},{x:27,y:5},{x:31,y:5},{x:29,y:5},{x:27,y:5},{x:30,y:5},{x:27,y:5},{x:27,y:5},{x:29,y:5},{x:28,y:5},{x:30,y:0},{x:27,y:0},{x:27,y:0},{x:25,y:0},{x:25,y:0},{x:27,y:0},{x:29,y:0},{x:27,y:0},{x:29,y:0},{x:27,y:0},{x:30,y:0},{x:27,y:0},{x:27,y:0},{x:29,y:0},{x:29,y:0},{x:25,y:0},{x:27,y:0}],backgroundColor:c=>(c.raw&&c.raw.x>=38&&c.raw.y>=18)?'#6465f5':INKD,borderColor:c=>(c.raw&&c.raw.x>=38&&c.raw.y>=18)?'#6465f5':INK,pointRadius:c=>(c.raw&&c.raw.x>=38&&c.raw.y>=18)?8:5}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{title:{display:true,text:'SEO Score',color:CV.ink4,font:{size:11}},min:20,max:50,grid:{color:G},border:{color:'rgba(0,0,0,0.12)',dash:GD}},y:{title:{display:true,text:'AEO Score',color:CV.ink4,font:{size:11}},min:-2,max:25,grid:{color:G},border:{color:'rgba(0,0,0,0.12)',dash:GD}}}}})}
+  ,
+  'c-kw':()=>{charts['c-kw']=new Chart(document.getElementById('c-kw'),{type:'bar',data:{labels:['꼼꼼한 자세','체계적 수업','친절','맞춤 케어','깔끔한 시설','선생님 실력','상담 자세'],datasets:[{data:[34,32,30,24,17,15,6],backgroundColor:['#e0e0e0','#e0e0e0','#e0e0e0','#e0e0e0','#d0d0d0','#d0d0d0',CV.accent],borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',scales:{x:{max:37,grid:{color:G},border:{color:'rgba(0,0,0,0.12)',dash:GD}},y:{grid:{display:false},border:{display:false},ticks:{color:CV.ink3,font:{size:12}}}}}})}
+  ,
+  'c-pod':()=>{charts['c-pod']=new Chart(document.getElementById('c-pod'),{type:'bar',data:{labels:['트레이너 팬덤','통증/재활 해결','초보/공포 극복','체형 변화','체계적 수업','1대1 맞춤','장기 신뢰','시설/공간'],datasets:[{data:[14,9,8,8,7,7,6,4],backgroundColor:[CV.accent,'#999999','#b0b0b0','#b8b8b8','#c8c8c8','#d0d0d0','#d9d9d9','#e5e5e5'],borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',animation:{duration:1400,easing:'easeOutQuart',delay:c=>c.dataIndex*80},scales:{x:{max:18,grid:{color:G},border:{color:'rgba(0,0,0,0.12)',dash:GD}},y:{grid:{display:false},border:{display:false},ticks:{color:CV.ink3,font:{size:12}}}}}})}
+  ,
+  'c-gap':()=>{Chart.defaults.plugins.legend.display=true;charts['c-gap']=new Chart(document.getElementById('c-gap'),{type:'bar',data:{labels:['트레이너 전문성','통증/재활','1대1 맞춤','가격 대비 가치','라포 앱','프로그램 체계'],datasets:[{label:'전달 의도',data:[80,70,80,60,70,60],backgroundColor:'#e5e5e5',borderColor:'#d0d0d0',borderWidth:1.5,borderRadius:3},{label:'리뷰 반영률',data:[38,24,19,11,3,0],backgroundColor:CV.accent,borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:1800,easing:'easeOutQuart',delay:c=>c.dataIndex*120},plugins:{legend:{display:true,position:'top',labels:{font:{size:12},color:CV.ink3,boxWidth:10,padding:16}}},scales:{y:{max:100,ticks:{callback:v=>v+'%',color:'#6b6b6b'},grid:{color:G},border:{dash:GD}},x:{grid:{display:false},ticks:{color:CV.ink3}}}}});Chart.defaults.plugins.legend.display=false}
+  ,
+  'c-before':()=>{charts['c-before']=new Chart(document.getElementById('c-before'),{type:'doughnut',data:{labels:['아무것도 안 함','혼자 운동','도수/필라테스','다른 PT','병원'],datasets:[{data:[7,6,3,2,1],backgroundColor:[CV.accent,'#999999','#c0c0c0','#d9d9d9','#ebebeb'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{display:true,position:'bottom',labels:{font:{size:11},color:'#555',padding:10}}}}})}
+  ,
+  'c-trigger':()=>{charts['c-trigger']=new Chart(document.getElementById('c-trigger'),{type:'bar',data:{labels:['트레이너 신뢰','1대1/맞춤','시설/공간','대표 신뢰','첫 상담','가격'],datasets:[{data:[16,6,4,4,3,0],backgroundColor:[CV.accent,'#b8b8b8','#d0d0d0','#d0d0d0','#e0e0e0','#ebebeb'],borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:1400,easing:'easeOutQuart',delay:c=>c.dataIndex*100},scales:{y:{max:20,grid:{color:G},border:{dash:GD}},x:{grid:{display:false},ticks:{color:CV.ink3}}}}})}
+  ,
+  'c-attr':()=>{charts['c-attr']=new Chart(document.getElementById('c-attr'),{type:'bar',data:{labels:['트레이너 실명 언급','쿼카짐 브랜드 언급','시스템/방식 언급'],datasets:[{data:[38,30,3],backgroundColor:[CV.accent,'#c0c0c0','#e0e0e0'],borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:1800,easing:'easeOutQuart',delay:c=>c.dataIndex*200},indexAxis:'y',scales:{x:{max:45,ticks:{callback:v=>v+'%',color:'#6b6b6b'},grid:{color:G},border:{dash:GD}},y:{grid:{display:false},border:{display:false},ticks:{color:CV.ink3,font:{size:12}}}}}})}
+  ,
+  'c-monthly':()=>{charts['c-monthly']=new Chart(document.getElementById('c-monthly'),{type:'line',data:{labels:['2025.10','2025.11','2025.12','2026.01','2026.02'],datasets:[{data:[17,6,6,7,1],borderColor:'#999999',backgroundColor:'rgba(168,160,147,0.08)',fill:true,tension:0,pointRadius:[8,5,5,5,8],pointBackgroundColor:['#999999','#c0c0c0','#c0c0c0','#c0c0c0','#6465f5'],pointBorderColor:'#e5e5e5',pointBorderWidth:2,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:2000,easing:'easeOutQuart'},scales:{y:{min:0,max:20,grid:{color:G},border:{dash:GD}},x:{grid:{display:false},ticks:{color:CV.ink3}}}}})}
+};
+
+/* ── SINGLE OBSERVER FOR ALL CHARTS ── */
+function initChartIfReady(canvas){
+  if(typeof Chart==='undefined'||!canvas||!chartFactory[canvas.id]||charts[canvas.id])return false;
+  try{chartFactory[canvas.id]();return true;}catch(e){console.warn('Chart init failed:',canvas.id,e);return false;}
+}
+function checkChartsInView(){
+  document.querySelectorAll('canvas[id^="c-"]').forEach(canvas=>{
+    if(charts[canvas.id])return;
+    const rect=canvas.getBoundingClientRect();
+    const inView=rect.top<window.innerHeight+50&&rect.bottom>-50;
+    if(inView)initChartIfReady(canvas);
+  });
+}
+function startChartScroll(){
+  checkChartsInView();
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(!ticking){ticking=true;requestAnimationFrame(()=>{checkChartsInView();ticking=false;});}
+  },{passive:true});
+}
+if(typeof Chart!=='undefined'){startChartScroll();}
+else{document.querySelector('script[src*="chart.js"]').addEventListener('load',startChartScroll);}
+
+/* ── NUMBER COUNTER ── */
+function animateCount(el,target,duration,suffix){
+  const start=performance.now(),isFloat=String(target).includes('.'),isNeg=target<0,abs=Math.abs(target);
+  function tick(now){
+    const p=Math.min((now-start)/duration,1),eased=1-Math.pow(1-p,3),cur=abs*eased;
+    let d=isFloat?cur.toFixed(1):Math.round(cur);
+    if(isNeg)d='−'+d;
+    el.textContent=d+(suffix||'');
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+const coverObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const kpis=e.target.querySelectorAll('.ck-val');
+      const rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      [{val:29.0,s:''},{val:7.5,s:''},{val:89,s:'%'},{val:-94,s:'%'}].forEach((t,i)=>{
+        if(!kpis[i])return;
+        if(rm){let d=String(t.val).includes('.')?t.val.toFixed(1):(t.val<0?'−'+Math.abs(t.val):t.val);kpis[i].textContent=d+(t.s||'');}
+        else setTimeout(()=>animateCount(kpis[i],t.val,1400,t.s),i*200);
+      });
+      coverObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.1,rootMargin:'50px 0px'});
+const ck=document.querySelector('.cover-kpis');
+if(ck)coverObs.observe(ck);
+
+/* ── SCROLL-TRIGGERED ANIMATIONS ── */
+const animObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      animObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.05,rootMargin:'20px 0px'});
+
+/* Apply anim class to diagrams and highlights only */
+document.querySelectorAll('.f-highlight, .perc-col, .ref-block').forEach((el,i)=>{
+  el.classList.add('anim');
+  if(i%3===1)el.classList.add('anim-d1');
+  if(i%3===2)el.classList.add('anim-d2');
+  animObs.observe(el);
+});
+
+/* Bar gauge scroll animation */
+const barObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.bar-fill').forEach(b=>b.classList.add('animate'));
+      barObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.ref-block').forEach(el=>barObs.observe(el));
+</script>
+</body>
+</html>
