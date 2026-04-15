@@ -28,7 +28,7 @@
       --fs-micro:11px;--fs-label:13px;--fs-body:15px;--fs-sub:18px;--fs-h2:20px;
       --lh-tight:1.2;--lh-normal:1.5;--lh-loose:1.8;
       /* Layout */
-      --nav-w:228px;--pp:64px;--r-sm:8px;--r-md:12px;--r-lg:16px;
+      --nav-w:228px;--pp:64px;--r-sm:3px;--r-md:4px;--r-lg:6px;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -41,10 +41,10 @@
 
     /* ── LEFT NAV ── */
     .leftnav{position:fixed;left:0;top:0;bottom:0;width:var(--nav-w);background:#fff;border-right:1px solid var(--rule);display:flex;flex-direction:column;padding:var(--sp-10) 0;z-index:200}
-    .ln-brand{padding:0 var(--sp-8) var(--sp-8);font-size:var(--fs-micro);font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--ink);margin-bottom:var(--sp-8)}
+    .ln-brand{padding:0 var(--sp-8) var(--sp-8);font-size:var(--fs-micro);font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--ink);margin-bottom:var(--sp-8)}
     .ln-sec-label{font-size:var(--fs-micro);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);padding:0 var(--sp-8);margin-bottom:var(--sp-2)}
     .ln-items{flex:1;display:flex;flex-direction:column;padding:0 var(--sp-4);gap:2px;overflow-y:auto}
-    .ln-item{display:flex;align-items:center;gap:var(--sp-3);min-height:44px;padding:var(--sp-2) var(--sp-3);border-radius:8px;cursor:pointer;background:none;border:none;font-family:inherit;text-align:left;transition:background .15s}
+    .ln-item{display:flex;align-items:center;gap:var(--sp-3);min-height:44px;padding:var(--sp-2) var(--sp-3);border-radius:4px;cursor:pointer;background:none;border:none;font-family:inherit;text-align:left;transition:background .15s}
     .ln-item:hover:not(.active){background:var(--bg)}
     .ln-item.active{background:var(--ink)}
     .ln-num{font-size:var(--fs-micro);font-weight:700;color:var(--ink-4);width:20px;flex-shrink:0}
@@ -76,22 +76,23 @@
     .c-desc{font-size:var(--fs-body);color:var(--dark-3);line-height:var(--lh-loose);max-width:480px}
     .cover-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-8);margin-top:var(--sp-8)}
     .ck{padding:var(--sp-4) 0}
-    .ck-val{font-size:42px;font-weight:900;letter-spacing:-2px;line-height:var(--lh-tight);color:#fff;margin-bottom:var(--sp-2)}
+    .ck-val{font-size:36px;font-weight:900;letter-spacing:-2px;line-height:var(--lh-tight);color:#fff;margin-bottom:var(--sp-2)}
     .ck-val.dim{color:var(--dark-3)}
     .ck-name{font-size:var(--fs-label);font-weight:700;color:var(--ink-3);margin-bottom:var(--sp-1)}
     .ck-sub{font-size:var(--fs-label);color:var(--ink-3);line-height:var(--lh-normal)}
 
     /* ── SECTIONS ── */
-    .section{padding:var(--sp-18) var(--pp)}
+    .section{padding:var(--sp-18) var(--pp);border-top:1px solid var(--rule)}
     .section-inner{max-width:960px;margin:0 auto}
     
     .s-eye{font-size:var(--fs-micro);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-4)}
+    .section:first-of-type{border-top:none}
     .section:first-of-type .s-eye,.section:nth-of-type(8) .s-eye{color:var(--accent)}
-    .s-title{font-size:clamp(26px,3vw,38px);font-weight:900;letter-spacing:-1px;line-height:var(--lh-tight);color:var(--ink);margin-bottom:var(--sp-12)}
+    .s-title{font-size:clamp(24px,3vw,34px);font-weight:900;letter-spacing:-1px;line-height:var(--lh-tight);color:var(--ink);margin-bottom:var(--sp-12)}
 
     /* ── PERCEPTION GRID ── */
     .perc-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-bottom:var(--sp-12)}
-    .perc-col{padding:var(--sp-10) var(--sp-12);border-radius:var(--r-lg)}
+    .perc-col{padding:var(--sp-8) var(--sp-10);border-radius:var(--r-lg)}
     .perc-col.pos{background:var(--white)}
     .perc-col.neg{background:var(--dark)}
     .p-type{font-size:var(--fs-micro);font-weight:700;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:var(--sp-6)}
@@ -123,7 +124,7 @@
     table.dt tr:last-child td{border-bottom:none}
 
     /* ── TAGS ── */
-    .tag{display:inline-block;font-size:var(--fs-micro);font-weight:700;padding:var(--sp-1) var(--sp-2);border-radius:6px}
+    .tag{display:inline-block;font-size:var(--fs-micro);font-weight:700;padding:var(--sp-1) var(--sp-2);border-radius:3px}
     .t-pop{background:#eee;color:#555}
     .t-pod{background:var(--accent);color:#fff}
     .t-gap{background:#f0f0f0;color:#777}
@@ -142,7 +143,7 @@
     .sc-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,.1);margin-top:var(--sp-6);border-top:1px solid rgba(0,0,0,.1)}
     .sc-s{background:var(--card);padding:var(--sp-4) var(--sp-4) var(--sp-2)}
     .sc-s-lbl{font-size:var(--fs-label);font-weight:600;color:var(--ink-3);margin-bottom:var(--sp-1)}
-    .sc-s-val{font-size:16px;font-weight:800;color:var(--ink)}
+    .sc-s-val{font-size:var(--fs-body);font-weight:800;color:var(--ink)}
 
     /* ── QUOTE ── */
     .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);margin-bottom:0}
@@ -159,12 +160,12 @@
     /* ── PERSONA ── */
     .persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-bottom:var(--sp-12)}
     .persona{background:var(--white);padding:var(--sp-8);border-radius:var(--r-lg)}
-    .p-pct{font-size:52px;font-weight:900;letter-spacing:-3px;line-height:1;color:var(--ink);margin-bottom:var(--sp-4)}
+    .p-pct{font-size:44px;font-weight:900;letter-spacing:-3px;line-height:1;color:var(--ink);margin-bottom:var(--sp-4)}
     .p-name{font-size:var(--fs-body);font-weight:700;color:var(--ink-2);margin-bottom:var(--sp-1)}
     .p-kw{font-size:var(--fs-label);color:var(--ink-4)}
 
     /* ── FINDING HIGHLIGHT ── */
-    .f-highlight{background:var(--ink);color:#fff;padding:var(--sp-10) var(--sp-12);margin-bottom:var(--sp-12);border-radius:var(--r-lg)}
+    .f-highlight{background:var(--ink);color:#fff;padding:var(--sp-8) var(--sp-10);margin-bottom:var(--sp-12);border-radius:var(--r-lg)}
     .fh-eye{font-size:var(--fs-micro);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-4)}
     .fh-main{font-size:clamp(18px,2vw,22px);font-weight:700;line-height:var(--lh-loose);color:#ccc;margin-bottom:var(--sp-4)}
     .fh-main em{font-style:normal;color:#fff}
@@ -177,7 +178,7 @@
     .tc-name{font-size:var(--fs-h2);font-weight:900;letter-spacing:-.5px;color:var(--ink);margin-bottom:var(--sp-1)}
     .tc-meta{font-size:var(--fs-label);color:var(--ink-4);letter-spacing:.5px;padding-bottom:var(--sp-4);margin-bottom:var(--sp-4);border-bottom:1px solid var(--rule)}
     .tc-type{font-size:var(--fs-body);font-weight:700;color:var(--ink-2);margin-bottom:var(--sp-1);display:flex;flex-wrap:wrap;gap:4px}
-    .tc-pill{display:inline-block;font-size:var(--fs-micro);font-weight:600;padding:3px 10px;border-radius:100px;border:1px solid var(--rule);color:var(--ink-3);background:var(--bg)}
+    .tc-pill{display:inline-block;font-size:var(--fs-micro);font-weight:600;padding:3px 10px;border-radius:3px;border:1px solid var(--rule);color:var(--ink-3);background:var(--bg)}
     .tc-kw{font-size:var(--fs-label);color:var(--ink-4);margin-bottom:var(--sp-6)}
 
     /* ── ACTION ── */
@@ -194,7 +195,7 @@
     .ex-after{color:var(--accent);font-weight:700}
 
     /* ── SUPER BADGE ── */
-    .super-badge{display:inline-block;font-size:var(--fs-micro);font-weight:700;letter-spacing:1px;padding:2px var(--sp-2);background:var(--ink);color:#fff;vertical-align:middle;margin-left:var(--sp-2)}
+    .super-badge{display:inline-block;font-size:var(--fs-micro);font-weight:700;letter-spacing:1px;padding:2px var(--sp-2);border-radius:3px;background:var(--ink);color:#fff;vertical-align:middle;margin-left:var(--sp-2)}
 
 
 
@@ -202,7 +203,7 @@
     .tac{background:var(--white);padding:var(--sp-8);margin-top:var(--sp-8);margin-bottom:var(--sp-12);border-radius:var(--r-lg)}
     .tac-eye{font-size:var(--fs-micro);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-4)}
     .tac-body{font-size:var(--fs-body);color:var(--ink-2);line-height:var(--lh-loose)}
-    .tac-body strong{color:var(--ink);font-size:var(--fs-sub)}
+    .tac-body strong{color:var(--ink);font-weight:700}
     .tac-dir{margin-top:var(--sp-4);padding-top:var(--sp-4);border-top:1px solid var(--rule);font-size:var(--fs-body);color:var(--ink-3);line-height:var(--lh-loose)}
     .tac-dir strong{color:var(--ink-2)}
 
@@ -216,8 +217,6 @@
     .toggle:last-child{}
     .toggle-btn{width:100%;display:flex;align-items:center;min-height:44px;padding:var(--sp-4) var(--sp-8);background:none;border:none;cursor:pointer;font-family:inherit;font-size:var(--fs-body);font-weight:700;color:var(--ink);text-align:left;gap:var(--sp-3)}
     .toggle-btn:hover{background:none}
-    .toggle-ico{width:22px;height:22px;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;color:var(--accent);transition:background .2s,color .2s}
-    .toggle.open .toggle-ico{background:var(--accent);color:#fff}
     .toggle-lbl{flex:1}
     .toggle-arr{font-size:18px;color:var(--ink-4);transition:transform .25s ease;flex-shrink:0;transform:rotate(90deg)}
     .toggle.open .toggle-arr{transform:rotate(-90deg)}
@@ -266,9 +265,9 @@
       .perc-grid,.chart-cards,.chart-cards.single,.quote-grid,.note-grid,.ref-grid{grid-template-columns:1fr}
       .persona-grid{grid-template-columns:1fr 1fr}
       .trainer-grid{grid-template-columns:1fr;gap:var(--sp-3)}.trainer-card{padding:var(--sp-6)}.tc-name{font-size:var(--fs-h2)}
-      .perc-col{padding:var(--sp-8) var(--sp-6)}
+      .perc-col{padding:var(--sp-6) var(--sp-4)}
       .action{padding:var(--sp-6)}
-      .f-highlight{padding:var(--sp-8) var(--sp-6)}
+      .f-highlight{padding:var(--sp-6) var(--sp-4)}
       .tbl-wrap table.dt th,.tbl-wrap table.dt td{padding:var(--sp-3) var(--sp-4)}
       table.dt{min-width:auto;word-break:keep-all}
       table.dt th:first-child,table.dt td:first-child{background:var(--white);z-index:1}
@@ -278,6 +277,7 @@
       .toggle-btn{padding:var(--sp-3) var(--sp-6)}
       .toggle-inner{padding:0 var(--sp-6) var(--sp-6) var(--sp-6)}
       .place-screenshots{width:100%!important}
+      .ai-review-img{width:80%!important}
       .tier-row{grid-template-columns:1fr!important}
       .persp-row{grid-template-columns:1fr!important}
     }
@@ -399,7 +399,7 @@
   <!-- 프레임워크: 왜 이 리포트가 필요한가 -->
   <div class="f-highlight" style="margin-bottom:var(--sp-4)">
     <div class="fh-eye">플레이스에서 진짜 원하는 것</div>
-    <div class="fh-main">상단 노출이 아니라,<br><em>플레이스를 통해 매출이 나는 것</em>입니다.</div>
+    <div class="fh-main">상단 노출이 아니라,<br><em>플레이스를 통해 매출로 이어지는 것</em>입니다.</div>
     <div class="fh-note">네이버가 순위를 올려주는 페이지는 결국, 사람들이 머물고 싶은 페이지입니다. 리뷰에 스토리가 있고, 원장님 답글이 복붙이 아니고, 사진이 다채로우면 — 사람들은 그 페이지에서 오래 머물고, 저장하고, 길찾기를 누르죠. <span style="text-decoration:underline;text-decoration-color:rgba(255,255,255,.3);text-underline-offset:4px;text-decoration-thickness:1px">고객 전환이 되는 페이지가 곧 네이버가 올려주는 페이지입니다.</span></div>
   </div>
 
@@ -407,31 +407,34 @@
   <div style="display:flex;flex-direction:column;gap:var(--sp-3);margin-bottom:var(--sp-12)">
     <div class="tier-row" style="background:var(--white);padding:var(--sp-8);border-radius:var(--r-lg);display:grid;grid-template-columns:120px 1fr;gap:var(--sp-6)">
       <div>
-        <div style="font-size:var(--fs-micro);font-weight:700;letter-spacing:1px;color:var(--accent);margin-bottom:var(--sp-2)">TIER 1</div>
+        <div style="font-size:24px;margin-bottom:var(--sp-3)">👆</div>
+        <div style="font-size:var(--fs-micro);font-weight:700;letter-spacing:1px;color:var(--ink);margin-bottom:var(--sp-2)">TIER 1</div>
         <div style="font-size:var(--fs-sub);font-weight:900;color:var(--ink)">상호작용</div>
       </div>
       <div>
-        <div style="font-size:var(--fs-label);font-weight:700;color:var(--ink-3);margin-bottom:var(--sp-2)">가중치: 최상 — 실질적 순위 결정</div>
+        <div style="font-size:var(--fs-label);font-weight:700;color:var(--accent);margin-bottom:var(--sp-2)">가중치: 최상 — 실질적 순위 결정</div>
         <div style="font-size:var(--fs-body);color:var(--ink-3);line-height:var(--lh-loose)">저장하기, 길찾기, 전화, 체류시간. 클릭한 고객이 이탈하지 않게 하는 것이 핵심입니다. 대부분의 대행사는 광고 트래픽과 이벤트로 이 지표를 인위적으로 올리지만, <strong style="color:var(--ink)">돈을 멈추면 순위도 멈춥니다.</strong></div>
       </div>
     </div>
     <div class="tier-row" style="background:var(--white);padding:var(--sp-8);border-radius:var(--r-lg);display:grid;grid-template-columns:120px 1fr;gap:var(--sp-6)">
       <div>
-        <div style="font-size:var(--fs-micro);font-weight:700;letter-spacing:1px;color:var(--accent);margin-bottom:var(--sp-2)">TIER 2</div>
+        <div style="font-size:24px;margin-bottom:var(--sp-3)">🛡️</div>
+        <div style="font-size:var(--fs-micro);font-weight:700;letter-spacing:1px;color:var(--ink);margin-bottom:var(--sp-2)">TIER 2</div>
         <div style="font-size:var(--fs-sub);font-weight:900;color:var(--ink)">신뢰도</div>
       </div>
       <div>
-        <div style="font-size:var(--fs-label);font-weight:700;color:var(--ink-3);margin-bottom:var(--sp-2)">가중치: 상 — 지속성 및 신뢰 지표</div>
+        <div style="font-size:var(--fs-label);font-weight:700;color:var(--accent);margin-bottom:var(--sp-2)">가중치: 상 — 지속성 및 신뢰 지표</div>
         <div style="font-size:var(--fs-body);color:var(--ink-3);line-height:var(--lh-loose)">영수증 리뷰, 포토/영상 리뷰, 리뷰 패턴. <strong style="color:var(--ink)">"친절해요" 100개보다 구체적 경험이 담긴 정성스러운 리뷰 10개가 검색 노출에 훨씬 유리합니다.</strong> 2026년 기준, 네이버는 POS 연동 영수증 리뷰에 가장 높은 신뢰 점수를 부여합니다.</div>
       </div>
     </div>
     <div class="tier-row" style="background:var(--white);padding:var(--sp-8);border-radius:var(--r-lg);display:grid;grid-template-columns:120px 1fr;gap:var(--sp-6)">
       <div>
-        <div style="font-size:var(--fs-micro);font-weight:700;letter-spacing:1px;color:var(--accent);margin-bottom:var(--sp-2)">TIER 3</div>
+        <div style="font-size:24px;margin-bottom:var(--sp-3)">⚙️</div>
+        <div style="font-size:var(--fs-micro);font-weight:700;letter-spacing:1px;color:var(--ink);margin-bottom:var(--sp-2)">TIER 3</div>
         <div style="font-size:var(--fs-sub);font-weight:900;color:var(--ink)">정보 최적화</div>
       </div>
       <div>
-        <div style="font-size:var(--fs-label);font-weight:700;color:var(--ink-3);margin-bottom:var(--sp-2)">가중치: 중 — 검색 반영 필터</div>
+        <div style="font-size:var(--fs-label);font-weight:700;color:var(--accent);margin-bottom:var(--sp-2)">가중치: 중 — 검색 반영 필터</div>
         <div style="font-size:var(--fs-body);color:var(--ink-3);line-height:var(--lh-loose)">소개글, 메뉴(가격), 편의시설, 최신성. 소개글은 검색 봇이 아니라 '사람'이 읽고 클릭하게끔 써야 합니다. <strong style="color:var(--ink)">사진을 월 1회 이상 교체하는 페이지는 "활성화된 매장"으로 인식되어 가중치를 받습니다.</strong></div>
       </div>
     </div>
@@ -442,50 +445,47 @@
   <div style="font-size:var(--fs-body);color:var(--ink-3);line-height:var(--lh-loose);margin-bottom:var(--sp-8)">단순히 리뷰가 많다고 1등을 주지 않습니다. 네이버는 이 네 단계가 반복되는 패턴이 확인될 때 가중치를 대폭 부여합니다.</div>
 
   <style>
-  .cy-box,.cy-arr,.cy-ctr{opacity:0;transition:opacity .5s ease}
-  .cy-spin{transform-origin:340px 182px}
-  .cy-active .cy-box,.cy-active .cy-arr,.cy-active .cy-ctr{opacity:1}
-  .cy-active .cy-spin{animation:cySpin 12s linear infinite}
+  .cy-spin{transform-origin:340px 182px;animation:cySpin 12s linear infinite}
   @keyframes cySpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-  @media(prefers-reduced-motion:reduce){.cy-box,.cy-arr,.cy-ctr{transition-duration:.01ms!important}.cy-active .cy-spin{animation:none!important}}
+  @media(prefers-reduced-motion:reduce){.cy-spin{animation:none!important}}
   </style>
-  <div id="cy-diagram" style="margin-bottom:var(--sp-12);overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:560px;margin-left:auto;margin-right:auto">
-  <svg width="100%" style="min-width:580px" viewBox="0 0 680 420" role="img" aria-label="네이버 플레이스 선순환 구조 다이어그램">
+  <div class="anim" style="margin-bottom:var(--sp-12);overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:560px;margin-left:auto;margin-right:auto">
+  <svg width="100%" viewBox="0 0 680 420" role="img" aria-label="네이버 플레이스 선순환 구조 다이어그램">
   <defs><marker id="cy-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 
-  <g class="cy-box" style="transition-delay:.1s">
-    <rect x="60" y="40" width="240" height="76" rx="8" fill="var(--white,#f5f5f5)" stroke="var(--rule,#d9d9d9)" stroke-width="0.5"/>
+  <g >
+    <rect x="60" y="40" width="240" height="76" rx="4" fill="var(--white,#f5f5f5)" stroke="var(--rule,#d9d9d9)" stroke-width="0.5"/>
     <text x="180" y="64" text-anchor="middle" font-family="'SUIT Variable',sans-serif" font-size="11" font-weight="700" fill="var(--accent,#6465f5)" letter-spacing="1">01 · 검색</text>
     <text x="180" y="90" text-anchor="middle" font-family="'SUIT Variable',sans-serif" font-size="15" font-weight="700" fill="var(--ink,#111)">특정 키워드로 플레이스 진입</text>
   </g>
 
-  <line class="cy-arr" style="transition-delay:.3s" x1="302" y1="78" x2="378" y2="78" stroke="var(--ink-5,#aaa)" stroke-width="1.5" marker-end="url(#cy-arrow)"/>
+  <line  x1="302" y1="78" x2="378" y2="78" stroke="var(--ink-5,#aaa)" stroke-width="1.5" marker-end="url(#cy-arrow)"/>
 
-  <g class="cy-box" style="transition-delay:.5s">
-    <rect x="380" y="40" width="240" height="76" rx="8" fill="var(--white,#f5f5f5)" stroke="var(--rule,#d9d9d9)" stroke-width="0.5"/>
+  <g >
+    <rect x="380" y="40" width="240" height="76" rx="4" fill="var(--white,#f5f5f5)" stroke="var(--rule,#d9d9d9)" stroke-width="0.5"/>
     <text x="500" y="64" text-anchor="middle" font-family="'SUIT Variable',sans-serif" font-size="11" font-weight="700" fill="var(--accent,#6465f5)" letter-spacing="1">02 · 탐색</text>
     <text x="500" y="90" text-anchor="middle" font-family="'SUIT Variable',sans-serif" font-size="15" font-weight="700" fill="var(--ink,#111)">리뷰·전문의 정보를 30초+ 체류</text>
   </g>
 
-  <line class="cy-arr" style="transition-delay:.7s" x1="500" y1="118" x2="500" y2="288" stroke="var(--ink-5,#aaa)" stroke-width="1.5" marker-end="url(#cy-arrow)"/>
+  <line  x1="500" y1="118" x2="500" y2="288" stroke="var(--ink-5,#aaa)" stroke-width="1.5" marker-end="url(#cy-arrow)"/>
 
-  <g class="cy-box" style="transition-delay:.9s">
-    <rect x="380" y="290" width="240" height="76" rx="8" fill="var(--white,#f5f5f5)" stroke="var(--rule,#d9d9d9)" stroke-width="0.5"/>
+  <g >
+    <rect x="380" y="290" width="240" height="76" rx="4" fill="var(--white,#f5f5f5)" stroke="var(--rule,#d9d9d9)" stroke-width="0.5"/>
     <text x="500" y="314" text-anchor="middle" font-family="'SUIT Variable',sans-serif" font-size="11" font-weight="700" fill="var(--accent,#6465f5)" letter-spacing="1">03 · 의도 확인</text>
     <text x="500" y="340" text-anchor="middle" font-family="'SUIT Variable',sans-serif" font-size="15" font-weight="700" fill="var(--ink,#111)">저장하기 또는 길찾기 실행</text>
   </g>
 
-  <line class="cy-arr" style="transition-delay:1.1s" x1="378" y1="328" x2="302" y2="328" stroke="var(--ink-5,#aaa)" stroke-width="1.5" marker-end="url(#cy-arrow)"/>
+  <line  x1="378" y1="328" x2="302" y2="328" stroke="var(--ink-5,#aaa)" stroke-width="1.5" marker-end="url(#cy-arrow)"/>
 
-  <g class="cy-box" style="transition-delay:1.3s">
-    <rect x="60" y="290" width="240" height="76" rx="8" fill="var(--white,#f5f5f5)" stroke="var(--rule,#d9d9d9)" stroke-width="0.5"/>
+  <g >
+    <rect x="60" y="290" width="240" height="76" rx="4" fill="var(--white,#f5f5f5)" stroke="var(--rule,#d9d9d9)" stroke-width="0.5"/>
     <text x="180" y="314" text-anchor="middle" font-family="'SUIT Variable',sans-serif" font-size="11" font-weight="700" fill="var(--accent,#6465f5)" letter-spacing="1">04 · 경험 완결</text>
     <text x="180" y="340" text-anchor="middle" font-family="'SUIT Variable',sans-serif" font-size="15" font-weight="700" fill="var(--ink,#111)">방문 후 영수증 리뷰 작성</text>
   </g>
 
-  <line class="cy-arr" style="transition-delay:1.5s" x1="180" y1="288" x2="180" y2="118" stroke="var(--ink-5,#aaa)" stroke-width="1.5" marker-end="url(#cy-arrow)"/>
+  <line  x1="180" y1="288" x2="180" y2="118" stroke="var(--ink-5,#aaa)" stroke-width="1.5" marker-end="url(#cy-arrow)"/>
 
-  <g class="cy-ctr" style="transition-delay:1.7s">
+  <g >
     <g class="cy-spin"><text x="340" y="182" text-anchor="middle" font-size="22" fill="var(--accent,#6465f5)" opacity=".25">↻</text></g>
     <text x="340" y="206" text-anchor="middle" font-family="'SUIT Variable',sans-serif" font-size="12" fill="var(--ink-4,#6b6b6b)">이 순환이 반복될수록</text>
     <text x="340" y="222" text-anchor="middle" font-family="'SUIT Variable',sans-serif" font-size="12" fill="var(--ink-4,#6b6b6b)">순위가 올라간다</text>
@@ -531,7 +531,7 @@
       <tr><td>비유</td><td>전화번호부에 이름 올리기</td><td>지인이 직접 추천해주는 것</td></tr>
     </table>
     <p style="margin-bottom:var(--sp-10)">이제는 검색 결과를 하나씩 보는 게 아닙니다. <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">쿠팡도, 네이버 플레이스도 AI가 리뷰 전체를 읽고 요약해주고 있거든요. 고객은 그 한 줄 요약으로 방문 여부를 판단하게 됩니다.</span> 이때 AI가 근거로 참조하는 게 리뷰입니다. 이걸 <strong style="color:var(--ink)">AEO(Answer Engine Optimization)</strong>라고 합니다.</p>
-    <div style="margin:var(--sp-12) 0"><img src="https://pub-df7c5d3e703845768a1b37d329b42e95.r2.dev/aireview.png" alt="네이버 AI 리뷰 요약 예시" style="width:50%;display:block;margin:0 auto;border-radius:var(--r-lg)" loading="lazy"></div>
+    <div style="margin:var(--sp-12) 0"><img class="ai-review-img" src="https://pub-df7c5d3e703845768a1b37d329b42e95.r2.dev/aireview.png" alt="네이버 AI 리뷰 요약 예시" style="width:50%;display:block;margin:0 auto;border-radius:var(--r-lg)" loading="lazy"></div>
     <p style="margin-bottom:var(--sp-10)">"위고비 2개월 복용, 5kg 감량에 부작용 없었어요"처럼 구체적 경험과 숫자가 있는 리뷰는 AI가 인용할 수 있죠. 반면 "좋아요 친절해요"는 AI가 가져갈 게 없습니다. 네이버 AI 브리핑도 같은 원리로, 구체적 경험이 담긴 리뷰를 근거로 참조합니다.</p>
   </div>
 
@@ -584,21 +584,21 @@
     <div class="persp-row" style="display:grid;grid-template-columns:200px 1fr;gap:var(--sp-8);padding:var(--sp-8) 0">
       <div>
         <div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-4);margin-bottom:var(--sp-3)">[ 01 ]</div>
-        <div style="font-size:clamp(20px,2.5vw,26px);font-weight:900;letter-spacing:-.5px;color:var(--ink);line-height:var(--lh-tight)">알고리즘이 보는 것.<br>순위의 기반.</div>
+        <div style="font-size:clamp(16px,2vw,20px);font-weight:900;letter-spacing:-.3px;color:var(--ink);line-height:var(--lh-tight)">알고리즘이 보는 것.<br>순위의 기반.</div>
       </div>
       <div style="font-size:var(--fs-body);color:var(--ink-3);line-height:var(--lh-loose);padding-top:var(--sp-1)">네이버 검색 시스템이 플레이스 정보를 어떻게 평가하는지. 영업시간, 메뉴 등록, 사진 업데이트 주기, 소식 발행 빈도 같은 항목들이 <strong style="color:var(--ink)">'정보 충실도'</strong>라는 이름으로 검색 순위에 반영됩니다. 대부분의 대행사도 다루는 영역이죠. 기본값이지만, <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">빠져 있으면 나머지가 작동하지 않는 토대입니다</span>.</div>
     </div>
     <div class="persp-row" style="display:grid;grid-template-columns:200px 1fr;gap:var(--sp-8);padding:var(--sp-8) 0;border-top:1px solid var(--rule)">
       <div>
         <div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-4);margin-bottom:var(--sp-3)">[ 02 ]</div>
-        <div style="font-size:clamp(20px,2.5vw,26px);font-weight:900;letter-spacing:-.5px;color:var(--ink);line-height:var(--lh-tight)">검색에 걸리는 것.<br>AI가 추천하는 재료.</div>
+        <div style="font-size:clamp(16px,2vw,20px);font-weight:900;letter-spacing:-.3px;color:var(--ink);line-height:var(--lh-tight)">검색에 걸리는 것.<br>AI가 추천하는 재료.</div>
       </div>
       <div style="font-size:var(--fs-body);color:var(--ink-3);line-height:var(--lh-loose);padding-top:var(--sp-1)">환자가 "화정 내과"라고 검색했을 때 뜨느냐 안 뜨느냐를 결정하는 요소입니다. 소개 문구에 어떤 키워드가 들어 있는지, 찾아가는 길에 역명이 있는지, 진료과목 설명에 환자의 증상을 해결하는 단어가 포함되어 있는지가 여기에 해당하죠. <strong style="color:var(--ink)">네이버 AI 브리핑은 이 텍스트들을 읽고 추천의 근거로 활용합니다.</strong> <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">같은 업종, 같은 지역인데 한 곳만 AI 답변에 이름이 불리는 이유가 여기에 있습니다</span>. 대부분의 셋팅 강의에서는 이 영역까지 다루지 않습니다.</div>
     </div>
     <div class="persp-row" style="display:grid;grid-template-columns:200px 1fr;gap:var(--sp-8);padding:var(--sp-8) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
       <div>
         <div style="font-size:var(--fs-label);font-weight:600;color:var(--ink-4);margin-bottom:var(--sp-3)">[ 03 ]</div>
-        <div style="font-size:clamp(20px,2.5vw,26px);font-weight:900;letter-spacing:-.5px;color:var(--ink);line-height:var(--lh-tight)">고객이 보고<br>결정하는 것.</div>
+        <div style="font-size:clamp(16px,2vw,20px);font-weight:900;letter-spacing:-.3px;color:var(--ink);line-height:var(--lh-tight)">고객이 보고<br>결정하는 것.</div>
       </div>
       <div style="font-size:var(--fs-body);color:var(--ink-3);line-height:var(--lh-loose);padding-top:var(--sp-1)">검색에 노출되고, 환자가 클릭해서 플레이스에 들어왔습니다. <strong style="color:var(--ink)">그다음은 3초입니다.</strong> 대표 사진, 리뷰, 가격 정보를 보고 "여기 괜찮겠다"거나 "다른 데 볼까"를 결정하거든요. 가격이 미공개면 <strong style="color:var(--ink)">절반 가까이가 이탈</strong>하고, 최근 한 달 내 리뷰가 없으면 "여기 아직 하나?"라고 의심합니다. <span style="text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:4px;text-decoration-thickness:1px">1등으로 뜨더라도 전환이 안 되면 의미가 없으니까요</span>.</div>
     </div>
@@ -612,7 +612,7 @@
   <div id="hb-gauge" style="background:var(--white);padding:var(--sp-10);border-radius:var(--r-lg);margin-bottom:var(--sp-12)">
     <div style="display:flex;flex-direction:column;gap:var(--sp-8)">
 
-      <div class="hb-row" style="opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease">
+      <div class="hb-row">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
           <div><span style="font-size:var(--fs-label);font-weight:700;color:var(--ink)">정보 충실도</span> <span style="font-size:var(--fs-label);font-weight:900;color:var(--ink)">75%</span></div>
           <span style="font-size:var(--fs-micro);color:var(--ink-4)">8개 중 6개 충족</span>
@@ -621,7 +621,7 @@
         <div style="font-size:var(--fs-label);color:var(--ink-3);margin-top:4px">알고리즘이 보는 기본 셋팅</div>
       </div>
 
-      <div class="hb-row" style="opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;transition-delay:.2s">
+      <div class="hb-row">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
           <div><span style="font-size:var(--fs-label);font-weight:700;color:var(--ink-3)">검색 매칭</span> <span style="font-size:var(--fs-label);font-weight:900;color:var(--ink-3)">33%</span></div>
           <span style="font-size:var(--fs-micro);color:var(--ink-4)">3개 중 1개 충족</span>
@@ -630,7 +630,7 @@
         <div style="font-size:var(--fs-label);color:var(--ink-3);margin-top:4px">AI가 찾을 수 있는 키워드 존재 여부</div>
       </div>
 
-      <div class="hb-row" style="opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;transition-delay:.4s">
+      <div class="hb-row">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
           <div><span style="font-size:var(--fs-label);font-weight:700;color:var(--ink-3)">예약 전환</span> <span style="font-size:var(--fs-label);font-weight:900;color:var(--ink-3)">0%</span></div>
           <span style="font-size:var(--fs-micro);color:var(--ink-4)">가격 미공개 · 답글 2%</span>
@@ -1294,30 +1294,8 @@ const barObs=new IntersectionObserver((entries)=>{
 },{threshold:0.1});
 document.querySelectorAll('.ref-block').forEach(el=>barObs.observe(el));
 
-/* Cycle diagram scroll trigger */
-const cyObs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('cy-active');
-      cyObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.15});
-const cyEl=document.getElementById('cy-diagram');
-if(cyEl)cyObs.observe(cyEl);
-
-/* Bar gauge scroll trigger */
-const hbObs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.querySelectorAll('.hb-row').forEach(r=>{r.style.opacity='1';r.style.transform='translateY(0)'});
-      e.target.querySelectorAll('.bar-fill').forEach(b=>b.classList.add('animate'));
-      hbObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.15});
-const hbEl=document.getElementById('hb-gauge');
-if(hbEl)hbObs.observe(hbEl);
+/* Observe ALL elements with .anim class (including inline HTML ones) */
+document.querySelectorAll('.anim').forEach(el=>animObs.observe(el));
 </script>
 </body>
 </html>
