@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>비브레 PT/헬스 혁신점 — 리뷰 분석 리포트</title>
+<meta name="description" content="비브레 PT/헬스 혁신점 네이버 플레이스 리뷰 분석 리포트. SEO·AEO 점수, POP vs POD, 고객 분석, 액션 플랜."/>
+
+<!-- Open Graph / Link Preview -->
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="비브레 PT/헬스 혁신점 — 플레이스 리포트"/>
+<meta property="og:description" content="네이버 플레이스 리뷰 375건 기반 분석 · RE:FEEEL Place Report"/>
+<meta property="og:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
+<meta property="og:image:alt" content="RE:FEEEL"/>
+<meta property="og:site_name" content="RE:FEEEL"/>
+<meta property="og:locale" content="ko_KR"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="비브레 PT/헬스 혁신점 — 플레이스 리포트"/>
+<meta name="twitter:description" content="네이버 플레이스 리뷰 375건 기반 분석 · RE:FEEEL Place Report"/>
+<meta name="twitter:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
+
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════════════════
+   RE:FEEEL — Editorial Minimalist System
+   Inspired by Swiss design: whitespace, thin rules, restraint
+   ═══════════════════════════════════════════════════════ */
+
+:root{
+  --bg:#ffffff;
+  --bg-soft:#fafafa;
+  --ink:#0a0a0a;
+  --ink-2:#2a2a2a;
+  --ink-3:#555555;
+  --ink-4:#8a8a8a;
+  --ink-5:#b8b8b8;
+  --rule:#e8e8e8;
+  --rule-soft:#f0f0f0;
+  --accent:#e75519;
+  --accent-soft:rgba(231,85,25,.08);
+  --danger:#b03030;
+  --success:#1a7a3a;
+
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;
+  --sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-14:56px;--sp-16:64px;
+  --sp-20:80px;--sp-24:96px;--sp-28:112px;--sp-32:128px;--sp-40:160px;
+
+  --max-w:1120px;
+  --pp:clamp(24px,5vw,80px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{
+  font-family:'SUIT',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  background:var(--bg);
+  color:var(--ink-2);
+  font-size:15px;
+  line-height:1.75;
+  font-weight:400;
+  letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:clip;
+}
+
+:focus-visible{outline:1.5px solid var(--accent);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0}
+.skip-link:focus{left:8px;top:8px;padding:8px 12px;background:var(--ink);color:#fff;z-index:9999}
+
+/* ── TOP NAV ───────────────────────────────────── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--rule);
+  height:56px;
+  display:flex;align-items:center;
+  padding:0 var(--pp);
+}
+.tb-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--sp-6)}
+.tb-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--ink);flex-shrink:0}
+.tb-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle;margin-top:-2px}
+.tb-current{font-size:12px;color:var(--ink-4);font-weight:500;letter-spacing:.5px;flex:1;text-align:center;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-current .num{color:var(--ink);font-weight:700;margin-right:8px}
+.tb-progress{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.tb-prog-bar{width:80px;height:2px;background:var(--rule);position:relative;overflow:hidden}
+.tb-prog-fill{position:absolute;top:0;left:0;height:100%;background:var(--ink);width:0%;transition:width .3s ease}
+.tb-prog-num{font-size:11px;font-weight:700;color:var(--ink-4);font-variant-numeric:tabular-nums;min-width:32px;text-align:right}
+.tb-menu{
+  background:none;border:none;padding:8px;margin-right:-8px;
+  cursor:pointer;flex-shrink:0;color:var(--ink);
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+.tb-menu:hover{color:var(--accent)}
+.tb-menu-icon{display:inline-flex;flex-direction:column;gap:3px;width:16px}
+.tb-menu-icon span{display:block;height:1.5px;background:currentColor;border-radius:1px}
+.tb-menu-icon span:nth-child(2){width:75%}
+
+@media(max-width:680px){
+  .tb-current{display:none}
+  .tb-prog-bar{width:60px}
+  .tb-menu{font-size:0;gap:0;padding:8px}
+}
+
+/* Hide topbar entirely on desktop where side nav takes over */
+@media(min-width:1280px){
+  .topbar{display:none}
+}
+
+/* ── SIDE NAVIGATION (desktop only) ────────────── */
+.sidenav{display:none}
+@media(min-width:1280px){
+  :root{ --nav-w:260px; }
+  .sidenav{
+    display:flex;flex-direction:column;
+    position:fixed;top:0;left:0;bottom:0;
+    width:var(--nav-w);z-index:80;
+    padding:40px 24px 28px 32px;
+    background:var(--bg);
+    border-right:1px solid var(--rule);
+    box-sizing:border-box;
+  }
+  .sn-masthead{
+    margin-bottom:48px;
+  }
+  .sn-client{
+    font-size:15px;font-weight:700;color:var(--ink);
+    letter-spacing:-.4px;line-height:1.35;
+    margin-bottom:8px;
+  }
+  .sn-tagline{
+    font-size:10px;font-weight:600;
+    color:var(--ink-4);letter-spacing:1.8px;
+    text-transform:uppercase;
+  }
+  .sn-head{
+    font-size:10px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-4);text-transform:uppercase;
+    margin-bottom:18px;display:flex;align-items:center;gap:8px;
+  }
+  .sn-head::before{content:"";width:14px;height:1px;background:var(--ink-4)}
+  .sn-list{
+    list-style:none;margin:0;padding:0;
+    display:flex;flex-direction:column;gap:2px;
+    flex:1;overflow-y:auto;
+    -ms-overflow-style:none;scrollbar-width:none;
+  }
+  .sn-list::-webkit-scrollbar{display:none}
+  .sn-group{
+    font-size:9px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-5);text-transform:uppercase;
+    margin:16px 0 8px;padding-left:14px;
+  }
+  .sn-group:first-child{margin-top:0}
+  .sn-item a{
+    display:grid;
+    grid-template-columns:28px 1fr;
+    gap:10px;align-items:baseline;
+    padding:6px 0 6px 14px;
+    text-decoration:none;
+    border-left:2px solid transparent;
+    transition:border-color .2s ease, color .2s ease, transform .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .sn-item a:hover{transform:translateX(3px)}
+  .sn-item a:hover .sn-title{color:var(--ink)}
+  .sn-num{
+    font-size:10px;font-weight:700;letter-spacing:1px;
+    color:var(--ink-5);font-variant-numeric:tabular-nums;
+  }
+  .sn-title{
+    font-size:13px;font-weight:500;color:var(--ink-3);
+    letter-spacing:-.2px;transition:color .2s ease;
+  }
+  .sn-item.active a{border-left-color:transparent}
+  .sn-item.active .sn-num{color:var(--accent)}
+  .sn-item.active .sn-title{color:var(--accent);font-weight:700}
+  .sn-foot{
+    padding-top:20px;
+    border-top:1px solid var(--rule);
+  }
+  .sn-credit{
+    font-size:10px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-4);text-transform:uppercase;
+    margin-top:28px;margin-bottom:20px;
+  }
+  .sn-foot-lbl{
+    font-size:10px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-4);text-transform:uppercase;margin-bottom:10px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .sn-foot-num{color:var(--ink);font-variant-numeric:tabular-nums}
+  .sn-prog{width:160px;height:2px;background:var(--rule);position:relative;overflow:hidden}
+  .sn-prog-fill{position:absolute;top:0;left:0;height:100%;background:var(--ink);width:0%;transition:width .3s ease}
+}
+
+/* ── MOBILE DRAWER ─────────────────────────────── */
+.drawer{
+  position:fixed;inset:0;z-index:200;
+  background:#0a0a0a;color:#fff;
+  display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .3s cubic-bezier(.2,.8,.2,1), visibility 0s linear .3s;
+}
+.drawer.open{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transition:opacity .3s cubic-bezier(.2,.8,.2,1), visibility 0s linear 0s;
+}
+.drawer-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px var(--pp);height:56px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  flex-shrink:0;
+}
+.drawer-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:#fff;display:flex;align-items:center}
+.drawer-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px}
+.drawer-close{
+  background:none;border:none;color:#fff;cursor:pointer;
+  padding:8px;margin-right:-8px;
+  font-size:22px;line-height:1;font-weight:400;
+  display:flex;align-items:center;justify-content:center;
+}
+.drawer-close:hover{color:var(--accent)}
+.drawer-body{
+  flex:1;overflow-y:auto;
+  padding:32px var(--pp) 48px;
+}
+.drawer-eyebrow{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  color:rgba(255,255,255,.55);text-transform:uppercase;
+  margin-bottom:24px;display:flex;align-items:center;gap:8px;
+}
+.drawer-eyebrow::before{content:"";width:18px;height:1px;background:var(--accent)}
+.dw-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.dw-group{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  color:rgba(255,255,255,.45);text-transform:uppercase;
+  margin:24px 0 8px;
+}
+.dw-group:first-child{margin-top:0}
+.dw-item a{
+  display:grid;grid-template-columns:48px 1fr 24px;gap:12px;align-items:baseline;
+  padding:18px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  text-decoration:none;color:inherit;
+  transition:padding-left .3s cubic-bezier(.2,.8,.2,1);
+}
+.dw-item a:hover,.dw-item a:active{padding-left:6px}
+.dw-num{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  color:rgba(255,255,255,.5);font-variant-numeric:tabular-nums;padding-top:2px;
+}
+.dw-body{display:flex;flex-direction:column;gap:4px}
+.dw-title{font-size:17px;font-weight:600;color:#fff;letter-spacing:-.3px}
+.dw-desc{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5}
+.dw-arrow{font-size:14px;color:rgba(255,255,255,.4);padding-top:4px;text-align:right}
+.dw-item.active .dw-num{color:var(--accent)}
+.dw-item.active .dw-title::before{
+  content:"";display:inline-block;width:5px;height:5px;border-radius:50%;
+  background:var(--accent);margin-right:10px;vertical-align:middle;margin-top:-2px;
+}
+
+/* Body scroll lock when drawer open */
+body.drawer-open{overflow:hidden}
+
+/* ── MAIN ──────────────────────────────────────── */
+main{padding-top:56px}
+@media(min-width:1280px){
+  main{padding-top:0;padding-left:var(--nav-w)}
+}
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--pp)}
+
+/* ── COVER ─────────────────────────────────────── */
+.cover{
+  background:#0a0a0a;color:#fff;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  padding:var(--sp-16) var(--pp) var(--sp-12);
+  position:relative;
+}
+.cover-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;flex-direction:column;flex:1}
+.cv-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding-bottom:var(--sp-12);
+  font-size:11px;letter-spacing:2.5px;color:rgba(255,255,255,.65);text-transform:uppercase;font-weight:600;
+}
+.cv-top .r{text-align:right;line-height:1.8}
+.cv-mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:var(--sp-24) 0}
+.cv-label{
+  font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.7);margin-bottom:var(--sp-10);
+  display:flex;align-items:center;gap:10px;
+}
+.cv-label::before{content:"";width:24px;height:1px;background:var(--accent)}
+.cv-h1{
+  font-size:clamp(56px,8.5vw,120px);
+  font-weight:800;letter-spacing:-3.5px;
+  line-height:.92;color:#fff;
+  margin-bottom:var(--sp-10);
+}
+.cv-h1 .line2{display:block;color:rgba(255,255,255,.35);font-weight:400}
+.cv-desc{font-size:15px;line-height:1.8;color:rgba(255,255,255,.75);max-width:480px;font-weight:400}
+.cv-bot{
+  padding-top:var(--sp-10);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-6);
+}
+.cv-kpi{padding:var(--sp-2) 0}
+.cv-kpi-num{font-size:10px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:1.5px;margin-bottom:var(--sp-3)}
+.cv-kpi-val{font-size:clamp(32px,3.5vw,46px);font-weight:800;letter-spacing:-2px;line-height:1;color:#fff;margin-bottom:var(--sp-3)}
+.cv-kpi-val.dim{color:rgba(255,255,255,.6)}
+.cv-kpi-lbl{font-size:13px;font-weight:600;color:#fff;margin-bottom:2px}
+.cv-kpi-sub{font-size:12px;color:rgba(255,255,255,.62);line-height:1.5}
+
+@media(max-width:760px){
+  .cv-bot{grid-template-columns:repeat(2,1fr);gap:var(--sp-8) var(--sp-4)}
+}
+
+/* ── TABLE OF CONTENTS ─────────────────────────── */
+.toc-list{
+  margin-top:var(--sp-12);
+  border-top:1px solid var(--ink);
+}
+.toc-item{
+  display:grid;
+  grid-template-columns:88px 1fr 28px;
+  gap:var(--sp-8);
+  align-items:baseline;
+  padding:var(--sp-8) 0;
+  border-bottom:1px solid var(--rule);
+  text-decoration:none;
+  color:inherit;
+  transition:padding-left .35s cubic-bezier(.2,.8,.2,1), background-color .25s ease;
+}
+.toc-item:hover{
+  padding-left:var(--sp-4);
+  background:rgba(231,85,25,.02);
+}
+.toc-item:hover .toc-arrow{
+  color:var(--accent);
+  transform:translateX(4px);
+}
+.toc-num{
+  font-size:12px;font-weight:700;letter-spacing:2px;
+  color:var(--ink-4);padding-top:8px;
+}
+.toc-body{display:flex;flex-direction:column;gap:6px}
+.toc-title{
+  font-size:20px;font-weight:700;color:var(--ink);
+  letter-spacing:-.3px;line-height:1.3;
+}
+.toc-desc{
+  font-size:14px;color:var(--ink-3);line-height:1.6;
+}
+.toc-arrow{
+  font-size:14px;color:var(--ink-5);
+  padding-top:10px;text-align:right;
+  transition:color .25s ease, transform .3s cubic-bezier(.2,.8,.2,1);
+}
+@media(max-width:640px){
+  .toc-item{grid-template-columns:56px 1fr 20px;gap:var(--sp-5)}
+  .toc-title{font-size:17px}
+  .toc-desc{font-size:13px}
+}
+
+/* ── SECTION ───────────────────────────────────── */
+.section{padding:var(--sp-28) 0}
+/* Extra breathing room between the full-height hero cover and the first content section. */
+.section:first-of-type{padding-top:var(--sp-40)}
+
+.s-head{margin-bottom:var(--sp-16);max-width:900px}
+.s-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:600;letter-spacing:2.5px;
+  color:var(--ink-4);text-transform:uppercase;
+  margin-bottom:var(--sp-8);
+}
+.s-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.s-eyebrow .sep{color:var(--ink-5);margin:0 4px;font-weight:400}
+.s-title{
+  font-size:clamp(32px,4.2vw,52px);
+  font-weight:800;letter-spacing:-1.5px;
+  line-height:1.1;color:var(--ink);
+}
+.s-title .soft{color:var(--ink-4);font-weight:400}
+.s-sub{
+  margin-top:var(--sp-8);
+  font-size:16px;line-height:1.8;color:var(--ink-3);
+  max-width:680px;font-weight:400;
+}
+
+.s-rule{height:1px;background:var(--rule);margin:var(--sp-16) 0 var(--sp-14)}
+
+/* ── PROSE ─────────────────────────────────────── */
+.prose{font-size:15px;line-height:1.85;color:var(--ink-3);max-width:800px}
+.prose p+p{margin-top:var(--sp-5)}
+.prose strong{color:var(--ink);font-weight:600}
+.prose-wide{max-width:100%}
+
+/* ── NUMBERED BLOCKS (Like smalltribe / Marcher refs) ── */
+.nblocks{display:grid;gap:1px;background:var(--rule);margin:var(--sp-16) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.nblocks-3{grid-template-columns:repeat(3,1fr)}
+.nblocks-4{grid-template-columns:repeat(4,1fr)}
+.nblocks-2{grid-template-columns:repeat(2,1fr)}
+.nblock{background:var(--bg);padding:var(--sp-10) var(--sp-8) var(--sp-12);min-height:220px;display:flex;flex-direction:column}
+.nblock .n-num{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;color:var(--ink-4);letter-spacing:1.5px;
+  margin-bottom:var(--sp-6);
+}
+.nblock .n-num::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.nblock .n-title{font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.3px;line-height:1.35;margin-bottom:var(--sp-4)}
+.nblock .n-body{font-size:14px;line-height:1.8;color:var(--ink-3);flex:1}
+.nblock .n-body strong{color:var(--ink);font-weight:600}
+
+@media(max-width:820px){
+  .nblocks-3,.nblocks-4{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .nblocks-3,.nblocks-4,.nblocks-2{grid-template-columns:1fr}
+}
+
+/* ── KEY/VALUE LIST ────────────────────────────── */
+.kvlist{margin:var(--sp-10) 0}
+.kv{display:grid;grid-template-columns:200px 1fr;gap:var(--sp-8);padding:var(--sp-8) 0;border-top:1px solid var(--rule)}
+.kv:last-child{border-bottom:1px solid var(--rule)}
+.kv-label{font-size:11px;font-weight:700;color:var(--ink);letter-spacing:1.5px;text-transform:uppercase;padding-top:2px}
+.kv-label .num{color:var(--ink-5);margin-right:6px}
+.kv-title{font-size:18px;font-weight:600;color:var(--ink);letter-spacing:-.3px;line-height:1.4;margin-bottom:var(--sp-2)}
+.kv-body{font-size:14px;line-height:1.8;color:var(--ink-3)}
+.kv-body strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){
+  .kv{grid-template-columns:1fr;gap:var(--sp-3)}
+}
+
+/* ── DARK HIGHLIGHT BLOCK ──────────────────────── */
+.dark-block{
+  background:#0a0a0a;color:#fff;
+  /* Full-bleed background with content constrained to the same max-w as .wrap.
+     Horizontal padding grows on wide screens to keep content at max-w - 2*pp. */
+  padding:var(--sp-16) max(var(--pp), calc((100vw - var(--max-w)) / 2 + var(--pp)));
+  margin:var(--sp-16) 0;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  box-sizing:border-box;
+}
+@media(min-width:1280px){
+  /* On desktop the nav occupies var(--nav-w) on the left; full-bleed must not
+     cover the nav, and horizontal padding must recentre against the shifted area. */
+  .dark-block{
+    width:calc(100vw - var(--nav-w));
+    margin-left:calc(50% - 50vw + var(--nav-w)/2);
+    margin-right:calc(50% - 50vw + var(--nav-w)/2);
+    padding:var(--sp-16) max(var(--pp), calc((100vw - var(--nav-w) - var(--max-w)) / 2 + var(--pp)));
+  }
+}
+
+/* ── LINE SUPPRESSION ──────────────────────────── */
+/* Remove redundant horizontal lines right after a black/dark block.
+   Black itself acts as a strong visual separator. */
+.dark-block + .tac{border-top:none;padding-top:0}
+.dark-block + .tiers{border-top:none !important}
+.dark-block + .split{border-top:none}
+.dark-block + .nblocks{border-top:none}
+.dark-block + .tbl{border-top:none}
+.dark-block + .s-rule{display:none}
+.dark-block + .pgrid{border-top:none}
+.dark-block + .tgrid{border-top:none}
+
+/* Prevent consecutive horizontal lines from bordered containers into tac. */
+.split + .tac,
+.tbl + .tac,
+.tgrid + .tac,
+.pgrid + .tac,
+.nblocks + .tac,
+.tiers + .tac{border-top:none;padding-top:0}
+
+/* Prevent consecutive horizontal lines (two rules in a row). */
+.s-rule + .s-rule{display:none}
+.tiers + .s-rule{display:none}
+.tbl + .s-rule{display:none}
+.split + .s-rule{display:none}
+.pgrid + .s-rule{display:none}
+.tgrid + .s-rule{display:none}
+.nblocks + .s-rule{display:none}
+.db-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-8);display:flex;align-items:center;gap:10px}
+.db-label::before{content:"";width:18px;height:1px;background:var(--accent)}
+.db-h{font-size:clamp(20px,2.4vw,28px);font-weight:700;letter-spacing:-.5px;line-height:1.45;color:#fff;margin-bottom:var(--sp-8)}
+.db-h em{font-style:normal;color:#fff;font-weight:600}
+.db-h .ac{color:var(--accent);font-weight:600;font-style:normal}
+.db-body{font-size:14px;line-height:1.9;color:rgba(255,255,255,.72);max-width:800px}
+.db-body strong{color:#fff;font-weight:600}
+.db-body p+p{margin-top:var(--sp-4)}
+
+/* ── TACTICAL NOTE ─────────────────────────────── */
+.tac{
+  border-top:1px solid var(--ink);
+  padding:var(--sp-10) 0;
+  margin:var(--sp-16) 0;
+}
+.tac-label{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:var(--sp-6);
+}
+.tac-body{font-size:16px;line-height:1.85;color:var(--ink-2);max-width:900px}
+.tac-body strong{color:var(--ink);font-weight:700}
+.tac-dir{
+  margin-top:var(--sp-6);padding-top:var(--sp-6);
+  border-top:1px solid var(--rule);
+  font-size:14px;line-height:1.85;color:var(--ink-3);
+  max-width:900px;
+}
+.tac-dir strong{color:var(--ink);font-weight:600}
+.tac-dir .arrow{color:var(--accent);font-weight:700;margin-right:6px}
+
+/* ── NOTES ─────────────────────────────────────── */
+.notegrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-10);margin:var(--sp-10) 0}
+.note{
+  border-top:1px solid var(--ink);
+  padding:var(--sp-6) 0 0;
+  font-size:14px;line-height:1.85;color:var(--ink-3);
+}
+.note-h{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:var(--sp-3);letter-spacing:-.2px}
+.note strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){.notegrid{grid-template-columns:1fr;gap:var(--sp-8)}}
+
+/* ── SPLIT (Positive / Negative) ───────────────── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.split-col{padding:var(--sp-10) 0;padding-right:var(--sp-10)}
+.split-col+.split-col{border-left:1px solid var(--rule);padding-left:var(--sp-10);padding-right:0}
+.sp-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-5);display:flex;align-items:center;gap:10px}
+.sp-label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ink-4)}
+.sp-label.risk{color:var(--accent)}
+.sp-label.risk::before{background:var(--accent)}
+.sp-body{font-size:15px;line-height:1.85;color:var(--ink-3);margin-bottom:var(--sp-8)}
+.sp-body .hi{color:var(--ink);font-weight:600}
+.sp-body .risk{color:var(--accent);font-weight:600}
+.sp-stats{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);padding-top:var(--sp-6);border-top:1px solid var(--rule)}
+.sp-stat-val{font-size:26px;font-weight:800;letter-spacing:-1px;color:var(--ink);margin-bottom:2px;line-height:1}
+.sp-stat-val.lo{color:var(--ink-4)}
+.sp-stat-lbl{font-size:12px;color:var(--ink-4);letter-spacing:.3px}
+@media(max-width:760px){
+  .split{grid-template-columns:1fr}
+  .split-col+.split-col{border-left:none;border-top:1px solid var(--rule);padding-left:0;padding-top:var(--sp-10)}
+  .split-col{padding-right:0}
+}
+
+/* ── CHART CARDS (minimal, no backgrounds) ─────── */
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-12);margin:var(--sp-14) 0}
+.charts-1{grid-template-columns:1fr}
+.ch{padding:var(--sp-6) 0}
+.ch-eye{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-2)}
+.ch-title{font-size:18px;font-weight:600;color:var(--ink);letter-spacing:-.3px;line-height:1.4;margin-bottom:var(--sp-6);max-width:420px}
+.ch-ax{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-4);letter-spacing:.3px;margin-bottom:var(--sp-3)}
+.ch-canvas{position:relative;height:220px}
+.ch-canvas.tall{height:300px}
+.ch-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin-top:var(--sp-6);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.ch-stat{background:var(--bg);padding:var(--sp-5) var(--sp-4) var(--sp-4)}
+.ch-stat-lbl{font-size:11px;color:var(--ink-4);letter-spacing:.3px;margin-bottom:var(--sp-2)}
+.ch-stat-val{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.2px}
+.ch-stat-val.ok{color:var(--success)}
+.ch-stat-val.warn{color:var(--accent)}
+@media(max-width:820px){.charts{grid-template-columns:1fr;gap:var(--sp-12)}}
+
+/* ── TABLE ─────────────────────────────────────── */
+.tbl{margin:var(--sp-14) 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+.tbl-cap{
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink-4);padding:var(--sp-4) 0 var(--sp-3);
+}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl-scroll::-webkit-scrollbar{height:4px}
+.tbl-scroll::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+table.dt{width:100%;border-collapse:collapse;min-width:640px}
+table.dt th{
+  text-align:left;padding:var(--sp-4) var(--sp-4);
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--ink-4);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--bg);white-space:nowrap;
+}
+table.dt td{
+  padding:var(--sp-4) var(--sp-4);
+  font-size:14px;color:var(--ink-3);
+  border-bottom:1px solid var(--rule-soft);
+  vertical-align:middle;line-height:1.6;
+}
+table.dt td strong{color:var(--ink);font-weight:600}
+table.dt tr:last-child td{border-bottom:none}
+table.dt tr:hover td{background:var(--bg-soft)}
+
+/* ── TAGS ──────────────────────────────────────── */
+.tag{
+  display:inline-block;font-size:10px;font-weight:600;
+  padding:3px 8px;letter-spacing:.5px;
+  border:1px solid var(--rule);color:var(--ink-3);
+  white-space:nowrap;
+}
+.t-ok{border-color:var(--ink);color:var(--ink)}
+.t-pod{border-color:var(--accent);color:var(--accent)}
+.t-pop{border-color:var(--ink-4);color:var(--ink-4)}
+.t-par{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.t-gap{border-color:var(--ink-5);color:var(--ink-4);background:var(--bg-soft)}
+.t-risk{border-color:var(--danger);background:var(--danger);color:#fff}
+
+/* ── QUOTES ────────────────────────────────────── */
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-10);margin:var(--sp-10) 0}
+.qgroup-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-5);padding-bottom:var(--sp-3);border-bottom:1px solid var(--ink)}
+.qcard{padding:var(--sp-6) 0;border-bottom:1px solid var(--rule)}
+.qcard:last-child{border-bottom:none}
+.qhead{display:flex;align-items:center;gap:10px;margin-bottom:var(--sp-3)}
+.qavatar{width:26px;height:26px;border-radius:50%;background:var(--bg-soft);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;color:var(--ink-4);font-size:10px;font-weight:700}
+.qname{font-size:12px;font-weight:600;color:var(--ink-2)}
+.qdate{font-size:11px;color:var(--ink-4)}
+.qtext{font-size:14px;line-height:1.85;color:var(--ink-2)}
+@media(max-width:760px){.qgrid{grid-template-columns:1fr}}
+
+/* ── PERSONAS ──────────────────────────────────── */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.persona{background:var(--bg);padding:var(--sp-10) var(--sp-8)}
+.p-num{font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--ink-4);margin-bottom:var(--sp-6)}
+.p-pct{font-size:44px;font-weight:800;letter-spacing:-2px;color:var(--ink);line-height:1;margin-bottom:var(--sp-4)}
+.p-pct .unit{font-size:16px;color:var(--ink-4);font-weight:500;letter-spacing:0;margin-left:2px}
+.p-name{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.2px;margin-bottom:var(--sp-2)}
+.p-kw{font-size:12px;color:var(--ink-4);line-height:1.6}
+@media(max-width:760px){.pgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.pgrid{grid-template-columns:1fr}}
+
+/* ── TRAINER CARDS ─────────────────────────────── */
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.trainer{background:var(--bg);padding:var(--sp-10) var(--sp-8)}
+.t-num{font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--ink-4);margin-bottom:var(--sp-4)}
+.t-name{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.5px;margin-bottom:var(--sp-2)}
+.t-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 6px;background:var(--accent);color:#fff;vertical-align:middle;margin-left:6px;text-transform:uppercase}
+.t-meta{font-size:12px;color:var(--ink-4);padding-bottom:var(--sp-5);margin-bottom:var(--sp-5);border-bottom:1px solid var(--rule)}
+.t-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:var(--sp-4)}
+.t-pill{display:inline-block;font-size:10px;font-weight:500;padding:3px 8px;border:1px solid var(--rule);color:var(--ink-3);letter-spacing:.3px}
+.t-summary{font-size:13px;color:var(--ink-3);line-height:1.7;margin-bottom:var(--sp-5)}
+.t-quote{padding:var(--sp-4) 0 0;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.75;font-style:italic}
+@media(max-width:760px){.tgrid{grid-template-columns:1fr}}
+
+/* ── ACTIONS ───────────────────────────────────── */
+.actions{margin:var(--sp-10) 0}
+.action{padding:var(--sp-14) 0;border-top:1px solid var(--rule)}
+.action:last-child{border-bottom:1px solid var(--rule)}
+.action{display:grid;grid-template-columns:160px 1fr;gap:var(--sp-10)}
+.ac-left{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--ink-4);padding-top:6px}
+.ac-left .n{color:var(--ink);margin-right:6px;font-weight:700}
+.ac-left .pri{display:block;margin-top:var(--sp-2);font-size:10px;color:var(--accent)}
+.ac-left .pri.normal{color:var(--ink-4)}
+.ac-title{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.5px;line-height:1.35;margin-bottom:var(--sp-4)}
+.ac-desc{font-size:14px;line-height:1.85;color:var(--ink-3);margin-bottom:var(--sp-5)}
+.ac-desc strong{color:var(--ink);font-weight:600}
+.ac-box{
+  border-left:2px solid var(--accent);
+  padding:var(--sp-4) var(--sp-6);
+  background:var(--bg-soft);
+  font-size:14px;line-height:1.8;color:var(--ink-2);
+}
+.ac-box-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-3)}
+.ac-box strong{color:var(--ink);font-weight:600}
+.ex-before{color:var(--ink-4);text-decoration:line-through;display:block;margin-bottom:var(--sp-2)}
+.ex-after{color:var(--ink);font-weight:600;display:block}
+@media(max-width:760px){
+  .action{grid-template-columns:1fr;gap:var(--sp-4)}
+}
+
+/* ── TIER ROWS (for intro section) ─────────────── */
+.tiers{margin:var(--sp-14) 0;border-top:1px solid var(--ink)}
+.tier{display:grid;grid-template-columns:140px 1fr;gap:var(--sp-10);padding:var(--sp-10) 0;border-bottom:1px solid var(--rule)}
+.tier-left{font-size:11px;letter-spacing:1.5px;color:var(--ink-4);padding-top:2px}
+.tier-left .n{color:var(--ink);font-weight:700;margin-right:6px}
+.tier-name{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.3px;margin-top:var(--sp-3);margin-bottom:var(--sp-2)}
+/* When tier-name is the first element (LAYER variant without tier-weight),
+   drop its top margin and add optical padding on the left label so the
+   11px eyebrow and 20px heading visually align on the same line. */
+.tier-name:first-child{margin-top:0}
+.tier:has(.tier-name:first-child) > .tier-left{padding-top:6px}
+.tier-weight{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:var(--sp-3)}
+.tier-body{font-size:14px;line-height:1.85;color:var(--ink-3)}
+.tier-body strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){.tier{grid-template-columns:1fr;gap:var(--sp-3)}}
+
+/* ── SCORE GAUGE ───────────────────────────────── */
+.gauge-block{margin:var(--sp-16) 0;border-top:1px solid var(--ink);padding-top:var(--sp-10)}
+.gauge-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:var(--sp-8);letter-spacing:-.2px}
+.gauge{padding:var(--sp-6) 0}
+.gauge+.gauge{margin-top:var(--sp-2)}
+.g-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-3)}
+.g-head-l{display:flex;align-items:baseline;gap:var(--sp-4)}
+.g-name{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.2px}
+.g-pct{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.5px}
+.g-pct.mid{color:var(--ink-4)}
+.g-pct.low{color:var(--accent)}
+.g-note{font-size:11px;color:var(--ink-4);letter-spacing:.3px}
+/* Animatable custom property for the fill percentage. */
+@property --gauge-w{
+  syntax:'<percentage>';
+  inherits:false;
+  initial-value:0%;
+}
+.g-bar{
+  height:2px;
+  background:linear-gradient(to right, var(--gauge-color, var(--ink)) var(--gauge-w, 0%), var(--rule) 0);
+  transition:--gauge-w 1.2s cubic-bezier(.2,.8,.2,1);
+}
+.g-bar.low{ --gauge-color:var(--accent); height:1px; }
+.g-bar.mid{ --gauge-color:var(--ink-4); height:1px; }
+.g-sub{font-size:12px;color:var(--ink-4);margin-top:var(--sp-2);line-height:1.6}
+
+/* ── PLACE STATUS GRID ─────────────────────────── */
+.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);margin:var(--sp-8) 0 0;border:1px solid rgba(255,255,255,.1)}
+.status-cell{background:#0a0a0a;padding:var(--sp-5) var(--sp-6)}
+.sc-lbl{font-size:10px;color:rgba(255,255,255,.6);letter-spacing:1px;margin-bottom:var(--sp-2);text-transform:uppercase}
+.sc-val{font-size:15px;font-weight:700;color:#fff;margin-bottom:2px}
+.sc-val.warn{color:var(--accent)}
+.sc-val.ok{color:#7bc890}
+.sc-sub{font-size:11px;color:rgba(255,255,255,.6);line-height:1.5}
+@media(max-width:760px){.status-grid{grid-template-columns:1fr 1fr}}
+
+/* ── TOGGLE / EXPANDABLE ───────────────────────── */
+.toggle{border-top:1px solid var(--rule)}
+.toggle:last-of-type{border-bottom:1px solid var(--rule)}
+.toggle-btn{
+  width:100%;background:none;border:none;cursor:pointer;
+  font-family:inherit;text-align:left;
+  display:flex;align-items:center;gap:var(--sp-4);
+  padding:var(--sp-6) 0;min-height:52px;
+  font-size:14px;font-weight:600;color:var(--ink);
+}
+.toggle-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.toggle-dot.soft{background:var(--ink-4)}
+.toggle-lbl{flex:1;line-height:1.5}
+.toggle-arr{font-size:14px;color:var(--ink-4);transition:transform .3s;flex-shrink:0}
+.toggle.open .toggle-arr{transform:rotate(180deg)}
+.toggle-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.toggle.open .toggle-body{max-height:1200px}
+.toggle-inner{padding:0 0 var(--sp-8);font-size:14px;color:var(--ink-3);line-height:1.85;max-width:900px}
+.toggle-inner p+p{margin-top:var(--sp-4)}
+.toggle-inner strong{color:var(--ink);font-weight:600}
+
+/* ── COMPARISON TABLE (for POP/POD, SEO/AEO inline) ── */
+.cmp-tbl{
+  width:80%;margin:var(--sp-8) auto;
+  border-collapse:collapse;
+  font-size:13px;
+}
+.cmp-tbl th,.cmp-tbl td{
+  padding:var(--sp-4) var(--sp-5);
+  text-align:left;
+  border-bottom:1px solid var(--rule);
+}
+.cmp-tbl th{
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--ink-4);border-bottom:1px solid var(--ink);
+}
+.cmp-tbl th:first-child{color:var(--ink-4)}
+.cmp-tbl th:not(:first-child){color:var(--ink)}
+.cmp-tbl td{color:var(--ink-3);line-height:1.6;vertical-align:top}
+.cmp-tbl td:first-child{color:var(--ink-4);font-size:12px;white-space:nowrap;width:100px}
+.cmp-tbl tr:last-child td{border-bottom:none}
+@media(max-width:900px){
+  .cmp-tbl{width:100%}
+}
+@media(max-width:640px){
+  .cmp-tbl{display:block;overflow-x:auto}
+}
+
+/* ── CYCLE DIAGRAM ─────────────────────────────── */
+.cycle-wrap{margin:var(--sp-12) auto;max-width:580px}
+.cycle-wrap svg{display:block;width:100%;height:auto}
+
+/* Mobile fallback — stacked HTML version (better readability on narrow screens). */
+.cycle-mobile{display:none}
+.cy-step{
+  border:1px solid var(--rule);
+  padding:18px 20px;
+  text-align:center;
+  background:var(--bg);
+}
+.cy-step-num{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  color:var(--accent);margin-bottom:6px;
+}
+.cy-step-text{
+  font-size:15px;font-weight:600;color:var(--ink);line-height:1.4;
+}
+.cy-step-arrow{
+  text-align:center;color:#b8b8b8;
+  font-size:20px;line-height:1;padding:6px 0;
+}
+.cy-step-loop{
+  margin-top:14px;text-align:center;
+  color:var(--ink-4);font-size:12px;line-height:1.5;
+}
+.cy-step-loop .sp{color:var(--accent);opacity:.55;margin-right:4px}
+
+@media(max-width:640px){
+  .cycle-wrap svg{display:none}
+  .cycle-mobile{display:flex;flex-direction:column;gap:2px}
+}
+
+/* ── AI IMAGE ──────────────────────────────────── */
+.ai-img-wrap{margin:var(--sp-12) 0}
+.ai-img-wrap img{display:block;max-width:380px;width:100%;margin:0 auto;border:1px solid var(--rule)}
+
+/* ── KEYWORD BARS ──────────────────────────────── */
+.kwbars{margin:var(--sp-6) 0}
+.kwbar{padding:var(--sp-4) 0;border-bottom:1px solid var(--rule)}
+.kwbar:last-child{border-bottom:none}
+.kwb-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-2);font-size:13px}
+.kwb-name{color:var(--ink-2);font-weight:500}
+.kwb-val{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.5px}
+.kwb-track{height:2px;background:var(--rule)}
+.kwb-fill{height:100%;background:var(--ink);width:0;transition:width 1s ease}
+.kwb-fill.soft{background:var(--ink-4)}
+
+/* ── RANKING BARS ──────────────────────────────── */
+.rank-row{display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3) 0;border-bottom:1px solid var(--rule)}
+.rank-row:last-child{border-bottom:none}
+.rank-name{font-size:13px;color:var(--ink-2);font-weight:500}
+.rank-right{display:flex;align-items:center;gap:12px;font-size:11px}
+.rank-lbl{color:var(--ink-4);font-weight:600;letter-spacing:.5px;min-width:60px;text-align:right}
+.rank-dots{letter-spacing:3px;font-size:10px;min-width:60px;text-align:right}
+.rank-dots .on{color:var(--ink)}
+.rank-dots .off{color:var(--rule)}
+
+/* ── FOOTER ────────────────────────────────────── */
+.footer{
+  background:#0a0a0a;color:rgba(255,255,255,.65);
+  padding:var(--sp-16) var(--pp);
+  text-align:center;
+  margin-top:var(--sp-16);
+}
+@media(min-width:1280px){
+  .footer{padding-left:calc(var(--pp) + var(--nav-w))}
+}
+.ft-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:#fff;margin-bottom:var(--sp-5)}
+.ft-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle;margin-top:-2px}
+.ft-links{display:flex;justify-content:center;gap:var(--sp-8);margin-bottom:var(--sp-6);flex-wrap:wrap}
+.ft-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;letter-spacing:.3px;transition:color .2s}
+.ft-links a:hover{color:#fff}
+.ft-copy{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.5px}
+
+/* ── ANIMATIONS ────────────────────────────────── */
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.anim.visible{opacity:1;transform:translateY(0)}
+
+/* Cycle spin */
+.cy-spin{transform-origin:340px 182px}
+.cycle-wrap.in-view .cy-spin{animation:cySpin 14s linear infinite}
+@keyframes cySpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* Cycle diagram — subtle sequential reveal on scroll-in.
+   Boxes fade in 01 → 02 → 03 → 04, then each connecting arrow draws in. */
+.cycle-wrap svg > g{opacity:0;transition:opacity .5s cubic-bezier(.2,.8,.2,1)}
+.cycle-wrap svg > line{stroke-dasharray:220;stroke-dashoffset:220;transition:stroke-dashoffset .5s cubic-bezier(.2,.8,.2,1)}
+
+.cycle-wrap.in-view svg > g{opacity:1}
+.cycle-wrap.in-view svg > line{stroke-dashoffset:0}
+
+.cycle-wrap.in-view svg > g:nth-of-type(1){transition-delay:.08s}
+.cycle-wrap.in-view svg > line:nth-of-type(1){transition-delay:.42s}
+.cycle-wrap.in-view svg > g:nth-of-type(2){transition-delay:.22s}
+.cycle-wrap.in-view svg > line:nth-of-type(2){transition-delay:.56s}
+.cycle-wrap.in-view svg > g:nth-of-type(3){transition-delay:.36s}
+.cycle-wrap.in-view svg > line:nth-of-type(3){transition-delay:.7s}
+.cycle-wrap.in-view svg > g:nth-of-type(4){transition-delay:.5s}
+.cycle-wrap.in-view svg > line:nth-of-type(4){transition-delay:.84s}
+.cycle-wrap.in-view svg > g:nth-of-type(5){transition-delay:1s}
+
+/* ── REDUCED MOTION ────────────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .cy-spin{animation:none!important}
+  .cycle-wrap svg > g{opacity:1!important}
+  .cycle-wrap svg > line{stroke-dashoffset:0!important}
+}
+
+/* ── PRINT ─────────────────────────────────────── */
+@media print{
+  .topbar,.skip-link{display:none!important}
+  main{padding-top:0}
+  .section{break-inside:avoid;padding:20px 0}
+  .cover{min-height:auto;padding:40px 0;break-after:page}
+  .dark-block,.cover,.footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<a href="#cover" class="skip-link">본문으로 건너뛰기</a>
+
+<!-- TOP BAR (mobile/tablet) ──────────────────────── -->
+<header class="topbar" role="banner">
+  <div class="tb-inner">
+    <div class="tb-brand"><span class="dot"></span>RE:FEEEL</div>
+    <div class="tb-current" id="tb-current"><span class="num">00</span>Cover</div>
+    <div class="tb-progress"><div class="tb-prog-bar"><div class="tb-prog-fill" id="tb-fill"></div></div><div class="tb-prog-num" id="tb-num">0%</div></div>
+    <button class="tb-menu" id="drawer-open" type="button" aria-label="목차 열기" aria-controls="drawer" aria-expanded="false">
+      <span class="tb-menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>MENU</span>
+    </button>
+  </div>
+</header>
+
+<!-- SIDE NAV (desktop only) ──────────────────────── -->
+<aside class="sidenav" aria-label="섹션 네비게이션">
+  <div class="sn-masthead">
+    <div class="sn-client">비브레 PT/헬스 혁신점</div>
+    <div class="sn-tagline">Place Report</div>
+  </div>
+  <ul class="sn-list" id="sn-list">
+    <li class="sn-item" data-target="cover"><a href="#cover"><span class="sn-num">—</span><span class="sn-title">Cover</span></a></li>
+
+    <li class="sn-group">Diagnosis · 진단</li>
+    <li class="sn-item" data-target="intro"><a href="#intro"><span class="sn-num">00</span><span class="sn-title">리포트 개요</span></a></li>
+    <li class="sn-item" data-target="place"><a href="#place"><span class="sn-num">01</span><span class="sn-title">플레이스 상태</span></a></li>
+    <li class="sn-item" data-target="overview"><a href="#overview"><span class="sn-num">02</span><span class="sn-title">종합 진단</span></a></li>
+
+    <li class="sn-group">Analysis · 분석</li>
+    <li class="sn-item" data-target="pop"><a href="#pop"><span class="sn-num">03</span><span class="sn-title">POP vs POD</span></a></li>
+    <li class="sn-item" data-target="gap"><a href="#gap"><span class="sn-num">04</span><span class="sn-title">간극 분석</span></a></li>
+    <li class="sn-item" data-target="customer"><a href="#customer"><span class="sn-num">05</span><span class="sn-title">고객 분석</span></a></li>
+    <li class="sn-item" data-target="trainer"><a href="#trainer"><span class="sn-num">06</span><span class="sn-title">귀속 구조</span></a></li>
+    <li class="sn-item" data-target="trend"><a href="#trend"><span class="sn-num">07</span><span class="sn-title">리뷰 추이</span></a></li>
+
+    <li class="sn-group">Action · 실행</li>
+    <li class="sn-item" data-target="action"><a href="#action"><span class="sn-num">08</span><span class="sn-title">액션 플랜</span></a></li>
+    <li class="sn-item" data-target="list"><a href="#list"><span class="sn-num">09</span><span class="sn-title">리뷰 목록</span></a></li>
+  </ul>
+  <div class="sn-credit">by RE:FEEEL</div>
+  <div class="sn-foot">
+    <div class="sn-foot-lbl"><span>Progress</span><span class="sn-foot-num" id="sn-num">0%</span></div>
+    <div class="sn-prog"><div class="sn-prog-fill" id="sn-fill"></div></div>
+  </div>
+</aside>
+
+<!-- MOBILE DRAWER ────────────────────────────────── -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="목차" aria-hidden="true">
+  <div class="drawer-head">
+    <div class="drawer-brand"><span class="dot"></span>RE:FEEEL</div>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="목차 닫기">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="drawer-body">
+    <div class="drawer-eyebrow">Contents · 목차</div>
+    <ul class="dw-list" id="dw-list">
+      <li class="dw-group">Diagnosis · 진단</li>
+      <li class="dw-item" data-target="intro"><a href="#intro"><span class="dw-num">00</span><span class="dw-body"><span class="dw-title">리포트 개요</span><span class="dw-desc">이 리포트가 보는 것</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="place"><a href="#place"><span class="dw-num">01</span><span class="dw-body"><span class="dw-title">플레이스 상태</span><span class="dw-desc">정보 최적화</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="overview"><a href="#overview"><span class="dw-num">02</span><span class="dw-body"><span class="dw-title">종합 진단</span><span class="dw-desc">고객들은 어떻게 인식하고 있는가</span></span><span class="dw-arrow">→</span></a></li>
+
+      <li class="dw-group">Analysis · 분석</li>
+      <li class="dw-item" data-target="pop"><a href="#pop"><span class="dw-num">03</span><span class="dw-body"><span class="dw-title">POP vs POD</span><span class="dw-desc">기본 기대치와 차별화 지점</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="gap"><a href="#gap"><span class="dw-num">04</span><span class="dw-body"><span class="dw-title">간극 분석</span><span class="dw-desc">전달 의도와 실제의 차이</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="customer"><a href="#customer"><span class="dw-num">05</span><span class="dw-body"><span class="dw-title">고객 분석</span><span class="dw-desc">누가, 왜, 어디서 왔는가</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="trainer"><a href="#trainer"><span class="dw-num">06</span><span class="dw-body"><span class="dw-title">귀속 구조</span><span class="dw-desc">트레이너 인식과 브랜드</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="trend"><a href="#trend"><span class="dw-num">07</span><span class="dw-body"><span class="dw-title">리뷰 추이</span><span class="dw-desc">성장 중 · 한 번의 이탈 이력</span></span><span class="dw-arrow">→</span></a></li>
+
+      <li class="dw-group">Action · 실행</li>
+      <li class="dw-item" data-target="action"><a href="#action"><span class="dw-num">08</span><span class="dw-body"><span class="dw-title">액션 플랜</span><span class="dw-desc">7가지 실행 항목</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="list"><a href="#list"><span class="dw-num">09</span><span class="dw-body"><span class="dw-title">리뷰 목록</span><span class="dw-desc">통합 점수 순 정렬</span></span><span class="dw-arrow">→</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- COVER ───────────────────────────────────────── -->
+<section id="cover" class="cover" data-nav="Cover" data-num="—">
+<div class="cover-inner">
+  <div class="cv-top">
+    <span>Place Report</span>
+    <span class="r">2026.04.19</span>
+  </div>
+  <div class="cv-mid">
+    <div class="cv-label">네이버 플레이스 리뷰 분석 리포트</div>
+    <h1 class="cv-h1">
+      비브레<br>
+      <span class="line2">PT/헬스 혁신점</span>
+    </h1>
+    <p class="cv-desc">플레이스 리뷰 375건 기반 분석<br>분석 기간: 2023년 1월 — 2026년 4월</p>
+  </div>
+  <div class="cv-bot">
+    <div class="cv-kpi">
+      <div class="cv-kpi-val">31.2</div>
+      <div class="cv-kpi-lbl">SEO Score</div>
+      <div class="cv-kpi-sub">45점 만점 · 노출 기여 69%</div>
+    </div>
+    <div class="cv-kpi">
+      <div class="cv-kpi-val dim">14.0</div>
+      <div class="cv-kpi-lbl">AEO Score</div>
+      <div class="cv-kpi-sub">50점 만점 · AI 참조 28%</div>
+    </div>
+    <div class="cv-kpi">
+      <div class="cv-kpi-val">85<span style="font-size:.5em;color:rgba(255,255,255,.7)">%</span></div>
+      <div class="cv-kpi-lbl">영수증 인증률</div>
+      <div class="cv-kpi-sub">320건 / 375건</div>
+    </div>
+    <div class="cv-kpi">
+      <div class="cv-kpi-val">260<span style="font-size:.5em;color:rgba(255,255,255,.7)">자</span></div>
+      <div class="cv-kpi-lbl">평균 리뷰 길이</div>
+      <div class="cv-kpi-sub">벤치마크 120~180자의 1.7배</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ST/00 — 리포트 개요 ──────────────────────────── -->
+<section id="intro" class="section" data-nav="리포트 개요" data-num="00">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 00 <span class="sep">·</span> 이 리포트가 보는 것</div>
+    <h2 class="s-title">리뷰와 플레이스 데이터로<br><span class="soft">현재 상태를 진단한다</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>이 리포트는 비브레 PT/헬스 혁신점 네이버 플레이스에 쌓인 <strong>방문자 리뷰 375건</strong>과 <strong>플레이스 운영 상태</strong>를 함께 진단한 결과입니다. 리뷰 하나하나에 SEO(검색 노출 기여도)와 AEO(AI 답변 참조 가능성)를 채점하고, 플레이스 정보 충실도·소식 발행·답글 관리·블로그 연동까지 종합적으로 봅니다.</p>
+    <p>이 리포트는 별점이나 만족도를 다루지 않습니다. <strong>"고객이 리뷰에 쓴 단어가 검색과 AI에서 어떤 가치를 만드는가"</strong>, 그리고 <strong>"플레이스 자체가 예약 전환에 최적화되어 있는가"</strong>를 봅니다.</p>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">플레이스에서 진짜 원하는 것</div>
+    <div class="db-h">상단 노출이 아니라,<br><em>플레이스를 통해 매출로 이어지는 것</em>입니다.</div>
+    <div class="db-body">네이버가 순위를 올려주는 페이지는 결국, 사람들이 머물고 싶은 페이지입니다. 리뷰에 스토리가 있고, 사장님 답글이 복붙이 아니고, 사진이 다채로우면 — 사람들은 그 페이지에서 오래 머물고, 저장하고, 길찾기를 누르죠. 고객 전환이 되는 페이지가 곧 네이버가 올려주는 페이지입니다.</div>
+  </div>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="tier-left"><span class="n">01</span>TIER</div>
+      <div>
+        <div class="tier-weight">가중치: 최상 — 실질적 순위 결정</div>
+        <div class="tier-name">상호작용</div>
+        <div class="tier-body">저장하기, 길찾기, 전화, 체류시간. 클릭한 고객이 이탈하지 않게 하는 것이 핵심입니다. 대부분의 대행사는 광고 트래픽과 이벤트로 이 지표를 인위적으로 올리지만, <strong>돈을 멈추면 순위도 멈춥니다.</strong></div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">02</span>TIER</div>
+      <div>
+        <div class="tier-weight">가중치: 상 — 지속성 및 신뢰 지표</div>
+        <div class="tier-name">신뢰도</div>
+        <div class="tier-body">영수증 리뷰, 포토/영상 리뷰, 리뷰 패턴. <strong>"친절해요" 100개보다 구체적 경험이 담긴 정성스러운 리뷰 10개가 검색 노출에 훨씬 유리합니다.</strong> 2026년 기준, 네이버는 POS 연동 영수증 리뷰에 가장 높은 신뢰 점수를 부여합니다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">03</span>TIER</div>
+      <div>
+        <div class="tier-weight">가중치: 중 — 검색 반영 필터</div>
+        <div class="tier-name">정보 최적화</div>
+        <div class="tier-body">소개글, 메뉴(가격), 편의시설, 최신성. 소개글은 검색 봇이 아니라 '사람'이 읽고 클릭하게끔 써야 합니다. <strong>사진을 월 1회 이상 교체하는 페이지는 "활성화된 매장"으로 인식되어 가중치를 받습니다.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;margin-bottom:var(--sp-4);letter-spacing:-.3px">네이버가 가장 높게 평가하는 선순환 구조</p>
+    <p>단순히 리뷰가 많다고 1등을 주지 않습니다. 네이버는 이 네 단계가 반복되는 패턴이 확인될 때 가중치를 대폭 부여합니다.</p>
+  </div>
+
+  <div class="cycle-wrap">
+    <svg viewBox="0 0 680 420" role="img" aria-label="네이버 플레이스 선순환 구조 다이어그램">
+      <defs><marker id="cy-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+      <g>
+        <rect x="60" y="40" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="180" y="64" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">01 · 검색</text>
+        <text x="180" y="90" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">특정 키워드로 플레이스 진입</text>
+      </g>
+      <line x1="302" y1="78" x2="378" y2="78" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="380" y="40" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="500" y="64" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">02 · 탐색</text>
+        <text x="500" y="90" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">리뷰·수업 정보를 30초+ 체류</text>
+      </g>
+      <line x1="500" y1="118" x2="500" y2="288" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="380" y="290" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="500" y="314" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">03 · 의도 확인</text>
+        <text x="500" y="340" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">저장하기 또는 길찾기 실행</text>
+      </g>
+      <line x1="378" y1="328" x2="302" y2="328" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="60" y="290" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="180" y="314" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">04 · 경험 완결</text>
+        <text x="180" y="340" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">방문 후 영수증 리뷰 작성</text>
+      </g>
+      <line x1="180" y1="288" x2="180" y2="118" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <g class="cy-spin"><text x="340" y="182" text-anchor="middle" font-size="22" fill="#e75519" opacity=".35">↻</text></g>
+        <text x="340" y="206" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="11" fill="#8a8a8a">이 순환이 반복될수록</text>
+        <text x="340" y="222" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="11" fill="#8a8a8a">순위가 올라간다</text>
+      </g>
+    </svg>
+    <div class="cycle-mobile" aria-hidden="true">
+      <div class="cy-step"><div class="cy-step-num">01 · 검색</div><div class="cy-step-text">특정 키워드로 플레이스 진입</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">02 · 탐색</div><div class="cy-step-text">리뷰·수업 정보를 30초+ 체류</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">03 · 의도 확인</div><div class="cy-step-text">저장하기 또는 길찾기 실행</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">04 · 경험 완결</div><div class="cy-step-text">방문 후 영수증 리뷰 작성</div></div>
+      <div class="cy-step-loop"><span class="sp">↻</span>이 순환이 반복될수록 순위가 올라간다</div>
+    </div>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose" style="margin-bottom:var(--sp-12)">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;margin-bottom:var(--sp-4);letter-spacing:-.3px">이 리포트의 접근</p>
+    <p>리뷰 375건 안에는 고객이 왜 저장했는지, 왜 예약했는지, 어떤 경로로 왔는지가 전부 들어 있습니다. 이 데이터로 세 가지 층위를 동시에 진단하고, 인위적 트래픽 없이 이 선순환이 자생적으로 작동하는 구조를 설계합니다.</p>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">플레이스 현재 상태</div>
+    <div class="db-h"><em>비브레 PT/헬스 혁신점</em> · 스포츠시설 · 원주혁신도시 반곡동</div>
+    <div class="db-body" style="margin-bottom:var(--sp-6)">
+      <p><strong>방문자 리뷰 375건</strong> · 블로그 리뷰 2,156건 · 이미지 999+</p>
+      <p><strong>주소</strong> · 강원 원주시 건강로 17-2 (한국건강보험공단 근처 · 원주혁신도시)</p>
+      <p><strong>업종</strong> · PT/헬스 · 1:1 전문 PT 센터</p>
+      <p><strong>주요 서비스</strong> · 1:1 PT · 멤버십권 · 해피아워 · 4:1 소수정예 그룹PT · 30분 PT · 무료 체험 PT</p>
+      <p><strong>인증·자격</strong> · 대한트레이닝교육협회 운영 · 국민체육진흥공단 안전안심 체육시설 · 문화체육관광부 스포츠지도사 실습기관 · 대한교정운동전문가협회 공식 인증 · 한국관광공사 체력증진 프로젝트</p>
+    </div>
+    <div class="status-grid">
+      <div class="status-cell"><div class="sc-lbl">항목별 상세</div><div class="sc-val">양호</div><div class="sc-sub">PT 프로그램·체험 PT·멤버십 예약 활성화</div></div>
+      <div class="status-cell"><div class="sc-lbl">가격 표시</div><div class="sc-val warn">부분</div><div class="sc-sub">가격표 이미지로만 안내 · 텍스트 수치 부재</div></div>
+      <div class="status-cell"><div class="sc-lbl">찾아가는 길</div><div class="sc-val">양호</div><div class="sc-sub">원주혁신도시 · 공영주차장 인접</div></div>
+      <div class="status-cell"><div class="sc-lbl">소식 발행</div><div class="sc-val">양호</div><div class="sc-sub">공식 계정 + 트레이너 블로그 연동 운영</div></div>
+      <div class="status-cell"><div class="sc-lbl">트레이너 예약 탭</div><div class="sc-val warn">주의</div><div class="sc-sub">김도경 트레이너 현역인데 예약 탭 누락</div></div>
+      <div class="status-cell"><div class="sc-lbl">편의 정보</div><div class="sc-val">양호</div><div class="sc-sub">PT 센터 기본 편의 등록</div></div>
+      <div class="status-cell"><div class="sc-lbl">블로그 활동</div><div class="sc-val">활발</div><div class="sc-sub">2,156건 · 트레이너 직접 운영 비중 높음</div></div>
+      <div class="status-cell"><div class="sc-lbl">리뷰 품질</div><div class="sc-val ok">우수</div><div class="sc-sub">평균 260자 / 벤치마크 120~180자</div></div>
+      <div class="status-cell"><div class="sc-lbl">사장님 답글</div><div class="sc-val warn">주의</div><div class="sc-sub">40.3% / 벤치마크 70%</div></div>
+    </div>
+  </div>
+
+  <div class="prose" style="margin-top:var(--sp-12)">
+    <p>예를 들어 네이버에서 '원주 PT' 혹은 '원주혁신도시 헬스장'을 검색하면 플레이스 목록이 뜨죠. 그 목록에서 위에 뜨느냐 아래에 뜨느냐를 결정하는 게 <strong>SEO(Search Engine Optimization)</strong>입니다. 리뷰 수, 영수증 인증 비율, 키워드 태그, 재방문율 같은 요소들이 영향을 주죠. 검색했을 때 눈에 보이는 곳에 올라가는 것까지가 SEO의 역할입니다.</p>
+  </div>
+
+  <table class="cmp-tbl">
+    <thead><tr><th></th><th>SEO</th><th>AEO</th></tr></thead>
+    <tbody>
+      <tr><td>목표</td><td>검색 목록에 올라가기</td><td>AI의 답변에 선택되기</td></tr>
+      <tr><td>작동 방식</td><td>리뷰 수, 인증, 키워드</td><td>리뷰의 구체성, 스토리, 숫자</td></tr>
+      <tr><td>리뷰 예시</td><td>"친절해요" (태그 수 기여)</td><td>"측만증으로 시작해 6개월 만에 어깨라인이 정리됐어요"</td></tr>
+      <tr><td>비유</td><td>전화번호부에 이름 올리기</td><td>지인이 직접 추천해주는 것</td></tr>
+    </tbody>
+  </table>
+
+  <div class="prose">
+    <p>이제는 검색 결과를 하나씩 보는 게 아닙니다. 쿠팡도, 네이버 플레이스도 AI가 리뷰 전체를 읽고 요약해주고 있거든요. 고객은 그 한 줄 요약으로 방문 여부를 판단하게 됩니다. 이때 AI가 근거로 참조하는 게 리뷰입니다. 이걸 <strong>AEO(Answer Engine Optimization)</strong>라고 합니다.</p>
+  </div>
+
+  <div class="ai-img-wrap"><img src="https://pub-df7c5d3e703845768a1b37d329b42e95.r2.dev/aireview.png" alt="네이버 AI 리뷰 요약 예시" loading="lazy"></div>
+
+  <div class="prose">
+    <p>"1년째 박상빈 트레이너님과 꾸준히 운동하고 있어요. 처음에는 측만증 때문에 시작했는데, 지금은 눈에 띄게 많이 좋아졌고 체형이 정말 많이 달라졌어요"처럼 구체적 경험과 숫자가 있는 리뷰는 AI가 인용할 수 있죠. 반면 "좋아요 친절해요"는 AI가 가져갈 게 없습니다. 네이버 AI 브리핑도 같은 원리로, 구체적 경험이 담긴 리뷰를 근거로 참조합니다.</p>
+  </div>
+
+  <div class="notegrid" style="margin-top:var(--sp-14)">
+    <div class="note">
+      <div class="note-h">이런 리뷰일수록 검색과 AI에 더 잘 잡힙니다</div>
+      <div class="kwbars">
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">구체적 숫자 / 결과</span><span class="kwb-val">+45%</span></div><div class="kwb-track"><div class="kwb-fill" data-w="100"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">고화질 이미지 3장 이상</span><span class="kwb-val">+30%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="67"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">특징적 문구 (브랜드 고유)</span><span class="kwb-val">+25%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="56"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">담당자 실명 언급</span><span class="kwb-val">+15%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="33"></div></div></div>
+      </div>
+    </div>
+    <div class="note">
+      <div class="note-h">네이버가 순위를 매길 때 어디를 더 많이 보는지</div>
+      <div style="margin-top:var(--sp-4)">
+        <div class="rank-row"><div class="rank-name">사용자 행동 (체류, 예약, 재방문)</div><div class="rank-right"><span class="rank-lbl">최상</span><span class="rank-dots"><span class="on">● ● ● ● ●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">업체 유사도 (검색어 매칭)</div><div class="rank-right"><span class="rank-lbl">매우 높음</span><span class="rank-dots"><span class="on">● ● ● ●</span> <span class="off">●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">인기도 (리뷰, 저장, 클릭률)</div><div class="rank-right"><span class="rank-lbl">높음</span><span class="rank-dots"><span class="on">● ● ●</span> <span class="off">● ●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">정보 충실도 (설명, 사진)</div><div class="rank-right"><span class="rank-lbl">중간</span><span class="rank-dots"><span class="on">● ●</span> <span class="off">● ● ●</span></span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ST/00B — 플레이스 상태 ──────────────────────── -->
+<section id="place" class="section" data-nav="플레이스 상태" data-num="01">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 01 <span class="sep">·</span> 플레이스 상태 · 정보 최적화</div>
+    <h2 class="s-title">셋팅만으로는<br><span class="soft">고객이 예약하지 않는다</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>플레이스 셋팅의 역할은 <strong>'입장권'</strong>입니다. 정보를 빠짐없이 채우고, 사진을 올리고, 키워드를 배치하는 것 — 이것만으로 순위가 올라가던 시대는 지났습니다. 하지만 이 기본값이 갖춰져 있지 않으면 노출 자체가 되지 않죠.</p>
+    <p>아래는 비브레 PT/헬스 혁신점 플레이스가 이 입장권을 어디까지 확보하고 있는지 점검한 결과입니다.</p>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose" style="margin-bottom:var(--sp-8)">
+    <p>이 리포트는 세 가지 관점에서 플레이스를 분석합니다.</p>
+  </div>
+
+  <div class="tiers" style="margin-bottom:var(--sp-12)">
+    <div class="tier">
+      <div class="tier-left"><span class="n">01</span>LAYER</div>
+      <div>
+        <div class="tier-name">알고리즘이 보는 것.<br><span style="color:var(--ink-4)">순위의 기반.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">네이버 검색 시스템이 플레이스 정보를 어떻게 평가하는지. 영업시간, 가격표, 사진 업데이트 주기, 소식 발행 빈도 같은 항목들이 <strong>'정보 충실도'</strong>라는 이름으로 검색 순위에 반영됩니다. 대부분의 대행사도 다루는 영역이죠. 기본값이지만, 빠져 있으면 나머지가 작동하지 않는 토대입니다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">02</span>LAYER</div>
+      <div>
+        <div class="tier-name">검색에 걸리는 것.<br><span style="color:var(--ink-4)">AI가 추천하는 재료.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">고객이 "원주 PT" 혹은 "원주재활 PT"라고 검색했을 때 뜨느냐 안 뜨느냐를 결정하는 요소입니다. 소개 문구에 어떤 키워드가 들어 있는지, 찾아가는 길에 지역명이 있는지, 프로그램 설명에 고객의 증상을 해결하는 단어가 포함되어 있는지가 여기에 해당하죠. <strong>네이버 AI 브리핑은 이 텍스트들을 읽고 추천의 근거로 활용합니다.</strong> 같은 업종, 같은 지역인데 한 곳만 AI 답변에 이름이 불리는 이유가 여기에 있습니다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">03</span>LAYER</div>
+      <div>
+        <div class="tier-name">고객이 보고 <span style="color:var(--ink-4)">결정하는 것.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">검색에 노출되고, 고객이 클릭해서 플레이스에 들어왔습니다. <strong>그다음은 3초입니다.</strong> 대표 사진, 리뷰, 가격 정보를 보고 "여기 괜찮겠다"거나 "다른 데 볼까"를 결정하거든요. 가격이 미공개면 <strong>절반 가까이가 이탈</strong>하고, 최근 한 달 내 리뷰가 없으면 "여기 아직 하나?"라고 의심합니다. 1등으로 뜨더라도 전환이 안 되면 의미가 없으니까요.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>이 세 가지는 따로 노는 게 아닙니다. 정보 충실도가 높아야 검색에 걸리고, 검색에 걸려야 고객이 들어오고, 들어온 고객이 전환하려면 결정을 돕는 요소가 갖춰져 있어야 하죠. 아래는 이 세 가지 관점을 기준으로, 현재 플레이스의 상태를 점검한 결과입니다.</p>
+  </div>
+
+  <div class="gauge-block">
+    <div class="gauge-title">Score Summary · 3-Layer Assessment</div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">정보 충실도</span><span class="g-pct mid">75%</span></div>
+        <span class="g-note">대부분 항목 충족 · 예약 탭 정합성·가격 텍스트 2개 개선 여지</span>
+      </div>
+      <div class="g-bar mid" data-w="75"></div>
+      <div class="g-sub">알고리즘이 보는 기본 셋팅</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">검색 매칭</span><span class="g-pct">82%</span></div>
+        <span class="g-note">대표 키워드 5개 배치 · 블로그 2,156건 연동</span>
+      </div>
+      <div class="g-bar" data-w="82"></div>
+      <div class="g-sub">AI가 찾을 수 있는 키워드 존재 여부</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">예약 전환</span><span class="g-pct low">55%</span></div>
+        <span class="g-note">답글 40.3% · 가격 수치 텍스트 부재</span>
+      </div>
+      <div class="g-bar low" data-w="55"></div>
+      <div class="g-sub">클릭한 고객이 예약까지 가는 구조</div>
+    </div>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">항목별 상세 — 13개 항목</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>항목</th><th>현재 상태</th><th>기준</th><th>판정</th><th>영향</th></tr></thead>
+        <tbody>
+          <tr><td><strong>카테고리</strong></td><td>스포츠시설 — 정확</td><td>실제 업종과 일치</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>영업시간</strong></td><td>요일별 분리 · 일요일 휴무</td><td>요일별 분리 + 특이사항 명시</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>사진</strong></td><td>999+ 등록</td><td>최소 10장, 상위 업체 20장+</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>예약 시스템</strong></td><td>PT 프로그램·체험 PT·멤버십 예약 활성화</td><td>네이버 예약 활성화 시 7배 클릭</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>트레이너 예약 탭 정합성</strong></td><td>김도경 트레이너 현역인데 예약 탭 누락</td><td>실제 근무 인력과 예약 탭 일치</td><td><span class="tag t-risk">미충족</span></td><td>전환</td></tr>
+          <tr><td><strong>SNS 연동</strong></td><td>홈페이지·블로그·인스타 연동</td><td>1개 이상 연동 + 최근 포스팅</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>소개 문구</strong></td><td>대표 키워드·자격·인증 포함</td><td>300~500자, POD 키워드 포함</td><td><span class="tag t-ok">충족</span></td><td>검색</td></tr>
+          <tr><td><strong>대표 키워드</strong></td><td>원주pt·원주혁신도시헬스장·원주반곡동피티·원주재활pt·원주체형교정 (5개)</td><td>지역+업종+POD 키워드 5개</td><td><span class="tag t-ok">충족</span></td><td>검색</td></tr>
+          <tr><td><strong>가격 표시</strong></td><td>가격표 이미지로만 안내 · 텍스트 수치 부재</td><td>명시 시 전환 30%↑, 미표시 시 이탈 47%</td><td><span class="tag t-par">부분</span></td><td>전환</td></tr>
+          <tr><td><strong>찾아가는 길</strong></td><td>원주혁신도시 · 주차 설명</td><td>지역+교통수단별 분리 + 주차</td><td><span class="tag t-ok">충족</span></td><td>검색</td></tr>
+          <tr><td><strong>소식 발행</strong></td><td>공식 계정 + 트레이너 블로그 연동 운영</td><td>주 2~3회, 체류 10.4%↑ 예약 8%↑</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>사장님 답글</strong></td><td>375건 중 149건 (40.3%)</td><td>답글 업체 신뢰도 72%, 24h 이내</td><td><span class="tag t-par">부분</span></td><td>전환</td></tr>
+          <tr><td><strong>편의시설</strong></td><td>PT 센터 기본 편의 등록</td><td>주요 편의 5개+ 등록</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="font-size:14px;font-weight:700;color:var(--ink);margin:var(--sp-12) 0 var(--sp-4);letter-spacing:-.2px">개선 항목 — 2건</div>
+
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot"></span>
+      <span class="toggle-lbl">트레이너 예약 탭 — 김도경 트레이너가 현역인데 예약 탭에서 누락</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p><strong>김도경 트레이너는 현역이다.</strong> 2026년 2월 기준 리뷰에서 19건 언급되고 있고, 해당 월 리뷰 중 "2월 추천 트레이너: 김도경 (무료 체험 PT 예약)"이라는 문구가 여러 번 등장한다. 즉 운영자 측에서 김도경 트레이너를 공식 추천 트레이너로 노출했던 이력이 리뷰 데이터에 남아 있다.</p>
+      <p>그러나 현재 체험 PT 예약 탭에서는 누락된 상태로 관찰된다. 신규 유입 고객이 <strong>김도경 지정 예약을 할 수 없는 구조</strong>. 리뷰 품질 이슈가 아니라 플레이스 셋팅 정합성 이슈이며, 스마트플레이스 → 예약 메뉴에서 즉시 수정 가능한 항목이다.</p>
+    </div></div>
+  </div>
+
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot"></span>
+      <span class="toggle-lbl">가격 표시 — 가격표가 이미지로만 있고 텍스트 수치 없음</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p><strong>비브레의 가격 관련 안내는 이미지로만 제공되고 있다.</strong> 텍스트 레벨에서 AI가 읽을 수 있는 "멤버십권 3개월 OO원", "1:1 PT 회당 OO원" 같은 정보가 노출되지 않는다. 네이버 AI 브리핑은 "원주 PT 가격" 같은 검색에 대해 가격 텍스트가 있는 업체를 우선 참조하는 경향이 있다.</p>
+      <p>가격 정책상 전체 공개가 어렵다면 최소한의 가격 범위(예: "1:1 PT 회당 OOO원~", "멤버십권 월 OOO원~")를 플레이스 메뉴 영역 혹은 소개 문구에 텍스트로 포함하는 것이 권장된다.</p>
+    </div></div>
+  </div>
+
+  <div class="dark-block" style="margin-top:var(--sp-14)">
+    <div class="db-label">블로그 리뷰 2,156건의 전략적 맥락</div>
+    <div class="db-h">방문자 리뷰 375건 대비 블로그가 <em>5.75배</em> 많다.<br>다만 구조는 "체험단 전담"이 아니라 <em>"트레이너 직접 운영 + 체험단"의 혼합</em>이다.</div>
+    <div class="db-body">
+      <p><strong>이 구조에서 두 가지가 확인된다.</strong></p>
+      <p><strong>1. 트레이너들이 직접 블로그를 운영한다.</strong> 분석 샘플 112건에서 박상빈 팀장 개인 블로그가 최다를 차지하고, 비브레 공식 계정·임의정·안세웅·안효미 트레이너도 각자 포스팅을 운영한다. 외부 체험단이 전담하는 구조가 아니라 내부 인력이 블로그로 SEO 트래픽을 직접 만들고 있다. 지역+업종 키워드 배치도 체계적 — "원주혁신도시", "반곡동", "원주pt", "원주재활" 같은 키워드가 제목에 골고루 배분돼 있다.</p>
+      <p><strong>2. 블로그의 전문성이 수업 경험 리뷰로 완전히 전이되지는 않는다.</strong> 블로그에서는 측만증·거북목 해부학적 원인, 체형별 맞춤 프로그램 설계 원리, 회차별 변화 과정이 사진·도식과 함께 다뤄진다. 반면 방문자 리뷰에서 "트레이너가 원리를 설명해줬다"는 언급은 11.5% 수준이다. 블로그에서 만드는 "전문성의 언어"가 수업 후 고객 대화를 거쳐 리뷰까지 넘어오는 경로가 지금보다 넓어질 여지가 있다.</p>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>블로그는 이미 비브레의 전문성을 대외적으로 증명하는 채널로 작동 중이다.</strong> 이걸 더 키우기보다는, 블로그에 있는 설명의 "톤"과 "깊이"가 수업 경험으로 이어지는 경로를 넓히는 게 유효하다. 고객이 수업 중에 듣는 설명이 블로그에서 본 설명과 같은 결이면, 리뷰에 "트레이너가 왜 이 운동인지 설명해주셔서" 같은 구체 언급이 자연스럽게 따라온다.</div>
+    <div class="tac-dir"><span class="arrow">→</span><strong>트레이너별 블로그 포스팅에서 자주 쓰는 설명 패턴을 수업 가이드로 역순 정리</strong>해볼 수 있다. 예를 들어 박상빈 팀장의 측만증 포스팅에 나오는 "왜 이 자세가 틀어지는지 → 어느 근육이 약한지 → 어떤 운동으로 잡는지" 3단 구조를 수업 중에도 동일하게 전달하면, 고객은 블로그에서 읽은 것과 수업에서 체감한 것이 연결되는 경험을 하게 된다. 이 연결이 리뷰의 구체성으로 돌아온다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 01 — 종합 진단 ─────────────────────────────── -->
+<section id="overview" class="section" data-nav="종합 진단" data-num="02">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 02 <span class="sep">·</span> 종합 진단</div>
+    <h2 class="s-title">고객들은 비브레를<br><span class="soft">어떻게 인식하고 있는가</span></h2>
+  </div>
+
+  <div class="split">
+    <div class="split-col">
+      <div class="sp-label">Strength</div>
+      <div class="sp-body">비브레 리뷰에는 업종 일반 키워드(친절·시설 깔끔·기구 다양) 외에 세 가지 표현이 두드러지게 쌓여 있다. <span class="hi">"자세·체형을 구체적으로 고쳐줬다"</span>(19.7%), <span class="hi">"혼자 할 때도 적용할 운동법을 배웠다"</span>(18.7%), <span class="hi">"왜 이 동작인지 원리를 설명해줬다"</span>(11.5%). 이 세 표현은 PT 업종 벤치마크 상위 5개 키워드에는 없는, 비브레 리뷰에 특징적으로 나타나는 표현이다.</div>
+      <div class="sp-stats">
+        <div><div class="sp-stat-val">50<span style="font-size:.55em;color:var(--ink-4)">%</span></div><div class="sp-stat-lbl">재방문 리뷰 비율</div></div>
+        <div><div class="sp-stat-val">260<span style="font-size:.55em;color:var(--ink-4)">자</span></div><div class="sp-stat-lbl">평균 리뷰 길이</div></div>
+      </div>
+    </div>
+    <div class="split-col">
+      <div class="sp-label risk">Gap</div>
+      <div class="sp-body">다만 이 세 표현이 <span class="risk">한 리뷰 안에서 서로 엮여 등장하는 비율은 낮다</span>. AI 답변 엔진이 참조하는 건 단일 표현이 아니라 <span class="risk">복합 스토리 구조</span>다. "측만으로 시작 → 원리 설명 기반 수업 → 수치·통증 변화 → 혼자서도 적용 가능"처럼 묶인 리뷰가 <span class="risk">A등급(70점+) 13건</span>에 집중돼 있다.</div>
+      <div class="sp-stats">
+        <div><div class="sp-stat-val">85<span style="font-size:.55em;color:var(--ink-4)">%</span></div><div class="sp-stat-lbl">영수증 인증률</div></div>
+        <div><div class="sp-stat-val lo">13<span style="font-size:.55em">건</span></div><div class="sp-stat-lbl">A등급 (70점+)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>비브레는 POD를 새로 만들어야 하는 단계가 아니라, 이미 리뷰에 쌓여 있는 차별 표현을 "스토리로 엮는" 단계다.</strong> 자세 교정·혼자 운동법 전수·원리 설명이라는 세 표현은 리뷰 안에 이미 존재한다. 다만 대다수 리뷰가 이 중 한 가지만 짧게 언급하고 끝난다. A등급 리뷰 13건의 공통점은 이 세 표현이 Before→After 흐름 안에서 수치·통증·비교 경험 같은 증거 형식과 함께 묶여 있다는 점이다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>리포트의 핵심은 "없는 걸 만들자"가 아니라 "있는 걸 엮자"다. 수업 마지막 질문 한 줄, 답글 한 문장을 통해 고객이 단일 표현을 넘어 자신의 경험을 스토리로 재구성하도록 유도하는 설계를 뒤이은 섹션에서 제안한다.</div>
+  </div>
+
+  <div class="note" style="border-top:1px solid var(--ink-4);margin-top:var(--sp-10);background:#fafafa;padding:var(--sp-8)">
+    <div class="note-h" style="color:var(--accent);letter-spacing:.5px">왜 "복합 스토리"인가 — HyperCLOVA X 작동 메커니즘</div>
+    <p>네이버 AI 브리핑과 Cue:가 리뷰를 인용하는 방식은 단순 키워드 매칭이 아니다. HyperCLOVA X 모델은 <strong>텍스트 길이로 정보 밀도를 측정</strong>하고, 속성 기반 감성 분석(ABSA) 기술로 "자세 교정", "원리 설명", "혼자 운동법" 같은 속성을 추출해 개인화된 답변을 생성한다. 이 구조에서는 "친절해요" 같은 단답형 리뷰가 리뷰 총 개수(Count)에는 기여하지만, "원주 재활 PT 추천" 같은 롱테일 검색이나 AI 대화 답변에는 <strong>거의 노출되지 않는다.</strong> 반면 "측만증으로 왔다가 6개월 지나 자세가 정돈됐고 이제 혼자서도 적용할 수 있게 됐다"는 식의 문제→해결→결과 구조 리뷰는 AI에게 여러 속성 태그를 동시에 제공해 인용 확률을 극대화한다.</p>
+    <p style="margin-top:var(--sp-3);color:var(--ink-4);font-size:12px">근거: 네이버 플레이스 리뷰의 검색·AI 반영 메커니즘 기술 분석 보고서 (2026)</p>
+  </div>
+
+  <div class="charts">
+    <div class="ch">
+      <div class="ch-eye">Score Distribution</div>
+      <div class="ch-title">SEO 평균 31.2점,<br>AEO는 14.0점</div>
+      <div class="ch-ax"><span>AEO Score →</span><span>SEO 20–40 · AEO 5–25</span></div>
+      <div class="ch-canvas"><canvas id="c-scatter" role="img" aria-label="SEO 점수와 AEO 점수의 상관관계를 보여주는 산점도"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">SEO 평균</div><div class="ch-stat-val">31.2 / 45</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">AEO 평균</div><div class="ch-stat-val">14.0 / 50</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">A등급 (70점+)</div><div class="ch-stat-val">13건 (3.5%)</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">B등급 (40~69)</div><div class="ch-stat-val">235건 (62.7%)</div></div>
+      </div>
+    </div>
+    <div class="ch">
+      <div class="ch-eye">POD Language</div>
+      <div class="ch-title">비브레 리뷰에 두드러지는<br>3가지 표현</div>
+      <div class="ch-ax"><span>표현 →</span><span>언급 비율 / 375건</span></div>
+      <div class="ch-canvas"><canvas id="c-kw" role="img" aria-label="POD 언어 분포 차트"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">자세·체형 교정 구체</div><div class="ch-stat-val">74건 · 19.7%</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">혼자 운동법 전수</div><div class="ch-stat-val">70건 · 18.7%</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notegrid">
+    <div class="note">
+      <div class="note-h">리뷰 길이 · 재방문 — 업종 상위권</div>
+      <p>375건 중 <strong>200자 이상이 298건(79.5%)</strong>이다. PT 업종 벤치마크가 120~180자인 점을 감안하면 비브레 평균 260자는 구조적 상위권. 재방문 리뷰(2회차 이상)도 49.6%로 업종 권장 수치를 상회한다. 양적 토대가 이미 단단하다는 뜻이다.</p>
+    </div>
+    <div class="note">
+      <div class="note-h">답글 작성률 — 벤치마크 미달</div>
+      <p>375건 중 답글은 149건(40.3%). 업종 권장 70%에 크게 못 미친다. 더욱이 <strong>답글 중 66.7%를 임의정 트레이너 1인이 주도</strong>한다. 답글이 개인 재량이지 시스템이 아니라는 뜻이다. 답글은 리뷰 상단 체류 시간과 순위 가중치에 직접 기여하므로 우선 개선 항목.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 — POP vs POD ───────────────────────────── -->
+<section id="pop" class="section" data-nav="POP vs POD" data-num="03">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 03 <span class="sep">·</span> POP(기본값) vs POD(차별점)</div>
+    <h2 class="s-title">고객이 실제 언어로 남긴<br><span class="soft">비브레의 차별 표현</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>PT를 받으러 갔는데 트레이너가 불친절하면 다시 가지 않겠죠. 그런데 친절하다고 해서 "여기를 꼭 가야 해"라고 추천하지는 않습니다. 친절한 건 1:1 PT라면 당연한 거니까요. 이게 <strong>POP — Point of Parity(기본값)</strong>입니다. 없으면 탈락하지만, 있어도 선택 이유가 되지 않는 것.</p>
+    <p>반면 "틀어진 자세를 구체적으로 고쳐줬다" "혼자서도 적용할 운동법을 배웠다" "왜 이 동작인지 원리까지 설명해줬다"처럼 구체적인 경험이 담긴 표현이 나오면 이야기가 달라지죠. 이게 <strong>POD — Point of Difference(차별점)</strong>입니다. 업종 공통 표현 너머로, 그 가게의 특성이 드러나는 언어.</p>
+    <p>POP/POD는 운영자가 정하는 게 아니라 <strong>고객 리뷰에 실제로 쓰인 언어</strong>를 분석해서 드러냅니다. 네이버 키워드 태그(체크박스)가 아니라, 고객이 본문에 직접 쓴 문장을 근거로 아래 분류를 냈습니다.</p>
+  </div>
+
+  <table class="cmp-tbl">
+    <thead><tr><th></th><th>POP (기본값)</th><th>POD (차별점)</th></tr></thead>
+    <tbody>
+      <tr><td>의미</td><td>기본 기대치(없으면 탈락)</td><td>차별화 지점(선택 이유)</td></tr>
+      <tr><td>판별 기준</td><td>업종 어디서나 나오는 표현</td><td>업종 벤치마크 상위 키워드에 없는, 구체성 있는 표현</td></tr>
+      <tr><td>리뷰 예시</td><td>"친절해요", "깔끔해요", "선생님 좋아요"</td><td>"측만 잡아줬다", "원리 설명해줬다", "혼자서도 적용할 방법을 배웠다"</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tbl">
+    <div class="tbl-cap">본문 언어 기반 분류 — 고객이 실제로 쓴 표현</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>표현 유형</th><th>언급</th><th>비율</th><th>분류</th><th>근거</th></tr></thead>
+        <tbody>
+          <tr><td><strong>친절하다</strong></td><td>139건</td><td>37.1%</td><td><span class="tag t-pop">POP</span></td><td>서비스업 공통 기대치</td></tr>
+          <tr><td><strong>꼼꼼하다</strong></td><td>103건</td><td>27.5%</td><td><span class="tag t-pop">POP</span></td><td>PT 업종 평균 칭찬</td></tr>
+          <tr><td><strong>시설 깔끔하다</strong></td><td>95건</td><td>25.3%</td><td><span class="tag t-pop">POP</span></td><td>업종 벤치마크 1위 키워드</td></tr>
+          <tr><td><strong>선생님 좋다 (막연한)</strong></td><td>95건</td><td>25.3%</td><td><span class="tag t-pop">POP</span></td><td>구체성 없는 일반 칭찬</td></tr>
+          <tr><td><strong>체계적이다 (단순 언급)</strong></td><td>92건</td><td>24.5%</td><td><span class="tag t-par">경계</span></td><td>구체성이 붙으면 POD로 전환</td></tr>
+          <tr><td><strong>맞춤 (일반 표현)</strong></td><td>64건</td><td>17.1%</td><td><span class="tag t-par">경계</span></td><td>1:1 PT 정의에 포함된 기본 속성</td></tr>
+          <tr><td><strong>개인 전담·장기 지속</strong></td><td>48건</td><td>12.8%</td><td><span class="tag t-pop">POP</span></td><td>1:1 PT는 개인 전담이 기본. 재방문율(49.6%) 지표로 다루는 게 정확</td></tr>
+          <tr><td><strong>★ 자세·체형 교정 구체</strong></td><td>74건</td><td>19.7%</td><td><span class="tag t-pod">POD</span></td><td>"측만 교정", "굽은 어깨 잡아줌", "골반 바로잡음" 등 구체 체형 문제 + 결과 언급</td></tr>
+          <tr><td><strong>★ 혼자 운동법 전수</strong></td><td>70건</td><td>18.7%</td><td><span class="tag t-pod">POD</span></td><td>"집에서 혼자 할 때도 기억하는 자세·기구 사용법" 언급. 업종 벤치마크 상위 키워드에 없는 표현</td></tr>
+          <tr><td><strong>★ 원리 설명</strong></td><td>43건</td><td>11.5%</td><td><span class="tag t-pod">POD</span></td><td>"왜 이 동작인지", "어느 근육이 쓰이는지" 설명 언급. 전문성이 수업 경험으로 드러나는 표현</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="prose" style="margin-top:var(--sp-12);margin-bottom:var(--sp-8)">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;letter-spacing:-.3px">POD는 아니지만 A등급 리뷰의 핵심 재료 — "증거 형식"</p>
+    <p>POD가 단순 표현이라면, 아래 세 가지는 리뷰를 AI 인용 가능 수준으로 올리는 증거 장치다. A등급 리뷰 13건은 POD 표현에 이 증거 형식이 결합된 구조를 공유한다.</p>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">증거 형식 — 리뷰 품질을 끌어올리는 세 가지 요소</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>증거 형식</th><th>언급</th><th>비율</th><th>성격</th></tr></thead>
+        <tbody>
+          <tr><td><strong>수치 변화 증언</strong></td><td>29건</td><td>7.7%</td><td>체중 · 체지방률 · 인바디 점수 · 사이즈 변화 등 구체 수치</td></tr>
+          <tr><td><strong>통증 해결 증언</strong></td><td>28건</td><td>7.5%</td><td>"통증이 사라졌다", "수술 없이 일상 가능" 등 Before/After</td></tr>
+          <tr><td><strong>비교 경험 (다른 PT)</strong></td><td>20건</td><td>5.3%</td><td>"이전 PT에서 효과 못 봤는데 비브레에서는…" 형식</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>비브레 리뷰에는 업종 공통 POP 위에 세 가지 POD 표현이 두드러지게 쌓여 있다.</strong> 자세·체형 교정 구체(19.7%), 혼자 운동법 전수(18.7%), 원리 설명(11.5%) — 이 세 표현은 PT 업종 벤치마크 상위 5개 키워드(시설 깔끔·친절·상담 자세·기구 다양·주차)에는 포함되지 않는, 비브레 리뷰에 특징적으로 나타나는 언어다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>플레이스 소개와 블로그 설명에서도 이 세 표현을 전면에 배치하는 게 효과적이다. "1:1 맞춤 PT"나 "체계적인 관리" 같은 업종 공통 표현은 옆 PT도 쓸 수 있지만, "자세와 체형을 교정합니다", "혼자서도 운동할 수 있도록 가르칩니다", "원리를 설명하는 수업" 같은 표현은 고객 리뷰 데이터로 뒷받침되는 문구다.</div>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">POD Distribution</div>
+      <div class="ch-title">3대 POD + 증거 형식 — 리뷰에 누적된 차별 언어</div>
+      <div class="ch-canvas tall"><canvas id="c-pod" role="img" aria-label="POD 분포 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="qgrid">
+    <div>
+      <div class="qgroup-title">★ POD #1 · 자세·체형 교정 구체 (19.7%)</div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">회</div><div><div class="qname">회원 A</div><div class="qdate">발췌</div></div></div>
+        <div class="qtext">"안세웅 코치님이랑 운동하고 있는데, 자세를 꼼꼼하게 잡아주시고 통증이 생기는 이유도 같이 설명해주셔서 이제는 통증 없이 운동하고 있어요"</div>
+      </div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">회</div><div><div class="qname">회원 B</div><div class="qdate">발췌</div></div></div>
+        <div class="qtext">"1년째 박상빈 트레이너님과 꾸준히 운동하고 있어요. 처음에는 측만증 때문에 시작했는데, 지금은 눈에 띄게 많이 좋아졌고 체형이 정말 많이 달라졌어요. 특히 어깨라인이 정리됐어요"</div>
+      </div>
+    </div>
+    <div>
+      <div class="qgroup-title">★ POD #2 · 혼자 운동법 전수 (18.7%)</div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">회</div><div><div class="qname">회원 C</div><div class="qdate">발췌</div></div></div>
+        <div class="qtext">"자세 교정이나 근육 쓰는 법을 디테일하게 알려주셔서 혼자 운동할 때랑은 확실히 다르다는 걸 느꼈고, 전문성이 느껴지는 수업이라 재등록했어요"</div>
+      </div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">회</div><div><div class="qname">회원 D</div><div class="qdate">발췌</div></div></div>
+        <div class="qtext">"10회차까지 하면서 느낀 건, 혼자 했으면 절대 몰랐을 디테일을 많이 배웠다는 거예요. 운동 제대로 배우고 싶은 분들께 추천합니다"</div>
+      </div>
+    </div>
+    <div>
+      <div class="qgroup-title">★ POD #3 · 원리 설명 (11.5%)</div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">회</div><div><div class="qname">회원 E</div><div class="qdate">발췌</div></div></div>
+        <div class="qtext">"그냥 하세요가 아니라 원리 설명해주시고 몸을 제대로 쓰게 만들어주시는 스타일이십니다. 이해되게 설명해주셔서 운동이 훨씬 잘 느껴져요"</div>
+      </div>
+    </div>
+    <div>
+      <div class="qgroup-title">증거 형식 · 수치 + 통증 + 비교 (A등급 리뷰의 공통 구조)</div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">회</div><div><div class="qname">회원 F</div><div class="qdate">발췌</div></div></div>
+        <div class="qtext">"허재민 트레이너님 30회 PT 후기입니다. 체지방량 -3.5kg, 근육량 +2.2kg, 인바디 점수 +6점. 전반적으로 자세 교정과 체력 회복이 가장 큰 변화입니다"</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 04 — 간극 분석 ─────────────────────────────── -->
+<section id="gap" class="section" data-nav="간극 분석" data-num="04">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 04 <span class="sep">·</span> 간극 분석</div>
+    <h2 class="s-title">POD는 있다.<br><span class="soft">다만 하나의 스토리로 묶이지 않는다</span></h2>
+  </div>
+
+  <div class="note" style="border-top:1px solid var(--ink-4);margin-bottom:var(--sp-10)">
+    <div class="note-h">분석 관점</div>
+    <p>보통의 간극 분석은 "운영자가 전달하려는 것과 고객이 실제로 쓴 것 사이의 차이"를 봅니다. 그러나 비브레는 이미 3대 POD 표현이 고객 리뷰에 뚜렷하게 존재합니다. 진짜 간극은 <strong>"한 리뷰 안에서 POD가 하나만 언급되고 끝난다"</strong>는 데 있습니다. AI 답변 엔진이 참조하는 건 단일 표현이 아니라 스토리 구조이기 때문입니다.</p>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">진짜 간극</div>
+    <div class="db-h">3대 POD 표현은 <em>각각 11~20%</em>씩 쌓여 있다.<br>그러나 <em>여러 POD가 한 리뷰에 동시에 등장하는 비율</em>은 훨씬 낮다.</div>
+    <div class="db-body">
+      <p>A등급(70점+) 리뷰 13건의 공통점은 단일 표현이 아니라 <strong>복합 스토리</strong>다. "측만증으로 시작 → 원리 설명 기반 수업 → 6개월 지나 통증 사라짐·자세 정돈 → 이제 혼자서도 운동법을 적용할 수 있음" 형태. 여기에 구체 수치·통증 해결·비교 경험 같은 증거 형식이 덧붙으면 AI 인용 가치가 가장 높은 리뷰 구조가 된다.</p>
+      <p>반면 B등급(40~69점) 235건의 대부분은 3대 POD 중 <strong>한 요소만 짧게 언급하고 끝난다.</strong> 예를 들어 "박상빈 트레이너님 자세 꼼꼼하게 잡아주세요"로 끝나는 경우, POD #1(자세 교정)만 담고 있고 POD #2(혼자 운동법 전수)·#3(원리 설명)로 이어지지 않는다. 같은 회원의 경험을 스토리로 엮어낼 수 있었다면 A등급 리뷰가 되었을 구조다.</p>
+    </div>
+  </div>
+
+  <div class="charts charts-1" style="margin-top:var(--sp-12)">
+    <div class="ch">
+      <div class="ch-eye">POD Coverage</div>
+      <div class="ch-title">POD가 단일로 나타나는가, 복합으로 묶이는가</div>
+      <div class="ch-canvas tall"><canvas id="c-gap" role="img" aria-label="POD 커버리지 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">POD 및 증거 형식별 — 단일 언급 vs 복합 스토리 비율</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>요소</th><th>단일 언급 경향</th><th>복합 언급 경향</th><th>판정</th></tr></thead>
+        <tbody>
+          <tr><td><strong>POD #1 자세·체형 교정</strong></td><td>74건 중 약 절반이 단일 언급</td><td>약 절반이 다른 POD와 묶임</td><td><span class="tag t-par">중간</span></td></tr>
+          <tr><td><strong>POD #2 혼자 운동법 전수</strong></td><td>70건 중 다수가 단일 언급</td><td>원리 설명과 결합 시 A등급</td><td><span class="tag t-par">중간</span></td></tr>
+          <tr><td><strong>POD #3 원리 설명</strong></td><td>43건 — 상대적으로 복합 등장 많음</td><td>자세 교정과 자주 동반</td><td><span class="tag t-ok">양호</span></td></tr>
+          <tr><td><strong>증거 형식: 수치 변화</strong></td><td>29건</td><td>Before→After 서사로 묶이면 AEO 최상위</td><td><span class="tag t-gap">부족</span></td></tr>
+          <tr><td><strong>증거 형식: 통증 해결</strong></td><td>28건</td><td>재활 페르소나 20% 대비 낮음</td><td><span class="tag t-gap">부족</span></td></tr>
+          <tr><td><strong>증거 형식: 비교 경험</strong></td><td>20건</td><td>단독 언급만으로도 강한 POD 증거</td><td><span class="tag t-par">중간</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="dark-block" style="margin-top:var(--sp-14)">
+    <div class="db-label">브랜드 인식 종합 문장</div>
+    <div class="db-h">리뷰 데이터가 말해주는 비브레는 이렇다.</div>
+    <div class="db-body">
+      <p>이 샵은 리뷰만 봤을 때, <strong>"틀어진 자세와 체형을 구체적으로 고쳐주고, 왜 이 운동을 해야 하는지 원리까지 설명해주며, 혼자서도 적용할 수 있는 운동법을 가르쳐주는 PT 센터"</strong>로 인식된다. 재방문 리뷰가 49.6%로 업종 평균을 상회한다는 점도, 이 세 가지 경험이 지속적 관계로 이어지는 기반이 된다는 것을 시사한다.</p>
+      <p>다만 이 세 가지 차별 표현이 <strong>한 리뷰 안에서 스토리로 엮여 드러나는 경우는 상대적으로 드물다.</strong> 각 회원이 실제로 경험한 흐름(Before → 수업 과정 → After)을 리뷰에 수치·통증·비교 경험 같은 증거 형식과 함께 담아내는 비율을 높이는 것이 과제다.</p>
+      <p>부가적으로, 한 트레이너에게 리뷰 자산이 집중되었다가 이탈로 동결된 사례가 데이터에 있다. 허재민 트레이너의 43건이 2025년 11월 이후 공백으로 전환됐고, 같은 시기 재배정 흔적이 다른 트레이너 언급 증가에서 확인된다. 개인 귀속 완화와 브랜드·시스템 귀속 강화가 리스크 관리 차원에서 필요하다.</p>
+    </div>
+  </div>
+
+  <div class="note" style="border-top:1px solid var(--ink-4);margin-top:var(--sp-10);background:#fafafa;padding:var(--sp-8)">
+    <div class="note-h" style="color:var(--accent);letter-spacing:.5px">간극의 크기 — AI 가중치로 본 정량 평가</div>
+    <p>업종 기술 분석 보고서에 따르면, AI 브리핑이 리뷰 가치를 평가할 때 가중치를 부여하는 요소는 네 가지다. 이 가중치는 비브레가 현재 어느 영역에서 가장 큰 성장 여지를 갖는지 보여준다.</p>
+    <div style="margin-top:var(--sp-5);display:grid;grid-template-columns:1fr;gap:var(--sp-3)">
+      <div style="padding:var(--sp-4);background:#fff;border-left:3px solid var(--accent)">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:2px">구체적 수치·결과 — AI 가중치 +45%</div>
+        <div style="font-size:13px;color:var(--ink-4)">비브레 현재: 수치 변화 증언 29건(7.7%). 다이어트 페르소나 규모(약 13%) 대비 얕다. Q2 유도 질문이 직접 공략하는 영역. 가장 큰 성장 여지.</div>
+      </div>
+      <div style="padding:var(--sp-4);background:#fff;border-left:3px solid var(--ink-3)">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:2px">고화질 사진 3장 이상 — AI 가중치 +30%</div>
+        <div style="font-size:13px;color:var(--ink-4)">비브레 현재: 사진 포함 리뷰 68.8%. 전반적으로 잘 유지되고 있으나, Before/After 구도 사진 비율은 낮은 것으로 관찰된다.</div>
+      </div>
+      <div style="padding:var(--sp-4);background:#fff;border-left:3px solid var(--ink-3)">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:2px">특징적 문구·브랜드 고유 표현 — AI 가중치 +25%</div>
+        <div style="font-size:13px;color:var(--ink-4)">비브레 현재: "비브레" 브랜드명 직접 언급 37%. 시스템/방식 관련 표현 30%. 양호 수준이나 "체형 분석 → 맞춤 프로그램 → 회차별 조정" 같은 운영 시그니처 표현이 더 자주 등장할 여지가 있다.</div>
+      </div>
+      <div style="padding:var(--sp-4);background:#fff;border-left:3px solid var(--ink-3)">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:2px">담당자 실명 언급 — AI 가중치 +15%</div>
+        <div style="font-size:13px;color:var(--ink-4)">비브레 현재: 담당 트레이너 실명 언급 39.5%. 가장 잘 작동 중인 영역. 다만 리스크와 직결 — 개인 귀속이 지나치게 높아 이탈 자산 발생 실증 사례가 있다.</div>
+      </div>
+    </div>
+    <p style="margin-top:var(--sp-5);color:var(--ink-4);font-size:12px">근거: 네이버 AI 브리핑·CLOVA X·Cue: 리뷰 인용 메커니즘 분석 (2026). 가중치는 업종 일반 추정치이며 절대값이 아닌 상대 비교 지표로 참고.</p>
+  </div>
+
+  <div class="prose" style="margin-top:var(--sp-14);margin-bottom:var(--sp-8)">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;letter-spacing:-.3px">이 리포트의 3대 메시지 프레임</p>
+  </div>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="tier-left"><span class="n">①</span>프레임</div>
+      <div>
+        <div class="tier-name">강점 — 이미 작동 중</div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">3대 POD 표현(자세·체형 교정 구체·혼자 운동법 전수·원리 설명)이 이미 고객 리뷰에 뚜렷이 존재한다. 업종 공통 POP(친절·시설 깔끔·기구 다양) 위에 비브레만의 차별 언어가 데이터로 누적돼 있다. 이건 유지·보존 대상이지 개선 대상이 아니다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">②</span>프레임</div>
+      <div>
+        <div class="tier-name">간극 — POD가 스토리로 엮이지 않음</div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">같은 회원이 실제로 경험한 Before → 수업 과정 → After 흐름이 한 리뷰에 통째로 담기는 비율이 낮다. 특히 수치 변화 증언(7.7%)과 통증 해결 증언(7.5%)이 재활·다이어트 페르소나 규모에 비해 얕게 표현돼 있다. 유도 질문 설계로 이 흐름을 리뷰 안으로 불러올 수 있다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">③</span>프레임</div>
+      <div>
+        <div class="tier-name">리스크 — 개인 귀속 편중</div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">답글 149건의 66.7%를 한 트레이너가 주도하고, 허재민 트레이너 1인의 43건이 이탈로 동결된 실증 사례가 있다. 이는 "미래에 발생할 수 있는 리스크"가 아니라 <strong>이미 한 번 발생한 리스크</strong>다. 답글 시스템화와 브랜드 귀속 유도가 병행되어야 한다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>비브레의 리뷰 개선은 "POD 만들기"가 아니라 "POD 엮기"다.</strong> 수업 마지막에 던지는 질문 한 줄이 단일 POD 리뷰를 복합 스토리 리뷰로 바꿀 수 있다. "오늘 수업 어떠셨어요"라는 일반 질문은 "좋았어요"로 끝나지만, "처음 오셨을 때와 지금이 어떻게 다른지, 그리고 트레이너가 원리를 설명해준 순간이 있었는지"를 함께 물으면 Before-After 서사와 POD가 동시에 담긴다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>뒤의 액션 플랜에서 3대 POD와 증거 형식이 리뷰 언어로 묶여 나오도록 유도 질문을 설계한다. 그리고 답글 시스템화·트레이너 예약 탭 정합성 같은 운영 이슈를 병행 처리해 개인 귀속 리스크를 완화한다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 05 — 고객 분석 ─────────────────────────────── -->
+<section id="customer" class="section" data-nav="고객 분석" data-num="05">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 05 <span class="sep">·</span> 고객 분석</div>
+    <h2 class="s-title">누가, 왜,<br><span class="soft">어디서 왔는가</span></h2>
+  </div>
+
+  <div class="pgrid">
+    <div class="persona"><div class="p-pct">20<span class="unit">%</span></div><div class="p-name">통증·무릎·어깨 해결형</div><div class="p-kw">통증, 무릎, 어깨, 불편</div></div>
+    <div class="persona"><div class="p-pct">19<span class="unit">%</span></div><div class="p-name">다이어트·체중감량형</div><div class="p-kw">다이어트, 체중, 감량, 체지방</div></div>
+    <div class="persona"><div class="p-pct">3<span class="unit">%</span></div><div class="p-name">측만증·허리 디스크</div><div class="p-kw">측만, 디스크, 허리 수술</div></div>
+    <div class="persona"><div class="p-pct">2<span class="unit">%</span></div><div class="p-name">러너·퍼포먼스형</div><div class="p-kw">러닝, 달리기, 마라톤</div></div>
+    <div class="persona"><div class="p-pct">2<span class="unit">%</span></div><div class="p-name">산후 회복·임신부</div><div class="p-kw">산후, 출산, 임신, 임산부</div></div>
+    <div class="persona"><div class="p-pct">2<span class="unit">%</span></div><div class="p-name">육아맘·워킹맘</div><div class="p-kw">육아, 엄마, 워킹맘</div></div>
+    <div class="persona"><div class="p-pct">1<span class="unit">%</span></div><div class="p-name">결혼·웨딩 준비</div><div class="p-kw">결혼, 웨딩, 신부</div></div>
+    <div class="persona"><div class="p-pct">1<span class="unit">%</span></div><div class="p-name">거북목·라운드숄더 직장인</div><div class="p-kw">거북목, 앉아서 일, 사무직</div></div>
+    <div class="persona"><div class="p-pct">1<span class="unit">%</span></div><div class="p-name">50대+·중장년</div><div class="p-kw">50대, 60대, 중년</div></div>
+    <div class="persona"><div class="p-pct">1<span class="unit">%</span></div><div class="p-name">만성질환·당뇨·대사</div><div class="p-kw">당뇨, 혈당, 고혈압</div></div>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">Key Finding</div>
+    <div class="db-h">상위 2개 페르소나(통증 해결형 20% + 다이어트 19%)가 <em>전체의 39%</em>를 차지한다.<br>이들은 "문제를 해결하러 온" 고객이다.</div>
+    <div class="db-body">
+      <p><strong>문제 해결형 페르소나가 전체의 39%를 차지한다는 건 "운동 자체"가 아니라 "구체적 문제의 해결"을 목적으로 오는 고객이 주류라는 뜻이다.</strong> 비브레는 PT 문법(체력 향상·근육 증가)보다 재활·교정·컨설팅 문법으로 소통할 때 더 맞는 포지션이다. 대표 키워드 "원주재활pt"도 이 흐름과 정합한다.</p>
+      <p>니치 페르소나(측만·러너·산후·직장인·당뇨)는 각각 1~3%로 작지만 <strong>고관여·고LTV 세그먼트</strong>다. 안효미 트레이너 단독으로 산후, 김정모 트레이너가 러너·만성질환을 전담할 수 있는 구조가 이미 존재한다. 전용 랜딩 페이지 가치 있음.</p>
+    </div>
+  </div>
+
+  <div class="charts">
+    <div class="ch">
+      <div class="ch-eye">Before State</div>
+      <div class="ch-title">Before State — 왜 왔는가</div>
+      <div class="ch-canvas"><canvas id="c-before" role="img" aria-label="방문 사유 분포"></canvas></div>
+    </div>
+    <div class="ch">
+      <div class="ch-eye">Decision Trigger</div>
+      <div class="ch-title">비브레를 선택한 이유</div>
+      <div class="ch-canvas"><canvas id="c-trigger" role="img" aria-label="선택 이유 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>가장 큰 진입 경로는 "혼자 운동 한계"(23.2%)와 "처음 PT"(20.5%)다.</strong> 반면 "다른 PT에서 이전"은 6.4%로 낮다. 즉 비브레의 주 고객은 PT 시장 안에서 옮겨온 사람이 아니라, <strong>"전문가가 필요함을 이제 막 인식한 사람"</strong>이다. 이 그룹이 협회·자격·인증 POD가 가장 잘 꽂히는 타겟 — 이미 "전문가 필요성"을 전제로 하고 오기 때문.</div>
+    <div class="tac-dir"><span class="arrow">→</span>리뷰 유도 타겟 1순위는 <strong>통증 해결형 · 다이어트형 · 측만·디스크 (재활 특화) · 산후 회복</strong>이어야 한다. 이들은 Before State가 구체적("허리 디스크 수술 후…", "2년간 도수치료 받다가…")이고, 성과 수치(kg, 회차, 개월)도 남긴다. AEO 인용 가능 리뷰의 원천 고객군이다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 06 — 담당자 인식 ──────────────────────────── -->
+<section id="trainer" class="section" data-nav="귀속 구조" data-num="06">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 06 <span class="sep">·</span> 담당자별 인식</div>
+    <h2 class="s-title">트레이너 개인 귀속과<br><span class="soft">브랜드 시스템의 긴장</span></h2>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">Attribution</div>
+      <div class="ch-title">귀속 구조 — 리뷰가 누구에게 가는가</div>
+      <div class="ch-canvas"><canvas id="c-attr" role="img" aria-label="귀속 구조 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="tgrid">
+    <div class="trainer">
+      <div class="t-num">01</div>
+      <div class="t-name">박상빈 팀장<span class="t-badge">스타급</span></div>
+      <div class="t-meta">28건 · 7.5% · 블로그 35건(1위)</div>
+      <div class="t-pills"><span class="t-pill">팀장</span><span class="t-pill">케이스 컨설팅</span><span class="t-pill">측만·체형</span><span class="t-pill">답글 0건</span></div>
+      <div class="t-summary">리뷰·블로그 양 채널 상위. 2025-11부터 언급 폭증. 팀장 직급·케이스 컨설팅 전담</div>
+      <div class="t-quote">"박상빈 팀장님이 측만증 증세 체크하고 맞춤 운동으로 잡아주셨어요. 6개월 만에 어깨라인이 정돈됐습니다"</div>
+    </div>
+    <div class="trainer">
+      <div class="t-num">02</div>
+      <div class="t-name">김정모 트레이너<span class="t-badge">전문성</span></div>
+      <div class="t-meta">21건 · 5.6% · 스포츠재활 석사</div>
+      <div class="t-pills"><span class="t-pill">재활 석사</span><span class="t-pill">체험PT</span><span class="t-pill">답글 3건</span><span class="t-pill">만성질환</span></div>
+      <div class="t-summary">"스포츠재활 석사" 권위가 유일하게 블로그·리뷰 양쪽에 언어화된 인물. 비브레 전문성의 대리 지표</div>
+      <div class="t-quote">"김정모 쌤이 스포츠재활 석사 출신이라 병원 설명 이해하시고 재활 단계별로 운동 가이드해주셨어요"</div>
+    </div>
+    <div class="trainer">
+      <div class="t-num">03</div>
+      <div class="t-name">임의정 트레이너<span class="t-badge">답글 주도</span></div>
+      <div class="t-meta">20건 · 5.3% · 답글 18건</div>
+      <div class="t-pills"><span class="t-pill">체험PT</span><span class="t-pill">답글 66.7%</span><span class="t-pill">장기 회원</span></div>
+      <div class="t-summary">답글 149건 중 임의정 실명 시그너처가 18건. 트레이너 답글의 66.7% 주도 — 답글이 개인 재량, 시스템 아님</div>
+      <div class="t-quote">"임의정 쌤과 1년 넘게 운동 중이에요. 꾸준히 체형이 바뀌었고 매 회차마다 강도를 맞춰주셔요"</div>
+    </div>
+    <div class="trainer" style="border:2px solid var(--accent);padding:var(--sp-6)">
+      <div class="t-num" style="color:var(--accent)">★ 04</div>
+      <div class="t-name" style="color:var(--accent)">허재민 트레이너<span class="t-badge" style="background:var(--accent);color:#fff">이탈 자산</span></div>
+      <div class="t-meta">43건 · 11.5% · <strong>2025-12 이후 공백</strong></div>
+      <div class="t-pills"><span class="t-pill">예약 탭 부재</span><span class="t-pill">22개월 지속</span><span class="t-pill">재배정 흔적</span></div>
+      <div class="t-summary">2024-02~2025-11 22개월간 꾸준히 43건 언급. 2025-12 이후 0건. 동시기 박상빈·김정모·임의정 언급 폭증 = 회원 재배정 흔적. 리뷰 기준 사실상 1위였던 인력의 이탈 = 리뷰 자산 43건 동결. 리포트 리스크 프레임의 실증 사례</div>
+      <div class="t-quote">"허재민 쌤이랑 1년 넘게 운동해서 정말 많이 좋아졌어요" (2025.10 · 이후 2025-12부터 언급 0건)</div>
+    </div>
+    <div class="trainer">
+      <div class="t-num">05</div>
+      <div class="t-name">김도경 트레이너<span class="t-badge">예약탭 누락</span></div>
+      <div class="t-meta">19건 · 5.1% · 현역인데 예약 탭 미노출</div>
+      <div class="t-pills"><span class="t-pill">추천 트레이너</span><span class="t-pill">2026-02 3건</span><span class="t-pill">답글 5건</span></div>
+      <div class="t-summary">2026-02에도 3건 언급되는 현역. 2026-02 리뷰에 "추천 트레이너 김도경 (무료 체험 PT 예약)"으로 노출된 흔적 존재. 현재 예약 탭에서 누락 — 신규 유입이 지정 예약 불가능. 플레이스 셋팅 즉시 수정 대상</div>
+      <div class="t-quote">"2월 추천 트레이너 김도경 쌤 무료 체험 PT 받았어요. 꼼꼼하고 기초부터 잡아주셨어요"</div>
+    </div>
+    <div class="trainer" style="background:#fafafa">
+      <div class="t-num" style="color:var(--ink-4)">06</div>
+      <div class="t-name">허재윤 대표 / 김연주 원장<span class="t-badge">신뢰 증거</span></div>
+      <div class="t-meta">0건 / 1건 · 운영 관점 인물</div>
+      <div class="t-pills"><span class="t-pill">전문체육지도사</span><span class="t-pill">교육협회장</span><span class="t-pill">PCA프로</span></div>
+      <div class="t-summary">대표와 원장은 일선 수업 접점이 원포인트·케이스 컨설팅 예약에 한정되어 있다. 리뷰에 실명으로 등장하지 않는 것은 자연스러운 구조 — 이 두 인물은 자격·인증을 담지하는 "신뢰 증거"로 플레이스 소개·블로그·가격표에 배치되어 예약 전환 단계에서 작동한다</div>
+      <div class="t-quote">(수업 경험 리뷰에는 등장하지 않음 — 의도된 운영 구조)</div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>리뷰 자산이 현역 트레이너 3인(박상빈 28·김정모 21·임의정 20, 총 69건)에 집중되고, 답글은 임의정 트레이너 1인이 66.7%를 주도한다.</strong> 이 집중 구조가 이론적 리스크가 아니라 <strong>실제 사례</strong>로 드러난 적이 있다 — 허재민 트레이너의 43건이 2025년 11월 이후 공백으로 전환됐고, 같은 시기 현역 트레이너 3인의 언급이 폭증하며 재배정 흔적이 데이터에 남았다. 개인 귀속의 구조적 리스크가 한 번 실현됐다는 뜻이다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>두 가지를 동시에 집행해야 한다. (1) <strong>답글 시스템화</strong> — 현재 개인 재량에 의존하는 답글을 공식 템플릿 기반으로 전환하되, 템플릿 안에 "체형 분석 시스템", "회차별 프로그램 조정" 같은 비브레 운영 방식 언어를 자연스럽게 포함해 브랜드 귀속을 강화. 답글률 40%→70% 전환이 1순위. (2) <strong>김도경 트레이너 예약 탭 복구</strong> — 현역이지만 예약 탭에서 누락된 상태라 신규 유입의 진입 경로가 줄어 있다. 즉시 수정 가능한 항목.</div>
+  </div>
+
+  <div class="note" style="border-top:1px solid var(--ink-4);margin-top:var(--sp-10);background:#fafafa;padding:var(--sp-8)">
+    <div class="note-h" style="color:var(--accent);letter-spacing:.5px">구조적 관점 — 비브레는 이미 "진단·설계 / 실행" 분리 모델에 가깝다</div>
+    <p>브랜드 설계 이론에서 개인 귀속 리스크를 방어하는 고전적 해법은 <strong>"진단·설계(시스템 설계자)"와 "실행(전달자)"을 의도적으로 분리</strong>하는 것이다. 고객이 "스타 전문가가 설계한 커리큘럼을 표준화된 실행자들이 전달한다"고 인식할 때, 실행자 개인이 바뀌어도 브랜드 신뢰가 유지된다.</p>
+    <p style="margin-top:var(--sp-3)">비브레의 인력 구조는 이 모델에 <strong>이미 근접해 있다.</strong></p>
+    <div style="margin-top:var(--sp-5);display:grid;grid-template-columns:1fr;gap:var(--sp-3)">
+      <div style="padding:var(--sp-4);background:#fff;border-left:3px solid var(--accent)">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:2px">설계 레이어 (시스템 설계자)</div>
+        <div style="font-size:13px;color:var(--ink-4)"><strong>허재윤 대표 · 박상빈 팀장 · 김연주 원장</strong> — 자격·인증·컨설팅 진단·체형 분석 시스템을 담지하는 축. 고객 인식상 "설계도를 만드는 사람들". 일선 수업 접점이 적은 것은 이 레이어에서 자연스럽다.</div>
+      </div>
+      <div style="padding:var(--sp-4);background:#fff;border-left:3px solid var(--ink-3)">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:2px">실행 레이어 (표준화된 전달자)</div>
+        <div style="font-size:13px;color:var(--ink-4)"><strong>박상빈 팀장 · 김정모 · 임의정 · 안세웅 · 안효미 · 김도경</strong> — 설계된 커리큘럼을 수업으로 전달하는 현역 트레이너들. 개별 인물의 역량이 중요하지만, 커리큘럼·분석 도구가 "비브레 시스템"에 귀속되어야 한다.</div>
+      </div>
+    </div>
+    <p style="margin-top:var(--sp-5)"><strong>과제는 이 구조를 고객 커뮤니케이션에서 드러내는 것이다.</strong> 답글 템플릿에 "체형 분석 → 맞춤 프로그램 설계 → 회차별 조정"이라는 <strong>비브레 시스템 시그니처</strong>를 녹이고, 수업 중에도 "저희 시스템에서는"이라는 언어를 자연스럽게 노출하면, 트레이너 개인이 바뀌어도 고객은 "비브레 시스템 안에서 관리받고 있다"는 확신을 유지한다. 이는 리뷰에서 "박상빈 트레이너님이 좋다"가 아니라 "비브레의 체형 분석 시스템이 좋다"로 귀속 대상이 점진적으로 이동한다는 뜻이다.</p>
+    <p style="margin-top:var(--sp-3);color:var(--ink-4);font-size:12px">근거: 소규모 서비스업의 브랜드 설계 — "진단/설계 vs 실행 분리" 모델 · 브랜드 보이스 앤 톤 매뉴얼 설계 원칙</p>
+  </div>
+</div>
+</section>
+
+<!-- 07 — 리뷰 추이 ─────────────────────────────── -->
+<section id="trend" class="section" data-nav="리뷰 추이" data-num="07">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 07 <span class="sep">·</span> 리뷰 추이</div>
+    <h2 class="s-title">성장 중인 흐름 속에서<br><span class="soft">한 번의 이탈 이력</span></h2>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">Monthly Reviews</div>
+      <div class="ch-title">월별 리뷰 건수 — 성장기 진입 + 2025-12 구조적 변곡점</div>
+      <div class="ch-canvas tall"><canvas id="c-monthly" role="img" aria-label="월별 리뷰 추이"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">피크월 (2025.12)</div><div class="ch-stat-val warn">35건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">최근월 (2026.02)</div><div class="ch-stat-val">23건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">2025 전년 대비</div><div class="ch-stat-val ok">+102%</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">답글률</div><div class="ch-stat-val warn">40.3%</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">Verdict</div>
+    <div class="db-h">리뷰 유입은 <em>역으로 가속 중</em>이다.<br>단, 2025-12 피크는 "자연 성장"이 아닌 <em>트레이너 이탈·회원 재배정</em> 시점이다.</div>
+    <div class="db-body">
+      <p><strong>연도별: 2023년 71건 → 2024년 83건 → 2025년 168건 (전년 대비 +102%).</strong> 2025년 하반기부터 월 15건+ 수준으로 안착했고, 2026년 2월 피크 23건을 찍었다. PT 업종 벤치마크 "주 20건+ 권장"에는 미달이나, 월 단위로는 상위 노출 임계(상위 노출 매장 350~600건)에 진입한 상태다. 오픈 버프 소멸이 아니라 성장기 진입 단계.</p>
+      <p><strong>2025년 12월 피크 35건의 실체</strong> — 이 달은 자연 성장 흐름과 별개다. 허재민 트레이너 언급이 2025년 11월까지 누적 43건 → 2025년 12월부터 0건으로 전환됐고, 동시기 박상빈·김정모 트레이너 언급이 폭증했다. 회원 재배정 흔적이 리뷰에 대량으로 남은 일시적 스파이크로 해석된다. 스타 인력 이탈 시 리뷰 자산이 재배정되는 과정이 데이터로 실증된 지점이다.</p>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>리뷰 유입이 안정적 성장 구간에 들어왔다는 것은, 이제 양 확보보다 품질 개선이 더 큰 수익률을 낸다는 뜻이다.</strong> 월 13건 중 A등급(70점+) 비율이 현재 3.5%에서 10%로 올라가면, 매달 AI 인용 가능 리뷰가 0.5건 → 1.3건 수준으로 늘어난다. 1년이면 약 15건이 누적되어 "원주 재활 PT 추천", "원주혁신도시 체형교정" 같은 롱테일 검색에서 AI 답변에 인용될 수 있는 자산으로 축적된다.</div>
+    <div class="tac-dir"><span class="arrow">→</span><strong>답글률 40.3% → 70% 개선.</strong> 현재 답글의 66.7%를 한 트레이너가 주도하고 있어 공식 답글 시스템으로 분산해야 한다. 답글 본문에 "체형 분석 → 맞춤 프로그램 → 회차별 조정" 같은 비브레 운영 방식이 자연스럽게 드러나도록 템플릿을 설계하면 답글 자체가 브랜드 귀속 채널로 작동한다.<br><br><span class="arrow">→</span><strong>재배정된 회원의 현재 상태 확인.</strong> 허재민 트레이너 담당이었던 회원들이 재배정 트레이너와 현재도 이어지고 있는지, 이탈했는지 확인이 필요하다. 이 결과가 향후 개인 귀속 완화 전략의 근거가 된다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 07 — 액션 플랜 ─────────────────────────────── -->
+<section id="action" class="section" data-nav="액션 플랜" data-num="08">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 08 <span class="sep">·</span> 액션 플랜</div>
+    <h2 class="s-title">리뷰 데이터에서 도출된<br><span class="soft">구체적 실행 항목</span></h2>
+  </div>
+
+  <div class="note" style="border-top:1px solid var(--ink-4);margin-bottom:var(--sp-10);background:#fafafa;padding:var(--sp-8)">
+    <div class="note-h" style="color:var(--accent);letter-spacing:.5px">Q1~Q6 질문 설계의 행동경제학적 근거</div>
+    <p>"오늘 수업 어땠나요?"라는 광의의 질문이 "좋았어요"로 끝나는 이유는 심리학적으로 설명된다. Kahneman의 이중 시스템 이론에 따르면, 뇌는 어려운 타겟 질문을 <strong>무의식적으로 더 쉬운 감정 휴리스틱 질문으로 대체(Substitution)</strong>한다. "서비스 어땠나요?" → "지금 기분이 어떤가?" → "좋았다"로 바뀌어 버리는 것이다.</p>
+    <p style="margin-top:var(--sp-3)">Q1~Q6 질문은 이 대체 경로를 차단하는 4가지 인지 원리로 설계됐다.</p>
+    <div style="margin-top:var(--sp-5);display:grid;grid-template-columns:1fr;gap:var(--sp-3)">
+      <div style="padding:var(--sp-4);background:#fff;border-left:3px solid var(--accent)">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:2px">인과적 서사 · 인지적 편안함</div>
+        <div style="font-size:13px;color:var(--ink-4)">Q2·Q4·Q6은 Before→After 구조를 직접 요구한다. 뇌는 원인-결과로 연결된 "일관된 이야기"를 편안하게 처리하며, 이 구조 안에서 경험을 긍정적이고 확신 있게 회상한다.</div>
+      </div>
+      <div style="padding:var(--sp-4);background:#fff;border-left:3px solid var(--ink-3)">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:2px">앵커링 · 현저성</div>
+        <div style="font-size:13px;color:var(--ink-4)">Q2에서 "수치·기간"을 구체적으로 유도하는 이유. 구체적 숫자는 모호한 기억 속에서 강력한 기준점으로 작용하며, 리뷰를 읽는 다른 잠재 고객에게도 정보 처리의 단순화 역할을 한다.</div>
+      </div>
+      <div style="padding:var(--sp-4);background:#fff;border-left:3px solid var(--ink-3)">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:2px">피크-엔드 법칙 · 마일스톤 효과</div>
+        <div style="font-size:13px;color:var(--ink-4)">Q2·Q3을 10·20·30회차에 배치하는 근거. 사람들은 경험 전체의 평균이 아니라 "감정 피크 + 끝" 순간의 기억에 의존한다. 마일스톤은 고객 여정에 인위적인 "성취의 끝"을 만들어 긍정적 회상을 유도한다.</div>
+      </div>
+      <div style="padding:var(--sp-4);background:#fff;border-left:3px solid var(--ink-3)">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:2px">가용성 휴리스틱 · Make It Easy</div>
+        <div style="font-size:13px;color:var(--ink-4)">Q1·Q5가 "구체 순간/비교 경험"을 찍어주는 이유. 질문의 답변 범위를 좁혀주면 고객이 기억에서 에피소드를 쉽게 인출할 수 있고, 이는 자연스럽게 더 길고 열정적인 리뷰로 이어진다.</div>
+      </div>
+    </div>
+    <p style="margin-top:var(--sp-5);color:var(--ink-4);font-size:12px">근거: Kahneman 『Thinking, Fast and Slow』 · Thaler & Sunstein 『Nudge』의 핵심 원리</p>
+  </div>
+
+  <div class="actions">
+
+    <div class="action">
+      <div class="ac-left"><span class="n">01</span>ACTION<span class="pri">URGENT</span></div>
+      <div>
+        <div class="ac-title">김도경 트레이너 예약 탭 복구</div>
+        <div class="ac-desc">김도경 트레이너는 2026년 2월 리뷰에 "추천 트레이너 김도경 (무료 체험 PT 예약)"으로 노출된 이력이 있고, 현재도 19건 언급되는 현역이다. 그러나 지금 예약 탭에는 미노출 상태라 신규 유입 고객이 김도경 지정 예약을 할 수 없다. 이건 리뷰 품질 이슈가 아니라 플레이스 셋팅 운영 정합성 이슈로, 즉시 수정 가능하다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">실행</div>
+          <strong>스마트플레이스 → 예약 → 체험 PT 탭에 김도경 트레이너 추가.</strong> 현재의 4인 구조에서 5인 구조로 확대. 또한 "이달의 추천 트레이너" 노출 패턴을 월별 루틴화하면, 신규 고객이 어느 트레이너에게 예약해야 할지 판단하기 쉬워진다.
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">02</span>ACTION<span class="pri">URGENT</span></div>
+      <div>
+        <div class="ac-title">Q1 — "원리 경험" 유도 질문 도입</div>
+        <div class="ac-desc">3대 POD 중 "원리를 설명해주는 곳"(11.5%)은 비브레 전문성이 고객 리뷰 언어로 드러나는 지점이다. 다른 POD보다 언급 비율이 낮지만, 이 표현이 리뷰에 등장하면 A등급 점수로 쉽게 올라간다. 수업 중 실제로 일어나는 설명을 떠올리게 하는 질문이 필요하다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">Q1 · 적용 타이밍: 10회차 이후, 수업 마무리 시</div>
+          <strong>"트레이너가 '왜 이 동작을 하는지' 혹은 '어느 근육/관절이 쓰이는지' 원리나 이유를 설명해준 순간 중 기억에 남는 게 있으신가요?"</strong>
+          <div style="margin-top:var(--sp-3);font-size:12px;color:var(--ink-4)">기대 리뷰: "단순히 하세요가 아니라 왜 이 자세가 필요한지 설명해주셔서 이해하고 운동하게 됐어요"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">03</span>ACTION<span class="pri">URGENT</span></div>
+      <div>
+        <div class="ac-title">Q2 — Before→After 수치화 유도</div>
+        <div class="ac-desc">수치 변화 증언(7.7%)과 통증 해결 증언(7.5%)은 재활·다이어트 페르소나 규모(총 40%)에 비해 얕다. 실제 성과는 높은데 리뷰 언어로 옮겨지지 않은 상태. AI 답변 엔진이 가장 강하게 인용하는 형식이 바로 수치 기반 Before→After다. <strong>업종 분석 기준 구체적 수치/결과 포함은 AI 인용 가중치 +45%</strong>로, 4개 가중치 요소 중 가장 강력하다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">Q2 · 적용 타이밍: 10회차·20회차·30회차 마일스톤</div>
+          <strong>"시작 전과 지금을 비교했을 때 가장 달라진 점은 무엇인가요? 체중·체지방·자세·통증 중 구체적인 수치나 기간이 있다면 알려주세요."</strong>
+          <div style="margin-top:var(--sp-3);font-size:12px;color:var(--ink-4)">기대 리뷰: "3개월 만에 체중 7kg, 체지방 23%→17%. 오래 앉아있으면 허리 아팠던 것도 거의 사라졌어요"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">04</span>ACTION<span class="pri">URGENT</span></div>
+      <div>
+        <div class="ac-title">답글 시스템화 — 40.3% → 70% + 브랜드 귀속 템플릿</div>
+        <div class="ac-desc">답글률이 PT 업종 권장(70%)의 절반 수준이고, 현재 답글의 66.7%를 한 트레이너가 주도한다. 공식 답글 템플릿을 만들어 분산시키되, 템플릿 본문에 "체형 분석", "회차별 조정", "맞춤 프로그램" 같은 비브레 운영 언어가 자연스럽게 들어가게 한다. 답글은 AI 브리핑이 분석 대상에 포함하는 텍스트다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">답글 예시 (Before → After)</div>
+          <span class="ex-before">"소중한 후기 감사합니다. 다음에도 좋은 수업 준비하겠습니다"</span>
+          <span class="ex-after">"감사합니다. 비브레 PT/헬스 혁신점입니다. 처음 체형 분석 때 파악했던 부분이 수업을 이어가면서 조금씩 정돈되고 계신 게 저희도 뿌듯합니다. 회차가 쌓일수록 맞춰 드리는 운동 강도가 달라지니 꾸준히 함께해요"</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">05</span>ACTION<span class="pri normal">IMPORTANT</span></div>
+      <div>
+        <div class="ac-title">Q3~Q6 · 나머지 POD 유도 질문 시스템화</div>
+        <div class="ac-desc">Q1·Q2가 우선이지만, 나머지 POD도 회차별·상황별로 유도가 필요하다. 한 번에 1~2개만 제시하는 게 원칙. 여러 질문을 동시에 던지면 고객이 답변을 포기한다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">Q3~Q6 — POD 직접 유도</div>
+          <div style="margin-bottom:var(--sp-3)"><strong>Q3 (혼자 운동법 전수 · POD #2):</strong> "비브레에서 배운 것 중 집에서 혼자 운동할 때도 기억에 남는 자세나 기구 사용법이 있다면 알려주세요." → <span style="color:var(--ink-4)">기대: "혼자 했을 때 몰랐던 자세 포인트를 배우게 됐어요"</span></div>
+          <div style="margin-bottom:var(--sp-3)"><strong>Q4 (자세·체형 교정 · POD #1):</strong> "처음 오셨을 때 불편했던 자세나 체형 문제가 있으셨다면, 지금은 어떻게 달라지셨나요?" → <span style="color:var(--ink-4)">기대: "굽었던 어깨가 정돈되고 측만 기울기가 덜 느껴져요"</span></div>
+          <div style="margin-bottom:var(--sp-3)"><strong>Q5 (비교 경험):</strong> "이전에 다른 PT나 헬스를 해보셨다면, 비브레에서 다르게 느낀 점은 무엇이었나요?" → <span style="color:var(--ink-4)">기대: "전에 PT에서는 효과를 못 봤는데 여기서는 자세부터 잡아주셔서 달랐어요"</span></div>
+          <div><strong>Q6 (통증·재활 서사):</strong> "처음 오셨을 때 어떤 마음이었고, 지금은 어떤지 간단히 말씀해주세요." → <span style="color:var(--ink-4)">기대: Before 상태 + 수업 과정 + After 변화가 자연스럽게 이어지는 스토리 구조</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">06</span>ACTION<span class="pri normal">IMPORTANT</span></div>
+      <div>
+        <div class="ac-title">재배정 회원 현황 확인</div>
+        <div class="ac-desc">2024년 초부터 2025년 11월까지 22개월간 한 트레이너에게 꾸준히 PT 받았던 회원군이 약 43명. 이들이 재배정된 트레이너와 현재도 이어지고 있는지, 혹은 이탈했는지에 대한 데이터가 리뷰만으로는 확인되지 않는다. 이 현황이 향후 개인 귀속 완화 전략의 근거가 된다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">조사 방법</div>
+          <strong>회원 관리 시스템에서 해당 기간 담당 이력 추출 → 현재 등록 상태 확인 → 이탈자에 짧은 설문 발송.</strong> 질문 3개면 충분 — 재등록하지 않은 이유, 재배정 후 경험, 비브레 전반에 대한 피드백. 수집 결과에 따라 향후 트레이너 이탈 시 대응 프로토콜의 구체 설계가 가능하다.
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">07</span>ACTION<span class="pri normal">GROWTH</span></div>
+      <div>
+        <div class="ac-title">페르소나 특화 랜딩 — 산후 · 재활 · 만성질환</div>
+        <div class="ac-desc">비브레는 니치 페르소나를 담당하는 인력 구조를 이미 갖추고 있다. 안효미 트레이너(산후), 김정모 트레이너(재활·만성질환), 박상빈 팀장(측만·체형교정). 각 페르소나별로 소개 페이지를 분화하면 롱테일 검색("원주 산후 PT", "원주 측만증 체형교정") 점유율이 올라간다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">콘텐츠 소재 — 리뷰에서 추출 가능한 구체 사례</div>
+          <div><strong>산후:</strong> 산전·산후 맞춤 커리큘럼으로 한 달 만에 체형이 돌아왔다는 회원 증언</div>
+          <div><strong>측만·체형:</strong> 측만증 1년 장기 수업 후 어깨라인이 정돈된 Before/After 사례</div>
+          <div><strong>재활:</strong> 수술 후 운동이 무서웠던 회원이 단계별 재활로 다시 움직일 수 있게 된 스토리</div>
+          <div><strong>다이어트:</strong> 체지방 36% → 18% 같은 수치 기반 변화 케이스</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">08</span>ACTION<span class="pri normal">IMPORTANT</span></div>
+      <div>
+        <div class="ac-title">자동화 리뷰 요청 시스템 — 마찰 없는 유도 경로</div>
+        <div class="ac-desc">수업 현장에서 Q1~Q6를 매번 구두로 던지기 어렵다면, 자동화된 메시지 경로를 병행해야 한다. 업종 분석 자료에 따르면 <strong>보상형 이벤트 리뷰는 평균 20자 · AI 브리핑 채택률 낮음</strong>인 반면, <strong>유대감 기반 개별 요청 리뷰는 평균 120자+ · AI 채택률 매우 높음</strong>이다. 자동화는 개별 요청의 뉘앙스를 유지하되 운영 부담을 낮추는 구조여야 한다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">두 단계 자동화 경로</div>
+          <div style="margin-bottom:var(--sp-3)"><strong>1. 네이버 예약 → 자동 리뷰 요청 알림 (가장 마찰 없음).</strong> 네이버 예약을 통해 체험 PT·멤버십 등록을 받는 경우 방문 후 자동으로 알림이 발송된다. 이 경로는 영수증 인증까지 자동 연결되어 SEO 가중치가 가장 높다.</div>
+          <div style="margin-bottom:var(--sp-3)"><strong>2. 카카오톡 채널 메시지 (10회차·20회차 마일스톤 기반).</strong> 회차별로 다른 질문을 자동 발송. 10회차에는 Q1(원리 경험), 20회차에는 Q2(Before→After 수치화), 30회차에는 Q5(비교 경험)처럼 단계별 POD를 타겟팅.</div>
+          <div style="margin-top:var(--sp-3);padding:var(--sp-3);background:#fafafa;font-size:13px;color:var(--ink-3);border-left:2px solid var(--ink-4)">
+            <strong>메시지 예시 (20회차):</strong> "안녕하세요 OO님, 비브레 20회차 축하드려요. 처음 오셨을 때와 지금 체형·체력·통증 중 달라진 게 있으시다면 구체적으로 어떤 변화였을까요? 답변 주시면 다음 수업 때 트레이너와 공유하고 이후 방향을 맞출게요."
+          </div>
+          <div style="margin-top:var(--sp-3);font-size:12px;color:var(--ink-4)">※ 마찰 없는 경로란 "리뷰 작성이 자연스럽게 일어나는 경로"를 뜻한다. 별도 채널 이동·추가 인증 없이, 이미 사용 중인 플랫폼에서 메시지로 시작되는 구조가 가장 높은 전환을 만든다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">09</span>ACTION<span class="pri normal">GROWTH</span></div>
+      <div>
+        <div class="ac-title">최신성 유지 — 최근 3개월 리뷰의 AI 참조 우선순위</div>
+        <div class="ac-desc">2025~2026년 기준 AI 모델은 <strong>최근 3개월 이내의 리뷰를 답변 생성의 핵심 데이터</strong>로 활용한다. 3개월 이상 경과한 리뷰는 C-Rank 가중치가 낮아진다. 비브레는 2026년 2월 23건 등 월별 유입이 안정적이지만, A등급 리뷰(70점+)를 최근 3개월 윈도우에 꾸준히 포함시키는 게 핵심이다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">운영 리듬 — 월별 품질 지표 모니터링</div>
+          <strong>매월 마지막 주에 지난 3개월 데이터를 점검:</strong> (1) A등급 리뷰가 몇 건 유입됐는가, (2) 전체 리뷰 중 수치 변화·통증 해결·비교 경험이 포함된 비율, (3) 담당자 실명 언급률. 이 3가지 지표를 월간 운영 회의의 고정 의제로 두면, 개선 여부가 3개월 내 AI 답변에 반영된다.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- 08 — 리뷰 목록 ─────────────────────────────── -->
+<section id="list" class="section" data-nav="리뷰 목록" data-num="09">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 09 <span class="sep">·</span> 리뷰 목록</div>
+    <h2 class="s-title">통합 점수 순 정렬 —<br><span class="soft">상위 리뷰가 SEO/AEO 기여도가 높다</span></h2>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">Top 10 리뷰 — 통합 점수 순 (95점 만점 기준)</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>닉네임</th><th>SEO/45</th><th>AEO/50</th><th style="color:var(--accent)">통합/95</th><th>본문 요약</th></tr></thead>
+        <tbody>
+          <tr><td><strong>jwo****</strong><span class="t-badge">SUPER</span></td><td>37</td><td>43</td><td style="color:var(--accent)"><strong>80</strong></td><td>125kg → 1년 대폭 감량. 김도경 트레이너 추천. 계단 숨참·허리통증 해결. 스토리 구조 완벽</td></tr>
+          <tr><td><strong>SPICE 77</strong></td><td>42</td><td>37</td><td style="color:var(--accent)"><strong>79</strong></td><td>고3 · 임의정 트레이너 10회 PT 최종 후기. 체성분 변화·후속관리 수치 포함</td></tr>
+          <tr><td><strong>루리온맘</strong></td><td>36</td><td>38</td><td style="color:var(--accent)"><strong>74</strong></td><td>목디스크·경도비만 · 의사 추천 → 허재민 트레이너 3개월. 다이어트+재활 동시 진행</td></tr>
+          <tr><td><strong>정호정50</strong></td><td>36</td><td>37</td><td style="color:var(--accent)"><strong>73</strong></td><td>김도경 트레이너 1년. 6개월 자세 교정 집중 후 우측 견갑 불균형 개선</td></tr>
+          <tr><td><strong>car****</strong></td><td>34</td><td>39</td><td style="color:var(--accent)"><strong>73</strong></td><td>50대 후반 주부 · 3년전 어깨통증으로 재활 시작 → 근력 회복까지 성공</td></tr>
+          <tr><td><strong>레고양이</strong></td><td>36</td><td>37</td><td style="color:var(--accent)"><strong>73</strong></td><td>★ 허재민 트레이너 30회 PT · 체지방 -3.5kg, 근육량 +2.2kg, 인바디 +6점 — 수치 완벽</td></tr>
+          <tr><td><strong>maymom56</strong></td><td>41</td><td>32</td><td style="color:var(--accent)"><strong>73</strong></td><td>여러 다이어트 요요 후 마지막 선택 · 허재민 트레이너 · 체계적 회원관리·식이 코칭</td></tr>
+          <tr><td><strong>이소50</strong></td><td>39</td><td>33</td><td style="color:var(--accent)"><strong>72</strong></td><td>박상빈 트레이너 1년 · 측만증 개선 · 어깨라인 정리</td></tr>
+          <tr><td><strong>고양이망고</strong></td><td>43</td><td>29</td><td style="color:var(--accent)"><strong>72</strong></td><td>비브레 1년 후기 · 혼자 운동법·기구 사용법 코칭 + 동반 운동의 장점 균형있게 서술</td></tr>
+          <tr><td><strong>쭈꾸미2437</strong></td><td>39</td><td>32</td><td style="color:var(--accent)"><strong>71</strong></td><td>박상빈 트레이너 · "내 몸상태에 맞는 트레이너" 명제 서술 — POD 증거 리뷰</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Reading Guide</div>
+    <div class="tac-body"><strong>통합 점수 70점 이상 = A등급(AI 인용 가능)은 현재 13건(3.5%)이다.</strong> 40~69점 B등급이 235건(62.7%), 39점 이하 C등급이 127건(33.9%)을 차지한다. PT 업종에서 A등급 10%를 목표로 잡았을 때 아직 미달이지만, 비브레는 이미 리뷰 길이·재방문·영수증 인증률 같은 토대 지표에서 업종 상위권에 있다. 다음 단계는 기존 리뷰의 "양"이 아니라 "복합 스토리 밀도"를 높이는 것이다.</div>
+    <div class="tac-dir"><span class="arrow">→</span><strong>Top 10 리뷰 안에 공통 패턴이 있다.</strong> (1) 구체적 수치 — 체중·체지방·회차·개월 같은 숫자. (2) 기간 명시 — "1년째", "30회차" 같은 지속성. (3) 트레이너 실명. (4) Before → 수업 과정 → After 흐름. (5) 비브레 브랜드명 또는 "여기"라는 귀속 표현. 이 5요소가 갖춰진 리뷰가 A등급 구조다.<br><br><span class="arrow">→</span>Q1(원리 경험) + Q2(Before→After 수치화) + Q6(감정 서사) 조합이 이 구조를 만든다. 특히 Top 1~3위처럼 장기 회원의 리뷰가 AEO에서 가장 높은 인용 확률을 가지므로, 마일스톤(10·20·30회차) 시점에 집중적으로 유도하는 것이 효율적이다.</div>
+  </div>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER ─────────────────────────────────────── -->
+<footer class="footer" role="contentinfo">
+  <div class="ft-brand"><span class="dot"></span>RE:FEEEL</div>
+  <div class="ft-links">
+    <a href="https://refeeel.com" target="_blank" rel="noopener">refeeel.com</a>
+    <a href="https://instagram.com/nak__ta__" target="_blank" rel="noopener">@nak__ta__</a>
+  </div>
+  <div class="ft-copy">© 2026 RE:FEEEL. All rights reserved.</div>
+</footer>
+
+
+<script>
+/* ═══════════════════════════════════════════════
+   Navigation: top bar + side nav + drawer + progress
+   ═══════════════════════════════════════════════ */
+const sections = Array.from(document.querySelectorAll('[data-nav]'));
+const tbCurrent = document.getElementById('tb-current');
+const tbFill = document.getElementById('tb-fill');
+const tbNum = document.getElementById('tb-num');
+const snFill = document.getElementById('sn-fill');
+const snNum = document.getElementById('sn-num');
+const snItems = document.querySelectorAll('.sn-item');
+const dwItems = document.querySelectorAll('.dw-item');
+
+function updateNav(){
+  const vh = window.innerHeight;
+  const y = window.scrollY + vh * 0.35;
+  let current = sections[0];
+  sections.forEach(s => { if(s.offsetTop <= y) current = s; });
+
+  if(current){
+    const nav = current.dataset.nav;
+    const num = current.dataset.num;
+    const id = current.id;
+    if(tbCurrent) tbCurrent.innerHTML = `<span class="num">${num}</span>${nav}`;
+    snItems.forEach(it => it.classList.toggle('active', it.dataset.target === id));
+    dwItems.forEach(it => it.classList.toggle('active', it.dataset.target === id));
+  }
+
+  // Progress bar
+  const docH = document.documentElement.scrollHeight - vh;
+  const pct = Math.min(100, Math.max(0, (window.scrollY / docH) * 100));
+  const pctR = Math.round(pct) + '%';
+  if(tbFill) tbFill.style.width = pct + '%';
+  if(tbNum) tbNum.textContent = pctR;
+  if(snFill) snFill.style.width = pct + '%';
+  if(snNum) snNum.textContent = pctR;
+}
+window.addEventListener('scroll', updateNav, {passive:true});
+updateNav();
+
+/* Mobile drawer open/close */
+const drawer = document.getElementById('drawer');
+const drawerOpen = document.getElementById('drawer-open');
+const drawerClose = document.getElementById('drawer-close');
+
+function openDrawer(){
+  if(!drawer) return;
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden','false');
+  if(drawerOpen) drawerOpen.setAttribute('aria-expanded','true');
+  document.body.classList.add('drawer-open');
+}
+function closeDrawer(){
+  if(!drawer) return;
+  drawer.classList.remove('open');
+  drawer.setAttribute('aria-hidden','true');
+  if(drawerOpen) drawerOpen.setAttribute('aria-expanded','false');
+  document.body.classList.remove('drawer-open');
+}
+if(drawerOpen) drawerOpen.addEventListener('click', openDrawer);
+if(drawerClose) drawerClose.addEventListener('click', closeDrawer);
+if(drawer){
+  drawer.querySelectorAll('.dw-item a').forEach(a => {
+    a.addEventListener('click', () => setTimeout(closeDrawer, 120));
+  });
+}
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && drawer && drawer.classList.contains('open')) closeDrawer();
+});
+
+/* ═══════════════════════════════════════════════
+   Bar fill animations (on scroll into view)
+   ═══════════════════════════════════════════════ */
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-w]').forEach(b => {
+        const w = b.getAttribute('data-w');
+        if(b.classList.contains('g-bar')){
+          b.style.setProperty('--gauge-w', w + '%');
+        } else {
+          b.style.width = w + '%';
+        }
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.kwbars, .gauge-block').forEach(el => barObs.observe(el));
+
+/* ═══════════════════════════════════════════════
+   Fade-in animations
+   ═══════════════════════════════════════════════ */
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      animObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.08, rootMargin:'30px 0px'});
+document.querySelectorAll('.dark-block, .split, .persona, .trainer, .action, .tier, .tac').forEach(el => {
+  el.classList.add('anim');
+  animObs.observe(el);
+});
+
+/* ═══════════════════════════════════════════════
+   Diagrams — activate when scrolled into view
+   ═══════════════════════════════════════════════ */
+const diagramObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('in-view');
+      diagramObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.25});
+document.querySelectorAll('.cycle-wrap').forEach(el => diagramObs.observe(el));
+
+/* ═══════════════════════════════════════════════
+   Number counter (cover KPIs)
+   ═══════════════════════════════════════════════ */
+function animateCount(el, target, duration){
+  /* Preserve trailing unit span (e.g., %, 자) across innerHTML updates. */
+  const suffixMatch = el.innerHTML.match(/<span[^>]*>[\s\S]*?<\/span>/);
+  const suffix = suffixMatch ? suffixMatch[0] : '';
+  const isFloat = String(target).includes('.');
+  const start = performance.now();
+
+  function tick(now){
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const cur = target * eased;
+    const d = isFloat ? cur.toFixed(1) : Math.round(cur);
+    el.innerHTML = d + suffix;
+    if(p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const coverObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const kpis = e.target.querySelectorAll('.cv-kpi-val');
+      const targets = [18.2, 9.5, 71, 83];
+      const rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      kpis.forEach((el, i) => {
+        if(!targets[i]) return;
+        if(rm){
+          const isFloat = String(targets[i]).includes('.');
+          const span = el.querySelector('span');
+          el.textContent = isFloat ? targets[i].toFixed(1) : targets[i];
+          if(span) el.appendChild(span);
+        } else {
+          setTimeout(() => animateCount(el, targets[i], 750), i * 70);
+        }
+      });
+      coverObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+const ckBot = document.querySelector('.cv-bot');
+if(ckBot) coverObs.observe(ckBot);
+
+/* ═══════════════════════════════════════════════
+   CHART.JS SETUP — minimal editorial style
+   ═══════════════════════════════════════════════ */
+if(typeof Chart !== 'undefined'){
+  Chart.defaults.font.family = "'SUIT',-apple-system,sans-serif";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.plugins.legend.display = false;
+  Chart.defaults.color = '#8a8a8a';
+  Chart.defaults.animation = {duration:1400, easing:'easeOutQuart'};
+}
+
+const COLORS = {
+  ink: '#0a0a0a',
+  ink3: '#555555',
+  ink4: '#8a8a8a',
+  ink5: '#b8b8b8',
+  rule: '#e8e8e8',
+  ruleSoft: '#f0f0f0',
+  accent: '#e75519'
+};
+
+const charts = {};
+const chartFactory = {
+  'c-scatter': () => {
+    charts['c-scatter'] = new Chart(document.getElementById('c-scatter'), {
+      type:'scatter',
+      data:{datasets:[{
+        data:[{"x": 36.88, "y": 18.76}, {"x": 38.11, "y": 24.7}, {"x": 39.03, "y": 17.91}, {"x": 30.69, "y": 21.01}, {"x": 32.68, "y": 2.95}, {"x": 33.7, "y": 32.71}, {"x": 35.95, "y": 18.23}, {"x": 30.74, "y": 16.81}, {"x": 31.09, "y": 18.31}, {"x": 33.05, "y": 10.93}, {"x": 16.33, "y": 13.68}, {"x": 39.25, "y": 32.85}, {"x": 26.75, "y": 4.73}, {"x": 35.87, "y": 21.22}, {"x": 30.78, "y": 13.06}, {"x": 44.1, "y": 13.91}, {"x": 41.03, "y": 23.69}, {"x": 38.69, "y": 9.79}, {"x": 36.13, "y": 33.95}, {"x": 26.87, "y": 19.06}, {"x": 33.97, "y": 7.86}, {"x": 26.21, "y": 22.14}, {"x": 44.82, "y": 11.05}, {"x": 40.02, "y": 24.26}, {"x": 29.16, "y": 14.85}, {"x": 27.34, "y": -0.27}, {"x": 39.94, "y": 10.18}, {"x": 43.76, "y": 6.99}, {"x": 30.68, "y": 13.12}, {"x": 36.19, "y": 18.05}, {"x": 36.26, "y": 9.87}, {"x": 23.14, "y": 8.07}, {"x": 39.06, "y": 26.97}, {"x": 35.24, "y": 17.31}, {"x": 32.98, "y": 16.11}, {"x": 35.69, "y": 19.14}, {"x": 41.1, "y": 17.35}, {"x": 26.23, "y": 4.85}, {"x": 25.92, "y": 4.12}, {"x": 32.67, "y": 15.97}, {"x": 27.77, "y": 7.73}, {"x": 22.69, "y": 5.19}, {"x": 32.74, "y": 19.82}, {"x": 36.92, "y": 43.26}, {"x": 37.71, "y": 16.96}, {"x": 36.03, "y": 5.27}, {"x": 36.22, "y": 8.25}, {"x": 40.84, "y": 24.94}, {"x": 22.9, "y": 5.27}, {"x": 34.32, "y": -0.24}, {"x": 28.77, "y": 27.81}, {"x": 44.81, "y": 15.99}, {"x": 30.06, "y": 12.83}, {"x": 39.65, "y": 17.94}, {"x": 33.91, "y": 11.05}, {"x": 29.32, "y": 14.13}, {"x": 22.01, "y": 12.08}, {"x": 31.12, "y": 15.69}, {"x": 38.28, "y": 20.2}, {"x": 23.26, "y": 5.21}, {"x": 35.92, "y": 20.93}, {"x": 37.72, "y": 10.09}, {"x": 16.69, "y": 4.7}, {"x": 39.8, "y": 9.76}, {"x": 30.89, "y": 9.69}, {"x": 41.65, "y": 33.76}, {"x": 22.72, "y": 11.9}, {"x": 38.67, "y": 17.26}, {"x": 20.08, "y": 4.75}, {"x": 35.83, "y": 5.89}, {"x": 32.9, "y": 16.74}, {"x": 39.24, "y": 27.35}, {"x": 40.98, "y": 6.99}, {"x": 34.71, "y": 22.72}, {"x": 15.89, "y": 10.84}, {"x": 39.23, "y": 15.76}, {"x": 36.67, "y": 4.32}, {"x": 35.02, "y": 7.75}, {"x": 39.03, "y": 11.67}, {"x": 16.02, "y": 11.33}, {"x": 36.25, "y": 18.14}, {"x": 33.83, "y": 20.91}, {"x": 30.77, "y": 21.19}, {"x": 38.02, "y": 15.2}, {"x": 18.88, "y": 15.81}, {"x": 20.22, "y": 11.34}, {"x": 34.25, "y": 18.21}, {"x": 41.22, "y": 13.17}, {"x": 33.81, "y": 14.01}, {"x": 22.9, "y": 7.67}, {"x": 30.67, "y": 10.85}, {"x": 39.83, "y": 8.13}, {"x": 26.32, "y": 20.96}, {"x": 33.31, "y": 8.34}, {"x": 42.32, "y": 7.91}, {"x": 33.8, "y": 38.81}, {"x": 31.79, "y": 18.79}, {"x": 43.09, "y": 29.28}, {"x": 23.24, "y": -0.01}, {"x": 16.11, "y": 11.21}, {"x": 15.71, "y": 11.11}, {"x": 31.29, "y": 5.2}, {"x": 34.18, "y": 3.98}, {"x": 36.77, "y": 5.2}, {"x": 30.88, "y": 20.21}, {"x": 23.33, "y": 8.93}, {"x": 31.93, "y": 0.31}, {"x": 34.16, "y": 13.77}, {"x": 30.74, "y": 9.76}, {"x": 22.28, "y": 12.21}, {"x": 29.75, "y": 8.23}, {"x": 38.34, "y": 21.11}, {"x": 25.9, "y": 10.03}, {"x": 29.74, "y": 9.66}, {"x": 17.33, "y": 5.1}, {"x": 31.02, "y": 12.3}, {"x": 35.95, "y": 3.26}, {"x": 33.23, "y": 23.8}, {"x": 30.83, "y": 27.86}, {"x": 22.82, "y": 4.06}, {"x": 35.83, "y": 27.94}, {"x": 32.74, "y": 15.29}, {"x": 35.9, "y": 17.97}, {"x": 34.06, "y": 15.28}, {"x": 37.94, "y": 6.29}, {"x": 17.0, "y": 0.02}, {"x": 27.02, "y": -0.34}, {"x": 35.96, "y": 29.78}, {"x": 32.65, "y": 26.21}, {"x": 37.77, "y": 17.98}, {"x": 36.16, "y": 9.04}, {"x": 34.88, "y": 23.01}, {"x": 38.04, "y": 26.2}, {"x": 33.72, "y": 5.04}, {"x": 30.82, "y": 7.84}, {"x": 19.19, "y": 0.01}, {"x": 20.04, "y": 5.18}, {"x": 31.29, "y": 9.96}, {"x": 34.08, "y": 5.0}, {"x": 34.01, "y": 5.13}, {"x": 22.97, "y": 5.02}, {"x": 32.98, "y": 13.31}, {"x": 33.14, "y": 16.26}, {"x": 27.31, "y": 21.83}, {"x": 20.04, "y": 0.31}, {"x": 45.24, "y": 10.75}, {"x": 32.74, "y": 2.96}, {"x": 32.7, "y": 10.82}, {"x": 33.7, "y": 21.12}, {"x": 38.2, "y": 26.28}, {"x": 35.76, "y": 10.15}, {"x": 41.11, "y": 10.75}, {"x": 29.27, "y": 19.33}, {"x": 24.8, "y": 3.32}, {"x": 9.93, "y": 4.99}, {"x": 33.34, "y": 16.23}, {"x": 40.76, "y": 22.95}, {"x": 20.01, "y": 18.89}, {"x": 32.79, "y": 9.87}, {"x": 20.16, "y": 19.66}, {"x": 36.04, "y": 12.96}, {"x": 38.66, "y": 11.88}, {"x": 25.09, "y": 19.01}, {"x": 37.7, "y": 4.34}, {"x": 37.2, "y": 20.33}, {"x": 25.72, "y": 3.84}, {"x": 20.68, "y": 17.2}, {"x": 38.84, "y": 10.74}, {"x": 30.95, "y": 20.29}, {"x": 26.22, "y": 2.83}, {"x": 23.75, "y": 14.29}, {"x": 38.05, "y": 14.14}, {"x": 33.71, "y": 13.69}, {"x": 33.13, "y": 7.95}, {"x": 39.7, "y": 15.31}, {"x": 35.09, "y": 19.21}, {"x": 33.71, "y": 10.25}, {"x": 34.7, "y": 14.25}, {"x": 36.97, "y": 13.89}, {"x": 23.04, "y": 5.3}, {"x": 40.84, "y": 18.74}, {"x": 37.02, "y": 19.82}, {"x": 19.73, "y": 4.76}, {"x": 35.69, "y": 18.79}, {"x": 26.87, "y": 3.86}, {"x": 27.18, "y": 8.85}, {"x": 29.0, "y": 15.77}, {"x": 37.89, "y": 29.66}, {"x": 34.83, "y": 7.66}, {"x": 42.16, "y": 3.04}, {"x": 33.78, "y": 18.98}, {"x": 31.3, "y": 8.72}, {"x": 37.22, "y": 13.95}, {"x": 39.0, "y": 28.23}, {"x": 16.93, "y": 0.0}, {"x": 45.13, "y": 21.34}, {"x": 26.89, "y": 8.23}, {"x": 17.14, "y": 7.1}, {"x": 31.93, "y": 7.89}, {"x": 26.69, "y": 13.74}, {"x": 31.7, "y": 5.17}, {"x": 22.83, "y": -0.24}, {"x": 30.71, "y": 0.24}, {"x": 35.26, "y": 12.12}, {"x": 33.85, "y": 25.82}, {"x": 35.86, "y": 16.97}, {"x": 43.76, "y": 24.96}, {"x": 35.83, "y": 25.32}, {"x": 31.33, "y": 4.03}, {"x": 38.82, "y": 21.33}, {"x": 26.87, "y": 3.9}, {"x": 38.65, "y": 8.92}, {"x": 35.98, "y": 8.0}, {"x": 29.79, "y": 0.0}, {"x": 35.65, "y": 5.83}, {"x": 20.71, "y": 15.93}, {"x": 15.68, "y": 2.67}, {"x": 19.86, "y": 2.81}, {"x": 36.06, "y": 19.02}, {"x": 33.18, "y": 0.11}, {"x": 25.15, "y": 8.27}, {"x": 35.92, "y": 25.88}, {"x": 32.34, "y": 7.75}, {"x": 33.16, "y": 20.1}, {"x": 24.68, "y": 4.23}, {"x": 37.27, "y": 11.09}, {"x": 23.16, "y": 10.22}, {"x": 35.75, "y": 29.02}, {"x": 26.0, "y": 0.23}, {"x": 34.21, "y": 21.23}, {"x": 34.06, "y": 6.27}, {"x": 34.13, "y": 13.14}, {"x": 26.81, "y": 5.67}, {"x": 43.74, "y": 20.9}, {"x": 19.72, "y": 0.24}, {"x": 30.04, "y": 14.09}, {"x": 36.09, "y": 7.13}, {"x": 37.99, "y": 20.65}, {"x": 18.21, "y": 3.17}, {"x": 24.0, "y": 3.02}, {"x": 36.11, "y": 21.7}, {"x": 36.17, "y": 19.83}, {"x": 30.7, "y": 10.84}, {"x": 31.16, "y": 24.79}, {"x": 36.17, "y": 3.33}, {"x": 16.0, "y": 3.92}, {"x": 19.99, "y": 0.13}, {"x": 25.19, "y": 3.08}, {"x": 38.1, "y": 12.7}, {"x": 35.75, "y": 15.83}, {"x": 32.17, "y": 2.86}, {"x": 28.05, "y": -0.34}, {"x": 16.69, "y": 3.84}, {"x": 28.12, "y": 16.13}, {"x": 39.12, "y": 26.85}, {"x": 42.01, "y": 28.98}, {"x": 19.98, "y": 10.73}, {"x": 28.28, "y": 12.79}, {"x": 31.33, "y": 5.31}, {"x": 19.66, "y": -0.03}, {"x": 15.22, "y": 4.33}, {"x": 35.96, "y": 15.84}, {"x": 16.8, "y": 0.31}, {"x": 37.8, "y": 21.06}, {"x": 32.75, "y": 11.02}, {"x": 41.32, "y": 28.74}, {"x": 42.22, "y": 8.01}, {"x": 30.27, "y": 0.14}, {"x": 35.81, "y": 22.28}, {"x": 19.99, "y": 2.67}, {"x": 22.65, "y": -0.01}, {"x": 35.97, "y": 21.86}, {"x": 40.75, "y": 28.89}, {"x": 36.87, "y": 19.24}, {"x": 38.65, "y": 17.18}, {"x": 16.24, "y": -0.27}, {"x": 21.3, "y": 3.15}, {"x": 25.28, "y": 13.85}, {"x": 27.91, "y": 8.93}, {"x": 39.35, "y": 19.06}, {"x": 16.9, "y": 2.95}, {"x": 18.84, "y": 15.68}, {"x": 40.72, "y": 25.23}, {"x": 33.85, "y": 9.3}, {"x": 22.82, "y": -0.16}, {"x": 17.01, "y": 4.78}, {"x": 30.91, "y": 17.32}, {"x": 34.27, "y": 0.22}, {"x": 31.09, "y": 5.29}, {"x": 41.31, "y": 16.03}, {"x": 25.15, "y": 4.68}, {"x": 31.16, "y": 14.97}, {"x": 36.18, "y": 16.1}, {"x": 27.85, "y": -0.32}, {"x": 44.3, "y": 22.74}, {"x": 31.98, "y": 15.89}, {"x": 29.86, "y": 5.17}, {"x": 30.33, "y": -0.17}, {"x": 28.11, "y": 14.86}, {"x": 32.04, "y": 20.93}, {"x": 9.77, "y": 8.76}, {"x": 24.8, "y": 8.28}, {"x": 39.0, "y": 22.8}, {"x": 31.28, "y": 13.35}, {"x": 35.96, "y": 15.75}, {"x": 38.78, "y": 17.71}, {"x": 38.89, "y": 9.71}, {"x": 40.82, "y": 15.83}, {"x": 36.05, "y": 38.27}, {"x": 23.17, "y": 17.94}, {"x": 38.94, "y": 13.02}, {"x": 40.91, "y": 7.89}, {"x": 41.69, "y": 10.84}, {"x": 36.33, "y": 11.74}, {"x": 31.0, "y": 5.09}, {"x": 33.25, "y": 20.8}, {"x": 30.84, "y": 13.82}, {"x": 30.93, "y": 17.96}, {"x": 29.32, "y": 11.24}, {"x": 42.26, "y": 22.67}, {"x": 19.67, "y": 4.15}, {"x": 37.28, "y": 5.98}, {"x": 20.06, "y": -0.35}, {"x": 22.92, "y": 9.3}, {"x": 38.23, "y": 26.25}, {"x": 31.33, "y": 20.82}, {"x": 36.73, "y": 20.76}, {"x": 29.02, "y": 30.13}, {"x": 31.31, "y": 5.16}, {"x": 34.1, "y": 20.19}, {"x": 22.97, "y": 22.04}, {"x": 27.68, "y": 0.2}, {"x": 29.81, "y": 14.29}, {"x": 20.1, "y": 12.86}, {"x": 40.74, "y": 15.83}, {"x": 34.1, "y": 13.14}, {"x": 19.73, "y": 2.7}, {"x": 36.02, "y": 16.06}, {"x": 30.92, "y": 9.81}, {"x": 23.07, "y": -0.34}, {"x": 30.86, "y": 3.97}, {"x": 17.32, "y": 0.1}, {"x": 33.27, "y": 3.98}, {"x": 19.81, "y": -0.18}, {"x": 30.32, "y": 10.14}, {"x": 25.87, "y": 9.67}, {"x": 36.0, "y": 6.12}, {"x": 21.94, "y": 8.83}, {"x": 42.12, "y": 18.3}, {"x": 19.81, "y": 4.67}, {"x": 41.89, "y": 16.94}, {"x": 38.13, "y": 21.79}, {"x": 28.21, "y": 3.17}, {"x": 23.0, "y": 2.79}, {"x": 27.33, "y": 8.87}, {"x": 36.22, "y": 16.81}, {"x": 28.81, "y": 10.18}, {"x": 12.86, "y": 0.32}, {"x": 20.0, "y": -0.22}, {"x": 22.81, "y": 11.94}, {"x": 36.12, "y": 23.31}, {"x": 35.75, "y": 10.93}, {"x": 35.8, "y": 8.33}, {"x": 35.75, "y": 25.69}, {"x": 35.69, "y": 10.93}, {"x": 19.28, "y": 4.27}, {"x": 34.16, "y": 8.35}, {"x": 29.3, "y": 3.88}, {"x": 19.78, "y": 11.31}, {"x": 16.17, "y": -0.33}, {"x": 33.12, "y": 26.92}, {"x": 16.91, "y": -0.12}, {"x": 28.77, "y": 2.65}, {"x": 21.85, "y": 4.9}, {"x": 20.32, "y": 2.74}],
+        backgroundColor: c => (c.raw && c.raw.x >= 30 && c.raw.y >= 30) ? COLORS.accent : COLORS.ink5,
+        borderColor: c => (c.raw && c.raw.x >= 30 && c.raw.y >= 30) ? COLORS.accent : COLORS.ink4,
+        pointRadius: c => (c.raw && c.raw.x >= 30 && c.raw.y >= 30) ? 6 : 3,
+        pointHoverRadius: 8
+      }]},
+      options:{responsive:true, maintainAspectRatio:false,
+        scales:{
+          x:{min:8, max:46, title:{display:true, text:'SEO / 45점', color:COLORS.ink4, font:{size:10, weight:'600'}},
+             grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
+          y:{min:-2, max:48, title:{display:true, text:'AEO / 50점', color:COLORS.ink4, font:{size:10, weight:'600'}},
+             grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}}
+        }
+      }
+    });
+  },
+  'c-kw': () => {
+    charts['c-kw'] = new Chart(document.getElementById('c-kw'), {
+      type:'bar',
+      data:{
+        labels:['자세·체형 교정 (POD)','혼자 운동법 전수 (POD)','원리 설명 (POD)','친절 (POP)','꼼꼼 (POP)','시설 깔끔 (POP)','선생님 좋다 (POP)','체계적 (경계)','수치 변화 (증거)','통증 해결 (증거)','비교 경험 (증거)'],
+        datasets:[{
+          data:[74, 70, 43, 139, 103, 95, 95, 92, 29, 28, 20],
+          backgroundColor:[COLORS.accent, COLORS.accent, COLORS.accent, COLORS.ink5, COLORS.ink5, COLORS.ink5, COLORS.ink5, COLORS.ink4, COLORS.ink3, COLORS.ink3, COLORS.ink3],
+          borderRadius:0,
+          barPercentage:0.75
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        scales:{
+          x:{max:160, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
+          y:{grid:{display:false}, border:{display:false}, ticks:{color:COLORS.ink3, font:{size:11, weight:'500'}, padding:10}}
+        }
+      }
+    });
+  },
+  'c-pod': () => {
+    charts['c-pod'] = new Chart(document.getElementById('c-pod'), {
+      type:'bar',
+      data:{
+        labels:['POD #1 자세·체형 교정','POD #2 혼자 운동법 전수','POD #3 원리 설명','증거: 수치 변화 증언','증거: 통증 해결 증언','증거: 비교 경험','인바디·분석 시스템','식단 구체 코칭','회차별 강도 조절','재활 의료 연계'],
+        datasets:[{
+          data:[74, 70, 43, 29, 28, 20, 25, 23, 10, 4],
+          backgroundColor:[COLORS.accent, COLORS.accent, COLORS.accent, COLORS.ink3, COLORS.ink3, COLORS.ink3, COLORS.ink4, COLORS.ink4, COLORS.ink5, COLORS.ink5],
+          borderRadius:0, barPercentage:0.72
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        animation:{duration:1400, easing:'easeOutQuart', delay:c => c.dataIndex * 80},
+        scales:{
+          x:{max:90, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
+          y:{grid:{display:false}, border:{display:false}, ticks:{color:COLORS.ink3, font:{size:11, weight:'500'}, padding:10}}
+        }
+      }
+    });
+  },
+  'c-gap': () => {
+    charts['c-gap'] = new Chart(document.getElementById('c-gap'), {
+      type:'bar',
+      data:{
+        labels:['자세·체형 교정','혼자 운동법 전수','원리 설명','증거: 수치 변화','증거: 통증 해결','증거: 비교 경험'],
+        datasets:[
+          {label:'단일 언급으로 그친 비율', data:[55,65,45,70,70,80], backgroundColor:COLORS.ink5, borderRadius:0, barPercentage:0.72},
+          {label:'복합 스토리로 엮인 비율', data:[45,35,55,30,30,20], backgroundColor:COLORS.accent, borderRadius:0, barPercentage:0.72}
+        ]
+      },
+      options:{responsive:true, maintainAspectRatio:false,
+        animation:{duration:1600, easing:'easeOutQuart', delay:c => c.dataIndex * 60},
+        plugins:{legend:{display:true, position:'top', align:'end', labels:{font:{size:11, weight:'600'}, color:COLORS.ink3, boxWidth:10, boxHeight:10, padding:16, usePointStyle:false}}},
+        scales:{
+          y:{max:100, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{callback:v=>v+'%', color:COLORS.ink4, padding:8}},
+          x:{grid:{display:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink3, font:{size:10, weight:'500'}}, stacked:true}
+        }
+      }
+    });
+  },
+  'c-before': () => {
+    charts['c-before'] = new Chart(document.getElementById('c-before'), {
+      type:'doughnut',
+      data:{
+        labels:['혼자 운동 한계','처음 PT','전문가 필요 인식','다른 PT 이전','병원 연계','오래 쉼'],
+        datasets:[{
+          data:[23.2, 20.5, 10.1, 6.4, 4.0, 1.1],
+          backgroundColor:[COLORS.accent, COLORS.ink3, COLORS.ink4, COLORS.ink5, COLORS.rule, '#d0d0d0'],
+          borderWidth:3, borderColor:'#fff'
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, cutout:'68%',
+        plugins:{legend:{display:true, position:'bottom', labels:{font:{size:11, weight:'500'}, color:COLORS.ink3, padding:10, boxWidth:10, boxHeight:10}}}
+      }
+    });
+  },
+  'c-trigger': () => {
+    charts['c-trigger'] = new Chart(document.getElementById('c-trigger'), {
+      type:'bar',
+      data:{
+        labels:['자세 꼼꼼','재활 특화','체계적','재방문','시설 깔끔','친절','맞춤 케어','실력'],
+        datasets:[{
+          data:[61.3, 55.5, 54.9, 49.6, 49.3, 48.8, 46.4, 34.4],
+          backgroundColor:[COLORS.accent, COLORS.accent, COLORS.ink, COLORS.ink3, COLORS.ink4, COLORS.ink4, COLORS.ink3, COLORS.ink5],
+          borderRadius:0, barPercentage:0.72
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false,
+        animation:{duration:1400, easing:'easeOutQuart', delay:c => c.dataIndex * 80},
+        scales:{
+          y:{max:70, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{callback:v=>v+'%', color:COLORS.ink4, padding:8}},
+          x:{grid:{display:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink3, font:{size:10, weight:'500'}}}
+        }
+      }
+    });
+  },
+  'c-attr': () => {
+    charts['c-attr'] = new Chart(document.getElementById('c-attr'), {
+      type:'bar',
+      data:{
+        labels:['담당자 실명 (전체)','비브레 브랜드','시스템/방식','현역 상위 3인','★ 허재민 이탈'],
+        datasets:[{
+          data:[39.5, 36.5, 29.9, 18.4, 11.5],
+          backgroundColor:[COLORS.ink, COLORS.ink3, COLORS.ink4, COLORS.ink3, COLORS.accent],
+          borderRadius:0, barPercentage:0.65
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        animation:{duration:1600, easing:'easeOutQuart', delay:c => c.dataIndex * 150},
+        scales:{
+          x:{max:45, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{callback:v=>v+'%', color:COLORS.ink4, padding:8}},
+          y:{grid:{display:false}, border:{display:false}, ticks:{color:COLORS.ink3, font:{size:12, weight:'500'}, padding:10}}
+        }
+      }
+    });
+  },
+  'c-monthly': () => {
+    const labels = ['23.01','23.02','23.03','23.04','23.05','23.06','23.07','23.08','23.09','23.10','23.11','23.12','24.01','24.02','24.03','24.04','24.05','24.06','24.07','24.08','24.09','24.10','24.11','24.12','25.01','25.02','25.03','25.04','25.05','25.06','25.07','25.08','25.09','25.10','25.11','25.12','26.01','26.02'];
+    const data = [2,5,7,5,12,10,2,3,8,7,2,8,8,7,1,3,5,7,6,7,8,8,7,16,6,11,11,7,10,8,13,16,16,14,21,35,10,23];
+    // 2025-12(인덱스 35)는 허재민 이탈 변곡점
+    const colors = data.map((v,i) => i===35 ? COLORS.accent : COLORS.ink5);
+    charts['c-monthly'] = new Chart(document.getElementById('c-monthly'), {
+      type:'line',
+      data:{
+        labels,
+        datasets:[{
+          data,
+          borderColor:COLORS.ink3,
+          backgroundColor:'rgba(10,10,10,0.04)',
+          fill:true, tension:0.3,
+          pointRadius:data.map((v,i) => i===35 ? 7 : 2.5),
+          pointBackgroundColor:colors,
+          pointBorderColor:'#fff',
+          pointBorderWidth:2,
+          borderWidth:1.5
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false,
+        animation:{duration:1800, easing:'easeOutQuart'},
+        scales:{
+          y:{min:0, max:40, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
+          x:{grid:{display:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, font:{size:9}, maxRotation:0, autoSkip:true, maxTicksLimit:12}}
+        }
+      }
+    });
+  }
+};
+
+function checkCharts(){
+  document.querySelectorAll('canvas[id^="c-"]').forEach(canvas => {
+    if(charts[canvas.id]) return;
+    const rect = canvas.getBoundingClientRect();
+    if(rect.top < window.innerHeight + 80 && rect.bottom > -80){
+      if(chartFactory[canvas.id]){
+        try { chartFactory[canvas.id](); } catch(e) { console.warn(e); }
+      }
+    }
+  });
+}
+
+function startChartWatch(){
+  checkCharts();
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if(!ticking){
+      ticking = true;
+      requestAnimationFrame(() => { checkCharts(); ticking = false; });
+    }
+  },{passive:true});
+}
+
+if(typeof Chart !== 'undefined'){
+  startChartWatch();
+} else {
+  const script = document.querySelector('script[src*="chart.js"]');
+  if(script) script.addEventListener('load', startChartWatch);
+}
+</script>
+</body>
+</html>
