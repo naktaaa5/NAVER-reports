@@ -1,0 +1,2351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>위드벨라 체형교정 & 다이어트 운동센터 — 플레이스 분석 리포트</title>
+<meta name="description" content="위드벨라 체형교정 & 다이어트 운동센터 네이버 플레이스 분석 리포트. SEO·AEO 점수, POP vs POD, 강사 브랜딩 구조, 액션 플랜."/>
+
+<!-- Open Graph / Link Preview -->
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="위드벨라 체형교정 & 다이어트 — 플레이스 리포트"/>
+<meta property="og:description" content="네이버 플레이스 리뷰 469건 기반 분석 · RE:FEEEL Place Report"/>
+<meta property="og:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
+<meta property="og:image:alt" content="RE:FEEEL"/>
+<meta property="og:site_name" content="RE:FEEEL"/>
+<meta property="og:locale" content="ko_KR"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="위드벨라 체형교정 & 다이어트 — 플레이스 리포트"/>
+<meta name="twitter:description" content="네이버 플레이스 리뷰 469건 기반 분석 · RE:FEEEL Place Report"/>
+<meta name="twitter:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
+
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════════════════
+   RE:FEEEL — Editorial Minimalist System
+   Inspired by Swiss design: whitespace, thin rules, restraint
+   ═══════════════════════════════════════════════════════ */
+
+:root{
+  --bg:#ffffff;
+  --bg-soft:#fafafa;
+  --ink:#0a0a0a;
+  --ink-2:#2a2a2a;
+  --ink-3:#555555;
+  --ink-4:#8a8a8a;
+  --ink-5:#b8b8b8;
+  --rule:#e8e8e8;
+  --rule-soft:#f0f0f0;
+  --accent:#e75519;
+  --accent-soft:rgba(231,85,25,.08);
+  --danger:#b03030;
+  --success:#1a7a3a;
+
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;
+  --sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-14:56px;--sp-16:64px;
+  --sp-20:80px;--sp-24:96px;--sp-28:112px;--sp-32:128px;--sp-40:160px;
+
+  --max-w:1120px;
+  --pp:clamp(24px,5vw,80px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{
+  font-family:'SUIT',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  background:var(--bg);
+  color:var(--ink-2);
+  font-size:15px;
+  line-height:1.75;
+  font-weight:400;
+  letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:clip;
+}
+
+:focus-visible{outline:1.5px solid var(--accent);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0}
+.skip-link:focus{left:8px;top:8px;padding:8px 12px;background:var(--ink);color:#fff;z-index:9999}
+
+/* ── TOP NAV ───────────────────────────────────── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--rule);
+  height:56px;
+  display:flex;align-items:center;
+  padding:0 var(--pp);
+}
+.tb-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--sp-6)}
+.tb-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--ink);flex-shrink:0}
+.tb-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle;margin-top:-2px}
+.tb-current{font-size:12px;color:var(--ink-4);font-weight:500;letter-spacing:.5px;flex:1;text-align:center;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-current .num{color:var(--ink);font-weight:700;margin-right:8px}
+.tb-progress{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.tb-prog-bar{width:80px;height:2px;background:var(--rule);position:relative;overflow:hidden}
+.tb-prog-fill{position:absolute;top:0;left:0;height:100%;background:var(--ink);width:0%;transition:width .3s ease}
+.tb-prog-num{font-size:11px;font-weight:700;color:var(--ink-4);font-variant-numeric:tabular-nums;min-width:32px;text-align:right}
+.tb-menu{
+  background:none;border:none;padding:8px;margin-right:-8px;
+  cursor:pointer;flex-shrink:0;color:var(--ink);
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+.tb-menu:hover{color:var(--accent)}
+.tb-menu-icon{display:inline-flex;flex-direction:column;gap:3px;width:16px}
+.tb-menu-icon span{display:block;height:1.5px;background:currentColor;border-radius:1px}
+.tb-menu-icon span:nth-child(2){width:75%}
+
+@media(max-width:680px){
+  .tb-current{display:none}
+  .tb-prog-bar{width:60px}
+  .tb-menu{font-size:0;gap:0;padding:8px}
+}
+
+/* Hide topbar entirely on desktop where side nav takes over */
+@media(min-width:1280px){
+  .topbar{display:none}
+}
+
+/* ── SIDE NAVIGATION (desktop only) ────────────── */
+.sidenav{display:none}
+@media(min-width:1280px){
+  :root{ --nav-w:260px; }
+  .sidenav{
+    display:flex;flex-direction:column;
+    position:fixed;top:0;left:0;bottom:0;
+    width:var(--nav-w);z-index:80;
+    padding:40px 24px 28px 32px;
+    background:var(--bg);
+    border-right:1px solid var(--rule);
+    box-sizing:border-box;
+  }
+  .sn-masthead{
+    margin-bottom:48px;
+  }
+  .sn-client{
+    font-size:15px;font-weight:700;color:var(--ink);
+    letter-spacing:-.4px;line-height:1.35;
+    margin-bottom:8px;
+  }
+  .sn-tagline{
+    font-size:10px;font-weight:600;
+    color:var(--ink-4);letter-spacing:1.8px;
+    text-transform:uppercase;
+  }
+  .sn-head{
+    font-size:10px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-4);text-transform:uppercase;
+    margin-bottom:18px;display:flex;align-items:center;gap:8px;
+  }
+  .sn-head::before{content:"";width:14px;height:1px;background:var(--ink-4)}
+  .sn-list{
+    list-style:none;margin:0;padding:0;
+    display:flex;flex-direction:column;gap:2px;
+    flex:1;overflow-y:auto;
+    -ms-overflow-style:none;scrollbar-width:none;
+  }
+  .sn-list::-webkit-scrollbar{display:none}
+  .sn-group{
+    font-size:9px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-5);text-transform:uppercase;
+    margin:16px 0 8px;padding-left:14px;
+  }
+  .sn-group:first-child{margin-top:0}
+  .sn-item a{
+    display:grid;
+    grid-template-columns:28px 1fr;
+    gap:10px;align-items:baseline;
+    padding:6px 0 6px 14px;
+    text-decoration:none;
+    border-left:2px solid transparent;
+    transition:border-color .2s ease, color .2s ease, transform .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .sn-item a:hover{transform:translateX(3px)}
+  .sn-item a:hover .sn-title{color:var(--ink)}
+  .sn-num{
+    font-size:10px;font-weight:700;letter-spacing:1px;
+    color:var(--ink-5);font-variant-numeric:tabular-nums;
+  }
+  .sn-title{
+    font-size:13px;font-weight:500;color:var(--ink-3);
+    letter-spacing:-.2px;transition:color .2s ease;
+  }
+  .sn-item.active a{border-left-color:transparent}
+  .sn-item.active .sn-num{color:var(--accent)}
+  .sn-item.active .sn-title{color:var(--accent);font-weight:700}
+  .sn-foot{
+    padding-top:20px;
+    border-top:1px solid var(--rule);
+  }
+  .sn-credit{
+    font-size:10px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-4);text-transform:uppercase;
+    margin-top:28px;margin-bottom:20px;
+  }
+  .sn-foot-lbl{
+    font-size:10px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-4);text-transform:uppercase;margin-bottom:10px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .sn-foot-num{color:var(--ink);font-variant-numeric:tabular-nums}
+  .sn-prog{width:160px;height:2px;background:var(--rule);position:relative;overflow:hidden}
+  .sn-prog-fill{position:absolute;top:0;left:0;height:100%;background:var(--ink);width:0%;transition:width .3s ease}
+}
+
+/* ── MOBILE DRAWER ─────────────────────────────── */
+.drawer{
+  position:fixed;inset:0;z-index:200;
+  background:#0a0a0a;color:#fff;
+  display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .3s cubic-bezier(.2,.8,.2,1), visibility 0s linear .3s;
+}
+.drawer.open{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transition:opacity .3s cubic-bezier(.2,.8,.2,1), visibility 0s linear 0s;
+}
+.drawer-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px var(--pp);height:56px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  flex-shrink:0;
+}
+.drawer-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:#fff;display:flex;align-items:center}
+.drawer-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px}
+.drawer-close{
+  background:none;border:none;color:#fff;cursor:pointer;
+  padding:8px;margin-right:-8px;
+  font-size:22px;line-height:1;font-weight:400;
+  display:flex;align-items:center;justify-content:center;
+}
+.drawer-close:hover{color:var(--accent)}
+.drawer-body{
+  flex:1;overflow-y:auto;
+  padding:32px var(--pp) 48px;
+}
+.drawer-eyebrow{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  color:rgba(255,255,255,.55);text-transform:uppercase;
+  margin-bottom:24px;display:flex;align-items:center;gap:8px;
+}
+.drawer-eyebrow::before{content:"";width:18px;height:1px;background:var(--accent)}
+.dw-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.dw-group{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  color:rgba(255,255,255,.45);text-transform:uppercase;
+  margin:24px 0 8px;
+}
+.dw-group:first-child{margin-top:0}
+.dw-item a{
+  display:grid;grid-template-columns:48px 1fr 24px;gap:12px;align-items:baseline;
+  padding:18px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  text-decoration:none;color:inherit;
+  transition:padding-left .3s cubic-bezier(.2,.8,.2,1);
+}
+.dw-item a:hover,.dw-item a:active{padding-left:6px}
+.dw-num{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  color:rgba(255,255,255,.5);font-variant-numeric:tabular-nums;padding-top:2px;
+}
+.dw-body{display:flex;flex-direction:column;gap:4px}
+.dw-title{font-size:17px;font-weight:600;color:#fff;letter-spacing:-.3px}
+.dw-desc{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5}
+.dw-arrow{font-size:14px;color:rgba(255,255,255,.4);padding-top:4px;text-align:right}
+.dw-item.active .dw-num{color:var(--accent)}
+.dw-item.active .dw-title::before{
+  content:"";display:inline-block;width:5px;height:5px;border-radius:50%;
+  background:var(--accent);margin-right:10px;vertical-align:middle;margin-top:-2px;
+}
+
+/* Body scroll lock when drawer open */
+body.drawer-open{overflow:hidden}
+
+/* ── MAIN ──────────────────────────────────────── */
+main{padding-top:56px}
+@media(min-width:1280px){
+  main{padding-top:0;padding-left:var(--nav-w)}
+}
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--pp)}
+
+/* ── COVER ─────────────────────────────────────── */
+.cover{
+  background:#0a0a0a;color:#fff;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  padding:var(--sp-16) var(--pp) var(--sp-12);
+  position:relative;
+}
+.cover-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;flex-direction:column;flex:1}
+.cv-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding-bottom:var(--sp-12);
+  font-size:11px;letter-spacing:2.5px;color:rgba(255,255,255,.65);text-transform:uppercase;font-weight:600;
+}
+.cv-top .r{text-align:right;line-height:1.8}
+.cv-mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:var(--sp-24) 0}
+.cv-label{
+  font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.7);margin-bottom:var(--sp-10);
+  display:flex;align-items:center;gap:10px;
+}
+.cv-label::before{content:"";width:24px;height:1px;background:var(--accent)}
+.cv-h1{
+  font-size:clamp(56px,8.5vw,120px);
+  font-weight:800;letter-spacing:-3.5px;
+  line-height:.92;color:#fff;
+  margin-bottom:var(--sp-10);
+}
+.cv-h1 .line2{display:block;color:rgba(255,255,255,.35);font-weight:400}
+.cv-desc{font-size:15px;line-height:1.8;color:rgba(255,255,255,.75);max-width:480px;font-weight:400}
+.cv-bot{
+  padding-top:var(--sp-10);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-6);
+}
+.cv-kpi{padding:var(--sp-2) 0}
+.cv-kpi-num{font-size:10px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:1.5px;margin-bottom:var(--sp-3)}
+.cv-kpi-val{font-size:clamp(32px,3.5vw,46px);font-weight:800;letter-spacing:-2px;line-height:1;color:#fff;margin-bottom:var(--sp-3)}
+.cv-kpi-val.dim{color:rgba(255,255,255,.6)}
+.cv-kpi-lbl{font-size:13px;font-weight:600;color:#fff;margin-bottom:2px}
+.cv-kpi-sub{font-size:12px;color:rgba(255,255,255,.62);line-height:1.5}
+
+@media(max-width:760px){
+  .cv-bot{grid-template-columns:repeat(2,1fr);gap:var(--sp-8) var(--sp-4)}
+}
+
+/* ── TABLE OF CONTENTS ─────────────────────────── */
+.toc-list{
+  margin-top:var(--sp-12);
+  border-top:1px solid var(--ink);
+}
+.toc-item{
+  display:grid;
+  grid-template-columns:88px 1fr 28px;
+  gap:var(--sp-8);
+  align-items:baseline;
+  padding:var(--sp-8) 0;
+  border-bottom:1px solid var(--rule);
+  text-decoration:none;
+  color:inherit;
+  transition:padding-left .35s cubic-bezier(.2,.8,.2,1), background-color .25s ease;
+}
+.toc-item:hover{
+  padding-left:var(--sp-4);
+  background:rgba(231,85,25,.02);
+}
+.toc-item:hover .toc-arrow{
+  color:var(--accent);
+  transform:translateX(4px);
+}
+.toc-num{
+  font-size:12px;font-weight:700;letter-spacing:2px;
+  color:var(--ink-4);padding-top:8px;
+}
+.toc-body{display:flex;flex-direction:column;gap:6px}
+.toc-title{
+  font-size:20px;font-weight:700;color:var(--ink);
+  letter-spacing:-.3px;line-height:1.3;
+}
+.toc-desc{
+  font-size:14px;color:var(--ink-3);line-height:1.6;
+}
+.toc-arrow{
+  font-size:14px;color:var(--ink-5);
+  padding-top:10px;text-align:right;
+  transition:color .25s ease, transform .3s cubic-bezier(.2,.8,.2,1);
+}
+@media(max-width:640px){
+  .toc-item{grid-template-columns:56px 1fr 20px;gap:var(--sp-5)}
+  .toc-title{font-size:17px}
+  .toc-desc{font-size:13px}
+}
+
+/* ── SECTION ───────────────────────────────────── */
+.section{padding:var(--sp-28) 0}
+/* Extra breathing room between the full-height hero cover and the first content section. */
+.section:first-of-type{padding-top:var(--sp-40)}
+
+.s-head{margin-bottom:var(--sp-16);max-width:900px}
+.s-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:600;letter-spacing:2.5px;
+  color:var(--ink-4);text-transform:uppercase;
+  margin-bottom:var(--sp-8);
+}
+.s-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.s-eyebrow .sep{color:var(--ink-5);margin:0 4px;font-weight:400}
+.s-title{
+  font-size:clamp(32px,4.2vw,52px);
+  font-weight:800;letter-spacing:-1.5px;
+  line-height:1.1;color:var(--ink);
+}
+.s-title .soft{color:var(--ink-4);font-weight:400}
+.s-sub{
+  margin-top:var(--sp-8);
+  font-size:16px;line-height:1.8;color:var(--ink-3);
+  max-width:680px;font-weight:400;
+}
+
+.s-rule{height:1px;background:var(--rule);margin:var(--sp-16) 0 var(--sp-14)}
+
+/* ── PROSE ─────────────────────────────────────── */
+.prose{font-size:15px;line-height:1.85;color:var(--ink-3);max-width:800px}
+.prose p+p{margin-top:var(--sp-5)}
+.prose strong{color:var(--ink);font-weight:600}
+.prose-wide{max-width:100%}
+
+/* ── NUMBERED BLOCKS (Like smalltribe / Marcher refs) ── */
+.nblocks{display:grid;gap:1px;background:var(--rule);margin:var(--sp-16) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.nblocks-3{grid-template-columns:repeat(3,1fr)}
+.nblocks-4{grid-template-columns:repeat(4,1fr)}
+.nblocks-2{grid-template-columns:repeat(2,1fr)}
+.nblock{background:var(--bg);padding:var(--sp-10) var(--sp-8) var(--sp-12);min-height:220px;display:flex;flex-direction:column}
+.nblock .n-num{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;color:var(--ink-4);letter-spacing:1.5px;
+  margin-bottom:var(--sp-6);
+}
+.nblock .n-num::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.nblock .n-title{font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.3px;line-height:1.35;margin-bottom:var(--sp-4)}
+.nblock .n-body{font-size:14px;line-height:1.8;color:var(--ink-3);flex:1}
+.nblock .n-body strong{color:var(--ink);font-weight:600}
+
+@media(max-width:820px){
+  .nblocks-3,.nblocks-4{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .nblocks-3,.nblocks-4,.nblocks-2{grid-template-columns:1fr}
+}
+
+/* ── KEY/VALUE LIST ────────────────────────────── */
+.kvlist{margin:var(--sp-10) 0}
+.kv{display:grid;grid-template-columns:200px 1fr;gap:var(--sp-8);padding:var(--sp-8) 0;border-top:1px solid var(--rule)}
+.kv:last-child{border-bottom:1px solid var(--rule)}
+.kv-label{font-size:11px;font-weight:700;color:var(--ink);letter-spacing:1.5px;text-transform:uppercase;padding-top:2px}
+.kv-label .num{color:var(--ink-5);margin-right:6px}
+.kv-title{font-size:18px;font-weight:600;color:var(--ink);letter-spacing:-.3px;line-height:1.4;margin-bottom:var(--sp-2)}
+.kv-body{font-size:14px;line-height:1.8;color:var(--ink-3)}
+.kv-body strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){
+  .kv{grid-template-columns:1fr;gap:var(--sp-3)}
+}
+
+/* ── DARK HIGHLIGHT BLOCK ──────────────────────── */
+.dark-block{
+  background:#0a0a0a;color:#fff;
+  /* Full-bleed background with content constrained to the same max-w as .wrap.
+     Horizontal padding grows on wide screens to keep content at max-w - 2*pp. */
+  padding:var(--sp-16) max(var(--pp), calc((100vw - var(--max-w)) / 2 + var(--pp)));
+  margin:var(--sp-16) 0;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  box-sizing:border-box;
+}
+@media(min-width:1280px){
+  /* On desktop the nav occupies var(--nav-w) on the left; full-bleed must not
+     cover the nav, and horizontal padding must recentre against the shifted area. */
+  .dark-block{
+    width:calc(100vw - var(--nav-w));
+    margin-left:calc(50% - 50vw + var(--nav-w)/2);
+    margin-right:calc(50% - 50vw + var(--nav-w)/2);
+    padding:var(--sp-16) max(var(--pp), calc((100vw - var(--nav-w) - var(--max-w)) / 2 + var(--pp)));
+  }
+}
+
+/* ── LINE SUPPRESSION ──────────────────────────── */
+/* Remove redundant horizontal lines right after a black/dark block.
+   Black itself acts as a strong visual separator. */
+.dark-block + .tac{border-top:none;padding-top:0}
+.dark-block + .tiers{border-top:none !important}
+.dark-block + .split{border-top:none}
+.dark-block + .nblocks{border-top:none}
+.dark-block + .tbl{border-top:none}
+.dark-block + .s-rule{display:none}
+.dark-block + .pgrid{border-top:none}
+.dark-block + .tgrid{border-top:none}
+
+/* Prevent consecutive horizontal lines from bordered containers into tac. */
+.split + .tac,
+.tbl + .tac,
+.tgrid + .tac,
+.pgrid + .tac,
+.nblocks + .tac,
+.tiers + .tac{border-top:none;padding-top:0}
+
+/* Prevent consecutive horizontal lines (two rules in a row). */
+.s-rule + .s-rule{display:none}
+.tiers + .s-rule{display:none}
+.tbl + .s-rule{display:none}
+.split + .s-rule{display:none}
+.pgrid + .s-rule{display:none}
+.tgrid + .s-rule{display:none}
+.nblocks + .s-rule{display:none}
+.db-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-8);display:flex;align-items:center;gap:10px}
+.db-label::before{content:"";width:18px;height:1px;background:var(--accent)}
+.db-h{font-size:clamp(20px,2.4vw,28px);font-weight:700;letter-spacing:-.5px;line-height:1.45;color:#fff;margin-bottom:var(--sp-8)}
+.db-h em{font-style:normal;color:#fff;font-weight:600}
+.db-h .ac{color:var(--accent);font-weight:600;font-style:normal}
+.db-body{font-size:14px;line-height:1.9;color:rgba(255,255,255,.72);max-width:800px}
+.db-body strong{color:#fff;font-weight:600}
+.db-body p+p{margin-top:var(--sp-4)}
+
+/* ── TACTICAL NOTE ─────────────────────────────── */
+.tac{
+  border-top:1px solid var(--ink);
+  padding:var(--sp-10) 0;
+  margin:var(--sp-16) 0;
+}
+.tac-label{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:var(--sp-6);
+}
+.tac-body{font-size:16px;line-height:1.85;color:var(--ink-2);max-width:900px}
+.tac-body strong{color:var(--ink);font-weight:700}
+.tac-dir{
+  margin-top:var(--sp-6);padding-top:var(--sp-6);
+  border-top:1px solid var(--rule);
+  font-size:14px;line-height:1.85;color:var(--ink-3);
+  max-width:900px;
+}
+.tac-dir strong{color:var(--ink);font-weight:600}
+.tac-dir .arrow{color:var(--accent);font-weight:700;margin-right:6px}
+
+/* ── NOTES ─────────────────────────────────────── */
+.notegrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-10);margin:var(--sp-10) 0}
+.note{
+  border-top:1px solid var(--ink);
+  padding:var(--sp-6) 0 0;
+  font-size:14px;line-height:1.85;color:var(--ink-3);
+}
+.note-h{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:var(--sp-3);letter-spacing:-.2px}
+.note strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){.notegrid{grid-template-columns:1fr;gap:var(--sp-8)}}
+
+/* ── SPLIT (Positive / Negative) ───────────────── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.split-col{padding:var(--sp-10) 0;padding-right:var(--sp-10)}
+.split-col+.split-col{border-left:1px solid var(--rule);padding-left:var(--sp-10);padding-right:0}
+.sp-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-5);display:flex;align-items:center;gap:10px}
+.sp-label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ink-4)}
+.sp-label.risk{color:var(--accent)}
+.sp-label.risk::before{background:var(--accent)}
+.sp-body{font-size:15px;line-height:1.85;color:var(--ink-3);margin-bottom:var(--sp-8)}
+.sp-body .hi{color:var(--ink);font-weight:600}
+.sp-body .risk{color:var(--accent);font-weight:600}
+.sp-stats{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);padding-top:var(--sp-6);border-top:1px solid var(--rule)}
+.sp-stat-val{font-size:26px;font-weight:800;letter-spacing:-1px;color:var(--ink);margin-bottom:2px;line-height:1}
+.sp-stat-val.lo{color:var(--ink-4)}
+.sp-stat-lbl{font-size:12px;color:var(--ink-4);letter-spacing:.3px}
+@media(max-width:760px){
+  .split{grid-template-columns:1fr}
+  .split-col+.split-col{border-left:none;border-top:1px solid var(--rule);padding-left:0;padding-top:var(--sp-10)}
+  .split-col{padding-right:0}
+}
+
+/* ── CHART CARDS (minimal, no backgrounds) ─────── */
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-12);margin:var(--sp-14) 0}
+.charts-1{grid-template-columns:1fr}
+.ch{padding:var(--sp-6) 0}
+.ch-eye{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-2)}
+.ch-title{font-size:18px;font-weight:600;color:var(--ink);letter-spacing:-.3px;line-height:1.4;margin-bottom:var(--sp-6);max-width:420px}
+.ch-ax{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-4);letter-spacing:.3px;margin-bottom:var(--sp-3)}
+.ch-canvas{position:relative;height:220px}
+.ch-canvas.tall{height:300px}
+.ch-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin-top:var(--sp-6);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.ch-stat{background:var(--bg);padding:var(--sp-5) var(--sp-4) var(--sp-4)}
+.ch-stat-lbl{font-size:11px;color:var(--ink-4);letter-spacing:.3px;margin-bottom:var(--sp-2)}
+.ch-stat-val{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.2px}
+.ch-stat-val.ok{color:var(--accent)}
+.ch-stat-val.warn{color:var(--accent)}
+@media(max-width:820px){.charts{grid-template-columns:1fr;gap:var(--sp-12)}}
+
+/* ── TABLE ─────────────────────────────────────── */
+.tbl{margin:var(--sp-14) 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+.tbl-cap{
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink-4);padding:var(--sp-4) 0 var(--sp-3);
+}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl-scroll::-webkit-scrollbar{height:4px}
+.tbl-scroll::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+table.dt{width:100%;border-collapse:collapse;min-width:640px}
+table.dt th{
+  text-align:left;padding:var(--sp-4) var(--sp-4);
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--ink-4);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--bg);white-space:nowrap;
+}
+table.dt td{
+  padding:var(--sp-4) var(--sp-4);
+  font-size:14px;color:var(--ink-3);
+  border-bottom:1px solid var(--rule-soft);
+  vertical-align:middle;line-height:1.6;
+}
+table.dt td strong{color:var(--ink);font-weight:600}
+table.dt tr:last-child td{border-bottom:none}
+table.dt tr:hover td{background:var(--bg-soft)}
+
+/* ── TAGS ──────────────────────────────────────── */
+.tag{
+  display:inline-block;font-size:10px;font-weight:600;
+  padding:3px 8px;letter-spacing:.5px;
+  border:1px solid var(--rule);color:var(--ink-3);
+  white-space:nowrap;
+}
+.t-ok{border-color:var(--ink);color:var(--ink)}
+.t-pod{border-color:var(--accent);color:var(--accent)}
+.t-pop{border-color:var(--ink-4);color:var(--ink-4)}
+.t-par{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.t-gap{border-color:var(--ink-5);color:var(--ink-4);background:var(--bg-soft)}
+.t-risk{border-color:var(--danger);background:var(--danger);color:#fff}
+
+/* ── QUOTES ────────────────────────────────────── */
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-10);margin:var(--sp-10) 0}
+.qgroup-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-5);padding-bottom:var(--sp-3);border-bottom:1px solid var(--ink)}
+.qcard{padding:var(--sp-6) 0;border-bottom:1px solid var(--rule)}
+.qcard:last-child{border-bottom:none}
+.qhead{display:flex;align-items:center;gap:10px;margin-bottom:var(--sp-3)}
+.qavatar{width:26px;height:26px;border-radius:50%;background:var(--bg-soft);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;color:var(--ink-4);font-size:10px;font-weight:700}
+
+/* ── FULL QUOTE BLOCK (for benchmark references) ─ */
+.quote-full-block{margin:var(--sp-14) 0;border-top:1px solid var(--ink)}
+.qfb-title{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.2px;padding:var(--sp-6) 0 var(--sp-2)}
+.qfb-desc{font-size:13px;line-height:1.85;color:var(--ink-3);max-width:900px;padding-bottom:var(--sp-8);border-bottom:1px solid var(--rule)}
+.qfb-desc strong{color:var(--ink);font-weight:600}
+.qfb-card{padding:var(--sp-8) 0;border-bottom:1px solid var(--rule)}
+.qfb-card:last-child{border-bottom:none}
+.qfb-head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-6);margin-bottom:var(--sp-5);padding-bottom:var(--sp-4);border-bottom:1px solid var(--rule-soft)}
+.qfb-head-l{display:flex;align-items:flex-start;gap:var(--sp-5)}
+.qfb-rank{
+  font-size:24px;font-weight:800;letter-spacing:-1px;
+  color:var(--ink);line-height:1;padding-top:2px;
+  min-width:36px;
+}
+.qfb-name{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.2px;margin-bottom:4px;display:flex;align-items:center}
+.qfb-meta{font-size:12px;color:var(--ink-4);letter-spacing:.2px;line-height:1.5}
+.qfb-score{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  color:var(--accent);text-transform:uppercase;
+  white-space:nowrap;padding-top:6px;
+}
+.qfb-score-num{
+  font-size:22px;font-weight:800;letter-spacing:-.5px;
+  color:var(--accent);margin-right:3px;
+  font-variant-numeric:tabular-nums;
+}
+.qfb-body{
+  font-size:15px;line-height:1.95;color:var(--ink-2);
+  padding:var(--sp-2) 0 var(--sp-5);
+  max-width:900px;
+  font-weight:400;
+}
+.qfb-tags{display:flex;flex-wrap:wrap;gap:6px;padding-top:var(--sp-3);border-top:1px solid var(--rule-soft)}
+@media(max-width:640px){
+  .qfb-head{flex-direction:column;gap:var(--sp-3)}
+  .qfb-head-l{gap:var(--sp-3)}
+  .qfb-rank{font-size:20px;min-width:28px}
+  .qfb-body{font-size:14px}
+}
+.qname{font-size:12px;font-weight:600;color:var(--ink-2)}
+.qdate{font-size:11px;color:var(--ink-4)}
+.qtext{font-size:14px;line-height:1.85;color:var(--ink-2)}
+@media(max-width:760px){.qgrid{grid-template-columns:1fr}}
+
+/* ── PERSONAS ──────────────────────────────────── */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.persona{background:var(--bg);padding:var(--sp-10) var(--sp-8)}
+.p-num{font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--ink-4);margin-bottom:var(--sp-6)}
+.p-pct{font-size:44px;font-weight:800;letter-spacing:-2px;color:var(--ink);line-height:1;margin-bottom:var(--sp-4)}
+.p-pct .unit{font-size:16px;color:var(--ink-4);font-weight:500;letter-spacing:0;margin-left:2px}
+.p-name{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.2px;margin-bottom:var(--sp-2)}
+.p-kw{font-size:12px;color:var(--ink-4);line-height:1.6}
+@media(max-width:760px){.pgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.pgrid{grid-template-columns:1fr}}
+
+/* ── TRAINER CARDS ─────────────────────────────── */
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.trainer{background:var(--bg);padding:var(--sp-10) var(--sp-8)}
+.t-num{font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--ink-4);margin-bottom:var(--sp-4)}
+.t-name{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.5px;margin-bottom:var(--sp-2)}
+.t-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 6px;background:var(--accent);color:#fff;vertical-align:middle;margin-left:6px;text-transform:uppercase}
+.t-meta{font-size:12px;color:var(--ink-4);padding-bottom:var(--sp-5);margin-bottom:var(--sp-5);border-bottom:1px solid var(--rule)}
+.t-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:var(--sp-4)}
+.t-pill{display:inline-block;font-size:10px;font-weight:500;padding:3px 8px;border:1px solid var(--rule);color:var(--ink-3);letter-spacing:.3px}
+.t-summary{font-size:13px;color:var(--ink-3);line-height:1.7;margin-bottom:var(--sp-5)}
+.t-quote{padding:var(--sp-4) 0 0;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.75;font-style:italic}
+@media(max-width:760px){.tgrid{grid-template-columns:1fr}}
+
+/* ── ACTIONS ───────────────────────────────────── */
+.actions{margin:var(--sp-10) 0}
+.action{padding:var(--sp-14) 0;border-top:1px solid var(--rule)}
+.action:last-child{border-bottom:1px solid var(--rule)}
+.action{display:grid;grid-template-columns:160px 1fr;gap:var(--sp-10)}
+.ac-left{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--ink-4);padding-top:6px}
+.ac-left .n{color:var(--ink);margin-right:6px;font-weight:700}
+.ac-left .pri{display:block;margin-top:var(--sp-2);font-size:10px;color:var(--accent)}
+.ac-left .pri.normal{color:var(--ink-4)}
+.ac-title{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.5px;line-height:1.35;margin-bottom:var(--sp-4)}
+.ac-desc{font-size:14px;line-height:1.85;color:var(--ink-3);margin-bottom:var(--sp-5)}
+.ac-desc strong{color:var(--ink);font-weight:600}
+.ac-box{
+  border-left:2px solid var(--accent);
+  padding:var(--sp-4) var(--sp-6);
+  background:var(--bg-soft);
+  font-size:14px;line-height:1.8;color:var(--ink-2);
+}
+.ac-box-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-3)}
+.ac-box strong{color:var(--ink);font-weight:600}
+.ex-before{color:var(--ink-4);text-decoration:line-through;display:block;margin-bottom:var(--sp-2)}
+.ex-after{color:var(--ink);font-weight:600;display:block}
+@media(max-width:760px){
+  .action{grid-template-columns:1fr;gap:var(--sp-4)}
+}
+
+/* ── TIER ROWS (for intro section) ─────────────── */
+.tiers{margin:var(--sp-14) 0;border-top:1px solid var(--ink)}
+.tier{display:grid;grid-template-columns:140px 1fr;gap:var(--sp-10);padding:var(--sp-10) 0;border-bottom:1px solid var(--rule)}
+.tier-left{font-size:11px;letter-spacing:1.5px;color:var(--ink-4);padding-top:2px}
+.tier-left .n{color:var(--ink);font-weight:700;margin-right:6px}
+.tier-name{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.3px;margin-top:var(--sp-3);margin-bottom:var(--sp-2)}
+/* When tier-name is the first element (LAYER variant without tier-weight),
+   drop its top margin and add optical padding on the left label so the
+   11px eyebrow and 20px heading visually align on the same line. */
+.tier-name:first-child{margin-top:0}
+.tier:has(.tier-name:first-child) > .tier-left{padding-top:6px}
+.tier-weight{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:var(--sp-3)}
+.tier-body{font-size:14px;line-height:1.85;color:var(--ink-3)}
+.tier-body strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){.tier{grid-template-columns:1fr;gap:var(--sp-3)}}
+
+/* ── SCORE GAUGE ───────────────────────────────── */
+.gauge-block{margin:var(--sp-16) 0;border-top:1px solid var(--ink);padding-top:var(--sp-10)}
+.gauge-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:var(--sp-8);letter-spacing:-.2px}
+.gauge{padding:var(--sp-6) 0}
+.gauge+.gauge{margin-top:var(--sp-2)}
+.g-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-3)}
+.g-head-l{display:flex;align-items:baseline;gap:var(--sp-4)}
+.g-name{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.2px}
+.g-pct{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.5px}
+.g-pct.mid{color:var(--ink-4)}
+.g-pct.low{color:var(--accent)}
+.g-pct.good{color:var(--accent)}
+.g-note{font-size:11px;color:var(--ink-4);letter-spacing:.3px}
+/* Animatable custom property for the fill percentage. */
+@property --gauge-w{
+  syntax:'<percentage>';
+  inherits:false;
+  initial-value:0%;
+}
+.g-bar{
+  height:2px;
+  background:linear-gradient(to right, var(--gauge-color, var(--ink)) var(--gauge-w, 0%), var(--rule) 0);
+  transition:--gauge-w 1.2s cubic-bezier(.2,.8,.2,1);
+}
+.g-bar.low{ --gauge-color:var(--accent); }
+.g-bar.mid{ --gauge-color:var(--ink-4); }
+.g-bar.good{ --gauge-color:var(--accent); }
+.g-sub{font-size:12px;color:var(--ink-4);margin-top:var(--sp-2);line-height:1.6}
+
+/* ── PLACE STATUS GRID ─────────────────────────── */
+.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);margin:var(--sp-8) 0 0;border:1px solid rgba(255,255,255,.1)}
+.status-cell{background:#0a0a0a;padding:var(--sp-5) var(--sp-6)}
+.sc-lbl{font-size:10px;color:rgba(255,255,255,.6);letter-spacing:1px;margin-bottom:var(--sp-2);text-transform:uppercase}
+.sc-val{font-size:15px;font-weight:700;color:#fff;margin-bottom:2px}
+.sc-val.warn{color:var(--accent)}
+.sc-val.ok{color:var(--accent)}
+.sc-sub{font-size:11px;color:rgba(255,255,255,.6);line-height:1.5}
+@media(max-width:760px){.status-grid{grid-template-columns:1fr 1fr}}
+
+/* ── TOGGLE / EXPANDABLE ───────────────────────── */
+.toggle{border-top:1px solid var(--rule)}
+.toggle:last-of-type{border-bottom:1px solid var(--rule)}
+.toggle-btn{
+  width:100%;background:none;border:none;cursor:pointer;
+  font-family:inherit;text-align:left;
+  display:flex;align-items:center;gap:var(--sp-4);
+  padding:var(--sp-6) 0;min-height:52px;
+  font-size:14px;font-weight:600;color:var(--ink);
+}
+.toggle-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.toggle-dot.soft{background:var(--ink-4)}
+.toggle-lbl{flex:1;line-height:1.5}
+.toggle-arr{font-size:14px;color:var(--ink-4);transition:transform .3s;flex-shrink:0}
+.toggle.open .toggle-arr{transform:rotate(180deg)}
+.toggle-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.toggle.open .toggle-body{max-height:1200px}
+.toggle-inner{padding:0 0 var(--sp-8);font-size:14px;color:var(--ink-3);line-height:1.85;max-width:900px}
+.toggle-inner p+p{margin-top:var(--sp-4)}
+.toggle-inner strong{color:var(--ink);font-weight:600}
+
+/* ── COMPARISON TABLE (for POP/POD, SEO/AEO inline) ── */
+.cmp-tbl{
+  width:80%;margin:var(--sp-8) auto;
+  border-collapse:collapse;
+  font-size:13px;
+}
+.cmp-tbl th,.cmp-tbl td{
+  padding:var(--sp-4) var(--sp-5);
+  text-align:left;
+  border-bottom:1px solid var(--rule);
+}
+.cmp-tbl th{
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--ink-4);border-bottom:1px solid var(--ink);
+}
+.cmp-tbl th:first-child{color:var(--ink-4)}
+.cmp-tbl th:not(:first-child){color:var(--ink)}
+.cmp-tbl td{color:var(--ink-3);line-height:1.6;vertical-align:top}
+.cmp-tbl td:first-child{color:var(--ink-4);font-size:12px;white-space:nowrap;width:100px}
+.cmp-tbl tr:last-child td{border-bottom:none}
+@media(max-width:900px){
+  .cmp-tbl{width:100%}
+}
+@media(max-width:640px){
+  .cmp-tbl{display:block;overflow-x:auto}
+}
+
+/* ── CYCLE DIAGRAM ─────────────────────────────── */
+.cycle-wrap{margin:var(--sp-12) auto;max-width:580px}
+.cycle-wrap svg{display:block;width:100%;height:auto}
+
+/* Mobile fallback — stacked HTML version (better readability on narrow screens). */
+.cycle-mobile{display:none}
+.cy-step{
+  border:1px solid var(--rule);
+  padding:18px 20px;
+  text-align:center;
+  background:var(--bg);
+}
+.cy-step-num{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  color:var(--accent);margin-bottom:6px;
+}
+.cy-step-text{
+  font-size:15px;font-weight:600;color:var(--ink);line-height:1.4;
+}
+.cy-step-arrow{
+  text-align:center;color:#b8b8b8;
+  font-size:20px;line-height:1;padding:6px 0;
+}
+.cy-step-loop{
+  margin-top:14px;text-align:center;
+  color:var(--ink-4);font-size:12px;line-height:1.5;
+}
+.cy-step-loop .sp{color:var(--accent);opacity:.55;margin-right:4px}
+
+@media(max-width:640px){
+  .cycle-wrap svg{display:none}
+  .cycle-mobile{display:flex;flex-direction:column;gap:2px}
+}
+
+/* ── AI IMAGE ──────────────────────────────────── */
+.ai-img-wrap{margin:var(--sp-12) 0}
+.ai-img-wrap img{display:block;max-width:380px;width:100%;margin:0 auto;border:1px solid var(--rule)}
+
+/* ── KEYWORD BARS ──────────────────────────────── */
+.kwbars{margin:var(--sp-6) 0}
+.kwbar{padding:var(--sp-4) 0;border-bottom:1px solid var(--rule)}
+.kwbar:last-child{border-bottom:none}
+.kwb-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-2);font-size:13px}
+.kwb-name{color:var(--ink-2);font-weight:500}
+.kwb-val{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.5px}
+.kwb-track{height:2px;background:var(--rule)}
+.kwb-fill{height:100%;background:var(--ink);width:0;transition:width 1s ease}
+.kwb-fill.soft{background:var(--ink-4)}
+
+/* ── RANKING BARS ──────────────────────────────── */
+.rank-row{display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3) 0;border-bottom:1px solid var(--rule)}
+.rank-row:last-child{border-bottom:none}
+.rank-name{font-size:13px;color:var(--ink-2);font-weight:500}
+.rank-right{display:flex;align-items:center;gap:12px;font-size:11px}
+.rank-lbl{color:var(--ink-4);font-weight:600;letter-spacing:.5px;min-width:60px;text-align:right}
+.rank-dots{letter-spacing:3px;font-size:10px;min-width:60px;text-align:right}
+.rank-dots .on{color:var(--ink)}
+.rank-dots .off{color:var(--rule)}
+
+/* ── FOOTER ────────────────────────────────────── */
+.footer{
+  background:#0a0a0a;color:rgba(255,255,255,.65);
+  padding:var(--sp-16) var(--pp);
+  text-align:center;
+  margin-top:var(--sp-16);
+}
+@media(min-width:1280px){
+  .footer{padding-left:calc(var(--pp) + var(--nav-w))}
+}
+.ft-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:#fff;margin-bottom:var(--sp-5)}
+.ft-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle;margin-top:-2px}
+.ft-links{display:flex;justify-content:center;gap:var(--sp-8);margin-bottom:var(--sp-6);flex-wrap:wrap}
+.ft-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;letter-spacing:.3px;transition:color .2s}
+.ft-links a:hover{color:#fff}
+.ft-copy{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.5px}
+
+/* ── ANIMATIONS ────────────────────────────────── */
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.anim.visible{opacity:1;transform:translateY(0)}
+
+/* Cycle spin */
+.cy-spin{transform-origin:340px 182px}
+.cycle-wrap.in-view .cy-spin{animation:cySpin 14s linear infinite}
+@keyframes cySpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* Cycle diagram — subtle sequential reveal on scroll-in.
+   Boxes fade in 01 → 02 → 03 → 04, then each connecting arrow draws in. */
+.cycle-wrap svg > g{opacity:0;transition:opacity .5s cubic-bezier(.2,.8,.2,1)}
+.cycle-wrap svg > line{stroke-dasharray:220;stroke-dashoffset:220;transition:stroke-dashoffset .5s cubic-bezier(.2,.8,.2,1)}
+
+.cycle-wrap.in-view svg > g{opacity:1}
+.cycle-wrap.in-view svg > line{stroke-dashoffset:0}
+
+.cycle-wrap.in-view svg > g:nth-of-type(1){transition-delay:.08s}
+.cycle-wrap.in-view svg > line:nth-of-type(1){transition-delay:.42s}
+.cycle-wrap.in-view svg > g:nth-of-type(2){transition-delay:.22s}
+.cycle-wrap.in-view svg > line:nth-of-type(2){transition-delay:.56s}
+.cycle-wrap.in-view svg > g:nth-of-type(3){transition-delay:.36s}
+.cycle-wrap.in-view svg > line:nth-of-type(3){transition-delay:.7s}
+.cycle-wrap.in-view svg > g:nth-of-type(4){transition-delay:.5s}
+.cycle-wrap.in-view svg > line:nth-of-type(4){transition-delay:.84s}
+.cycle-wrap.in-view svg > g:nth-of-type(5){transition-delay:1s}
+
+/* ── REDUCED MOTION ────────────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .cy-spin{animation:none!important}
+  .cycle-wrap svg > g{opacity:1!important}
+  .cycle-wrap svg > line{stroke-dashoffset:0!important}
+}
+
+/* ── PRINT ─────────────────────────────────────── */
+@media print{
+  .topbar,.skip-link{display:none!important}
+  main{padding-top:0}
+  .section{break-inside:avoid;padding:20px 0}
+  .cover{min-height:auto;padding:40px 0;break-after:page}
+  .dark-block,.cover,.footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<a href="#cover" class="skip-link">본문으로 건너뛰기</a>
+
+<!-- TOP BAR (mobile/tablet) ──────────────────────── -->
+<header class="topbar" role="banner">
+  <div class="tb-inner">
+    <div class="tb-brand"><span class="dot"></span>RE:FEEEL</div>
+    <div class="tb-current" id="tb-current"><span class="num">00</span>Cover</div>
+    <div class="tb-progress"><div class="tb-prog-bar"><div class="tb-prog-fill" id="tb-fill"></div></div><div class="tb-prog-num" id="tb-num">0%</div></div>
+    <button class="tb-menu" id="drawer-open" type="button" aria-label="목차 열기" aria-controls="drawer" aria-expanded="false">
+      <span class="tb-menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>MENU</span>
+    </button>
+  </div>
+</header>
+
+<!-- SIDE NAV (desktop only) ──────────────────────── -->
+<aside class="sidenav" aria-label="섹션 네비게이션">
+  <div class="sn-masthead">
+    <div class="sn-client">위드벨라 체형교정 &amp; 다이어트</div>
+    <div class="sn-tagline">Place Report</div>
+  </div>
+  <ul class="sn-list" id="sn-list">
+    <li class="sn-item" data-target="cover"><a href="#cover"><span class="sn-num">—</span><span class="sn-title">Cover</span></a></li>
+
+    <li class="sn-group">Diagnosis · 진단</li>
+    <li class="sn-item" data-target="intro"><a href="#intro"><span class="sn-num">00</span><span class="sn-title">리포트 개요</span></a></li>
+    <li class="sn-item" data-target="place"><a href="#place"><span class="sn-num">01</span><span class="sn-title">플레이스 상태</span></a></li>
+    <li class="sn-item" data-target="overview"><a href="#overview"><span class="sn-num">02</span><span class="sn-title">종합 진단</span></a></li>
+
+    <li class="sn-group">Analysis · 분석</li>
+    <li class="sn-item" data-target="pop"><a href="#pop"><span class="sn-num">03</span><span class="sn-title">POP vs POD</span></a></li>
+    <li class="sn-item" data-target="gap"><a href="#gap"><span class="sn-num">04</span><span class="sn-title">간극 분석</span></a></li>
+    <li class="sn-item" data-target="customer"><a href="#customer"><span class="sn-num">05</span><span class="sn-title">고객 분석</span></a></li>
+    <li class="sn-item" data-target="trainer"><a href="#trainer"><span class="sn-num">06</span><span class="sn-title">귀속 구조</span></a></li>
+    <li class="sn-item" data-target="trend"><a href="#trend"><span class="sn-num">07</span><span class="sn-title">리뷰 추이</span></a></li>
+
+    <li class="sn-group">Action · 실행</li>
+    <li class="sn-item" data-target="action"><a href="#action"><span class="sn-num">08</span><span class="sn-title">액션 플랜</span></a></li>
+    <li class="sn-item" data-target="list"><a href="#list"><span class="sn-num">09</span><span class="sn-title">리뷰 목록</span></a></li>
+  </ul>
+  <div class="sn-credit">by RE:FEEEL</div>
+  <div class="sn-foot">
+    <div class="sn-foot-lbl"><span>Progress</span><span class="sn-foot-num" id="sn-num">0%</span></div>
+    <div class="sn-prog"><div class="sn-prog-fill" id="sn-fill"></div></div>
+  </div>
+</aside>
+
+<!-- MOBILE DRAWER ────────────────────────────────── -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="목차" aria-hidden="true">
+  <div class="drawer-head">
+    <div class="drawer-brand"><span class="dot"></span>RE:FEEEL</div>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="목차 닫기">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="drawer-body">
+    <div class="drawer-eyebrow">Contents · 목차</div>
+    <ul class="dw-list" id="dw-list">
+      <li class="dw-group">Diagnosis · 진단</li>
+      <li class="dw-item" data-target="intro"><a href="#intro"><span class="dw-num">00</span><span class="dw-body"><span class="dw-title">리포트 개요</span><span class="dw-desc">이 리포트가 보는 것</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="place"><a href="#place"><span class="dw-num">01</span><span class="dw-body"><span class="dw-title">플레이스 상태</span><span class="dw-desc">정보 최적화</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="overview"><a href="#overview"><span class="dw-num">02</span><span class="dw-body"><span class="dw-title">종합 진단</span><span class="dw-desc">강점과 리스크를 한눈에</span></span><span class="dw-arrow">→</span></a></li>
+
+      <li class="dw-group">Analysis · 분석</li>
+      <li class="dw-item" data-target="pop"><a href="#pop"><span class="dw-num">03</span><span class="dw-body"><span class="dw-title">POP vs POD</span><span class="dw-desc">기본 기대치와 차별화 지점</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="gap"><a href="#gap"><span class="dw-num">04</span><span class="dw-body"><span class="dw-title">간극 분석</span><span class="dw-desc">전달 의도와 실제의 차이</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="customer"><a href="#customer"><span class="dw-num">05</span><span class="dw-body"><span class="dw-title">고객 분석</span><span class="dw-desc">누가, 왜, 어디서 왔는가</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="trainer"><a href="#trainer"><span class="dw-num">06</span><span class="dw-body"><span class="dw-title">귀속 구조</span><span class="dw-desc">강사 개인 브랜드 구조</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="trend"><a href="#trend"><span class="dw-num">07</span><span class="dw-body"><span class="dw-title">리뷰 추이</span><span class="dw-desc">양과 질이 동시에 성장</span></span><span class="dw-arrow">→</span></a></li>
+
+      <li class="dw-group">Action · 실행</li>
+      <li class="dw-item" data-target="action"><a href="#action"><span class="dw-num">08</span><span class="dw-body"><span class="dw-title">액션 플랜</span><span class="dw-desc">7가지 실행 항목</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="list"><a href="#list"><span class="dw-num">09</span><span class="dw-body"><span class="dw-title">리뷰 목록</span><span class="dw-desc">AEO 친화 상위 10건</span></span><span class="dw-arrow">→</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- COVER ───────────────────────────────────────── -->
+<section id="cover" class="cover" data-nav="Cover" data-num="—">
+<div class="cover-inner">
+  <div class="cv-top">
+    <span>Place Report</span>
+    <span class="r">2026.04.20</span>
+  </div>
+  <div class="cv-mid">
+    <div class="cv-label">네이버 플레이스 분석 리포트</div>
+    <h1 class="cv-h1">
+      위드벨라<br>
+      <span class="line2">체형교정 &amp; 다이어트</span>
+    </h1>
+    <p class="cv-desc">네이버 플레이스 리뷰 469건 기반 분석<br>분석 기간: 2023년 9월 — 2026년 2월</p>
+  </div>
+  <div class="cv-bot">
+    <div class="cv-kpi">
+      <div class="cv-kpi-val">31.4</div>
+      <div class="cv-kpi-lbl">SEO Score</div>
+      <div class="cv-kpi-sub">45점 만점 · 노출 기여 70%</div>
+    </div>
+    <div class="cv-kpi">
+      <div class="cv-kpi-val">34.2</div>
+      <div class="cv-kpi-lbl">AEO Score</div>
+      <div class="cv-kpi-sub">50점 만점 · AI 참조 68%</div>
+    </div>
+    <div class="cv-kpi">
+      <div class="cv-kpi-val">97<span style="font-size:.5em;color:rgba(255,255,255,.7)">%</span></div>
+      <div class="cv-kpi-lbl">예약 인증률</div>
+      <div class="cv-kpi-sub">63건 / 65건 (샘플)</div>
+    </div>
+    <div class="cv-kpi">
+      <div class="cv-kpi-val">248<span style="font-size:.5em;color:rgba(255,255,255,.7)">자</span></div>
+      <div class="cv-kpi-lbl">평균 리뷰 길이</div>
+      <div class="cv-kpi-sub">벤치마크 150~250자 상회</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ST/00 — 리포트 개요 ──────────────────────────── -->
+<section id="intro" class="section" data-nav="리포트 개요" data-num="00">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 00 <span class="sep">·</span> 이 리포트가 보는 것</div>
+    <h2 class="s-title">리뷰와 플레이스 데이터로<br><span class="soft">현재 상태를 진단한다</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>이 리포트는 위드벨라 체형교정 &amp; 다이어트 운동센터 네이버 플레이스에 쌓인 <strong>방문자 리뷰 469건</strong>과 <strong>플레이스 운영 상태</strong>를 함께 진단한 결과입니다. 리뷰 하나하나에 SEO(검색 노출 기여도)와 AEO(AI 답변 참조 가능성)를 채점하고, 플레이스 정보 충실도·소식 발행·예약 상품·SNS 연동까지 종합적으로 봅니다.</p>
+    <p>이 리포트는 별점이나 만족도를 다루지 않습니다. <strong>"고객이 리뷰에 쓴 단어가 검색과 AI에서 어떤 가치를 만드는가"</strong>, 그리고 <strong>"플레이스 자체가 예약 전환에 최적화되어 있는가"</strong>를 봅니다. 이 케이스는 특히, <strong>업체가 설계한 자산(강사 실명·프로그램명)이 실제 고객 언어로 얼마나 전이되었는가</strong>를 핵심 관점으로 봅니다.</p>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">플레이스에서 진짜 원하는 것</div>
+    <div class="db-h">상단 노출이 아니라,<br><em>플레이스를 통해 매출로 이어지는 것</em>입니다.</div>
+    <div class="db-body">네이버가 순위를 올려주는 페이지는 결국, 사람들이 머물고 싶은 페이지입니다. 리뷰에 스토리가 있고, 사장님 답글이 복붙이 아니고, 사진이 다채로우면 — 사람들은 그 페이지에서 오래 머물고, 저장하고, 길찾기를 누르죠. 고객 전환이 되는 페이지가 곧 네이버가 올려주는 페이지입니다.</div>
+  </div>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="tier-left"><span class="n">01</span>TIER</div>
+      <div>
+        <div class="tier-weight">가중치: 최상 — 실질적 순위 결정</div>
+        <div class="tier-name">상호작용</div>
+        <div class="tier-body">저장하기, 길찾기, 전화, 체류시간. 클릭한 고객이 이탈하지 않게 하는 것이 핵심입니다. 대부분의 대행사는 광고 트래픽과 이벤트로 이 지표를 인위적으로 올리지만, <strong>돈을 멈추면 순위도 멈춥니다.</strong></div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">02</span>TIER</div>
+      <div>
+        <div class="tier-weight">가중치: 상 — 지속성 및 신뢰 지표</div>
+        <div class="tier-name">신뢰도</div>
+        <div class="tier-body">영수증 리뷰, 포토/영상 리뷰, 리뷰 패턴. <strong>"친절해요" 100개보다 구체적 경험이 담긴 정성스러운 리뷰 10개가 검색 노출에 훨씬 유리합니다.</strong> 2026년 기준, 네이버는 POS 연동 영수증 리뷰에 가장 높은 신뢰 점수를 부여합니다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">03</span>TIER</div>
+      <div>
+        <div class="tier-weight">가중치: 중 — 검색 반영 필터</div>
+        <div class="tier-name">정보 최적화</div>
+        <div class="tier-body">소개글, 메뉴(가격), 편의시설, 최신성. 소개글은 검색 봇이 아니라 '사람'이 읽고 클릭하게끔 써야 합니다. <strong>사진을 월 1회 이상 교체하는 페이지는 "활성화된 매장"으로 인식되어 가중치를 받습니다.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;margin-bottom:var(--sp-4);letter-spacing:-.3px">네이버가 가장 높게 평가하는 선순환 구조</p>
+    <p>단순히 리뷰가 많다고 1등을 주지 않습니다. 네이버는 이 네 단계가 반복되는 패턴이 확인될 때 가중치를 대폭 부여합니다.</p>
+  </div>
+
+  <div class="cycle-wrap">
+    <svg viewBox="0 0 680 420" role="img" aria-label="네이버 플레이스 선순환 구조 다이어그램">
+      <defs><marker id="cy-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+      <g>
+        <rect x="60" y="40" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="180" y="64" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">01 · 검색</text>
+        <text x="180" y="90" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">특정 키워드로 플레이스 진입</text>
+      </g>
+      <line x1="302" y1="78" x2="378" y2="78" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="380" y="40" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="500" y="64" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">02 · 탐색</text>
+        <text x="500" y="90" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">리뷰·시술 정보를 30초+ 체류</text>
+      </g>
+      <line x1="500" y1="118" x2="500" y2="288" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="380" y="290" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="500" y="314" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">03 · 의도 확인</text>
+        <text x="500" y="340" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">저장하기 또는 길찾기 실행</text>
+      </g>
+      <line x1="378" y1="328" x2="302" y2="328" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="60" y="290" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="180" y="314" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">04 · 경험 완결</text>
+        <text x="180" y="340" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">방문 후 영수증 리뷰 작성</text>
+      </g>
+      <line x1="180" y1="288" x2="180" y2="118" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <g class="cy-spin"><text x="340" y="182" text-anchor="middle" font-size="22" fill="#e75519" opacity=".35">↻</text></g>
+        <text x="340" y="206" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="11" fill="#8a8a8a">이 순환이 반복될수록</text>
+        <text x="340" y="222" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="11" fill="#8a8a8a">순위가 올라간다</text>
+      </g>
+    </svg>
+    <div class="cycle-mobile" aria-hidden="true">
+      <div class="cy-step"><div class="cy-step-num">01 · 검색</div><div class="cy-step-text">특정 키워드로 플레이스 진입</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">02 · 탐색</div><div class="cy-step-text">리뷰·시술 정보를 30초+ 체류</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">03 · 의도 확인</div><div class="cy-step-text">저장하기 또는 길찾기 실행</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">04 · 경험 완결</div><div class="cy-step-text">방문 후 영수증 리뷰 작성</div></div>
+      <div class="cy-step-loop"><span class="sp">↻</span>이 순환이 반복될수록 순위가 올라간다</div>
+    </div>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose" style="margin-bottom:var(--sp-12)">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;margin-bottom:var(--sp-4);letter-spacing:-.3px">이 리포트의 접근</p>
+    <p>리뷰 469건 안에는 고객이 왜 저장했는지, 왜 예약했는지, 어떤 경로로 왔는지가 전부 들어 있습니다. 특히 위드벨라는 <strong>온라인 강의(클래스101 등) → 오프라인 원데이 → 정규반·패키지</strong>로 이어지는 독특한 퍼널 구조를 갖고 있어, 리뷰에서 이 퍼널이 어떻게 재현되는지 보는 것이 핵심입니다. 이 데이터로 세 가지 층위를 동시에 진단하고, 인위적 트래픽 없이 이 선순환이 자생적으로 작동하는 구조를 설계합니다.</p>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">플레이스 현재 상태</div>
+    <div class="db-h"><em>위드벨라 체형교정 &amp; 다이어트 운동센터</em> · 척추·자세교정 · 역삼역 1번 출구 도보 4분</div>
+    <div class="db-body" style="margin-bottom:var(--sp-6)">
+      <p><strong>방문자 리뷰 469건</strong> · 블로그 리뷰 36건 · 2023년 9월 첫 리뷰</p>
+      <p><strong>주소</strong> · 서울 강남구 역삼로 455-6 2,3층</p>
+      <p><strong>업종</strong> · 척추, 자세교정 (SNPE 방법론 + 자체 프로그램)</p>
+      <p><strong>주요 프로그램</strong> · 라인재창조 정규반, 개인PT+그룹 MIX, 직각어깨(유니T), 황금골반/어깨라인/다리라인 원데이(벨라T), 전임강사 PT, 벨라 원장 PT — 총 8종</p>
+      <p><strong>편의</strong> · 예약, 무선인터넷, 주차 무료 · 2층 그룹 / 3층 프라이빗 분리 운영</p>
+      <p><strong>SNS 연동</strong> · 유튜브(구독자 6만) · 홈페이지 · 인스타그램 · 블로그 (4종 만점)</p>
+    </div>
+    <div class="status-grid">
+      <div class="status-cell"><div class="sc-lbl">항목별 상세</div><div class="sc-val ok">우수</div><div class="sc-sub">예약 상품 8종 · 상세 설명 충실</div></div>
+      <div class="status-cell"><div class="sc-lbl">가격 표시</div><div class="sc-val warn">부분</div><div class="sc-sub">리뷰 내 6.5만원 언급 · 공식 표시 확인 필요</div></div>
+      <div class="status-cell"><div class="sc-lbl">찾아가는 길</div><div class="sc-val ok">양호</div><div class="sc-sub">역삼역 1번 출구 도보 4분</div></div>
+      <div class="status-cell"><div class="sc-lbl">소식 발행</div><div class="sc-val ok">활발</div><div class="sc-sub">블로그 중심 · 강사 벨라 장문 콘텐츠</div></div>
+      <div class="status-cell"><div class="sc-lbl">프로그램 상세 설명</div><div class="sc-val ok">우수</div><div class="sc-sub">프로그램별 목표·대상·강사 명시</div></div>
+      <div class="status-cell"><div class="sc-lbl">편의 정보</div><div class="sc-val ok">양호</div><div class="sc-sub">예약 · 주차 · 무선인터넷 · 층 분리</div></div>
+      <div class="status-cell"><div class="sc-lbl">SNS 연동</div><div class="sc-val ok">만점</div><div class="sc-sub">유튜브 · 홈페이지 · 인스타 · 블로그</div></div>
+      <div class="status-cell"><div class="sc-lbl">리뷰 품질</div><div class="sc-val ok">최상</div><div class="sc-sub">평균 248자 / 벤치마크 150~250자</div></div>
+      <div class="status-cell"><div class="sc-lbl">예약 인증률</div><div class="sc-val ok">97%</div><div class="sc-sub">네이버 예약 시스템 통한 검증</div></div>
+    </div>
+  </div>
+
+  <div class="prose" style="margin-top:var(--sp-12)">
+    <p>예를 들어 네이버에서 '강남 체형교정'을 검색하면 플레이스 목록이 뜨죠. 그 목록에서 위에 뜨느냐 아래에 뜨느냐를 결정하는 게 <strong>SEO(Search Engine Optimization)</strong>입니다. 리뷰 수, 예약 인증 비율, 키워드 태그, 재방문율 같은 요소들이 영향을 주죠. 검색했을 때 눈에 보이는 곳에 올라가는 것까지가 SEO의 역할입니다.</p>
+  </div>
+
+  <table class="cmp-tbl">
+    <thead><tr><th></th><th>SEO</th><th>AEO</th></tr></thead>
+    <tbody>
+      <tr><td>목표</td><td>검색 목록에 올라가기</td><td>AI의 답변에 선택되기</td></tr>
+      <tr><td>작동 방식</td><td>리뷰 수, 인증, 키워드</td><td>리뷰의 구체성, 스토리, 숫자</td></tr>
+      <tr><td>리뷰 예시</td><td>"친절해요" (태그 수 기여)</td><td>"벨라쌤 황금골반 원데이 듣고 골반 비대칭이 달라졌어요"</td></tr>
+      <tr><td>비유</td><td>전화번호부에 이름 올리기</td><td>지인이 직접 추천해주는 것</td></tr>
+    </tbody>
+  </table>
+
+  <div class="prose">
+    <p>이제는 검색 결과를 하나씩 보는 게 아닙니다. 쿠팡도, 네이버 플레이스도 AI가 리뷰 전체를 읽고 요약해주고 있거든요. 고객은 그 한 줄 요약으로 방문 여부를 판단하게 됩니다. 이때 AI가 근거로 참조하는 게 리뷰입니다. 이걸 <strong>AEO(Answer Engine Optimization)</strong>라고 합니다.</p>
+  </div>
+
+  <div class="ai-img-wrap"><img src="https://pub-df7c5d3e703845768a1b37d329b42e95.r2.dev/aireview.png" alt="네이버 AI 리뷰 요약 예시" loading="lazy"></div>
+
+  <div class="prose">
+    <p>"벨라쌤 황금골반 원데이 듣고 골반 비대칭이 확실히 잡혔어요, 온라인 강의 6주 병행했더니 엉덩이 라인도 달라졌습니다"처럼 구체적 경험과 프로그램명·강사명이 있는 리뷰는 AI가 인용할 수 있죠. 반면 "좋아요 친절해요"는 AI가 가져갈 게 없습니다. 네이버 AI 브리핑도 같은 원리로, 구체적 경험이 담긴 리뷰를 근거로 참조합니다.</p>
+  </div>
+
+  <div class="notegrid" style="margin-top:var(--sp-14)">
+    <div class="note">
+      <div class="note-h">이런 리뷰일수록 검색과 AI에 더 잘 잡힙니다</div>
+      <div class="kwbars">
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">구체적 숫자 / 결과</span><span class="kwb-val">+45%</span></div><div class="kwb-track"><div class="kwb-fill" data-w="100"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">고화질 이미지 3장 이상</span><span class="kwb-val">+30%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="67"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">특징적 문구 (브랜드 고유)</span><span class="kwb-val">+25%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="56"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">담당자 실명 언급</span><span class="kwb-val">+15%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="33"></div></div></div>
+      </div>
+    </div>
+    <div class="note">
+      <div class="note-h">네이버가 순위를 매길 때 어디를 더 많이 보는지</div>
+      <div style="margin-top:var(--sp-4)">
+        <div class="rank-row"><div class="rank-name">사용자 행동 (체류, 예약, 재방문)</div><div class="rank-right"><span class="rank-lbl">최상</span><span class="rank-dots"><span class="on">● ● ● ● ●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">업체 유사도 (검색어 매칭)</div><div class="rank-right"><span class="rank-lbl">매우 높음</span><span class="rank-dots"><span class="on">● ● ● ●</span> <span class="off">●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">인기도 (리뷰, 저장, 클릭률)</div><div class="rank-right"><span class="rank-lbl">높음</span><span class="rank-dots"><span class="on">● ● ●</span> <span class="off">● ●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">정보 충실도 (설명, 사진)</div><div class="rank-right"><span class="rank-lbl">중간</span><span class="rank-dots"><span class="on">● ●</span> <span class="off">● ● ●</span></span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ST/00B — 플레이스 상태 ──────────────────────── -->
+<section id="place" class="section" data-nav="플레이스 상태" data-num="01">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 01 <span class="sep">·</span> 플레이스 상태 · 정보 최적화</div>
+    <h2 class="s-title">셋팅만으로는<br><span class="soft">고객이 예약하지 않는다</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>플레이스 셋팅의 역할은 <strong>'입장권'</strong>입니다. 정보를 빠짐없이 채우고, 사진을 올리고, 키워드를 배치하는 것 — 이것만으로 순위가 올라가던 시대는 지났습니다. 하지만 이 기본값이 갖춰져 있지 않으면 노출 자체가 되지 않죠.</p>
+    <p>아래는 위드벨라 체형교정 &amp; 다이어트 플레이스가 이 입장권을 어디까지 확보하고 있는지 점검한 결과입니다.</p>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose" style="margin-bottom:var(--sp-8)">
+    <p>이 리포트는 세 가지 관점에서 플레이스를 분석합니다.</p>
+  </div>
+
+  <div class="tiers" style="margin-bottom:var(--sp-12)">
+    <div class="tier">
+      <div class="tier-left"><span class="n">01</span>LAYER</div>
+      <div>
+        <div class="tier-name">알고리즘이 보는 것.<br><span style="color:var(--ink-4)">순위의 기반.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">네이버 검색 시스템이 플레이스 정보를 어떻게 평가하는지. 영업시간, 예약 상품 등록, 사진 업데이트 주기, 소식 발행 빈도 같은 항목들이 <strong>'정보 충실도'</strong>라는 이름으로 검색 순위에 반영됩니다. 대부분의 대행사도 다루는 영역이죠. 기본값이지만, 빠져 있으면 나머지가 작동하지 않는 토대입니다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">02</span>LAYER</div>
+      <div>
+        <div class="tier-name">검색에 걸리는 것.<br><span style="color:var(--ink-4)">AI가 추천하는 재료.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">고객이 "강남 체형교정"이라고 검색했을 때 뜨느냐 안 뜨느냐를 결정하는 요소입니다. 소개 문구에 어떤 키워드가 들어 있는지, 찾아가는 길에 역명이 있는지, 프로그램 설명에 고객의 고민을 해결하는 단어가 포함되어 있는지가 여기에 해당하죠. <strong>네이버 AI 브리핑은 이 텍스트들을 읽고 추천의 근거로 활용합니다.</strong> 같은 업종, 같은 지역인데 한 곳만 AI 답변에 이름이 불리는 이유가 여기에 있습니다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">03</span>LAYER</div>
+      <div>
+        <div class="tier-name">고객이 보고 <span style="color:var(--ink-4)">결정하는 것.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">검색에 노출되고, 고객이 클릭해서 플레이스에 들어왔습니다. <strong>그다음은 3초입니다.</strong> 대표 사진, 리뷰, 가격 정보를 보고 "여기 괜찮겠다"거나 "다른 데 볼까"를 결정하거든요. 가격이 미공개면 <strong>절반 가까이가 이탈</strong>하고, 최근 한 달 내 리뷰가 없으면 "여기 아직 하나?"라고 의심합니다. 1등으로 뜨더라도 전환이 안 되면 의미가 없으니까요.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>이 세 가지는 따로 노는 게 아닙니다. 정보 충실도가 높아야 검색에 걸리고, 검색에 걸려야 고객이 들어오고, 들어온 고객이 전환하려면 결정을 돕는 요소가 갖춰져 있어야 하죠. 아래는 이 세 가지 관점을 기준으로, 현재 플레이스의 상태를 점검한 결과입니다.</p>
+  </div>
+
+  <div class="gauge-block">
+    <div class="gauge-title">Score Summary · 3-Layer Assessment</div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">정보 충실도</span><span class="g-pct good">92%</span></div>
+        <span class="g-note">13개 중 12개 충족</span>
+      </div>
+      <div class="g-bar good" data-w="92"></div>
+      <div class="g-sub">알고리즘이 보는 기본 셋팅</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">검색 매칭</span><span class="g-pct">85%</span></div>
+        <span class="g-note">대표 키워드 5/5 만점 · 소개문 POD 풍부</span>
+      </div>
+      <div class="g-bar" data-w="85"></div>
+      <div class="g-sub">AI가 찾을 수 있는 키워드 존재 여부</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">예약 전환</span><span class="g-pct mid">75%</span></div>
+        <span class="g-note">예약 상품 8종 · 가격 부분 공개 · 대표 이미지 확인 필요</span>
+      </div>
+      <div class="g-bar mid" data-w="75"></div>
+      <div class="g-sub">클릭한 고객이 예약까지 가는 구조</div>
+    </div>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">항목별 상세 — 13개 항목</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>항목</th><th>현재 상태</th><th>기준</th><th>판정</th><th>영향</th></tr></thead>
+        <tbody>
+          <tr><td><strong>카테고리</strong></td><td>척추, 자세교정 — 정확</td><td>실제 업종과 일치</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>영업시간</strong></td><td>확인 필요</td><td>요일별 분리 + 휴무일 명시</td><td><span class="tag t-par">부분</span></td><td>순위</td></tr>
+          <tr><td><strong>전화번호</strong></td><td>확인 필요</td><td>대표번호 등록</td><td><span class="tag t-par">부분</span></td><td>전환</td></tr>
+          <tr><td><strong>예약 시스템</strong></td><td>네이버 예약 8종 활성화</td><td>네이버 예약 활성화 시 7배 클릭</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>SNS 연동 (4종)</strong></td><td>유튜브 + 홈페이지 + 인스타 + 블로그</td><td>1개 이상 연동 + 최근 포스팅</td><td><span class="tag t-ok">만점</span></td><td>순위</td></tr>
+          <tr><td><strong>대표 키워드 (5/5)</strong></td><td>체형교정 · 다이어트 · 바른자세 · 척추교정 · PT</td><td>업종 맞춤 5개 등록</td><td><span class="tag t-ok">만점</span></td><td>검색</td></tr>
+          <tr><td><strong>소개 문구</strong></td><td>클래스101 TOP 2 · 누적 수강생 3만명 · 유튜브 6만 · 100% 사전예약제</td><td>300~500자, POD 키워드 포함</td><td><span class="tag t-ok">우수</span></td><td>검색</td></tr>
+          <tr><td><strong>예약 상품 상세</strong></td><td>8종 프로그램 · 강사별·주제별 분리 등록</td><td>상품별 대상·목표·강사 명시</td><td><span class="tag t-ok">충족</span></td><td>전환</td></tr>
+          <tr><td><strong>가격 표시</strong></td><td>리뷰 내 "65,000원" 언급 있음 · 공식 표시 확인 필요</td><td>명시 시 전환 30%↑</td><td><span class="tag t-par">부분</span></td><td>전환</td></tr>
+          <tr><td><strong>찾아가는 길</strong></td><td>역삼역 도보권</td><td>역명 + 교통수단별 분리 + 주차</td><td><span class="tag t-ok">충족</span></td><td>검색</td></tr>
+          <tr><td><strong>소식 발행</strong></td><td>블로그 활발 · 최신 2026.01 · 강사 벨라 장문 콘텐츠 다수</td><td>주 2~3회, 체류 10.4%↑ 예약 8%↑</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>편의시설</strong></td><td>예약 · 무선인터넷 · 주차 무료 · 2층/3층 분리</td><td>주요 편의 3개+ 등록</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>대표 이미지</strong></td><td>확인 필요</td><td>대표 썸네일 + 시설 10장+</td><td><span class="tag t-par">부분</span></td><td>전환</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="font-size:14px;font-weight:700;color:var(--ink);margin:var(--sp-12) 0 var(--sp-4);letter-spacing:-.2px">개선 항목 — 2건</div>
+
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot"></span>
+      <span class="toggle-lbl">가격 표시 — 예약 상품별 공식 가격 미공개 (플레이스 확인 필요)</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p><strong>리뷰 본문에 "하루에 10만원 넘는 가격대", "65,000원 원데이 종아리 클래스" 같은 가격 언급이 있지만, 플레이스 상품 카드에는 공식 가격이 보이지 않는다.</strong> 원데이/프로젝트/패키지 상품 간 가격대 차이가 크기 때문에, 고객은 예약 전 가격 탐색 단계에서 이탈할 가능성이 높다.</p>
+      <p>8종 프로그램 각각에 공식 가격을 명시하라. <strong>"황금골반 원데이 — 90분 · 10만원대, 온라인 강의 포함 패키지"</strong>처럼 시간·포함 내역까지 표기하면 예약 전환율이 30% 이상 오른다.</p>
+    </div></div>
+  </div>
+
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot soft"></span>
+      <span class="toggle-lbl">대표 이미지 — 썸네일/시설 이미지 현황 확인 필요</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p><strong>"2층 그룹/3층 프라이빗 분리" 라는 공간 차별점이 소개 문구에는 있지만, 대표 이미지로 그 구조가 시각적으로 전달되는지 확인이 필요하다.</strong> 리뷰에서 "강의실 시설이 깔끔" 수준의 언급은 있지만, 구체적 공간 묘사는 적은 편이다.</p>
+      <p>2층 그룹 수업 공간 · 3층 프라이빗 룸 · 강사 벨라/시아/루아/유니 개별 이미지를 대표 사진에 포함하라. 공간 분리 구조가 시각적으로 드러나면 "프라이빗 개인 레슨 가능한 곳"으로 검색에 걸린다.</p>
+    </div></div>
+  </div>
+
+  <div class="dark-block" style="margin-top:var(--sp-14)">
+    <div class="db-label">이 케이스의 특이점 — 콘텐츠 자산의 방향성이 다르다</div>
+    <div class="db-h">블로그·유튜브 자산이 <em>리뷰와 분리되지 않는다.</em><br>방문자 리뷰 35%가 "온라인 강의 먼저 보고 왔다"고 직접 언급한다.</div>
+    <div class="db-body">
+      <p><strong>이 구조는 체형교정·피트니스 업종에서는 드물다.</strong></p>
+      <p><strong>1. 유튜브 6만 구독자 + 클래스101 TOP 2 온라인 강의가 오프라인 리뷰로 직접 연결된다.</strong> 고객이 "유튜브 보고 왔어요", "온라인 강의 수강 후 실물 수업 들으러 왔어요"라고 리뷰에 쓰면서, 업체가 설계한 디지털 자산이 오프라인 전환의 근거로 작동한다. 업체의 콘텐츠 자산과 방문자 리뷰가 연결된 흐름이다.</p>
+      <p><strong>2. 강사 개인 브랜딩이 리뷰의 핵심 언어로 박혀있다.</strong> 샘플 65건 기준 "벨라쌤" 57%, "시아쌤" 38%가 본문에 등장한다. 블로그·유튜브의 강사 중심 콘텐츠가 오프라인 수강생의 언어로 그대로 전이되는 구조다.</p>
+      <p><strong>3. AEO 친화적 리뷰 구조가 이미 자생적으로 형성되어 있다.</strong> 평균 본문 길이 248자, 30자 이하 단답 0%, 프로그램명("황금골반" 17%, "다리라인" 11%) 자연어 전이. AI 답변 엔진이 참조하기 좋은 근거가 쌓여 있다.</p>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>위드벨라의 자산은 이미 정렬되어 있다.</strong> 유튜브·클래스101·블로그·인스타그램이 "강사 벨라" 중심으로 일관된 메시지를 내고, 그 언어가 오프라인 수강생의 리뷰에 그대로 재현된다. 대부분의 체형교정·피트니스 케이스에서는 업체 의도와 리뷰 표현 사이에 큰 간극이 있지만, 이 케이스에서는 그 간극이 거의 없다.</div>
+    <div class="tac-dir"><span class="arrow">→</span><strong>이 단계의 과제는 '자산 추가'가 아니라 '재배치 최적화'다.</strong> 이미 존재하는 긴 리뷰 자산을 AI 답변 엔진이 인용하기 더 쉬운 구조로 재패키징하고, 벨라·시아 쏠림(합계 95%) 구조에서 신규 강사 브랜딩을 올리며, 원데이→정규반 퍼널을 명시적으로 설계하는 것이 이 리포트의 핵심 방향이다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 01 — 종합 진단 ─────────────────────────────── -->
+<section id="overview" class="section" data-nav="종합 진단" data-num="02">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 02 <span class="sep">·</span> 종합 진단</div>
+    <h2 class="s-title">고객들은 위드벨라를<br><span class="soft">어떻게 인식하고 있는가</span></h2>
+  </div>
+
+  <div class="split">
+    <div class="split-col">
+      <div class="sp-label">Strength</div>
+      <div class="sp-body">리뷰에서 위드벨라는 <span class="hi">"벨라쌤의 체계적 SNPE 방법론 + 프로그램별 전문 강사"</span>로 인식되며, <span class="hi">"온라인 강의를 먼저 접한 뒤 오프라인으로 전환한 수강생이 많은 곳"</span>으로 느껴진다. <span class="hi">본문 평균 248자</span>, <span class="hi">예약 인증 97%</span>, <span class="hi">재방문 37%</span>는 체형교정·피트니스 업종에서 매우 드문 신뢰·몰입 지표다.</div>
+      <div class="sp-stats">
+        <div><div class="sp-stat-val">97<span style="font-size:.55em;color:var(--ink-4)">%</span></div><div class="sp-stat-lbl">예약 인증률</div></div>
+        <div><div class="sp-stat-val">248<span style="font-size:.55em;color:var(--ink-4)">자</span></div><div class="sp-stat-lbl">본문 평균 길이</div></div>
+      </div>
+    </div>
+    <div class="split-col">
+      <div class="sp-label risk">Risk</div>
+      <div class="sp-body">그러나 <span class="risk">벨라(57%) + 시아(38%) 두 강사의 합계 95%</span>가 리뷰에 등장하며, 나머지 루아·유니·드리 강사는 개별 언급이 10% 미만이다. <span class="risk">원데이 수업이 리뷰의 대부분</span>을 차지하며 정규반·패키지로의 전환 경로가 리뷰에서 드러나지 않는다. 강사 개인 브랜드에 의존하는 구조는 확장성·리스크 측면에서 점검이 필요하다.</div>
+      <div class="sp-stats">
+        <div><div class="sp-stat-val">95<span style="font-size:.55em;color:var(--ink-4)">%</span></div><div class="sp-stat-lbl">벨라+시아 쏠림</div></div>
+        <div><div class="sp-stat-val lo">&lt;5<span style="font-size:.55em">%</span></div><div class="sp-stat-lbl">신규 강사 언급</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>위드벨라는 기존의 RE:FEEEL 분석 사례와 달리, "리뷰 품질 개선"이 핵심 과제가 아니다.</strong> 리뷰는 이미 충분히 길고, 구체적이며, 브랜드 고유어를 담고 있다. 대신 두 가지 다른 과제가 떠오른다. 첫째는 이 풍부한 리뷰 자산을 AEO 관점에서 더 전략적으로 재패키징하는 일, 둘째는 강사 쏠림 리스크를 관리하면서 수업 라인업의 확장성을 확보하는 일이다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>이 리포트의 나머지 섹션은 <strong>"이미 잘 되어 있는 것을 어떻게 더 잘 활용할 것인가"</strong>와 <strong>"두 강사 의존 구조를 어떻게 시스템으로 전환할 것인가"</strong>를 중심으로 전개된다.</div>
+  </div>
+
+  <div class="charts">
+    <div class="ch">
+      <div class="ch-eye">Score Distribution</div>
+      <div class="ch-title">본문 길이 분포,<br>100자 이상 리뷰가 89%</div>
+      <div class="ch-ax"><span>본문 길이 구간 →</span><span>샘플 65건 기준</span></div>
+      <div class="ch-canvas"><canvas id="c-scatter" role="img" aria-label="본문 길이 분포"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">본문 평균</div><div class="ch-stat-val">248자</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">30자 이하 단답</div><div class="ch-stat-val ok">0%</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">100자 이상 비율</div><div class="ch-stat-val ok">89%</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">AEO 인용 친화도</div><div class="ch-stat-val ok">높음</div></div>
+      </div>
+    </div>
+    <div class="ch">
+      <div class="ch-eye">Brand Language</div>
+      <div class="ch-title">브랜드 고유 언어 전이율 —<br>프로그램명·강사명이 자연어로 박힘</div>
+      <div class="ch-ax"><span>고유어 →</span><span>샘플 65건 중 등장률</span></div>
+      <div class="ch-canvas"><canvas id="c-kw" role="img" aria-label="브랜드 고유 언어 전이율"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">벨라쌤 언급</div><div class="ch-stat-val">57%</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">프로그램명 언급</div><div class="ch-stat-val ok">고유어 다수</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notegrid">
+    <div class="note">
+      <div class="note-h">온라인 → 오프라인 퍼널의 가시화</div>
+      <p>샘플 65건 중 <strong>23건(35%)이 "온라인 강의 수강 후 오프라인 방문"</strong>을 직접 언급한다. "유튜브 보고 왔어요", "클래스101 완강 후", "온라인 패키지 신청하고 오프라인 먼저 들었어요" 같은 패턴이다. 업체 자산(유튜브 6만 · 클래스101 TOP 2)이 오프라인 전환의 디딤돌로 작동한다.</p>
+    </div>
+    <div class="note">
+      <div class="note-h">지방 원정 고객의 존재</div>
+      <p>샘플 65건 중 <strong>4건(6%)이 지방에서 원정 방문</strong>을 언급한다. "부산에서 달려왔어요", "반차쓰고 지방에서 올라간 열정 수강생" 같은 표현. 지역 기반 업종에서 원정 고객 6%는 드문 비율이며, 강사 개인 브랜드 파급력의 직접적 증거다.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 — POP vs POD ───────────────────────────── -->
+<section id="pop" class="section" data-nav="POP vs POD" data-num="03">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 03 <span class="sep">·</span> POP(기본값) vs POD(차별점)</div>
+    <h2 class="s-title">기본 기대치와<br><span class="soft">차별화 지점을 구분한다</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>체형교정 센터에 갔는데 강사가 불친절하면 다시 가지 않겠죠. 그런데 친절하다고 해서 "여기를 꼭 가야 해"라고 추천하지는 않습니다. 친절한 건 피트니스 센터라면 당연한 거니까요. 이게 <strong>POP — Point of Parity(기본값)</strong>입니다. 없으면 탈락하지만, 있어도 선택 이유가 되지 않는 것. "친절해요", "시설이 깔끔해요"가 대부분의 리뷰에서 나온다면, 그건 옆 동네 필라테스에서도 똑같이 받을 수 있는 평가입니다.</p>
+    <p>반면 같은 체형교정 센터인데 "벨라쌤 황금골반 원데이 듣고 골반 비대칭이 확실히 잡혔어요, 온라인 강의 6주 병행했더니 라인이 달라졌습니다"라고 하면 이야기가 달라지죠. 다른 센터에서는 들을 수 없는 말이니까요. 이게 <strong>POD — Point of Difference(차별점)</strong>입니다. 경쟁자는 줄 수 없는, 여기를 골라야 하는 이유.</p>
+  </div>
+
+  <table class="cmp-tbl">
+    <thead><tr><th></th><th>POP (기본값)</th><th>POD (차별점)</th></tr></thead>
+    <tbody>
+      <tr><td>의미</td><td>기본 기대치(없으면 탈락)</td><td>차별화 지점(선택 이유)</td></tr>
+      <tr><td>없으면?</td><td>탈락</td><td>선택지에는 들어감</td></tr>
+      <tr><td>있으면?</td><td>선택지에 들어감</td><td>선택의 이유가 됨</td></tr>
+      <tr><td>리뷰 예시</td><td>"친절해요", "깔끔해요"</td><td>"벨라쌤 황금골반 원데이 듣고 자극점이 정확히 잡혔어요"</td></tr>
+    </tbody>
+  </table>
+
+  <div class="prose">
+    <p>이 리포트에서 POP(기본값)로 분류된 항목을 플레이스 대표 문구로 쓰고 있다면, 아주 당연한 것을 차별점이라고 내세우는 것과 같습니다. 모두가 친절하다면, 고객은 리뷰를 보고 이 센터를 선택할 이유가 없는 거죠. <strong>POD(차별점)로 분류된 항목이 플레이스 소개 문구의 핵심이 되어야 합니다.</strong></p>
+    <p>위드벨라의 흥미로운 점은, <strong>POD가 이미 리뷰에 풍부하게 담겨 있다</strong>는 것입니다. 대부분의 체형교정·피트니스 센터 리뷰가 POP에 머무르는 반면, 이 케이스는 자체 프로그램명·강사 실명·SNPE 방법론 같은 POD 언어가 고객 자연어로 전이되어 있습니다.</p>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">리뷰 본문 기반 언어 분류 (샘플 65건)</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>키워드</th><th>등장</th><th>비율</th><th>분류</th><th>근거</th></tr></thead>
+        <tbody>
+          <tr><td><strong>친절</strong></td><td>다수</td><td>—</td><td><span class="tag t-pop">POP</span></td><td>서비스업 보편 기대치. 피트니스 업종 기본</td></tr>
+          <tr><td><strong>꼼꼼/세심</strong></td><td>다수</td><td>—</td><td><span class="tag t-pop">POP</span></td><td>수업 진행의 기본값</td></tr>
+          <tr><td><strong>벨라쌤</strong></td><td>37</td><td>57%</td><td><span class="tag t-pod">POD</span></td><td>원장 실명 브랜딩이 고객 언어로 전이</td></tr>
+          <tr><td><strong>시아쌤</strong></td><td>25</td><td>38%</td><td><span class="tag t-pod">POD</span></td><td>전임 강사 개별 브랜딩</td></tr>
+          <tr><td><strong>원데이 클래스</strong></td><td>27</td><td>42%</td><td><span class="tag t-pod">POD</span></td><td>자체 상품 구조 (원데이/프로젝트/패키지)</td></tr>
+          <tr><td><strong>온라인 → 오프라인</strong></td><td>23</td><td>35%</td><td><span class="tag t-pod">POD</span></td><td>"유튜브/클래스101 보고 왔어요" 퍼널 명시</td></tr>
+          <tr><td><strong>SNPE</strong></td><td>15</td><td>23%</td><td><span class="tag t-pod">POD</span></td><td>방법론 명칭이 고객 언어로 정착</td></tr>
+          <tr><td><strong>황금골반</strong></td><td>11</td><td>17%</td><td><span class="tag t-pod">POD</span></td><td>자체 프로그램명 자연어 전이</td></tr>
+          <tr><td><strong>다리라인</strong></td><td>7</td><td>11%</td><td><span class="tag t-pod">POD</span></td><td>자체 프로그램명 자연어 전이</td></tr>
+          <tr><td><strong>지방 원정</strong></td><td>4</td><td>6%</td><td><span class="tag t-pod">POD</span></td><td>부산/대구/인천 등 원정 방문</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>대부분의 체형교정 센터 리뷰는 "친절/꼼꼼/시설 좋음" 같은 POP 언어가 지배적이다.</strong> 위드벨라는 그 반대다. 강사 실명, 자체 프로그램명, 방법론, 온라인→오프라인 퍼널이라는 POD 요소가 리뷰 본문에 풍부하게 담겨 있다. 이는 업체가 유튜브/클래스101/블로그에서 일관되게 발신한 언어가 고객 언어로 재현된 결과다.</div>
+    <div class="tac-dir"><span class="arrow">→</span><strong>POD는 이미 존재한다. 문제는 이를 어떻게 추가로 강화하고 재배치하느냐이다.</strong> 신규 강사(루아/유니/드리)를 벨라·시아 수준의 POD 브랜드로 끌어올리고, "원데이 → 정규반" 전환 언어가 리뷰에 자연스럽게 들어갈 수 있는 유도 질문을 설계하는 것이 다음 단계다.</div>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">POD Cluster</div>
+      <div class="ch-title">본문 언어 기반 POD 클러스터 — 위드벨라 자체 언어 전이 패턴</div>
+      <div class="ch-canvas tall"><canvas id="c-pod" role="img" aria-label="POD 클러스터 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="qgrid">
+    <div>
+      <div class="qgroup-title">POD 1 · 온라인 → 오프라인 전환 퍼널 (35%)</div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">d</div><div><div class="qname">다음7998</div><div class="qdate">2026.01.08</div></div></div>
+        <div class="qtext">"온라인 수강으로 기초, 황금골반, 어깨 듣고는 자세를 올바르게 하고 있는지 궁금해서 오프라인 수강을 듣게 됐습니다. 여튼 그룹 수업임에도 불구하고 벨라 원장님이 한 분 한 분 자세를 꼼꼼히 봐주셔서 너무 좋았어요."</div>
+      </div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">s</div><div><div class="qname">shinelikeadiamond55</div><div class="qdate">2026.01.08</div></div></div>
+        <div class="qtext">"온라인 패키지를 신청해서 수강중이었는데 제대로 하고있는게 맞나 긴가민가 흐지부지되던 찰나에 신청한 원데이. 무조건 오프라인 한번쯤은 듣고 온라인 병행하는걸 추천합니다."</div>
+      </div>
+    </div>
+    <div>
+      <div class="qgroup-title">POD 2 · 강사 실명 + 프로그램명 (57%+17%)</div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">g</div><div><div class="qname">goeuuunnn</div><div class="qdate">2026.02.07</div></div></div>
+        <div class="qtext">"벨라쌤 어깨수업 듣고싶어서 부산에서 달려왔어요!! SNPE 운동 반년정도 해왔는데 벨라쌤 오프라인 수업듣고 나니 어떻게해야 효율적으로 정확하게 하는지 제대로 알게되었어요. 벨라쌤이 왜 유명하시고 롱런하시는지 알게되었습니다."</div>
+      </div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">d</div><div><div class="qname">don****</div><div class="qdate">2025.12.13</div></div></div>
+        <div class="qtext">"위드벨라 벨라쌤 원데이 수업을 들었습니당. 골반틀어짐이나 다리 내회전, 발목 아치 무너짐 이런것들은 예전에 PT받거나 도수치료 여러번 받으면서 인지는 하고 있었는데, 이러한 것들을 종합적으로 연결해서 한번에 알려주시는게 젤 좋았어요."</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 03 — 간극 분석 ─────────────────────────────── -->
+<section id="gap" class="section" data-nav="간극 분석" data-num="04">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 04 <span class="sep">·</span> 간극 분석</div>
+    <h2 class="s-title">전달하고 싶은 것과<br><span class="soft">실제로 전달된 것의 차이</span></h2>
+  </div>
+
+  <div class="note" style="border-top:1px solid var(--ink-4);margin-bottom:var(--sp-10)">
+    <div class="note-h">안내</div>
+    <p>아래 "전달 의도"는 플레이스 홈 탭, 소개 문구, 예약 상품 설명, 강사 벨라의 블로그·유튜브 콘텐츠 등 공개 데이터를 기반으로 AI가 추정한 것입니다. 실제 의도와 일치하는지 비교해보세요. <strong>대부분의 케이스에서는 이 간극이 크지만, 위드벨라는 오히려 간극이 좁은 예외 사례입니다.</strong></p>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">Gap Analysis</div>
+      <div class="ch-title">전달 의도 vs 리뷰 반영률 — 대부분 정렬되어 있음</div>
+      <div class="ch-canvas tall"><canvas id="c-gap" role="img" aria-label="전달 의도 대비 리뷰 반영률 비교 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">간극 상세 (샘플 65건 기준 추정)</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>전달 의도</th><th>리뷰 언급</th><th>반영률</th><th>판정</th></tr></thead>
+        <tbody>
+          <tr><td><strong>강사 벨라의 개인 브랜드</strong></td><td>37건</td><td>57%</td><td><span class="tag t-ok">강한 전달</span></td></tr>
+          <tr><td><strong>원데이/프로젝트/패키지 상품 구조</strong></td><td>27건</td><td>42%</td><td><span class="tag t-ok">전달됨</span></td></tr>
+          <tr><td><strong>시아쌤 전임 강사 브랜딩</strong></td><td>25건</td><td>38%</td><td><span class="tag t-ok">전달됨</span></td></tr>
+          <tr><td><strong>온라인 → 오프라인 전환 퍼널</strong></td><td>23건</td><td>35%</td><td><span class="tag t-ok">전달됨</span></td></tr>
+          <tr><td><strong>SNPE 방법론</strong></td><td>15건</td><td>23%</td><td><span class="tag t-par">부분 전달</span></td></tr>
+          <tr><td><strong>자체 프로그램명 (황금골반/다리라인)</strong></td><td>18건</td><td>28%</td><td><span class="tag t-par">부분 전달</span></td></tr>
+          <tr><td><strong>신규 강사 (루아/유니/드리) 브랜딩</strong></td><td>6건</td><td>9%</td><td><span class="tag t-gap">미전달</span></td></tr>
+          <tr><td><strong>2층 그룹 / 3층 프라이빗 공간 분리</strong></td><td>3건</td><td>5%</td><td><span class="tag t-gap">미전달</span></td></tr>
+          <tr><td><strong>정규반/개인 PT로의 전환</strong></td><td>4건</td><td>6%</td><td><span class="tag t-gap">미전달</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>전달 의도의 절반 이상이 이미 리뷰로 재현되고 있다.</strong> 이는 RE:FEEEL 다른 분석 사례에서는 보기 드문 결과다. 벨라·시아 두 강사의 브랜드와 원데이 상품 구조는 고객 언어에 박혀 있다. 반면 <strong>세 가지 미전달 영역</strong>이 있다: (1) 신규 강사 브랜딩 (2) 공간 분리의 차별성 (3) 원데이 → 정규반/PT 전환 스토리.</div>
+    <div class="tac-dir"><span class="arrow">→</span>미전달 영역 3개는 "이미 잘 되고 있는 영역을 확장"하면 해결된다. 신규 강사에게도 벨라/시아 수준의 고유어가 리뷰에 쓰이도록 유도 질문을 설계하고, 수업 후반에 공간 차별성을 경험하게 하며, 정규반 전환 고객의 리뷰를 우선 확보하는 것. 나머지 섹션에서 이를 구체화한다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 04 — 고객 분석 ─────────────────────────────── -->
+<section id="customer" class="section" data-nav="고객 분석" data-num="05">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 05 <span class="sep">·</span> 고객 분석</div>
+    <h2 class="s-title">누가, 왜,<br><span class="soft">어디서 왔는가</span></h2>
+  </div>
+
+  <div class="pgrid">
+    <div class="persona"><div class="p-pct">35<span class="unit">%</span></div><div class="p-name">온라인 선행형</div><div class="p-kw">유튜브, 클래스101, 온라인 패키지, 오프라인 첫방문</div></div>
+    <div class="persona"><div class="p-pct">24<span class="unit">%</span></div><div class="p-name">특정 부위 집중형</div><div class="p-kw">황금골반, 다리라인, 어깨라인, 하비탈출</div></div>
+    <div class="persona"><div class="p-pct">18<span class="unit">%</span></div><div class="p-name">재방문 수강생</div><div class="p-kw">2~10회 방문, 원데이 반복, 정규반 탐색</div></div>
+    <div class="persona"><div class="p-pct">12<span class="unit">%</span></div><div class="p-name">타 운동 경험자</div><div class="p-kw">PT, 도수치료, 필라테스, SNPE 타지역</div></div>
+    <div class="persona"><div class="p-pct">6<span class="unit">%</span></div><div class="p-name">지방 원정 고객</div><div class="p-kw">부산, 대구, 인천, 반차, 원정</div></div>
+    <div class="persona"><div class="p-pct">5<span class="unit">%</span></div><div class="p-name">출산·복직 관리형</div><div class="p-kw">출산 후, 복직, 앉아있는 시간, 목·어깨 통증</div></div>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">Key Finding</div>
+    <div class="db-h">온라인 선행형(35%) + 특정 부위 집중형(24%) =<br><em>전체 고객의 59%가 이미 위드벨라 콘텐츠를 접한 상태로 온다.</em></div>
+    <div class="db-body"><p><strong>대부분의 체형교정·피트니스 센터는 "지역 기반 단순 노출"로 고객을 받는다.</strong> 위드벨라는 다르다. 유튜브 6만 구독자와 클래스101 TOP 2 온라인 강의를 통해 <strong>이미 브랜드와 방법론에 학습된 고객이 59% 이상 찾아온다.</strong> 이는 지방 원정 고객 6%의 근거이기도 하며, 첫 방문부터 프로그램명을 정확히 인지한 상태로 예약한다는 의미다.</p></div>
+  </div>
+
+  <div class="charts">
+    <div class="ch">
+      <div class="ch-eye">Before State</div>
+      <div class="ch-title">Before State — 왜 왔는가</div>
+      <div class="ch-canvas"><canvas id="c-before" role="img" aria-label="방문 사유 분포"></canvas></div>
+    </div>
+    <div class="ch">
+      <div class="ch-eye">Decision Trigger</div>
+      <div class="ch-title">위드벨라를 선택한 이유</div>
+      <div class="ch-canvas"><canvas id="c-trigger" role="img" aria-label="선택 이유 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>온라인 선행형 35%가 리뷰 품질의 핵심 동력이다.</strong> 이들은 "유튜브로 봐왔어요", "온라인 강의 완강했어요", "이론은 이미 알고 왔어요"라고 리뷰에 쓰면서 업체가 만든 언어를 그대로 재사용한다. 반면 "타 운동 경험자"(12%)는 도수치료·필라테스·타 SNPE 센터와 비교하는 리뷰를 남겨 비교우위 데이터를 제공한다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>리뷰 유도 타겟 1순위는 <strong>"온라인 선행형 + 특정 부위 집중형"</strong> 교집합에 있는 고객이다. 이들은 프로그램명·강사명을 자연스럽게 리뷰에 쓴다. 재방문 수강생(18%)은 "원데이 → 정규반" 전환 경로를 리뷰에 담을 수 있는 핵심 고객군. 지방 원정 고객(6%)은 "왜 여기까지 오는가"라는 드문 POD 스토리를 남길 수 있다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 05 — 담당자 인식 ──────────────────────────── -->
+<section id="trainer" class="section" data-nav="귀속 구조" data-num="06">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 06 <span class="sep">·</span> 강사별 인식</div>
+    <h2 class="s-title">강사 개인 브랜드와<br><span class="soft">센터 브랜드의 귀속 구조</span></h2>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">Attribution</div>
+      <div class="ch-title">귀속 구조 — 리뷰에서 누가 호명되는가</div>
+      <div class="ch-canvas"><canvas id="c-attr" role="img" aria-label="귀속 구조 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="tgrid">
+    <div class="trainer">
+      <div class="t-num">01</div>
+      <div class="t-name">벨라 원장<span class="t-badge">TOP</span></div>
+      <div class="t-meta">37건 · 57% · 센터 대표 실명 귀속</div>
+      <div class="t-pills"><span class="t-pill">SNPE</span><span class="t-pill">황금골반</span><span class="t-pill">다리라인</span><span class="t-pill">어깨라인</span><span class="t-pill">유튜브 6만</span><span class="t-pill">클래스101</span></div>
+      <div class="t-summary">원장·강사·콘텐츠 제작자 역할 모두 수행. 유튜브/클래스101을 통해 이미 브랜드 인지도를 확보한 상태로 오프라인 수업에 등장한다. 리뷰의 57%가 벨라쌤 이름을 호명한다.</div>
+      <div class="t-quote">"벨라쌤 어깨수업 듣고싶어서 부산에서 달려왔어요. 벨라쌤이 왜 유명하시고 롱런하시는지 알게되었습니다."</div>
+    </div>
+    <div class="trainer">
+      <div class="t-num">02</div>
+      <div class="t-name">시아 T<span class="t-badge">전임</span></div>
+      <div class="t-meta">25건 · 38% · 전임 강사 브랜딩</div>
+      <div class="t-pills"><span class="t-pill">엉덩이 원데이</span><span class="t-pill">팔라인</span><span class="t-pill">허리라인</span><span class="t-pill">하비탈출</span><span class="t-pill">꼼꼼</span></div>
+      <div class="t-summary">벨라 원장과 함께 많은 수업을 진행하는 전임 강사. 자체 원데이 클래스를 단독으로도 운영하며, 리뷰에서 "시아쌤 수업은 처음인데 너무 만족" 같은 재방문 유도 표현이 자주 보인다.</div>
+      <div class="t-quote">"시아쌤 강의는 처음 들어봤는데 너무 만족스러워요! 이론도 이해가 잘 가게끔 알려주시고 자세도 한명한명 꼼꼼히 알려주셔서."</div>
+    </div>
+    <div class="trainer">
+      <div class="t-num">03</div>
+      <div class="t-name">루아 T</div>
+      <div class="t-meta">4건 · 6% · 원데이 클래스 단독 진행</div>
+      <div class="t-pills"><span class="t-pill">하비탈출</span><span class="t-pill">통자허리</span><span class="t-pill">엉덩이 힘</span><span class="t-pill">에너지</span></div>
+      <div class="t-summary">하비탈출·통자허리 원데이 클래스를 단독으로 진행. 개별 리뷰는 긍정적이나 언급 절대량이 적어 벨라·시아 대비 브랜드 파급력이 약함.</div>
+      <div class="t-quote">"루아쌤 에너지 넘치고 섬세한 수업에 감탄하고 갑니다. 재수강 또 하고 싶어요."</div>
+    </div>
+    <div class="trainer">
+      <div class="t-num">04</div>
+      <div class="t-name">유니 T · 드리 T · 헤일리 T</div>
+      <div class="t-meta">합계 &lt; 5% · 신규/특수 프로그램 담당</div>
+      <div class="t-pills"><span class="t-pill">직각어깨</span><span class="t-pill">뱃돌깍</span><span class="t-pill">1:1 PT</span><span class="t-pill">개인 레슨</span></div>
+      <div class="t-summary">유니T는 "뱃돌깍 온라인 + 개인수업" 병행, 직각어깨 프로젝트 담당. 드리·헤일리는 1:1 개인 PT와 신규 프로그램 중심. 벨라/시아 대비 리뷰 노출이 현저히 적다.</div>
+      <div class="t-quote">"유니샘 온라인 뱃돌깍 수업과 개인수업 같이 듣고있습니다. 억텐이 아니구 잔잔하시게 운동 이끌어가는 분위기가 편안해서 좋아요."</div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>벨라(57%) + 시아(38%) 합계 95%의 쏠림 구조다.</strong> 이는 위드벨라의 가장 큰 자산이자 동시에 가장 큰 리스크다. 자산 측면에서는, 두 강사가 "SNPE + 자체 프로그램명"을 고객 언어에 박아넣는 데 성공했다. 그러나 리스크 측면에서, 이 구조는 <strong>두 강사의 컨디션·일정·이탈에 센터 전체가 민감하다</strong>. 리뷰에 등장하지 않는 강사는 사실상 존재하지 않는 것과 같다.</div>
+    <div class="tac-dir"><span class="arrow">→</span><strong>신규 강사(루아/유니/드리/헤일리)를 "벨라/시아 수준의 POD 브랜드"로 끌어올리는 것이 확장성의 열쇠다.</strong> 구체적으로, 각 강사별 시그니처 프로그램을 명확히 하고(루아=하비탈출/통자허리, 유니=뱃돌깍/직각어깨 등), 수업 후 리뷰 유도 시 "오늘 수업해주신 ○○T의 수업은 어떠셨나요?"처럼 강사 실명을 호명하는 질문을 넣어야 한다. 실명이 호명된 리뷰가 "강남 하비탈출 추천", "직각어깨 운동" 같은 검색에 노출된다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 06 — 리뷰 추이 ─────────────────────────────── -->
+<section id="trend" class="section" data-nav="리뷰 추이" data-num="07">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 07 <span class="sep">·</span> 리뷰 추이</div>
+    <h2 class="s-title">리뷰 양과 질이<br><span class="soft">동시에 쌓이는 드문 구조</span></h2>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">Monthly Reviews</div>
+      <div class="ch-title">월별 리뷰 건수 — 지속 성장 + 최근 폭발적 증가</div>
+      <div class="ch-canvas tall"><canvas id="c-monthly" role="img" aria-label="월별 리뷰 추이"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">전체 방문자 리뷰</div><div class="ch-stat-val">469건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">첫 리뷰</div><div class="ch-stat-val">2023.09</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">예약 인증률</div><div class="ch-stat-val ok">97%</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">본문 평균 길이</div><div class="ch-stat-val ok">248자</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">Verdict</div>
+    <div class="db-h">리뷰 유입이 지속 증가하고,<br><em>그 품질도 함께 높다.</em></div>
+    <div class="db-body"><p><strong>대부분의 센터는 리뷰 양이 늘수록 품질이 떨어진다 (보상형 이벤트 리뷰 증가). 위드벨라는 예외다.</strong> 2023년 9월 첫 리뷰 이후 꾸준한 증가세를 유지하면서도 평균 본문 길이 248자를 유지하고 있다. 이는 "온라인 강의 선행 → 오프라인 수업 후기"라는 고유한 유입 구조 덕분이다. 이미 위드벨라의 언어에 학습된 고객이 리뷰를 쓰기 때문에 단답이 나오지 않는다.</p></div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>리뷰 "양의 증가 + 질의 유지"라는 드문 구조.</strong> 이 구조를 지탱하는 핵심 변수는 <strong>온라인 선행 고객의 지속 유입</strong>이다. 유튜브·클래스101 콘텐츠가 꾸준히 발행되는 한 이 구조는 자동으로 유지되지만, 콘텐츠 발행이 느려지면 신규 고객 중 "학습된 고객" 비율이 떨어지고 결과적으로 리뷰 품질도 서서히 낮아질 수 있다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>콘텐츠 발행 주기를 월 단위로 모니터링하고, 오프라인 리뷰 길이의 월별 평균을 추적하라. 두 지표가 함께 움직인다면 이 구조의 건강성이 유지되고 있다는 신호다.<br><br><span class="arrow">→</span>원데이 수업 후 리뷰 유도 시 <strong>"다음엔 어떤 수업을 들어보고 싶으세요?"</strong>를 추가하면, 재방문 의사와 관심 프로그램이 리뷰에 명시적으로 남는다. 이는 "원데이 → 정규반" 퍼널 데이터를 리뷰 자체에서 수집하는 효과가 있다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 07 — 액션 플랜 ─────────────────────────────── -->
+<section id="action" class="section" data-nav="액션 플랜" data-num="08">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 08 <span class="sep">·</span> 액션 플랜</div>
+    <h2 class="s-title">리뷰 데이터에서 도출된<br><span class="soft">구체적 실행 항목</span></h2>
+  </div>
+
+  <div class="actions">
+
+    <div class="action">
+      <div class="ac-left"><span class="n">01</span>ACTION<span class="pri">URGENT</span></div>
+      <div>
+        <div class="ac-title">예약 상품별 공식 가격 표시</div>
+        <div class="ac-desc">리뷰 본문에 "10만원대", "65,000원 원데이" 같은 가격 언급이 있지만 플레이스 상품 카드에는 공식 가격이 표시되지 않는다. 원데이/프로젝트/패키지 간 가격대 차이가 크기 때문에, 탐색 단계에서 이탈할 위험이 크다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">표시 형식 예시</div>
+          <div><strong>황금골반 원데이 (벨라T)</strong> · 90분 · 10만원대 · 온라인 복습 영상 제공</div>
+          <div><strong>다리라인 온오프라인 패키지 (벨라T)</strong> · 오프라인 4회 + 온라인 강의 포함 · 정가 명시</div>
+          <div><strong>개인 PT (벨라/전임강사)</strong> · 1:1 · 가격 구간 명시</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">02</span>ACTION<span class="pri">URGENT</span></div>
+      <div>
+        <div class="ac-title">신규 강사 시그니처 프로그램 브랜딩</div>
+        <div class="ac-desc">벨라(57%) + 시아(38%) 쏠림 구조에서 루아·유니·드리·헤일리로 분산하려면, 각 강사의 시그니처 프로그램을 명확히 정의하고 리뷰 유도 시 해당 강사 실명을 호명해야 한다. 실명이 박힌 리뷰가 롱테일 검색에 노출된다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">강사별 시그니처 매핑</div>
+          <div><strong>루아 T:</strong> 하비탈출 · 통자허리 원데이 (이미 리뷰 확인)</div>
+          <div><strong>유니 T:</strong> 직각어깨 프로젝트 · 뱃돌깍 온오프라인</div>
+          <div><strong>드리 T:</strong> 1:1 개인 PT</div>
+          <div><strong>헤일리 T:</strong> 슬림핏 시리즈</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">03</span>ACTION<span class="pri">URGENT</span></div>
+      <div>
+        <div class="ac-title">원데이 → 정규반 전환 리뷰 유도</div>
+        <div class="ac-desc">현재 리뷰의 42%가 원데이에서 끝난다. "원데이 듣고 정규반/패키지도 신청했어요" 같은 전환 스토리가 리뷰에 담기면, 고객이 플레이스에서 볼 때 "여기는 정규 과정이 있는 곳"이라는 인식이 형성된다. 단순 원데이 체험 센터가 아니라는 브랜드 포지셔닝이다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">유도 질문</div>
+          <strong>"원데이 들어보시고, 혹시 다음 수업도 생각하고 계신 게 있으세요?"</strong><br>— 답이 자연스럽게 "정규반/패키지/개인 PT"로 나오도록 하는 질문
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">04</span>ACTION<span class="pri normal">IMPORTANT</span></div>
+      <div>
+        <div class="ac-title">AEO 재패키징 — 리뷰 상단 5개의 전략적 선별</div>
+        <div class="ac-desc">네이버 AI는 리뷰 상단 5~10건을 요약 근거로 우선 참조한다. 위드벨라는 이미 긴 리뷰가 많으므로, "신고/번역" 탭에서 AEO 친화적 리뷰(프로그램명+강사명+결과+재방문)를 상단에 유지하도록 플레이스 관리자 설정을 확인하라.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">AEO 최상위 리뷰 특징 4가지</div>
+          <div><strong>1. 프로그램명 명시</strong> — "황금골반 원데이", "다리라인 패키지"</div>
+          <div><strong>2. 강사 실명 호명</strong> — "벨라쌤", "시아쌤"</div>
+          <div><strong>3. Before→After 구조</strong> — 과거 경험(PT/도수치료) vs 지금</div>
+          <div><strong>4. 구체적 결과</strong> — "골반 비대칭이 개선", "몸이 가벼워졌다"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">05</span>ACTION<span class="pri normal">IMPORTANT</span></div>
+      <div>
+        <div class="ac-title">블로그 리뷰 36건의 역할 재정의</div>
+        <div class="ac-desc">블로그 리뷰 36건 중 상당수가 강사(벨라/헤일리/루아)의 자체 콘텐츠로 보인다. 고객 내돈내산 블로그와 강사 블로그를 분리해 관리하고, 강사 블로그는 "전문성 신호", 고객 블로그는 "외부 신뢰 신호"로 역할을 명확히 해야 한다.</div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">06</span>ACTION<span class="pri normal">GROWTH</span></div>
+      <div>
+        <div class="ac-title">지방 원정 고객 마케팅 확장</div>
+        <div class="ac-desc">샘플 65건 중 6%가 부산/대구/인천 등 지방 원정이다. 체형교정·피트니스 업종에서 원정 고객 6%는 이례적이다. "원정 방문 특화 패키지"(원데이 + 숙박 제휴 또는 1박 2일 집중 프로그램)를 기획하면, POD를 더 강화할 수 있다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">마케팅 메시지 소재</div>
+          <strong>"부산에서, 대구에서, 인천에서 달려오는 이유가 있습니다"</strong><br>— 지방 원정 후기를 모아 블로그·인스타 캠페인으로 활용
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">07</span>ACTION<span class="pri normal">MONITORING</span></div>
+      <div>
+        <div class="ac-title">콘텐츠 발행 주기 ↔ 리뷰 품질 연동 모니터링</div>
+        <div class="ac-desc">이 케이스의 건강한 구조는 "온라인 콘텐츠 발행 → 학습된 고객 유입 → 긴 리뷰 생성"의 선순환에 의존한다. 유튜브·클래스101·블로그 발행 주기가 느려지면, 약 3~6개월 시차를 두고 리뷰 평균 본문 길이가 떨어질 가능성이 있다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">모니터링 지표</div>
+          <div>1. 유튜브 월 발행 건수 (최근 3개월 롤링 평균)</div>
+          <div>2. 월별 리뷰 평균 본문 길이</div>
+          <div>3. "온라인 강의 언급" 포함 리뷰 비율 (현재 35%)</div>
+          <div>4. 벨라·시아 이외 강사의 리뷰 내 등장률</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- 08 — 리뷰 목록 ─────────────────────────────── -->
+<section id="list" class="section" data-nav="리뷰 목록" data-num="09">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 09 <span class="sep">·</span> 리뷰 목록</div>
+    <h2 class="s-title">AEO 통합 점수 순 정렬 —<br><span class="soft">이 리뷰들이 AI 답변에 인용된다</span></h2>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">Top 10 AEO 친화 리뷰 (샘플 65건 기준)</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>닉네임</th><th>방문</th><th>길이</th><th>예약 상품</th><th>방문일</th><th style="color:var(--accent)">점수</th><th>핵심 키</th></tr></thead>
+        <tbody>
+          <tr><td><strong>don****</strong><span class="t-badge">SUPER</span></td><td>4</td><td>384자</td><td>다리라인 원데이 (벨라T)</td><td>2025.12.13</td><td style="color:var(--accent)"><strong>38</strong></td><td>PT/도수치료 비교 · 벨라쌤 · 재방문 4회</td></tr>
+          <tr><td><strong>don****</strong></td><td>2</td><td>261자</td><td>팔라인 원데이 (시아T)</td><td>2025.10.25</td><td style="color:var(--accent)"><strong>37</strong></td><td>필라테스/헬스 전환 · SNPE · 시아쌤</td></tr>
+          <tr><td><strong>호호안</strong></td><td>2</td><td>361자</td><td>다리라인 온오프라인 패키지 (벨라T)</td><td>2025.10.17</td><td style="color:var(--accent)"><strong>36</strong></td><td>5년 도수치료 · 유튜브 → 오프라인 · "생명의 은인"</td></tr>
+          <tr><td><strong>yurim82</strong></td><td>2</td><td>289자</td><td>황금골반 원데이 (벨라T)</td><td>2026.01.24</td><td style="color:var(--accent)"><strong>35</strong></td><td>온라인 + 유튜브 선행 · 오프라인 첫방문 만족</td></tr>
+          <tr><td><strong>두부킹</strong></td><td>1</td><td>316자</td><td>다리라인 원데이 (벨라T)</td><td>2025.12.13</td><td style="color:var(--accent)"><strong>33</strong></td><td>6년 SNPE 경력 · "벨라쌤 수업은 그냥 SNPE가 아니에요"</td></tr>
+          <tr><td><strong>호호안</strong></td><td>3</td><td>216자</td><td>슬림 팔라인 원데이 (시아T)</td><td>2025.12.02</td><td style="color:var(--accent)"><strong>33</strong></td><td>다리라인 → 팔라인 재수강 · 강사 크로스 브랜딩</td></tr>
+          <tr><td><strong>don****</strong></td><td>1</td><td>254자</td><td>원데이 (시아T)</td><td>2025.08.02</td><td style="color:var(--accent)"><strong>32</strong></td><td>필라테스/헬스 대체로 SNPE 선택 경로</td></tr>
+          <tr><td><strong>반짝반짝쨕</strong></td><td>3</td><td>391자</td><td>다리라인 원데이 (벨라T)</td><td>2025.12.13</td><td style="color:var(--accent)"><strong>30</strong></td><td>이론·실전·복습 구조에 대한 장문 평가</td></tr>
+          <tr><td><strong>maya57</strong></td><td>3</td><td>288자</td><td>어깨라인 원데이 (벨라T)</td><td>2025.11.20</td><td style="color:var(--accent)"><strong>30</strong></td><td>황금골반+어깨라인 교차 수강 · 정기 방문</td></tr>
+          <tr><td><strong>kit9696</strong></td><td>2</td><td>361자</td><td>다리라인 온오프라인 패키지 (벨라T)</td><td>2025.10.17</td><td style="color:var(--accent)"><strong>30</strong></td><td>"작년부터 수강하고 싶었던" 대기 → 전환 스토리</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="quote-full-block">
+    <div class="qfb-title">Top 5 리뷰 원문 — 이 구조가 AI에 인용된다</div>
+    <div class="qfb-desc">아래 다섯 건은 위드벨라 샘플 65건 중 AEO 점수 상위 5위입니다. 각 리뷰는 <strong>① 과거 경험(PT/도수치료/다년간 필라테스 등) → ② 위드벨라 선택 이유 → ③ 강사 실명 + 프로그램명 → ④ 수업 중 체감 결과 → ⑤ 재방문/확장 의사</strong>의 5요소 스토리 구조를 공통적으로 담고 있습니다. 이 패턴이 플레이스에서 AI 답변 엔진이 근거로 참조하는 리뷰 구조입니다.</div>
+
+    <div class="qfb-card">
+      <div class="qfb-head">
+        <div class="qfb-head-l">
+          <div class="qfb-rank">01</div>
+          <div>
+            <div class="qfb-name">don****<span class="t-badge">SUPER</span></div>
+            <div class="qfb-meta">4회 방문 · 다리라인 원데이 (벨라T) · 2025.12.13 · 384자</div>
+          </div>
+        </div>
+        <div class="qfb-score"><span class="qfb-score-num">38</span>점</div>
+      </div>
+      <div class="qfb-body">"위드벨라 벨라쌤 원데이 수업을 들었습니당. 벨라쌤 지인듀 프로젝트 수업듣고 너무 만족이라고 들어서 꼭 한번 들어보고 싶었고, 인스타에서도 유명하셔서 팔로우 하고 잘 보고 있었는데 실제 실물 뵙고 수업 들어보니 너무 좋았어요. 골반 틀어짐이나 다리 내회전, 발목 아치 무너짐 이런 것들은 예전에 PT 받거나 도수치료 여러 번 받으면서 인지는 하고 있었는데, 이러한 것들을 종합적으로 연결해서 한 번에 알려주시는 게 젤 좋았어요!!!! 한번 수업 듣고도 확실히 라인이나 발 아치 개선이 조금 보였고, 정규 프로젝트 수업도 들어보고 싶습니다. 그전에도 시아쌤 원데이 수업(팔라인/등라인)도 너무 좋아서 또 들어야겠다 했는데 둘 다 좋네요. 만족입니다. 거리만 가까우면 더 좋겠지만, 멀어도 들으러 와야겠습니당."</div>
+      <div class="qfb-tags"><span class="t-pill">PT·도수치료 경험</span><span class="t-pill">인스타 팔로우</span><span class="t-pill">벨라쌤·시아쌤 교차</span><span class="t-pill">정규 프로젝트 관심</span><span class="t-pill">원정(멀어도)</span></div>
+    </div>
+
+    <div class="qfb-card">
+      <div class="qfb-head">
+        <div class="qfb-head-l">
+          <div class="qfb-rank">02</div>
+          <div>
+            <div class="qfb-name">don****</div>
+            <div class="qfb-meta">2회 방문 · 팔라인 원데이 (시아T) · 2025.10.25 · 261자</div>
+          </div>
+        </div>
+        <div class="qfb-score"><span class="qfb-score-num">37</span>점</div>
+      </div>
+      <div class="qfb-body">"시아쌤 원데이클래스를 들었는데 너무 만족합니다. 원래 필라테스랑 헬스만 하다가 체형이나 교정에 관심이 많아서 SNPE 배울까 고민했었고, 찾아보니 위드벨라가 유명해서 신청해서 한번 들어봤습니당 ㅎㅎ. 팔라인 관련해서 등이랑 어깨 림프절 순환까지 복합적인 문제라는 걸 깨달았고, 2시간 정도 수업 듣고 몸이 가벼워졌습니다. SNPE용 소도구(?!) 웨이브? 기구들 쓰니까 경락 받는 것처럼 시원했어요. 쌤 꼼꼼하게 잘 봐주시고 친절하고 예쁘세요. 좋아서 정규반도 한 번 들어보려구요!"</div>
+      <div class="qfb-tags"><span class="t-pill">필라테스/헬스 전환</span><span class="t-pill">SNPE 학습 의도</span><span class="t-pill">시아쌤</span><span class="t-pill">정규반 전환 의사</span><span class="t-pill">소도구 경험</span></div>
+    </div>
+
+    <div class="qfb-card">
+      <div class="qfb-head">
+        <div class="qfb-head-l">
+          <div class="qfb-rank">03</div>
+          <div>
+            <div class="qfb-name">호호안</div>
+            <div class="qfb-meta">2회 방문 · 다리라인 온오프라인 패키지 (벨라T) · 2025.10.17 · 361자</div>
+          </div>
+        </div>
+        <div class="qfb-score"><span class="qfb-score-num">36</span>점</div>
+      </div>
+      <div class="qfb-body">"벨라샘을 유튜브로 알게 된 후 한동안 눈팅만 하고 있었는데요. 솔직히 지난 5년 동안 도수치료, 필라테스, 체형교정 등등 정말 여러 가지를 해봤지만 제 문제를 정확히 해결하지는 못했어요. 운동을 하긴 하는데, 늘 원인을 제대로 못 잡고 있는 느낌이 들었거든요. 그런데 벨라샘은 정말 달랐습니다. 진짜 제 몸을 되찾아주신 생명의 은인 같아요. 혹시 저처럼 몸에 힘이 없고, 운동을 해도 효과가 잘 안 나는 느낌을 받으신다면 무조건 벨라샘 다리라인 프로젝트 수강하세요. 가장 빠르고 정확한 길로 좋아지실 거예요. 운동을 하면서 하면 된다는 마음가짐도 생겼고, 좋은 에너지를 정말 많이 받았습니다. 벨라샘, 시아샘 진심으로 감사드려요."</div>
+      <div class="qfb-tags"><span class="t-pill">5년 도수치료 이력</span><span class="t-pill">유튜브 선행</span><span class="t-pill">온오프라인 패키지</span><span class="t-pill">비교우위 스토리</span><span class="t-pill">강한 추천문</span></div>
+    </div>
+
+    <div class="qfb-card">
+      <div class="qfb-head">
+        <div class="qfb-head-l">
+          <div class="qfb-rank">04</div>
+          <div>
+            <div class="qfb-name">yurim82</div>
+            <div class="qfb-meta">2회 방문 · 황금골반 원데이 (벨라T) · 2026.01.24 · 289자</div>
+          </div>
+        </div>
+        <div class="qfb-score"><span class="qfb-score-num">35</span>점</div>
+      </div>
+      <div class="qfb-body">"벨라쌤의 온라인 강의도 들어보고 유튜브 영상을 통해서 SNPE를 꾸준히 해왔는데, 혼자 동작을 하면서 지금 느끼는 자극이 맞는 건지, 어떤 점을 더 신경 쓰고 보완해야 할지에 대해 궁금증과 갈증이 있었습니다. 그래서 오늘 황금골반 수업을 오프라인으로 들어봤는데, 혼자 놓치고 있었던 부분, 어떤 부분을 생각하면서 동작해야 하는지 알게 됐어요. 이론 설명이 있어서 더 이해도 잘됐고, 그룹레슨이지만 벨라쌤과 시아쌤이 계속 한명씩 자세 잡아주셔서 좋았습니다. 꼭 열심히 복습해서 오늘 배운 것들을 제 몸에 더 익혀볼게요."</div>
+      <div class="qfb-tags"><span class="t-pill">온라인 강의 + 유튜브 선행</span><span class="t-pill">SNPE 자가 학습</span><span class="t-pill">황금골반 원데이</span><span class="t-pill">오프라인 검증 의도</span></div>
+    </div>
+
+    <div class="qfb-card">
+      <div class="qfb-head">
+        <div class="qfb-head-l">
+          <div class="qfb-rank">05</div>
+          <div>
+            <div class="qfb-name">두부킹</div>
+            <div class="qfb-meta">1회 방문 · 다리라인 원데이 (벨라T) · 2025.12.13 · 316자</div>
+          </div>
+        </div>
+        <div class="qfb-score"><span class="qfb-score-num">33</span>점</div>
+      </div>
+      <div class="qfb-body">"기다리고 기다리던 벨라쌤 수업 드디어 듣고 왔어요. 6년 전부터 SNPE를 알게 되어서 다른 곳에서 그룹수업과 1:1 수업 몇 번 들어봤는데, 벨라쌤 수업은 그냥 SNPE가 아니에요. 몸을 제자리로 돌리기 위해 SNPE도 활용하는? 그런 느낌이었어요. 다리라인 수업이라 다리 위주로 하시려나 싶었는데, 가장 중요한 발 정렬부터 잡는 방법을 알려주셨어요. 진짜 쉬워 보이는데 엄청 어려운 동작이라 맘처럼 안 됐지만, 벨라쌤이랑 시아쌤이 자세도 다 봐주시고 설명해주셔서 90분이 어떻게 흘렀는지 모를 정도였어요. 온라인 수업 듣고 나중에 또 주말 원데이 나오면 신청해서 가려고 합니당."</div>
+      <div class="qfb-tags"><span class="t-pill">6년 SNPE 경력</span><span class="t-pill">타 센터 비교</span><span class="t-pill">"그냥 SNPE가 아니다"</span><span class="t-pill">온라인 → 재방문 의사</span></div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Reading Guide</div>
+    <div class="tac-body"><strong>상위 10건 모두 본문 200자 이상 · 프로그램명 + 강사명 + Before→After 구조를 갖췄다.</strong> 이 중 4건은 "PT/도수치료/필라테스 경험 후 위드벨라 선택"이라는 비교 우위 스토리를, 3건은 "유튜브/클래스101 → 오프라인 전환" 퍼널 스토리를 담고 있다. 이 두 패턴이 위드벨라의 핵심 AEO 자산이다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>위 5건의 공통 구조를 리뷰 유도 질문 설계에 그대로 반영하라. 수업 후 <strong>"오늘 수업 전에 다른 운동이나 치료 받아보신 적 있으세요?"</strong>, <strong>"어떤 경로로 위드벨라를 알게 되셨어요?"</strong>, <strong>"오늘 ○○T 수업에서 가장 크게 느낀 변화가 있다면?"</strong>, <strong>"다음에는 어떤 수업을 생각하고 계세요?"</strong> — 이 4개 질문만 시술 후 10분 안에 답변 받으면, 자연스럽게 Top 5 리뷰와 동일한 구조의 리뷰가 생성된다.<br><br><span class="arrow">→</span><strong>현재 분석은 469건 중 65건 샘플.</strong> 전체 데이터가 확보되면 연도별 리뷰 품질 추이, 강사별 리뷰 비중 변화, 프로그램 라인업 확장 시점의 영향을 시계열로 추적 가능하다.</div>
+  </div>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER ─────────────────────────────────────── -->
+<footer class="footer" role="contentinfo">
+  <div class="ft-brand"><span class="dot"></span>RE:FEEEL</div>
+  <div class="ft-links">
+    <a href="https://refeeel.com" target="_blank" rel="noopener">refeeel.com</a>
+    <a href="https://instagram.com/nak__ta__" target="_blank" rel="noopener">@nak__ta__</a>
+  </div>
+  <div class="ft-copy">© 2026 RE:FEEEL. All rights reserved.</div>
+</footer>
+
+
+<script>
+/* ═══════════════════════════════════════════════
+   Navigation: top bar + side nav + drawer + progress
+   ═══════════════════════════════════════════════ */
+const sections = Array.from(document.querySelectorAll('[data-nav]'));
+const tbCurrent = document.getElementById('tb-current');
+const tbFill = document.getElementById('tb-fill');
+const tbNum = document.getElementById('tb-num');
+const snFill = document.getElementById('sn-fill');
+const snNum = document.getElementById('sn-num');
+const snItems = document.querySelectorAll('.sn-item');
+const dwItems = document.querySelectorAll('.dw-item');
+
+function updateNav(){
+  const vh = window.innerHeight;
+  const y = window.scrollY + vh * 0.35;
+  let current = sections[0];
+  sections.forEach(s => { if(s.offsetTop <= y) current = s; });
+
+  if(current){
+    const nav = current.dataset.nav;
+    const num = current.dataset.num;
+    const id = current.id;
+    if(tbCurrent) tbCurrent.innerHTML = `<span class="num">${num}</span>${nav}`;
+    snItems.forEach(it => it.classList.toggle('active', it.dataset.target === id));
+    dwItems.forEach(it => it.classList.toggle('active', it.dataset.target === id));
+  }
+
+  // Progress bar
+  const docH = document.documentElement.scrollHeight - vh;
+  const pct = Math.min(100, Math.max(0, (window.scrollY / docH) * 100));
+  const pctR = Math.round(pct) + '%';
+  if(tbFill) tbFill.style.width = pct + '%';
+  if(tbNum) tbNum.textContent = pctR;
+  if(snFill) snFill.style.width = pct + '%';
+  if(snNum) snNum.textContent = pctR;
+}
+window.addEventListener('scroll', updateNav, {passive:true});
+updateNav();
+
+/* Mobile drawer open/close */
+const drawer = document.getElementById('drawer');
+const drawerOpen = document.getElementById('drawer-open');
+const drawerClose = document.getElementById('drawer-close');
+
+function openDrawer(){
+  if(!drawer) return;
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden','false');
+  if(drawerOpen) drawerOpen.setAttribute('aria-expanded','true');
+  document.body.classList.add('drawer-open');
+}
+function closeDrawer(){
+  if(!drawer) return;
+  drawer.classList.remove('open');
+  drawer.setAttribute('aria-hidden','true');
+  if(drawerOpen) drawerOpen.setAttribute('aria-expanded','false');
+  document.body.classList.remove('drawer-open');
+}
+if(drawerOpen) drawerOpen.addEventListener('click', openDrawer);
+if(drawerClose) drawerClose.addEventListener('click', closeDrawer);
+if(drawer){
+  drawer.querySelectorAll('.dw-item a').forEach(a => {
+    a.addEventListener('click', () => setTimeout(closeDrawer, 120));
+  });
+}
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && drawer && drawer.classList.contains('open')) closeDrawer();
+});
+
+/* ═══════════════════════════════════════════════
+   Bar fill animations (on scroll into view)
+   ═══════════════════════════════════════════════ */
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-w]').forEach(b => {
+        const w = b.getAttribute('data-w');
+        if(b.classList.contains('g-bar')){
+          b.style.setProperty('--gauge-w', w + '%');
+        } else {
+          b.style.width = w + '%';
+        }
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.kwbars, .gauge-block').forEach(el => barObs.observe(el));
+
+/* ═══════════════════════════════════════════════
+   Fade-in animations
+   ═══════════════════════════════════════════════ */
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      animObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.08, rootMargin:'30px 0px'});
+document.querySelectorAll('.dark-block, .split, .persona, .trainer, .action, .tier, .tac').forEach(el => {
+  el.classList.add('anim');
+  animObs.observe(el);
+});
+
+/* ═══════════════════════════════════════════════
+   Diagrams — activate when scrolled into view
+   ═══════════════════════════════════════════════ */
+const diagramObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('in-view');
+      diagramObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.25});
+document.querySelectorAll('.cycle-wrap').forEach(el => diagramObs.observe(el));
+
+/* ═══════════════════════════════════════════════
+   Number counter (cover KPIs)
+   ═══════════════════════════════════════════════ */
+function animateCount(el, target, duration){
+  /* Preserve trailing unit span (e.g., %, 자) across innerHTML updates. */
+  const suffixMatch = el.innerHTML.match(/<span[^>]*>[\s\S]*?<\/span>/);
+  const suffix = suffixMatch ? suffixMatch[0] : '';
+  const isFloat = String(target).includes('.');
+  const start = performance.now();
+
+  function tick(now){
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const cur = target * eased;
+    const d = isFloat ? cur.toFixed(1) : Math.round(cur);
+    el.innerHTML = d + suffix;
+    if(p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const coverObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const kpis = e.target.querySelectorAll('.cv-kpi-val');
+      const targets = [31.4, 34.2, 97, 248];
+      const rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      kpis.forEach((el, i) => {
+        if(!targets[i]) return;
+        if(rm){
+          const isFloat = String(targets[i]).includes('.');
+          const span = el.querySelector('span');
+          el.textContent = isFloat ? targets[i].toFixed(1) : targets[i];
+          if(span) el.appendChild(span);
+        } else {
+          setTimeout(() => animateCount(el, targets[i], 750), i * 70);
+        }
+      });
+      coverObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+const ckBot = document.querySelector('.cv-bot');
+if(ckBot) coverObs.observe(ckBot);
+
+/* ═══════════════════════════════════════════════
+   CHART.JS SETUP — minimal editorial style
+   ═══════════════════════════════════════════════ */
+if(typeof Chart !== 'undefined'){
+  Chart.defaults.font.family = "'SUIT',-apple-system,sans-serif";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.plugins.legend.display = false;
+  Chart.defaults.color = '#8a8a8a';
+  Chart.defaults.animation = {duration:1400, easing:'easeOutQuart'};
+}
+
+const COLORS = {
+  ink: '#0a0a0a',
+  ink3: '#555555',
+  ink4: '#8a8a8a',
+  ink5: '#b8b8b8',
+  rule: '#e8e8e8',
+  ruleSoft: '#f0f0f0',
+  accent: '#e75519'
+};
+
+const charts = {};
+const chartFactory = {
+  'c-scatter': () => {
+    charts['c-scatter'] = new Chart(document.getElementById('c-scatter'), {
+      type:'scatter',
+      data:{datasets:[{
+        data:[{x:25,y:49},{x:22,y:49},{x:25,y:43},{x:22,y:46},{x:25,y:43},{x:22,y:46},{x:25,y:43},{x:25,y:38},{x:19,y:41},{x:19,y:38},{x:22,y:10},{x:19,y:10},{x:16,y:10},{x:22,y:5},{x:19,y:5},{x:16,y:5},{x:22,y:0},{x:19,y:0},{x:16,y:0},{x:14,y:0},{x:12,y:0},{x:12,y:0},{x:10,y:0},{x:10,y:0},{x:16,y:0},{x:14,y:0},{x:12,y:0},{x:12,y:5},{x:14,y:5},{x:14,y:0},{x:12,y:0},{x:10,y:5},{x:10,y:0},{x:10,y:0},{x:12,y:0},{x:12,y:0},{x:12,y:0}],
+        backgroundColor: c => (c.raw && c.raw.x >= 19 && c.raw.y >= 30) ? COLORS.accent : COLORS.ink5,
+        borderColor: c => (c.raw && c.raw.x >= 19 && c.raw.y >= 30) ? COLORS.accent : COLORS.ink4,
+        pointRadius: c => (c.raw && c.raw.x >= 19 && c.raw.y >= 30) ? 7 : 4,
+        pointHoverRadius: 8
+      }]},
+      options:{responsive:true, maintainAspectRatio:false,
+        scales:{
+          x:{min:8, max:27, title:{display:true, text:'SEO', color:COLORS.ink4, font:{size:10, weight:'600'}},
+             grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
+          y:{min:-2, max:55, title:{display:true, text:'AEO', color:COLORS.ink4, font:{size:10, weight:'600'}},
+             grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}}
+        }
+      }
+    });
+  },
+  'c-kw': () => {
+    charts['c-kw'] = new Chart(document.getElementById('c-kw'), {
+      type:'bar',
+      data:{
+        labels:['벨라쌤','원데이','시아쌤','온라인→오프라인','SNPE','황금골반','다리라인','지방 원정'],
+        datasets:[{
+          data:[37, 27, 25, 23, 15, 11, 7, 4],
+          backgroundColor:[COLORS.accent, COLORS.ink, COLORS.accent, COLORS.ink3, COLORS.ink3, COLORS.ink4, COLORS.ink4, COLORS.ink5],
+          borderRadius:0,
+          barPercentage:0.75
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        scales:{
+          x:{max:42, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
+          y:{grid:{display:false}, border:{display:false}, ticks:{color:COLORS.ink3, font:{size:12, weight:'500'}, padding:10}}
+        }
+      }
+    });
+  },
+  'c-pod': () => {
+    charts['c-pod'] = new Chart(document.getElementById('c-pod'), {
+      type:'bar',
+      data:{
+        labels:['강사 실명 브랜딩','원데이 상품 구조','온라인→오프라인 퍼널','SNPE 방법론','자체 프로그램명','Before→After 스토리','지방 원정 POD'],
+        datasets:[{
+          data:[62, 42, 35, 23, 28, 18, 6],
+          backgroundColor:[COLORS.accent, COLORS.ink, COLORS.ink3, COLORS.ink3, COLORS.ink4, COLORS.ink4, COLORS.ink5],
+          borderRadius:0, barPercentage:0.72
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        animation:{duration:1400, easing:'easeOutQuart', delay:c => c.dataIndex * 80},
+        scales:{
+          x:{max:70, title:{display:true, text:'샘플 65건 중 등장률 %', color:COLORS.ink4, font:{size:10, weight:'600'}},
+             grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{callback:v=>v+'%', color:COLORS.ink4, padding:8}},
+          y:{grid:{display:false}, border:{display:false}, ticks:{color:COLORS.ink3, font:{size:12, weight:'500'}, padding:10}}
+        }
+      }
+    });
+  },
+  'c-gap': () => {
+    charts['c-gap'] = new Chart(document.getElementById('c-gap'), {
+      type:'bar',
+      data:{
+        labels:['벨라 브랜드','원데이 구조','시아 브랜드','온→오프 퍼널','SNPE','프로그램명','신규 강사','공간 분리','정규반 전환'],
+        datasets:[
+          {label:'전달 의도', data:[90, 85, 85, 80, 75, 80, 70, 65, 75], backgroundColor:COLORS.rule, borderRadius:0, barPercentage:0.72},
+          {label:'리뷰 반영률', data:[57, 42, 38, 35, 23, 28, 9, 5, 6], backgroundColor:COLORS.ink, borderRadius:0, barPercentage:0.72}
+        ]
+      },
+      options:{responsive:true, maintainAspectRatio:false,
+        animation:{duration:1600, easing:'easeOutQuart', delay:c => c.dataIndex * 80},
+        plugins:{legend:{display:true, position:'top', align:'end', labels:{font:{size:11, weight:'600'}, color:COLORS.ink3, boxWidth:10, boxHeight:10, padding:16, usePointStyle:false}}},
+        scales:{
+          y:{max:100, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{callback:v=>v+'%', color:COLORS.ink4, padding:8}},
+          x:{grid:{display:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink3, font:{size:10, weight:'500'}, maxRotation:0, autoSkip:false}}
+        }
+      }
+    });
+  },
+  'c-before': () => {
+    charts['c-before'] = new Chart(document.getElementById('c-before'), {
+      type:'doughnut',
+      data:{
+        labels:['온라인 선행형','특정 부위 집중형','재방문 수강생','타 운동 경험자','지방 원정','출산·복직 관리'],
+        datasets:[{
+          data:[35, 24, 18, 12, 6, 5],
+          backgroundColor:[COLORS.accent, COLORS.ink, COLORS.ink3, COLORS.ink4, COLORS.ink5, COLORS.rule],
+          borderWidth:3, borderColor:'#fff'
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, cutout:'68%',
+        plugins:{legend:{display:true, position:'bottom', labels:{font:{size:11, weight:'500'}, color:COLORS.ink3, padding:10, boxWidth:10, boxHeight:10}}}
+      }
+    });
+  },
+  'c-trigger': () => {
+    charts['c-trigger'] = new Chart(document.getElementById('c-trigger'), {
+      type:'bar',
+      data:{
+        labels:['벨라쌤 브랜드','온라인 강의 팬','SNPE 방법론','프로그램명','꼼꼼한 티칭','자세 교정 효과','지방 원정'],
+        datasets:[{
+          data:[57, 35, 23, 42, 38, 30, 6],
+          backgroundColor:[COLORS.accent, COLORS.ink, COLORS.ink3, COLORS.ink3, COLORS.ink4, COLORS.ink4, COLORS.ink5],
+          borderRadius:0, barPercentage:0.72
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false,
+        animation:{duration:1400, easing:'easeOutQuart', delay:c => c.dataIndex * 80},
+        scales:{
+          y:{max:65, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{callback:v=>v+'%', color:COLORS.ink4, padding:8}},
+          x:{grid:{display:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink3, font:{size:10, weight:'500'}}}
+        }
+      }
+    });
+  },
+  'c-attr': () => {
+    charts['c-attr'] = new Chart(document.getElementById('c-attr'), {
+      type:'bar',
+      data:{
+        labels:['벨라 원장 (실명)','시아 T (실명)','루아 T','유니 T','드리/헤일리 T','위드벨라 (브랜드)'],
+        datasets:[{
+          data:[57, 38, 6, 2, 2, 15],
+          backgroundColor:[COLORS.accent, COLORS.ink, COLORS.ink3, COLORS.ink4, COLORS.ink5, COLORS.rule],
+          borderRadius:0, barPercentage:0.65
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        animation:{duration:1600, easing:'easeOutQuart', delay:c => c.dataIndex * 150},
+        scales:{
+          x:{max:65, title:{display:true, text:'샘플 65건 중 등장률 %', color:COLORS.ink4, font:{size:10, weight:'600'}},
+             grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{callback:v=>v+'%', color:COLORS.ink4, padding:8}},
+          y:{grid:{display:false}, border:{display:false}, ticks:{color:COLORS.ink3, font:{size:12, weight:'500'}, padding:10}}
+        }
+      }
+    });
+  },
+  'c-monthly': () => {
+    const labels = ['23.09','23.11','24.01','24.03','24.05','24.07','24.09','24.11','25.01','25.03','25.05','25.07','25.08','25.09','25.10','25.11','25.12','26.01','26.02'];
+    const data = [3, 5, 8, 10, 13, 14, 16, 18, 20, 22, 25, 28, 30, 33, 35, 38, 40, 42, 44];
+    const colors = data.map((v,i) => i===18 ? COLORS.accent : COLORS.ink5);
+    charts['c-monthly'] = new Chart(document.getElementById('c-monthly'), {
+      type:'line',
+      data:{
+        labels,
+        datasets:[{
+          data,
+          borderColor:COLORS.ink3,
+          backgroundColor:'rgba(10,10,10,0.04)',
+          fill:true, tension:0.3,
+          pointRadius:data.map((v,i) => i===16 ? 6 : 3.5),
+          pointBackgroundColor:colors,
+          pointBorderColor:'#fff',
+          pointBorderWidth:2,
+          borderWidth:1.5
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false,
+        animation:{duration:1800, easing:'easeOutQuart'},
+        scales:{
+          y:{min:0, max:50, title:{display:true, text:'월 리뷰 건수', color:COLORS.ink4, font:{size:10, weight:'600'}},
+             grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
+          x:{grid:{display:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, font:{size:10}, maxRotation:0, autoSkip:true, maxTicksLimit:10}}
+        }
+      }
+    });
+  }
+};
+
+/* Lazy chart init on scroll */
+function checkCharts(){
+  document.querySelectorAll('canvas[id^="c-"]').forEach(canvas => {
+    if(charts[canvas.id]) return;
+    const rect = canvas.getBoundingClientRect();
+    if(rect.top < window.innerHeight + 80 && rect.bottom > -80){
+      if(chartFactory[canvas.id]){
+        try { chartFactory[canvas.id](); } catch(e) { console.warn(e); }
+      }
+    }
+  });
+}
+
+function startChartWatch(){
+  checkCharts();
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if(!ticking){
+      ticking = true;
+      requestAnimationFrame(() => { checkCharts(); ticking = false; });
+    }
+  },{passive:true});
+}
+
+if(typeof Chart !== 'undefined'){
+  startChartWatch();
+} else {
+  const script = document.querySelector('script[src*="chart.js"]');
+  if(script) script.addEventListener('load', startChartWatch);
+}
+</script>
+</body>
+</html>
