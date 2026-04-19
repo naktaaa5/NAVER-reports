@@ -181,8 +181,13 @@ body{
   .sn-item.active .sn-num{color:var(--accent)}
   .sn-item.active .sn-title{color:var(--accent);font-weight:700}
   .sn-foot{
-    margin-top:24px;padding-top:20px;
+    padding-top:20px;
     border-top:1px solid var(--rule);
+  }
+  .sn-credit{
+    font-size:10px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-4);text-transform:uppercase;
+    margin-top:28px;margin-bottom:20px;
   }
   .sn-foot-lbl{
     font-size:10px;font-weight:700;letter-spacing:2px;
@@ -906,7 +911,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
 <aside class="sidenav" aria-label="섹션 네비게이션">
   <div class="sn-masthead">
     <div class="sn-client">디에스타의원 수원광교</div>
-    <div class="sn-tagline">Place Report · by RE:FEEEL</div>
+    <div class="sn-tagline">Place Report</div>
   </div>
   <ul class="sn-list" id="sn-list">
     <li class="sn-item" data-target="cover"><a href="#cover"><span class="sn-num">—</span><span class="sn-title">Cover</span></a></li>
@@ -927,6 +932,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
     <li class="sn-item" data-target="action"><a href="#action"><span class="sn-num">08</span><span class="sn-title">액션 플랜</span></a></li>
     <li class="sn-item" data-target="list"><a href="#list"><span class="sn-num">09</span><span class="sn-title">리뷰 목록</span></a></li>
   </ul>
+  <div class="sn-credit">by RE:FEEEL</div>
   <div class="sn-foot">
     <div class="sn-foot-lbl"><span>Progress</span><span class="sn-foot-num" id="sn-num">0%</span></div>
     <div class="sn-prog"><div class="sn-prog-fill" id="sn-fill"></div></div>
