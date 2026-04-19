@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>수잔요가 — 리뷰 분석 리포트</title>
+<meta name="description" content="수잔요가 네이버 플레이스 리뷰 분석 리포트. SEO·AEO 점수, POP vs POD, 고객 분석, 액션 플랜."/>
+
+<!-- Open Graph / Link Preview -->
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="수잔요가 — 플레이스 리포트"/>
+<meta property="og:description" content="네이버 플레이스 리뷰 79건 기반 분석 · RE:FEEEL Place Report"/>
+<meta property="og:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
+<meta property="og:image:alt" content="RE:FEEEL"/>
+<meta property="og:site_name" content="RE:FEEEL"/>
+<meta property="og:locale" content="ko_KR"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="수잔요가 — 플레이스 리포트"/>
+<meta name="twitter:description" content="네이버 플레이스 리뷰 79건 기반 분석 · RE:FEEEL Place Report"/>
+<meta name="twitter:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
+
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════════════════
+   RE:FEEEL — Editorial Minimalist System
+   Inspired by Swiss design: whitespace, thin rules, restraint
+   ═══════════════════════════════════════════════════════ */
+
+:root{
+  --bg:#ffffff;
+  --bg-soft:#fafafa;
+  --ink:#0a0a0a;
+  --ink-2:#2a2a2a;
+  --ink-3:#555555;
+  --ink-4:#8a8a8a;
+  --ink-5:#b8b8b8;
+  --rule:#e8e8e8;
+  --rule-soft:#f0f0f0;
+  --accent:#e75519;
+  --accent-soft:rgba(231,85,25,.08);
+  --danger:#b03030;
+  --success:#1a7a3a;
+
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;
+  --sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-14:56px;--sp-16:64px;
+  --sp-20:80px;--sp-24:96px;--sp-28:112px;--sp-32:128px;--sp-40:160px;
+
+  --max-w:1120px;
+  --pp:clamp(24px,5vw,80px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{
+  font-family:'SUIT',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  background:var(--bg);
+  color:var(--ink-2);
+  font-size:15px;
+  line-height:1.75;
+  font-weight:400;
+  letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:clip;
+}
+
+:focus-visible{outline:1.5px solid var(--accent);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0}
+.skip-link:focus{left:8px;top:8px;padding:8px 12px;background:var(--ink);color:#fff;z-index:9999}
+
+/* ── TOP NAV ───────────────────────────────────── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--rule);
+  height:56px;
+  display:flex;align-items:center;
+  padding:0 var(--pp);
+}
+.tb-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--sp-6)}
+.tb-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--ink);flex-shrink:0}
+.tb-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle;margin-top:-2px}
+.tb-current{font-size:12px;color:var(--ink-4);font-weight:500;letter-spacing:.5px;flex:1;text-align:center;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-current .num{color:var(--ink);font-weight:700;margin-right:8px}
+.tb-progress{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.tb-prog-bar{width:80px;height:2px;background:var(--rule);position:relative;overflow:hidden}
+.tb-prog-fill{position:absolute;top:0;left:0;height:100%;background:var(--ink);width:0%;transition:width .3s ease}
+.tb-prog-num{font-size:11px;font-weight:700;color:var(--ink-4);font-variant-numeric:tabular-nums;min-width:32px;text-align:right}
+.tb-menu{
+  background:none;border:none;padding:8px;margin-right:-8px;
+  cursor:pointer;flex-shrink:0;color:var(--ink);
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+.tb-menu:hover{color:var(--accent)}
+.tb-menu-icon{display:inline-flex;flex-direction:column;gap:3px;width:16px}
+.tb-menu-icon span{display:block;height:1.5px;background:currentColor;border-radius:1px}
+.tb-menu-icon span:nth-child(2){width:75%}
+
+@media(max-width:680px){
+  .tb-current{display:none}
+  .tb-prog-bar{width:60px}
+  .tb-menu{font-size:0;gap:0;padding:8px}
+}
+
+/* Hide topbar entirely on desktop where side nav takes over */
+@media(min-width:1280px){
+  .topbar{display:none}
+}
+
+/* ── SIDE NAVIGATION (desktop only) ────────────── */
+.sidenav{display:none}
+@media(min-width:1280px){
+  :root{ --nav-w:260px; }
+  .sidenav{
+    display:flex;flex-direction:column;
+    position:fixed;top:0;left:0;bottom:0;
+    width:var(--nav-w);z-index:80;
+    padding:40px 24px 28px 32px;
+    background:var(--bg);
+    border-right:1px solid var(--rule);
+    box-sizing:border-box;
+  }
+  .sn-masthead{
+    margin-bottom:48px;
+  }
+  .sn-client{
+    font-size:15px;font-weight:700;color:var(--ink);
+    letter-spacing:-.4px;line-height:1.35;
+    margin-bottom:8px;
+  }
+  .sn-tagline{
+    font-size:10px;font-weight:600;
+    color:var(--ink-4);letter-spacing:1.8px;
+    text-transform:uppercase;
+  }
+  .sn-head{
+    font-size:10px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-4);text-transform:uppercase;
+    margin-bottom:18px;display:flex;align-items:center;gap:8px;
+  }
+  .sn-head::before{content:"";width:14px;height:1px;background:var(--ink-4)}
+  .sn-list{
+    list-style:none;margin:0;padding:0;
+    display:flex;flex-direction:column;gap:2px;
+    flex:1;overflow-y:auto;
+    -ms-overflow-style:none;scrollbar-width:none;
+  }
+  .sn-list::-webkit-scrollbar{display:none}
+  .sn-group{
+    font-size:9px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-5);text-transform:uppercase;
+    margin:16px 0 8px;padding-left:14px;
+  }
+  .sn-group:first-child{margin-top:0}
+  .sn-item a{
+    display:grid;
+    grid-template-columns:28px 1fr;
+    gap:10px;align-items:baseline;
+    padding:6px 0 6px 14px;
+    text-decoration:none;
+    border-left:2px solid transparent;
+    transition:border-color .2s ease, color .2s ease, transform .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .sn-item a:hover{transform:translateX(3px)}
+  .sn-item a:hover .sn-title{color:var(--ink)}
+  .sn-num{
+    font-size:10px;font-weight:700;letter-spacing:1px;
+    color:var(--ink-5);font-variant-numeric:tabular-nums;
+  }
+  .sn-title{
+    font-size:13px;font-weight:500;color:var(--ink-3);
+    letter-spacing:-.2px;transition:color .2s ease;
+  }
+  .sn-item.active a{border-left-color:transparent}
+  .sn-item.active .sn-num{color:var(--accent)}
+  .sn-item.active .sn-title{color:var(--accent);font-weight:700}
+  .sn-foot{
+    padding-top:20px;
+    border-top:1px solid var(--rule);
+  }
+  .sn-credit{
+    font-size:10px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-4);text-transform:uppercase;
+    margin-top:28px;margin-bottom:20px;
+  }
+  .sn-foot-lbl{
+    font-size:10px;font-weight:700;letter-spacing:2px;
+    color:var(--ink-4);text-transform:uppercase;margin-bottom:10px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .sn-foot-num{color:var(--ink);font-variant-numeric:tabular-nums}
+  .sn-prog{width:160px;height:2px;background:var(--rule);position:relative;overflow:hidden}
+  .sn-prog-fill{position:absolute;top:0;left:0;height:100%;background:var(--ink);width:0%;transition:width .3s ease}
+}
+
+/* ── MOBILE DRAWER ─────────────────────────────── */
+.drawer{
+  position:fixed;inset:0;z-index:200;
+  background:#0a0a0a;color:#fff;
+  display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .3s cubic-bezier(.2,.8,.2,1), visibility 0s linear .3s;
+}
+.drawer.open{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transition:opacity .3s cubic-bezier(.2,.8,.2,1), visibility 0s linear 0s;
+}
+.drawer-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px var(--pp);height:56px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  flex-shrink:0;
+}
+.drawer-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:#fff;display:flex;align-items:center}
+.drawer-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px}
+.drawer-close{
+  background:none;border:none;color:#fff;cursor:pointer;
+  padding:8px;margin-right:-8px;
+  font-size:22px;line-height:1;font-weight:400;
+  display:flex;align-items:center;justify-content:center;
+}
+.drawer-close:hover{color:var(--accent)}
+.drawer-body{
+  flex:1;overflow-y:auto;
+  padding:32px var(--pp) 48px;
+}
+.drawer-eyebrow{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  color:rgba(255,255,255,.55);text-transform:uppercase;
+  margin-bottom:24px;display:flex;align-items:center;gap:8px;
+}
+.drawer-eyebrow::before{content:"";width:18px;height:1px;background:var(--accent)}
+.dw-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.dw-group{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  color:rgba(255,255,255,.45);text-transform:uppercase;
+  margin:24px 0 8px;
+}
+.dw-group:first-child{margin-top:0}
+.dw-item a{
+  display:grid;grid-template-columns:48px 1fr 24px;gap:12px;align-items:baseline;
+  padding:18px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  text-decoration:none;color:inherit;
+  transition:padding-left .3s cubic-bezier(.2,.8,.2,1);
+}
+.dw-item a:hover,.dw-item a:active{padding-left:6px}
+.dw-num{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  color:rgba(255,255,255,.5);font-variant-numeric:tabular-nums;padding-top:2px;
+}
+.dw-body{display:flex;flex-direction:column;gap:4px}
+.dw-title{font-size:17px;font-weight:600;color:#fff;letter-spacing:-.3px}
+.dw-desc{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5}
+.dw-arrow{font-size:14px;color:rgba(255,255,255,.4);padding-top:4px;text-align:right}
+.dw-item.active .dw-num{color:var(--accent)}
+.dw-item.active .dw-title::before{
+  content:"";display:inline-block;width:5px;height:5px;border-radius:50%;
+  background:var(--accent);margin-right:10px;vertical-align:middle;margin-top:-2px;
+}
+
+/* Body scroll lock when drawer open */
+body.drawer-open{overflow:hidden}
+
+/* ── MAIN ──────────────────────────────────────── */
+main{padding-top:56px}
+@media(min-width:1280px){
+  main{padding-top:0;padding-left:var(--nav-w)}
+}
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--pp)}
+
+/* ── COVER ─────────────────────────────────────── */
+.cover{
+  background:#0a0a0a;color:#fff;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  padding:var(--sp-16) var(--pp) var(--sp-12);
+  position:relative;
+}
+.cover-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;flex-direction:column;flex:1}
+.cv-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding-bottom:var(--sp-12);
+  font-size:11px;letter-spacing:2.5px;color:rgba(255,255,255,.65);text-transform:uppercase;font-weight:600;
+}
+.cv-top .r{text-align:right;line-height:1.8}
+.cv-mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:var(--sp-24) 0}
+.cv-label{
+  font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.7);margin-bottom:var(--sp-10);
+  display:flex;align-items:center;gap:10px;
+}
+.cv-label::before{content:"";width:24px;height:1px;background:var(--accent)}
+.cv-h1{
+  font-size:clamp(56px,8.5vw,120px);
+  font-weight:800;letter-spacing:-3.5px;
+  line-height:.92;color:#fff;
+  margin-bottom:var(--sp-10);
+}
+.cv-h1 .line2{display:block;color:rgba(255,255,255,.35);font-weight:400}
+.cv-desc{font-size:15px;line-height:1.8;color:rgba(255,255,255,.75);max-width:480px;font-weight:400}
+.cv-bot{
+  padding-top:var(--sp-10);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-6);
+}
+.cv-kpi{padding:var(--sp-2) 0}
+.cv-kpi-num{font-size:10px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:1.5px;margin-bottom:var(--sp-3)}
+.cv-kpi-val{font-size:clamp(32px,3.5vw,46px);font-weight:800;letter-spacing:-2px;line-height:1;color:#fff;margin-bottom:var(--sp-3)}
+.cv-kpi-val.dim{color:rgba(255,255,255,.6)}
+.cv-kpi-lbl{font-size:13px;font-weight:600;color:#fff;margin-bottom:2px}
+.cv-kpi-sub{font-size:12px;color:rgba(255,255,255,.62);line-height:1.5}
+
+@media(max-width:760px){
+  .cv-bot{grid-template-columns:repeat(2,1fr);gap:var(--sp-8) var(--sp-4)}
+}
+
+/* ── TABLE OF CONTENTS ─────────────────────────── */
+.toc-list{
+  margin-top:var(--sp-12);
+  border-top:1px solid var(--ink);
+}
+.toc-item{
+  display:grid;
+  grid-template-columns:88px 1fr 28px;
+  gap:var(--sp-8);
+  align-items:baseline;
+  padding:var(--sp-8) 0;
+  border-bottom:1px solid var(--rule);
+  text-decoration:none;
+  color:inherit;
+  transition:padding-left .35s cubic-bezier(.2,.8,.2,1), background-color .25s ease;
+}
+.toc-item:hover{
+  padding-left:var(--sp-4);
+  background:rgba(231,85,25,.02);
+}
+.toc-item:hover .toc-arrow{
+  color:var(--accent);
+  transform:translateX(4px);
+}
+.toc-num{
+  font-size:12px;font-weight:700;letter-spacing:2px;
+  color:var(--ink-4);padding-top:8px;
+}
+.toc-body{display:flex;flex-direction:column;gap:6px}
+.toc-title{
+  font-size:20px;font-weight:700;color:var(--ink);
+  letter-spacing:-.3px;line-height:1.3;
+}
+.toc-desc{
+  font-size:14px;color:var(--ink-3);line-height:1.6;
+}
+.toc-arrow{
+  font-size:14px;color:var(--ink-5);
+  padding-top:10px;text-align:right;
+  transition:color .25s ease, transform .3s cubic-bezier(.2,.8,.2,1);
+}
+@media(max-width:640px){
+  .toc-item{grid-template-columns:56px 1fr 20px;gap:var(--sp-5)}
+  .toc-title{font-size:17px}
+  .toc-desc{font-size:13px}
+}
+
+/* ── SECTION ───────────────────────────────────── */
+.section{padding:var(--sp-28) 0}
+/* Extra breathing room between the full-height hero cover and the first content section. */
+.section:first-of-type{padding-top:var(--sp-40)}
+
+.s-head{margin-bottom:var(--sp-16);max-width:900px}
+.s-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:600;letter-spacing:2.5px;
+  color:var(--ink-4);text-transform:uppercase;
+  margin-bottom:var(--sp-8);
+}
+.s-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.s-eyebrow .sep{color:var(--ink-5);margin:0 4px;font-weight:400}
+.s-title{
+  font-size:clamp(32px,4.2vw,52px);
+  font-weight:800;letter-spacing:-1.5px;
+  line-height:1.1;color:var(--ink);
+}
+.s-title .soft{color:var(--ink-4);font-weight:400}
+.s-sub{
+  margin-top:var(--sp-8);
+  font-size:16px;line-height:1.8;color:var(--ink-3);
+  max-width:680px;font-weight:400;
+}
+
+.s-rule{height:1px;background:var(--rule);margin:var(--sp-16) 0 var(--sp-14)}
+
+/* ── PROSE ─────────────────────────────────────── */
+.prose{font-size:15px;line-height:1.85;color:var(--ink-3);max-width:800px}
+.prose p+p{margin-top:var(--sp-5)}
+.prose strong{color:var(--ink);font-weight:600}
+.prose-wide{max-width:100%}
+
+/* ── NUMBERED BLOCKS (Like smalltribe / Marcher refs) ── */
+.nblocks{display:grid;gap:1px;background:var(--rule);margin:var(--sp-16) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.nblocks-3{grid-template-columns:repeat(3,1fr)}
+.nblocks-4{grid-template-columns:repeat(4,1fr)}
+.nblocks-2{grid-template-columns:repeat(2,1fr)}
+.nblock{background:var(--bg);padding:var(--sp-10) var(--sp-8) var(--sp-12);min-height:220px;display:flex;flex-direction:column}
+.nblock .n-num{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;color:var(--ink-4);letter-spacing:1.5px;
+  margin-bottom:var(--sp-6);
+}
+.nblock .n-num::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.nblock .n-title{font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.3px;line-height:1.35;margin-bottom:var(--sp-4)}
+.nblock .n-body{font-size:14px;line-height:1.8;color:var(--ink-3);flex:1}
+.nblock .n-body strong{color:var(--ink);font-weight:600}
+
+@media(max-width:820px){
+  .nblocks-3,.nblocks-4{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .nblocks-3,.nblocks-4,.nblocks-2{grid-template-columns:1fr}
+}
+
+/* ── KEY/VALUE LIST ────────────────────────────── */
+.kvlist{margin:var(--sp-10) 0}
+.kv{display:grid;grid-template-columns:200px 1fr;gap:var(--sp-8);padding:var(--sp-8) 0;border-top:1px solid var(--rule)}
+.kv:last-child{border-bottom:1px solid var(--rule)}
+.kv-label{font-size:11px;font-weight:700;color:var(--ink);letter-spacing:1.5px;text-transform:uppercase;padding-top:2px}
+.kv-label .num{color:var(--ink-5);margin-right:6px}
+.kv-title{font-size:18px;font-weight:600;color:var(--ink);letter-spacing:-.3px;line-height:1.4;margin-bottom:var(--sp-2)}
+.kv-body{font-size:14px;line-height:1.8;color:var(--ink-3)}
+.kv-body strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){
+  .kv{grid-template-columns:1fr;gap:var(--sp-3)}
+}
+
+/* ── DARK HIGHLIGHT BLOCK ──────────────────────── */
+.dark-block{
+  background:#0a0a0a;color:#fff;
+  /* Full-bleed background with content constrained to the same max-w as .wrap.
+     Horizontal padding grows on wide screens to keep content at max-w - 2*pp. */
+  padding:var(--sp-16) max(var(--pp), calc((100vw - var(--max-w)) / 2 + var(--pp)));
+  margin:var(--sp-16) 0;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  box-sizing:border-box;
+}
+@media(min-width:1280px){
+  /* On desktop the nav occupies var(--nav-w) on the left; full-bleed must not
+     cover the nav, and horizontal padding must recentre against the shifted area. */
+  .dark-block{
+    width:calc(100vw - var(--nav-w));
+    margin-left:calc(50% - 50vw + var(--nav-w)/2);
+    margin-right:calc(50% - 50vw + var(--nav-w)/2);
+    padding:var(--sp-16) max(var(--pp), calc((100vw - var(--nav-w) - var(--max-w)) / 2 + var(--pp)));
+  }
+}
+
+/* ── LINE SUPPRESSION ──────────────────────────── */
+/* Remove redundant horizontal lines right after a black/dark block.
+   Black itself acts as a strong visual separator. */
+.dark-block + .tac{border-top:none;padding-top:0}
+.dark-block + .tiers{border-top:none !important}
+.dark-block + .split{border-top:none}
+.dark-block + .nblocks{border-top:none}
+.dark-block + .tbl{border-top:none}
+.dark-block + .s-rule{display:none}
+.dark-block + .pgrid{border-top:none}
+.dark-block + .tgrid{border-top:none}
+
+/* Prevent consecutive horizontal lines from bordered containers into tac. */
+.split + .tac,
+.tbl + .tac,
+.tgrid + .tac,
+.pgrid + .tac,
+.nblocks + .tac,
+.tiers + .tac{border-top:none;padding-top:0}
+
+/* Prevent consecutive horizontal lines (two rules in a row). */
+.s-rule + .s-rule{display:none}
+.tiers + .s-rule{display:none}
+.tbl + .s-rule{display:none}
+.split + .s-rule{display:none}
+.pgrid + .s-rule{display:none}
+.tgrid + .s-rule{display:none}
+.nblocks + .s-rule{display:none}
+.db-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-8);display:flex;align-items:center;gap:10px}
+.db-label::before{content:"";width:18px;height:1px;background:var(--accent)}
+.db-h{font-size:clamp(20px,2.4vw,28px);font-weight:700;letter-spacing:-.5px;line-height:1.45;color:#fff;margin-bottom:var(--sp-8)}
+.db-h em{font-style:normal;color:#fff;font-weight:600}
+.db-h .ac{color:var(--accent);font-weight:600;font-style:normal}
+.db-body{font-size:14px;line-height:1.9;color:rgba(255,255,255,.72);max-width:800px}
+.db-body strong{color:#fff;font-weight:600}
+.db-body p+p{margin-top:var(--sp-4)}
+
+/* ── TACTICAL NOTE ─────────────────────────────── */
+.tac{
+  border-top:1px solid var(--ink);
+  padding:var(--sp-10) 0;
+  margin:var(--sp-16) 0;
+}
+.tac-label{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:var(--sp-6);
+}
+.tac-body{font-size:16px;line-height:1.85;color:var(--ink-2);max-width:900px}
+.tac-body strong{color:var(--ink);font-weight:700}
+.tac-dir{
+  margin-top:var(--sp-6);padding-top:var(--sp-6);
+  border-top:1px solid var(--rule);
+  font-size:14px;line-height:1.85;color:var(--ink-3);
+  max-width:900px;
+}
+.tac-dir strong{color:var(--ink);font-weight:600}
+.tac-dir .arrow{color:var(--accent);font-weight:700;margin-right:6px}
+
+/* ── NOTES ─────────────────────────────────────── */
+.notegrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-10);margin:var(--sp-10) 0}
+.note{
+  border-top:1px solid var(--ink);
+  padding:var(--sp-6) 0 0;
+  font-size:14px;line-height:1.85;color:var(--ink-3);
+}
+.note-h{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:var(--sp-3);letter-spacing:-.2px}
+.note strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){.notegrid{grid-template-columns:1fr;gap:var(--sp-8)}}
+
+/* ── SPLIT (Positive / Negative) ───────────────── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.split-col{padding:var(--sp-10) 0;padding-right:var(--sp-10)}
+.split-col+.split-col{border-left:1px solid var(--rule);padding-left:var(--sp-10);padding-right:0}
+.sp-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-5);display:flex;align-items:center;gap:10px}
+.sp-label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ink-4)}
+.sp-label.risk{color:var(--accent)}
+.sp-label.risk::before{background:var(--accent)}
+.sp-body{font-size:15px;line-height:1.85;color:var(--ink-3);margin-bottom:var(--sp-8)}
+.sp-body .hi{color:var(--ink);font-weight:600}
+.sp-body .risk{color:var(--accent);font-weight:600}
+.sp-stats{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);padding-top:var(--sp-6);border-top:1px solid var(--rule)}
+.sp-stat-val{font-size:26px;font-weight:800;letter-spacing:-1px;color:var(--ink);margin-bottom:2px;line-height:1}
+.sp-stat-val.lo{color:var(--ink-4)}
+.sp-stat-lbl{font-size:12px;color:var(--ink-4);letter-spacing:.3px}
+@media(max-width:760px){
+  .split{grid-template-columns:1fr}
+  .split-col+.split-col{border-left:none;border-top:1px solid var(--rule);padding-left:0;padding-top:var(--sp-10)}
+  .split-col{padding-right:0}
+}
+
+/* ── CHART CARDS (minimal, no backgrounds) ─────── */
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-12);margin:var(--sp-14) 0}
+.charts-1{grid-template-columns:1fr}
+.ch{padding:var(--sp-6) 0}
+.ch-eye{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-2)}
+.ch-title{font-size:18px;font-weight:600;color:var(--ink);letter-spacing:-.3px;line-height:1.4;margin-bottom:var(--sp-6);max-width:420px}
+.ch-ax{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-4);letter-spacing:.3px;margin-bottom:var(--sp-3)}
+.ch-canvas{position:relative;height:220px}
+.ch-canvas.tall{height:300px}
+.ch-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin-top:var(--sp-6);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.ch-stat{background:var(--bg);padding:var(--sp-5) var(--sp-4) var(--sp-4)}
+.ch-stat-lbl{font-size:11px;color:var(--ink-4);letter-spacing:.3px;margin-bottom:var(--sp-2)}
+.ch-stat-val{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.2px}
+.ch-stat-val.ok{color:var(--success)}
+.ch-stat-val.warn{color:var(--accent)}
+@media(max-width:820px){.charts{grid-template-columns:1fr;gap:var(--sp-12)}}
+
+/* ── TABLE ─────────────────────────────────────── */
+.tbl{margin:var(--sp-14) 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+.tbl-cap{
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink-4);padding:var(--sp-4) 0 var(--sp-3);
+}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl-scroll::-webkit-scrollbar{height:4px}
+.tbl-scroll::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+table.dt{width:100%;border-collapse:collapse;min-width:640px}
+table.dt th{
+  text-align:left;padding:var(--sp-4) var(--sp-4);
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--ink-4);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--bg);white-space:nowrap;
+}
+table.dt td{
+  padding:var(--sp-4) var(--sp-4);
+  font-size:14px;color:var(--ink-3);
+  border-bottom:1px solid var(--rule-soft);
+  vertical-align:middle;line-height:1.6;
+}
+table.dt td strong{color:var(--ink);font-weight:600}
+table.dt tr:last-child td{border-bottom:none}
+table.dt tr:hover td{background:var(--bg-soft)}
+
+/* ── TAGS ──────────────────────────────────────── */
+.tag{
+  display:inline-block;font-size:10px;font-weight:600;
+  padding:3px 8px;letter-spacing:.5px;
+  border:1px solid var(--rule);color:var(--ink-3);
+  white-space:nowrap;
+}
+.t-ok{border-color:var(--ink);color:var(--ink)}
+.t-pod{border-color:var(--accent);color:var(--accent)}
+.t-pop{border-color:var(--ink-4);color:var(--ink-4)}
+.t-par{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.t-gap{border-color:var(--ink-5);color:var(--ink-4);background:var(--bg-soft)}
+.t-risk{border-color:var(--danger);background:var(--danger);color:#fff}
+
+/* ── QUOTES ────────────────────────────────────── */
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-10);margin:var(--sp-10) 0}
+.qgroup-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-5);padding-bottom:var(--sp-3);border-bottom:1px solid var(--ink)}
+.qcard{padding:var(--sp-6) 0;border-bottom:1px solid var(--rule)}
+.qcard:last-child{border-bottom:none}
+.qhead{display:flex;align-items:center;gap:10px;margin-bottom:var(--sp-3)}
+.qavatar{width:26px;height:26px;border-radius:50%;background:var(--bg-soft);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;color:var(--ink-4);font-size:10px;font-weight:700}
+.qname{font-size:12px;font-weight:600;color:var(--ink-2)}
+.qdate{font-size:11px;color:var(--ink-4)}
+.qtext{font-size:14px;line-height:1.85;color:var(--ink-2)}
+@media(max-width:760px){.qgrid{grid-template-columns:1fr}}
+
+/* ── PERSONAS ──────────────────────────────────── */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.persona{background:var(--bg);padding:var(--sp-10) var(--sp-8)}
+.p-num{font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--ink-4);margin-bottom:var(--sp-6)}
+.p-pct{font-size:44px;font-weight:800;letter-spacing:-2px;color:var(--ink);line-height:1;margin-bottom:var(--sp-4)}
+.p-pct .unit{font-size:16px;color:var(--ink-4);font-weight:500;letter-spacing:0;margin-left:2px}
+.p-name{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.2px;margin-bottom:var(--sp-2)}
+.p-kw{font-size:12px;color:var(--ink-4);line-height:1.6}
+@media(max-width:760px){.pgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.pgrid{grid-template-columns:1fr}}
+
+/* ── TRAINER CARDS ─────────────────────────────── */
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.trainer{background:var(--bg);padding:var(--sp-10) var(--sp-8)}
+.t-num{font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--ink-4);margin-bottom:var(--sp-4)}
+.t-name{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.5px;margin-bottom:var(--sp-2)}
+.t-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 6px;background:var(--accent);color:#fff;vertical-align:middle;margin-left:6px;text-transform:uppercase}
+.t-meta{font-size:12px;color:var(--ink-4);padding-bottom:var(--sp-5);margin-bottom:var(--sp-5);border-bottom:1px solid var(--rule)}
+.t-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:var(--sp-4)}
+.t-pill{display:inline-block;font-size:10px;font-weight:500;padding:3px 8px;border:1px solid var(--rule);color:var(--ink-3);letter-spacing:.3px}
+.t-summary{font-size:13px;color:var(--ink-3);line-height:1.7;margin-bottom:var(--sp-5)}
+.t-quote{padding:var(--sp-4) 0 0;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.75;font-style:italic}
+@media(max-width:760px){.tgrid{grid-template-columns:1fr}}
+
+/* ── ACTIONS ───────────────────────────────────── */
+.actions{margin:var(--sp-10) 0}
+.action{padding:var(--sp-14) 0;border-top:1px solid var(--rule)}
+.action:last-child{border-bottom:1px solid var(--rule)}
+.action{display:grid;grid-template-columns:160px 1fr;gap:var(--sp-10)}
+.ac-left{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--ink-4);padding-top:6px}
+.ac-left .n{color:var(--ink);margin-right:6px;font-weight:700}
+.ac-left .pri{display:block;margin-top:var(--sp-2);font-size:10px;color:var(--accent)}
+.ac-left .pri.normal{color:var(--ink-4)}
+.ac-title{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.5px;line-height:1.35;margin-bottom:var(--sp-4)}
+.ac-desc{font-size:14px;line-height:1.85;color:var(--ink-3);margin-bottom:var(--sp-5)}
+.ac-desc strong{color:var(--ink);font-weight:600}
+.ac-box{
+  border-left:2px solid var(--accent);
+  padding:var(--sp-4) var(--sp-6);
+  background:var(--bg-soft);
+  font-size:14px;line-height:1.8;color:var(--ink-2);
+}
+.ac-box-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-3)}
+.ac-box strong{color:var(--ink);font-weight:600}
+.ex-before{color:var(--ink-4);text-decoration:line-through;display:block;margin-bottom:var(--sp-2)}
+.ex-after{color:var(--ink);font-weight:600;display:block}
+@media(max-width:760px){
+  .action{grid-template-columns:1fr;gap:var(--sp-4)}
+}
+
+/* ── TIER ROWS (for intro section) ─────────────── */
+.tiers{margin:var(--sp-14) 0;border-top:1px solid var(--ink)}
+.tier{display:grid;grid-template-columns:140px 1fr;gap:var(--sp-10);padding:var(--sp-10) 0;border-bottom:1px solid var(--rule)}
+.tier-left{font-size:11px;letter-spacing:1.5px;color:var(--ink-4);padding-top:2px}
+.tier-left .n{color:var(--ink);font-weight:700;margin-right:6px}
+.tier-name{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.3px;margin-top:var(--sp-3);margin-bottom:var(--sp-2)}
+/* When tier-name is the first element (LAYER variant without tier-weight),
+   drop its top margin and add optical padding on the left label so the
+   11px eyebrow and 20px heading visually align on the same line. */
+.tier-name:first-child{margin-top:0}
+.tier:has(.tier-name:first-child) > .tier-left{padding-top:6px}
+.tier-weight{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:var(--sp-3)}
+.tier-body{font-size:14px;line-height:1.85;color:var(--ink-3)}
+.tier-body strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){.tier{grid-template-columns:1fr;gap:var(--sp-3)}}
+
+/* ── SCORE GAUGE ───────────────────────────────── */
+.gauge-block{margin:var(--sp-16) 0;border-top:1px solid var(--ink);padding-top:var(--sp-10)}
+.gauge-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:var(--sp-8);letter-spacing:-.2px}
+.gauge{padding:var(--sp-6) 0}
+.gauge+.gauge{margin-top:var(--sp-2)}
+.g-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-3)}
+.g-head-l{display:flex;align-items:baseline;gap:var(--sp-4)}
+.g-name{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.2px}
+.g-pct{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.5px}
+.g-pct.mid{color:var(--ink-4)}
+.g-pct.low{color:var(--accent)}
+.g-note{font-size:11px;color:var(--ink-4);letter-spacing:.3px}
+/* Animatable custom property for the fill percentage. */
+@property --gauge-w{
+  syntax:'<percentage>';
+  inherits:false;
+  initial-value:0%;
+}
+.g-bar{
+  height:2px;
+  background:linear-gradient(to right, var(--gauge-color, var(--ink)) var(--gauge-w, 0%), var(--rule) 0);
+  transition:--gauge-w 1.2s cubic-bezier(.2,.8,.2,1);
+}
+.g-bar.low{ --gauge-color:var(--accent); height:1px; }
+.g-bar.mid{ --gauge-color:var(--ink-4); height:1px; }
+.g-sub{font-size:12px;color:var(--ink-4);margin-top:var(--sp-2);line-height:1.6}
+
+/* ── PLACE STATUS GRID ─────────────────────────── */
+.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);margin:var(--sp-8) 0 0;border:1px solid rgba(255,255,255,.1)}
+.status-cell{background:#0a0a0a;padding:var(--sp-5) var(--sp-6)}
+.sc-lbl{font-size:10px;color:rgba(255,255,255,.6);letter-spacing:1px;margin-bottom:var(--sp-2);text-transform:uppercase}
+.sc-val{font-size:15px;font-weight:700;color:#fff;margin-bottom:2px}
+.sc-val.warn{color:var(--accent)}
+.sc-val.ok{color:#7bc890}
+.sc-sub{font-size:11px;color:rgba(255,255,255,.6);line-height:1.5}
+@media(max-width:760px){.status-grid{grid-template-columns:1fr 1fr}}
+
+/* ── TOGGLE / EXPANDABLE ───────────────────────── */
+.toggle{border-top:1px solid var(--rule)}
+.toggle:last-of-type{border-bottom:1px solid var(--rule)}
+.toggle-btn{
+  width:100%;background:none;border:none;cursor:pointer;
+  font-family:inherit;text-align:left;
+  display:flex;align-items:center;gap:var(--sp-4);
+  padding:var(--sp-6) 0;min-height:52px;
+  font-size:14px;font-weight:600;color:var(--ink);
+}
+.toggle-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.toggle-dot.soft{background:var(--ink-4)}
+.toggle-lbl{flex:1;line-height:1.5}
+.toggle-arr{font-size:14px;color:var(--ink-4);transition:transform .3s;flex-shrink:0}
+.toggle.open .toggle-arr{transform:rotate(180deg)}
+.toggle-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.toggle.open .toggle-body{max-height:1200px}
+.toggle-inner{padding:0 0 var(--sp-8);font-size:14px;color:var(--ink-3);line-height:1.85;max-width:900px}
+.toggle-inner p+p{margin-top:var(--sp-4)}
+.toggle-inner strong{color:var(--ink);font-weight:600}
+
+/* ── COMPARISON TABLE (for POP/POD, SEO/AEO inline) ── */
+.cmp-tbl{
+  width:80%;margin:var(--sp-8) auto;
+  border-collapse:collapse;
+  font-size:13px;
+}
+.cmp-tbl th,.cmp-tbl td{
+  padding:var(--sp-4) var(--sp-5);
+  text-align:left;
+  border-bottom:1px solid var(--rule);
+}
+.cmp-tbl th{
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--ink-4);border-bottom:1px solid var(--ink);
+}
+.cmp-tbl th:first-child{color:var(--ink-4)}
+.cmp-tbl th:not(:first-child){color:var(--ink)}
+.cmp-tbl td{color:var(--ink-3);line-height:1.6;vertical-align:top}
+.cmp-tbl td:first-child{color:var(--ink-4);font-size:12px;white-space:nowrap;width:100px}
+.cmp-tbl tr:last-child td{border-bottom:none}
+@media(max-width:900px){
+  .cmp-tbl{width:100%}
+}
+@media(max-width:640px){
+  .cmp-tbl{display:block;overflow-x:auto}
+}
+
+/* ── CYCLE DIAGRAM ─────────────────────────────── */
+.cycle-wrap{margin:var(--sp-12) auto;max-width:580px}
+.cycle-wrap svg{display:block;width:100%;height:auto}
+
+/* Mobile fallback — stacked HTML version (better readability on narrow screens). */
+.cycle-mobile{display:none}
+.cy-step{
+  border:1px solid var(--rule);
+  padding:18px 20px;
+  text-align:center;
+  background:var(--bg);
+}
+.cy-step-num{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  color:var(--accent);margin-bottom:6px;
+}
+.cy-step-text{
+  font-size:15px;font-weight:600;color:var(--ink);line-height:1.4;
+}
+.cy-step-arrow{
+  text-align:center;color:#b8b8b8;
+  font-size:20px;line-height:1;padding:6px 0;
+}
+.cy-step-loop{
+  margin-top:14px;text-align:center;
+  color:var(--ink-4);font-size:12px;line-height:1.5;
+}
+.cy-step-loop .sp{color:var(--accent);opacity:.55;margin-right:4px}
+
+@media(max-width:640px){
+  .cycle-wrap svg{display:none}
+  .cycle-mobile{display:flex;flex-direction:column;gap:2px}
+}
+
+/* ── AI IMAGE ──────────────────────────────────── */
+.ai-img-wrap{margin:var(--sp-12) 0}
+.ai-img-wrap img{display:block;max-width:380px;width:100%;margin:0 auto;border:1px solid var(--rule)}
+
+/* ── KEYWORD BARS ──────────────────────────────── */
+.kwbars{margin:var(--sp-6) 0}
+.kwbar{padding:var(--sp-4) 0;border-bottom:1px solid var(--rule)}
+.kwbar:last-child{border-bottom:none}
+.kwb-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-2);font-size:13px}
+.kwb-name{color:var(--ink-2);font-weight:500}
+.kwb-val{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.5px}
+.kwb-track{height:2px;background:var(--rule)}
+.kwb-fill{height:100%;background:var(--ink);width:0;transition:width 1s ease}
+.kwb-fill.soft{background:var(--ink-4)}
+
+/* ── RANKING BARS ──────────────────────────────── */
+.rank-row{display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3) 0;border-bottom:1px solid var(--rule)}
+.rank-row:last-child{border-bottom:none}
+.rank-name{font-size:13px;color:var(--ink-2);font-weight:500}
+.rank-right{display:flex;align-items:center;gap:12px;font-size:11px}
+.rank-lbl{color:var(--ink-4);font-weight:600;letter-spacing:.5px;min-width:60px;text-align:right}
+.rank-dots{letter-spacing:3px;font-size:10px;min-width:60px;text-align:right}
+.rank-dots .on{color:var(--ink)}
+.rank-dots .off{color:var(--rule)}
+
+/* ── FOOTER ────────────────────────────────────── */
+.footer{
+  background:#0a0a0a;color:rgba(255,255,255,.65);
+  padding:var(--sp-16) var(--pp);
+  text-align:center;
+  margin-top:var(--sp-16);
+}
+@media(min-width:1280px){
+  .footer{padding-left:calc(var(--pp) + var(--nav-w))}
+}
+.ft-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:#fff;margin-bottom:var(--sp-5)}
+.ft-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle;margin-top:-2px}
+.ft-links{display:flex;justify-content:center;gap:var(--sp-8);margin-bottom:var(--sp-6);flex-wrap:wrap}
+.ft-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;letter-spacing:.3px;transition:color .2s}
+.ft-links a:hover{color:#fff}
+.ft-copy{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.5px}
+
+/* ── ANIMATIONS ────────────────────────────────── */
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.anim.visible{opacity:1;transform:translateY(0)}
+
+/* Cycle spin */
+.cy-spin{transform-origin:340px 182px}
+.cycle-wrap.in-view .cy-spin{animation:cySpin 14s linear infinite}
+@keyframes cySpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* Cycle diagram — subtle sequential reveal on scroll-in.
+   Boxes fade in 01 → 02 → 03 → 04, then each connecting arrow draws in. */
+.cycle-wrap svg > g{opacity:0;transition:opacity .5s cubic-bezier(.2,.8,.2,1)}
+.cycle-wrap svg > line{stroke-dasharray:220;stroke-dashoffset:220;transition:stroke-dashoffset .5s cubic-bezier(.2,.8,.2,1)}
+
+.cycle-wrap.in-view svg > g{opacity:1}
+.cycle-wrap.in-view svg > line{stroke-dashoffset:0}
+
+.cycle-wrap.in-view svg > g:nth-of-type(1){transition-delay:.08s}
+.cycle-wrap.in-view svg > line:nth-of-type(1){transition-delay:.42s}
+.cycle-wrap.in-view svg > g:nth-of-type(2){transition-delay:.22s}
+.cycle-wrap.in-view svg > line:nth-of-type(2){transition-delay:.56s}
+.cycle-wrap.in-view svg > g:nth-of-type(3){transition-delay:.36s}
+.cycle-wrap.in-view svg > line:nth-of-type(3){transition-delay:.7s}
+.cycle-wrap.in-view svg > g:nth-of-type(4){transition-delay:.5s}
+.cycle-wrap.in-view svg > line:nth-of-type(4){transition-delay:.84s}
+.cycle-wrap.in-view svg > g:nth-of-type(5){transition-delay:1s}
+
+/* ── REDUCED MOTION ────────────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .cy-spin{animation:none!important}
+  .cycle-wrap svg > g{opacity:1!important}
+  .cycle-wrap svg > line{stroke-dashoffset:0!important}
+}
+
+/* ── PRINT ─────────────────────────────────────── */
+@media print{
+  .topbar,.skip-link{display:none!important}
+  main{padding-top:0}
+  .section{break-inside:avoid;padding:20px 0}
+  .cover{min-height:auto;padding:40px 0;break-after:page}
+  .dark-block,.cover,.footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<a href="#cover" class="skip-link">본문으로 건너뛰기</a>
+
+<!-- TOP BAR (mobile/tablet) ──────────────────────── -->
+<header class="topbar" role="banner">
+  <div class="tb-inner">
+    <div class="tb-brand"><span class="dot"></span>RE:FEEEL</div>
+    <div class="tb-current" id="tb-current"><span class="num">00</span>Cover</div>
+    <div class="tb-progress"><div class="tb-prog-bar"><div class="tb-prog-fill" id="tb-fill"></div></div><div class="tb-prog-num" id="tb-num">0%</div></div>
+    <button class="tb-menu" id="drawer-open" type="button" aria-label="목차 열기" aria-controls="drawer" aria-expanded="false">
+      <span class="tb-menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>MENU</span>
+    </button>
+  </div>
+</header>
+
+<!-- SIDE NAV (desktop only) ──────────────────────── -->
+<aside class="sidenav" aria-label="섹션 네비게이션">
+  <div class="sn-masthead">
+    <div class="sn-client">수잔요가</div>
+    <div class="sn-tagline">Place Report</div>
+  </div>
+  <ul class="sn-list" id="sn-list">
+    <li class="sn-item" data-target="cover"><a href="#cover"><span class="sn-num">—</span><span class="sn-title">Cover</span></a></li>
+
+    <li class="sn-group">Diagnosis · 진단</li>
+    <li class="sn-item" data-target="intro"><a href="#intro"><span class="sn-num">00</span><span class="sn-title">리포트 개요</span></a></li>
+    <li class="sn-item" data-target="place"><a href="#place"><span class="sn-num">01</span><span class="sn-title">플레이스 상태</span></a></li>
+    <li class="sn-item" data-target="overview"><a href="#overview"><span class="sn-num">02</span><span class="sn-title">종합 진단</span></a></li>
+
+    <li class="sn-group">Analysis · 분석</li>
+    <li class="sn-item" data-target="pop"><a href="#pop"><span class="sn-num">03</span><span class="sn-title">POP vs POD</span></a></li>
+    <li class="sn-item" data-target="gap"><a href="#gap"><span class="sn-num">04</span><span class="sn-title">간극 분석</span></a></li>
+    <li class="sn-item" data-target="customer"><a href="#customer"><span class="sn-num">05</span><span class="sn-title">고객 분석</span></a></li>
+    <li class="sn-item" data-target="trainer"><a href="#trainer"><span class="sn-num">06</span><span class="sn-title">귀속 구조</span></a></li>
+    <li class="sn-item" data-target="trend"><a href="#trend"><span class="sn-num">07</span><span class="sn-title">리뷰 추이</span></a></li>
+
+    <li class="sn-group">Action · 실행</li>
+    <li class="sn-item" data-target="action"><a href="#action"><span class="sn-num">08</span><span class="sn-title">액션 플랜</span></a></li>
+    <li class="sn-item" data-target="list"><a href="#list"><span class="sn-num">09</span><span class="sn-title">리뷰 목록</span></a></li>
+  </ul>
+  <div class="sn-credit">by RE:FEEEL</div>
+  <div class="sn-foot">
+    <div class="sn-foot-lbl"><span>Progress</span><span class="sn-foot-num" id="sn-num">0%</span></div>
+    <div class="sn-prog"><div class="sn-prog-fill" id="sn-fill"></div></div>
+  </div>
+</aside>
+
+<!-- MOBILE DRAWER ────────────────────────────────── -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="목차" aria-hidden="true">
+  <div class="drawer-head">
+    <div class="drawer-brand"><span class="dot"></span>RE:FEEEL</div>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="목차 닫기">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="drawer-body">
+    <div class="drawer-eyebrow">Contents · 목차</div>
+    <ul class="dw-list" id="dw-list">
+      <li class="dw-group">Diagnosis · 진단</li>
+      <li class="dw-item" data-target="intro"><a href="#intro"><span class="dw-num">00</span><span class="dw-body"><span class="dw-title">리포트 개요</span><span class="dw-desc">이 리포트가 보는 것</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="place"><a href="#place"><span class="dw-num">01</span><span class="dw-body"><span class="dw-title">플레이스 상태</span><span class="dw-desc">정보 최적화</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="overview"><a href="#overview"><span class="dw-num">02</span><span class="dw-body"><span class="dw-title">종합 진단</span><span class="dw-desc">고객들은 어떻게 인식하고 있는가</span></span><span class="dw-arrow">→</span></a></li>
+
+      <li class="dw-group">Analysis · 분석</li>
+      <li class="dw-item" data-target="pop"><a href="#pop"><span class="dw-num">03</span><span class="dw-body"><span class="dw-title">POP vs POD</span><span class="dw-desc">기본 기대치와 차별화 지점</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="gap"><a href="#gap"><span class="dw-num">04</span><span class="dw-body"><span class="dw-title">간극 분석</span><span class="dw-desc">전달 의도와 실제의 차이</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="customer"><a href="#customer"><span class="dw-num">05</span><span class="dw-body"><span class="dw-title">고객 분석</span><span class="dw-desc">누가, 왜, 어디서 왔는가</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="trainer"><a href="#trainer"><span class="dw-num">06</span><span class="dw-body"><span class="dw-title">귀속 구조</span><span class="dw-desc">원장·실장 인식과 브랜드</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="trend"><a href="#trend"><span class="dw-num">07</span><span class="dw-body"><span class="dw-title">리뷰 추이</span><span class="dw-desc">양은 충분하나 질적 전환 필요</span></span><span class="dw-arrow">→</span></a></li>
+
+      <li class="dw-group">Action · 실행</li>
+      <li class="dw-item" data-target="action"><a href="#action"><span class="dw-num">08</span><span class="dw-body"><span class="dw-title">액션 플랜</span><span class="dw-desc">7가지 실행 항목</span></span><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="list"><a href="#list"><span class="dw-num">09</span><span class="dw-body"><span class="dw-title">리뷰 목록</span><span class="dw-desc">통합 점수 순 정렬</span></span><span class="dw-arrow">→</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- COVER ───────────────────────────────────────── -->
+<section id="cover" class="cover" data-nav="Cover" data-num="—">
+<div class="cover-inner">
+  <div class="cv-top">
+    <span>Place Report</span>
+    <span class="r">2026.04.18</span>
+  </div>
+  <div class="cv-mid">
+    <div class="cv-label">네이버 플레이스 리뷰 분석 리포트</div>
+    <h1 class="cv-h1">
+      수잔요가<br>
+      <span class="line2">통영</span>
+    </h1>
+    <p class="cv-desc">방문자 리뷰 79건 + 블로그 리뷰 36건 기반 분석<br>분석 기간: 2023년 2월 — 2026년 4월</p>
+  </div>
+  <div class="cv-bot">
+    <div class="cv-kpi">
+      <div class="cv-kpi-val">31.8</div>
+      <div class="cv-kpi-lbl">SEO Score</div>
+      <div class="cv-kpi-sub">45점 만점 · 노출 기여 71%</div>
+    </div>
+    <div class="cv-kpi">
+      <div class="cv-kpi-val dim">16.8</div>
+      <div class="cv-kpi-lbl">AEO Score</div>
+      <div class="cv-kpi-sub">50점 만점 · AI 참조 34%</div>
+    </div>
+    <div class="cv-kpi">
+      <div class="cv-kpi-val">89<span style="font-size:.5em;color:rgba(255,255,255,.7)">%</span></div>
+      <div class="cv-kpi-lbl">영수증 인증률</div>
+      <div class="cv-kpi-sub">70건 / 79건</div>
+    </div>
+    <div class="cv-kpi">
+      <div class="cv-kpi-val dim">183<span style="font-size:.5em;color:rgba(255,255,255,.7)">자</span></div>
+      <div class="cv-kpi-lbl">평균 리뷰 길이</div>
+      <div class="cv-kpi-sub">PT 벤치마크 120~180자 상한 초과</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ST/00 — 리포트 개요 ──────────────────────────── -->
+<section id="intro" class="section" data-nav="리포트 개요" data-num="00">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 00 <span class="sep">·</span> 이 리포트가 보는 것</div>
+    <h2 class="s-title">리뷰와 플레이스 데이터로<br><span class="soft">현재 상태를 진단한다</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>이 리포트는 수잔요가 네이버 플레이스에 쌓인 <strong>방문자 리뷰 79건</strong>과 <strong>플레이스 운영 상태</strong>를 함께 진단한 결과입니다. 리뷰 하나하나에 SEO(검색 노출 기여도)와 AEO(AI 답변 참조 가능성)를 채점하고, 플레이스 정보 충실도·소식 발행·답글 관리·블로그 연동까지 종합적으로 봅니다.</p>
+    <p>이 리포트는 별점이나 만족도를 다루지 않습니다. <strong>"고객이 리뷰에 쓴 단어가 검색과 AI에서 어떤 가치를 만드는가"</strong>, 그리고 <strong>"플레이스 자체가 예약 전환에 최적화되어 있는가"</strong>를 봅니다.</p>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">플레이스에서 진짜 원하는 것</div>
+    <div class="db-h">상단 노출이 아니라,<br><em>플레이스를 통해 매출로 이어지는 것</em>입니다.</div>
+    <div class="db-body">네이버가 순위를 올려주는 페이지는 결국, 사람들이 머물고 싶은 페이지입니다. 리뷰에 스토리가 있고, 사장님 답글이 복붙이 아니고, 사진이 다채로우면 — 사람들은 그 페이지에서 오래 머물고, 저장하고, 길찾기를 누르죠. 고객 전환이 되는 페이지가 곧 네이버가 올려주는 페이지입니다.</div>
+  </div>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="tier-left"><span class="n">01</span>TIER</div>
+      <div>
+        <div class="tier-weight">가중치: 최상 — 실질적 순위 결정</div>
+        <div class="tier-name">상호작용</div>
+        <div class="tier-body">저장하기, 길찾기, 전화, 체류시간. 클릭한 고객이 이탈하지 않게 하는 것이 핵심입니다. 대부분의 대행사는 광고 트래픽과 이벤트로 이 지표를 인위적으로 올리지만, <strong>돈을 멈추면 순위도 멈춥니다.</strong></div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">02</span>TIER</div>
+      <div>
+        <div class="tier-weight">가중치: 상 — 지속성 및 신뢰 지표</div>
+        <div class="tier-name">신뢰도</div>
+        <div class="tier-body">영수증 리뷰, 포토/영상 리뷰, 리뷰 패턴. <strong>"친절해요" 100개보다 구체적 경험이 담긴 정성스러운 리뷰 10개가 검색 노출에 훨씬 유리합니다.</strong> 2026년 기준, 네이버는 POS 연동 영수증 리뷰에 가장 높은 신뢰 점수를 부여합니다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">03</span>TIER</div>
+      <div>
+        <div class="tier-weight">가중치: 중 — 검색 반영 필터</div>
+        <div class="tier-name">정보 최적화</div>
+        <div class="tier-body">소개글, 메뉴(가격), 편의시설, 최신성. 소개글은 검색 봇이 아니라 '사람'이 읽고 클릭하게끔 써야 합니다. <strong>사진을 월 1회 이상 교체하는 페이지는 "활성화된 매장"으로 인식되어 가중치를 받습니다.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;margin-bottom:var(--sp-4);letter-spacing:-.3px">네이버가 가장 높게 평가하는 선순환 구조</p>
+    <p>단순히 리뷰가 많다고 1등을 주지 않습니다. 네이버는 이 네 단계가 반복되는 패턴이 확인될 때 가중치를 대폭 부여합니다.</p>
+  </div>
+
+  <div class="cycle-wrap">
+    <svg viewBox="0 0 680 420" role="img" aria-label="네이버 플레이스 선순환 구조 다이어그램">
+      <defs><marker id="cy-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+      <g>
+        <rect x="60" y="40" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="180" y="64" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">01 · 검색</text>
+        <text x="180" y="90" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">특정 키워드로 플레이스 진입</text>
+      </g>
+      <line x1="302" y1="78" x2="378" y2="78" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="380" y="40" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="500" y="64" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">02 · 탐색</text>
+        <text x="500" y="90" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">리뷰·수업 정보를 30초+ 체류</text>
+      </g>
+      <line x1="500" y1="118" x2="500" y2="288" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="380" y="290" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="500" y="314" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">03 · 의도 확인</text>
+        <text x="500" y="340" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">저장하기 또는 길찾기 실행</text>
+      </g>
+      <line x1="378" y1="328" x2="302" y2="328" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="60" y="290" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="180" y="314" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">04 · 경험 완결</text>
+        <text x="180" y="340" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">방문 후 영수증 리뷰 작성</text>
+      </g>
+      <line x1="180" y1="288" x2="180" y2="118" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <g class="cy-spin"><text x="340" y="182" text-anchor="middle" font-size="22" fill="#e75519" opacity=".35">↻</text></g>
+        <text x="340" y="206" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="11" fill="#8a8a8a">이 순환이 반복될수록</text>
+        <text x="340" y="222" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="11" fill="#8a8a8a">순위가 올라간다</text>
+      </g>
+    </svg>
+    <div class="cycle-mobile" aria-hidden="true">
+      <div class="cy-step"><div class="cy-step-num">01 · 검색</div><div class="cy-step-text">특정 키워드로 플레이스 진입</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">02 · 탐색</div><div class="cy-step-text">리뷰·수업 정보를 30초+ 체류</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">03 · 의도 확인</div><div class="cy-step-text">저장하기 또는 길찾기 실행</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">04 · 경험 완결</div><div class="cy-step-text">방문 후 영수증 리뷰 작성</div></div>
+      <div class="cy-step-loop"><span class="sp">↻</span>이 순환이 반복될수록 순위가 올라간다</div>
+    </div>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose" style="margin-bottom:var(--sp-12)">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;margin-bottom:var(--sp-4);letter-spacing:-.3px">이 리포트의 접근</p>
+    <p>리뷰 79건 안에는 고객이 왜 저장했는지, 왜 예약했는지, 어떤 경로로 왔는지가 전부 들어 있습니다. 이 데이터로 세 가지 층위를 동시에 진단하고, 인위적 트래픽 없이 이 선순환이 자생적으로 작동하는 구조를 설계합니다.</p>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">플레이스 현재 상태</div>
+    <div class="db-h"><em>수잔요가</em> · 요가원 · 경남 통영시 무전대로 6 3층</div>
+    <div class="db-body" style="margin-bottom:var(--sp-6)">
+      <p><strong>방문자 리뷰 79건</strong> · 블로그 리뷰 36건 · 이미지 231+</p>
+      <p><strong>주소</strong> · 경남 통영시 무전대로 6 3층 (자모산부인과 옆 사하라동물병원 건물)</p>
+      <p><strong>업종</strong> · 요가원 (현대 해부학 기반 빈야사 요가 전문 센터)</p>
+      <p><strong>주요 수업</strong> · 컨디셔닝 프로그램, 인사이드 플로우/빈야사, 새벽요가, 임산부 요가, 원데이 특강, 플라잉 요가, 키즈 플라잉, 블랙롤 테라피, 힐링 테라피(아로마/싱잉볼/스톤)</p>
+      <p><strong>편의</strong> · 예약, 대기공간, 남녀 화장실, 100% 어플 예약제, 제로페이·네이버페이</p>
+    </div>
+    <div class="status-grid">
+      <div class="status-cell"><div class="sc-lbl">카테고리·영업시간</div><div class="sc-val ok">충족</div><div class="sc-sub">요가원 · 월~금 08-21시 · 토일 휴무</div></div>
+      <div class="status-cell"><div class="sc-lbl">사진 등록</div><div class="sc-val ok">충족</div><div class="sc-sub">+231장 / 기준 10장↑ 초과</div></div>
+      <div class="status-cell"><div class="sc-lbl">예약 시스템</div><div class="sc-val ok">충족</div><div class="sc-sub">네이버 예약 활성화 · 100% 예약제</div></div>
+      <div class="status-cell"><div class="sc-lbl">SNS 연동</div><div class="sc-val ok">충족</div><div class="sc-sub">인스타 · 블로그 · 카카오채널</div></div>
+      <div class="status-cell"><div class="sc-lbl">수업 상세 설명</div><div class="sc-val warn">부분</div><div class="sc-sub">9개 프로그램 운영 · 메뉴 탭 미충분</div></div>
+      <div class="status-cell"><div class="sc-lbl">가격 표시</div><div class="sc-val warn">부분</div><div class="sc-sub">원데이 30,000원만 공개 · 정기권 미표시</div></div>
+      <div class="status-cell"><div class="sc-lbl">편의·자격</div><div class="sc-val ok">충족</div><div class="sc-sub">임산부요가 지도자 등 전문 자격 5+</div></div>
+      <div class="status-cell"><div class="sc-lbl">리뷰 품질</div><div class="sc-val ok">양호</div><div class="sc-sub">평균 183자 / PT 벤치마크 120~180자</div></div>
+      <div class="status-cell"><div class="sc-lbl">사장님 답글</div><div class="sc-val risk">미충족</div><div class="sc-sub">2/79건 (2.5%) · 3년 공백</div></div>
+    </div>
+  </div>
+
+  <div class="prose" style="margin-top:var(--sp-12)">
+    <p>예를 들어 네이버에서 '통영 요가원'를 검색하면 플레이스 목록이 뜨죠. 그 목록에서 위에 뜨느냐 아래에 뜨느냐를 결정하는 게 <strong>SEO(Search Engine Optimization)</strong>입니다. 리뷰 수, 영수증 인증 비율, 키워드 태그, 재방문율 같은 요소들이 영향을 주죠. 검색했을 때 눈에 보이는 곳에 올라가는 것까지가 SEO의 역할입니다.</p>
+  </div>
+
+  <table class="cmp-tbl">
+    <thead><tr><th></th><th>SEO</th><th>AEO</th></tr></thead>
+    <tbody>
+      <tr><td>목표</td><td>검색 목록에 올라가기</td><td>AI의 답변에 선택되기</td></tr>
+      <tr><td>작동 방식</td><td>리뷰 수, 인증, 키워드</td><td>리뷰의 구체성, 스토리, 숫자</td></tr>
+      <tr><td>리뷰 예시</td><td>"친절해요" (태그 수 기여)</td><td>"컨디셔닝 프로그램 3회차, 어깨 통증 없이 일상생활 가능해졌어요"</td></tr>
+      <tr><td>비유</td><td>전화번호부에 이름 올리기</td><td>지인이 직접 추천해주는 것</td></tr>
+    </tbody>
+  </table>
+
+  <div class="prose">
+    <p>이제는 검색 결과를 하나씩 보는 게 아닙니다. 쿠팡도, 네이버 플레이스도 AI가 리뷰 전체를 읽고 요약해주고 있거든요. 고객은 그 한 줄 요약으로 방문 여부를 판단하게 됩니다. 이때 AI가 근거로 참조하는 게 리뷰입니다. 이걸 <strong>AEO(Answer Engine Optimization)</strong>라고 합니다.</p>
+  </div>
+
+  <div class="ai-img-wrap"><img src="https://pub-df7c5d3e703845768a1b37d329b42e95.r2.dev/aireview.png" alt="네이버 AI 리뷰 요약 예시" loading="lazy"></div>
+
+  <div class="prose">
+    <p>"컨디셔닝 프로그램 3회차, 환도선다 통증이 가라앉고 꼬리뼈가 편해졌어요"처럼 구체적 경험과 숫자가 있는 리뷰는 AI가 인용할 수 있죠. 반면 "좋아요 친절해요"는 AI가 가져갈 게 없습니다. 네이버 AI 브리핑도 같은 원리로, 구체적 경험이 담긴 리뷰를 근거로 참조합니다.</p>
+  </div>
+
+  <div class="notegrid" style="margin-top:var(--sp-14)">
+    <div class="note">
+      <div class="note-h">이런 리뷰일수록 검색과 AI에 더 잘 잡힙니다</div>
+      <div class="kwbars">
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">구체적 숫자 / 결과</span><span class="kwb-val">+45%</span></div><div class="kwb-track"><div class="kwb-fill" data-w="100"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">고화질 이미지 3장 이상</span><span class="kwb-val">+30%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="67"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">특징적 문구 (브랜드 고유)</span><span class="kwb-val">+25%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="56"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">담당자 실명 언급</span><span class="kwb-val">+15%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="33"></div></div></div>
+      </div>
+    </div>
+    <div class="note">
+      <div class="note-h">네이버가 순위를 매길 때 어디를 더 많이 보는지</div>
+      <div style="margin-top:var(--sp-4)">
+        <div class="rank-row"><div class="rank-name">사용자 행동 (체류, 예약, 재방문)</div><div class="rank-right"><span class="rank-lbl">최상</span><span class="rank-dots"><span class="on">● ● ● ● ●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">업체 유사도 (검색어 매칭)</div><div class="rank-right"><span class="rank-lbl">매우 높음</span><span class="rank-dots"><span class="on">● ● ● ●</span> <span class="off">●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">인기도 (리뷰, 저장, 클릭률)</div><div class="rank-right"><span class="rank-lbl">높음</span><span class="rank-dots"><span class="on">● ● ●</span> <span class="off">● ●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">정보 충실도 (설명, 사진)</div><div class="rank-right"><span class="rank-lbl">중간</span><span class="rank-dots"><span class="on">● ●</span> <span class="off">● ● ●</span></span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ST/00B — 플레이스 상태 ──────────────────────── -->
+<section id="place" class="section" data-nav="플레이스 상태" data-num="01">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 01 <span class="sep">·</span> 플레이스 상태 · 정보 최적화</div>
+    <h2 class="s-title">셋팅만으로는<br><span class="soft">고객이 예약하지 않는다</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>플레이스 셋팅의 역할은 <strong>'입장권'</strong>입니다. 정보를 빠짐없이 채우고, 사진을 올리고, 키워드를 배치하는 것 — 이것만으로 순위가 올라가던 시대는 지났습니다. 하지만 이 기본값이 갖춰져 있지 않으면 노출 자체가 되지 않죠.</p>
+    <p>아래는 수잔요가 플레이스가 이 입장권을 어디까지 확보하고 있는지 점검한 결과입니다.</p>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose" style="margin-bottom:var(--sp-8)">
+    <p>이 리포트는 세 가지 관점에서 플레이스를 분석합니다.</p>
+  </div>
+
+  <div class="tiers" style="margin-bottom:var(--sp-12)">
+    <div class="tier">
+      <div class="tier-left"><span class="n">01</span>LAYER</div>
+      <div>
+        <div class="tier-name">알고리즘이 보는 것.<br><span style="color:var(--ink-4)">순위의 기반.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">네이버 검색 시스템이 플레이스 정보를 어떻게 평가하는지. 영업시간, 메뉴 등록, 사진 업데이트 주기, 소식 발행 빈도 같은 항목들이 <strong>'정보 충실도'</strong>라는 이름으로 검색 순위에 반영됩니다. 대부분의 대행사도 다루는 영역이죠. 기본값이지만, 빠져 있으면 나머지가 작동하지 않는 토대입니다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">02</span>LAYER</div>
+      <div>
+        <div class="tier-name">검색에 걸리는 것.<br><span style="color:var(--ink-4)">AI가 추천하는 재료.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">고객이 "통영 요가원"라고 검색했을 때 뜨느냐 안 뜨느냐를 결정하는 요소입니다. 소개 문구에 어떤 키워드가 들어 있는지, 찾아가는 길에 역명이 있는지, 수업과목 설명에 고객의 증상을 해결하는 단어가 포함되어 있는지가 여기에 해당하죠. <strong>네이버 AI 브리핑은 이 텍스트들을 읽고 추천의 근거로 활용합니다.</strong> 같은 업종, 같은 지역인데 한 곳만 AI 답변에 이름이 불리는 이유가 여기에 있습니다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">03</span>LAYER</div>
+      <div>
+        <div class="tier-name">고객이 보고 <span style="color:var(--ink-4)">결정하는 것.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">검색에 노출되고, 고객이 클릭해서 플레이스에 들어왔습니다. <strong>그다음은 3초입니다.</strong> 대표 사진, 리뷰, 가격 정보를 보고 "여기 괜찮겠다"거나 "다른 데 볼까"를 결정하거든요. 가격이 미공개면 <strong>절반 가까이가 이탈</strong>하고, 최근 한 달 내 리뷰가 없으면 "여기 아직 하나?"라고 의심합니다. 1등으로 뜨더라도 전환이 안 되면 의미가 없으니까요.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>이 세 가지는 따로 노는 게 아닙니다. 정보 충실도가 높아야 검색에 걸리고, 검색에 걸려야 고객이 들어오고, 들어온 고객이 전환하려면 결정을 돕는 요소가 갖춰져 있어야 하죠. 아래는 이 세 가지 관점을 기준으로, 현재 플레이스의 상태를 점검한 결과입니다.</p>
+  </div>
+
+  <div class="gauge-block">
+    <div class="gauge-title">Score Summary · 3-Layer Assessment</div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">정보 충실도</span><span class="g-pct">100%</span></div>
+        <span class="g-note">6개 중 6개 완전 충족</span>
+      </div>
+      <div class="g-bar" data-w="100"></div>
+      <div class="g-sub">알고리즘이 보는 기본 셋팅</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">검색 매칭</span><span class="g-pct mid">60%</span></div>
+        <span class="g-note">5개 중 1개 완전 · 4개 부분 충족</span>
+      </div>
+      <div class="g-bar mid" data-w="60"></div>
+      <div class="g-sub">AI가 찾을 수 있는 키워드 존재 여부</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">예약 전환</span><span class="g-pct low">25%</span></div>
+        <span class="g-note">답글 미충족 · 가격 부분 공개</span>
+      </div>
+      <div class="g-bar low" data-w="25"></div>
+      <div class="g-sub">클릭한 고객이 예약까지 가는 구조</div>
+    </div>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">항목별 상세 — 13개 항목</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>항목</th><th>현재 상태</th><th>기준</th><th>판정</th><th>영향</th></tr></thead>
+        <tbody>
+          <tr><td><strong>카테고리</strong></td><td>요가원 — 정확</td><td>실제 업종과 일치</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>영업시간</strong></td><td>월~금 08:00-21:00 · 토·일 정기휴무 (요일별 분리)</td><td>요일별 분리 + 특이사항 명시</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>사진</strong></td><td>231장+ 등록</td><td>최소 10장, 상위 업체 20장+</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>예약 시스템</strong></td><td>네이버 예약 활성화 · 100% 어플 예약제 운영</td><td>네이버 예약 활성화 시 7배 클릭</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>SNS 연동</strong></td><td>인스타그램(@janjan_shanti) · 블로그 · 카카오채널 모두 연동</td><td>1개 이상 연동 + 최근 포스팅</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>편의시설·자격</strong></td><td>예약·대기공간·화장실 등록 / 자격: 임산부요가 지도자, 가임기 여성 임신관리사, 맘스바디케어 고펙스, 아로마 전문가, 싱잉볼&인요가 테라피</td><td>주요 편의 + 전문 자격 표시</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>소개 문구</strong></td><td>약 400자 · '현대 요가', '개인·듀엣·그룹레슨', '통증 완화' POD 일부 포함</td><td>300~500자 + POD 키워드</td><td><span class="tag t-ok">충족</span></td><td>검색</td></tr>
+          <tr><td><strong>수업 메뉴 수</strong></td><td>실제 운영 9개+ (컨디셔닝·인사이드플로우·새벽·임산부·원데이·플라잉·키즈플라잉·블랙롤테라피·힐링테라피) / 플레이스 메뉴 탭 등록 범위 미흡 추정</td><td>실제 서비스 전부 등록</td><td><span class="tag t-par">부분</span></td><td>순위</td></tr>
+          <tr><td><strong>수업 상세 설명</strong></td><td>블로그에는 프로그램별 500자+ 설명 존재 / 플레이스 메뉴 탭 내 설명은 부족 추정</td><td>항목별 200자 설명 + 사진</td><td><span class="tag t-par">부분</span></td><td>검색</td></tr>
+          <tr><td><strong>가격 표시</strong></td><td>원데이 수강권 30,000원만 표시 · 기간제권·횟수권·정기권 미표시</td><td>명시 시 전환 30%↑ / 미표시 시 이탈 47%</td><td><span class="tag t-par">부분</span></td><td>전환</td></tr>
+          <tr><td><strong>찾아가는 길</strong></td><td>랜드마크(자모산부인과 옆 사하라동물병원 3층) · 주차 안내 O / 교통수단별 분리 없음</td><td>역명 + 교통수단별 분리 + 주차</td><td><span class="tag t-par">부분</span></td><td>검색</td></tr>
+          <tr><td><strong>소식 발행</strong></td><td>블로그 36건 (월 1건 페이스, 3년간) / 플레이스 소식 탭 발행 빈도 별도 확인 필요</td><td>주 2~3회, 체류 10.4%↑</td><td><span class="tag t-par">부분</span></td><td>순위</td></tr>
+          <tr><td><strong>사장님 답글</strong></td><td>79건 방문자 리뷰 중 2건(2.5%) · 최종 답글 2023년 4월 이후 <strong>3년 공백</strong></td><td>72% 이상 · 24h 이내 답글</td><td><span class="tag t-risk">미충족</span></td><td>전환</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="font-size:14px;font-weight:700;color:var(--ink);margin:var(--sp-12) 0 var(--sp-4);letter-spacing:-.2px">개선 항목 — 우선순위 6건</div>
+
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot"></span>
+      <span class="toggle-lbl"><strong>1 (긴급)</strong> 사장님 답글 — 79건 중 2건 · 3년 공백</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p><strong>답글률 2.5%는 요가원 벤치마크 30~60%와 비교해 극단적으로 낮다.</strong> 2023년 4월 이후 새로운 답글이 작성되지 않았다. 네이버 알고리즘은 답글이 달리는 플레이스에 72% 더 높은 신뢰도를 부여하고, 고객은 답글을 "운영자가 실재하는가"의 신호로 받아들인다. AEO 관점에서도 답글에 포함된 프로그램명·원장 시그니처 멘트가 AI 참조 신호로 쓰인다.</p>
+      <p><strong>즉시 실행 · 답글 템플릿 5종 제작:</strong> ① 컨디셔닝 프로그램 후기 ② 임산부·산후 리뷰 ③ 새벽요가 ④ 원데이 체험 ⑤ 재등록. 각 템플릿에 수업명 + 원장 이수진의 브랜드 멘트("수잔요가는 현대 해부학 기반 빈야사 전문 센터입니다")를 자연스럽게 포함. 24시간 이내 답글 루틴 정착.</p>
+    </div></div>
+  </div>
+
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot"></span>
+      <span class="toggle-lbl"><strong>2 (중요)</strong> 가격 표시 — 원데이 외 전 수강권 미공개</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p><strong>가격 미표시 상태에서 고객의 47%가 이탈한다.</strong> 현재 공개된 가격은 원데이 수강권 30,000원 하나뿐. 기간제권(1개월·3개월), 10회 횟수권, 새벽요가 17만원, 임산부 요가 소그룹 4주 18만원, 원데이 특강 44,000원 등 실제 판매되는 모든 수강권이 미표시 상태다.</p>
+      <p><strong>즉시 실행:</strong> 전 수강권 유형별 가격 공개. 네이버 플레이스 "메뉴/가격" 탭에 직접 등록해 검색 결과 하단에 노출. 가격 공개 → 전환율 30%↑ 효과 기대.</p>
+    </div></div>
+  </div>
+
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot soft"></span>
+      <span class="toggle-lbl"><strong>3 (중요)</strong> 메뉴 탭 전면 재정비 — 9개 프로그램 개별 등록</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p>실제 운영 프로그램은 최소 9개(컨디셔닝·인사이드 플로우·빈야사·새벽요가·임산부요가·원데이·플라잉·키즈플라잉·블랙롤/힐링테라피)인데, 플레이스 메뉴 탭에 개별 항목으로 등록되어 있지 않다. "통영 컨디셔닝 프로그램", "통영 임산부 요가"처럼 롱테일 검색 진입점이 차단된 상태.</p>
+      <p><strong>실행:</strong> 9개 프로그램을 개별 메뉴 항목으로 등록. 각 200자 이상 설명 + 대표 사진 1장. 블로그에 이미 존재하는 상세 설명을 메뉴 탭으로 이식만 하면 됨.</p>
+    </div></div>
+  </div>
+
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot soft"></span>
+      <span class="toggle-lbl"><strong>4 (개선)</strong> 소개 문구 POD 키워드 강화</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p>현재 소개 문구는 "통영 무전동에 위치한 요가 맛집 수잔요가…"처럼 무난하게 작성되어 있지만, 시그니처 POD인 <strong>컨디셔닝 프로그램·인사이드 플로우·빈야사 정렬·블랙롤 테라피</strong>가 직접 포함되지 않았다.</p>
+      <p><strong>개선안:</strong> "현대 해부학 기반 빈야사 요가 전문 센터. 컨디셔닝 프로그램으로 1:1 자세 교정, 인사이드 플로우 빈야사로 근력·유연성을 동시에. 임산부 요가 지도자 자격 보유 원장 직강. 새벽요가·원데이 클래스 운영"처럼 POD를 직접 나열하여 AEO 참조 신호 강화.</p>
+    </div></div>
+  </div>
+
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot soft"></span>
+      <span class="toggle-lbl"><strong>5 (개선)</strong> 소식 탭 정기 발행 — 블로그 콘텐츠 동시 게재</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p>블로그 36건은 이미 양질의 콘텐츠 자산. 단, 블로그가 아닌 <strong>플레이스 '소식' 탭</strong>에 동시 게재되어야 네이버 알고리즘의 '최신성' 가중치를 받는다. 소식 발행 주 2~3회 달성 시 체류시간 10.4%↑, 예약 8%↑ 효과.</p>
+      <p><strong>실행:</strong> 블로그 포스팅을 플레이스 소식 탭에 동시 게재. 월별 시간표 공지 + 프로그램 소개로 주 2회 페이스 구축.</p>
+    </div></div>
+  </div>
+
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot soft"></span>
+      <span class="toggle-lbl"><strong>6 (장기)</strong> 찾아가는 길 — 교통수단별 분리</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p>현재 랜드마크(자모산부인과 옆 사하라동물병원 3층)와 주차 안내는 잘 되어 있으나, 대중교통 기준 설명이 없다. 통영 시내버스 이용 고객을 위한 안내 추가 필요.</p>
+      <p><strong>실행:</strong> 통영종합터미널 기준 버스 X번 → 무전동 정류장 도보 3분 같은 형식으로 추가.</p>
+    </div></div>
+  </div>
+
+  <div class="dark-block" style="margin-top:var(--sp-14)">
+    <div class="db-label">블로그 리뷰 36건의 전략적 맥락</div>
+    <div class="db-h">블로그는 방문자 리뷰보다 적다 (36 &lt; 79).<br>대신 <em>블로그의 78%가 업주 직접 운영 콘텐츠</em>라는 점이 핵심이다.</div>
+    <div class="db-body">
+      <p><strong>이 구조에서 발견되는 것은 '채널 간 언어 단절'이다.</strong></p>
+      <p><strong>1. 업주 자체 콘텐츠 투자가 활발.</strong> 블로그 36건 중 28건(78%)이 원장 수잔이 직접 작성한 포스팅이다. 인사이드 플로우(32%)·해부학 정렬(29%)·플라잉 요가(29%)·새벽요가(21%) 등 POD 키워드가 블로그에서는 능동적으로 전달되고 있다.</p>
+      <p><strong>2. 그러나 방문자 리뷰에는 전이되지 않는다.</strong> 업주가 블로그에서 32% 강조한 인사이드 플로우/빈야사가 방문자 리뷰에는 16.5%만 나타난다(전달률 51%). 새벽요가는 블로그 21% → 리뷰 1.3%(전달률 6%), 플라잉 요가는 29% → 5%(전달률 18%)로 특히 심각하다.</p>
+      <p><strong>3. 외부 블로그 8건은 다르다.</strong> 장문·고관여 형식의 외부 블로그 리뷰(평균 AEO 46%)는 방문자 리뷰(평균 AEO 34%)보다 POD 전달력이 1.3배 높다. 형식이 POD 전이를 결정한다.</p>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>블로그와 방문자 리뷰는 같은 고객이 쓰지만 다른 언어를 쓴다.</strong> 블로그에서는 "인사이드 플로우 정렬 수련으로 말려있던 어깨가 펴졌다"처럼 POD 언어가 풍부하지만, 방문자 리뷰에서는 "선생님 친절하고 수업 체계적이에요"로 끝난다. 네이버 AI 브리핑이 참조하는 건 방문자 리뷰이므로, 지금 구조로는 "통영 인사이드 플로우" 같은 POD 검색에서 AI 추천을 받기 어렵다.</div>
+    <div class="tac-dir"><span class="arrow">→</span><strong>리뷰 유도 질문에 POD 용어를 직접 삽입하라.</strong> 수업 종료 후 "오늘 인사이드 플로우 정렬 수련, 어느 자세가 제일 기억에 남아요?"처럼 POD 키워드를 포함한 질문을 하면 고객은 자연스럽게 그 언어로 리뷰를 쓰게 된다. 블로그에 이미 존재하는 전문 언어를 방문자 리뷰 채널로 전이시키는 것이 핵심.</div>
+  </div>
+</div>
+</section>
+
+<!-- 01 — 종합 진단 ─────────────────────────────── -->
+<section id="overview" class="section" data-nav="종합 진단" data-num="02">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 02 <span class="sep">·</span> 종합 진단</div>
+    <h2 class="s-title">고객들은 수잔요가를<br><span class="soft">어떻게 인식하고 있는가</span></h2>
+  </div>
+
+  <div class="split">
+    <div class="split-col">
+      <div class="sp-label">Strength</div>
+      <div class="sp-body">리뷰에서 수잔요가는 <span class="hi">"자세를 꼼꼼히 봐주는 원장 직강 요가원"</span>으로 인식되며, <span class="hi">"통증·체형을 실제로 바꿔준 곳"</span>으로 느껴진다. <span class="risk">영수증 인증률 88.6%</span>와 <span class="risk">재방문률 30.4%</span>는 PT/피트니스 업종 벤치마크를 상회한다. 평균 리뷰 길이 <span class="risk">183자</span>도 PT 벤치마크(120~180자) 상한을 초과한다.</div>
+      <div class="sp-stats">
+        <div><div class="sp-stat-val">89<span style="font-size:.55em;color:var(--ink-4)">%</span></div><div class="sp-stat-lbl">영수증 인증률</div></div>
+        <div><div class="sp-stat-val">30<span style="font-size:.55em;color:var(--ink-4)">%</span></div><div class="sp-stat-lbl">재방문 고객</div></div>
+      </div>
+    </div>
+    <div class="split-col">
+      <div class="sp-label risk">Risk</div>
+      <div class="sp-body">그러나 리뷰의 <span class="risk">73%가 통합 40~69점(B등급)</span>이며, AI가 인용할 수 있는 70점+ 리뷰는 79건 중 <span class="risk">2건(2.5%)</span>뿐이다. 업주가 블로그에서 강조하는 <span class="risk">컨디셔닝·인사이드 플로우·새벽요가·블랙롤 테라피</span> 등 POD 시그니처가 방문자 리뷰에서는 평균 <span class="risk">전달률 40% 미만</span>에 그친다.</div>
+      <div class="sp-stats">
+        <div><div class="sp-stat-val">183<span style="font-size:.55em;color:var(--ink-4)">자</span></div><div class="sp-stat-lbl">평균 리뷰 길이</div></div>
+        <div><div class="sp-stat-val lo">2<span style="font-size:.55em">건</span></div><div class="sp-stat-lbl">AI 인용 가능 (A등급)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>수잔요가는 "리뷰 품질이 좋은 요가원"이다.</strong> 타 업체 대비 평균 길이가 길고, 재방문·인증 비율도 우수하며, 네이버 공식 태그도 "자세를 꼼꼼히(72%)"·"선생님 실력(61%)"·"맞춤 케어(58%)" 같은 <strong>POD 성격 태그가 상위</strong>에 포진한다. 이는 이움내과·디에스타 등 "친절해요"가 최상위인 업체와 구조적으로 다르다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>하지만 POD 태그 상위 ≠ POD 전달 성공. 업주 블로그에서 강조되는 시그니처 프로그램명(컨디셔닝·인사이드 플로우·블랙롤 테라피·새벽요가)이 방문자 리뷰에는 평균 전달률 40% 미만. 리뷰 유도 질문에 <strong>프로그램명을 직접 삽입</strong>하지 않으면 "자세 꼼꼼"이라는 일반 언어에서 멈추고, 수잔요가만의 AEO 자산으로 전환되지 않는다.</div>
+  </div>
+
+  <div class="charts">
+    <div class="ch">
+      <div class="ch-eye">Score Distribution</div>
+      <div class="ch-title">SEO 평균 31.8점(71%),<br>AEO 16.8점(34%)</div>
+      <div class="ch-ax"><span>AEO Score →</span><span>SEO 20–42 · AEO 5–30</span></div>
+      <div class="ch-canvas"><canvas id="c-scatter" role="img" aria-label="SEO 점수와 AEO 점수의 상관관계를 보여주는 산점도"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">SEO 평균</div><div class="ch-stat-val">31.8 / 45</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">AEO 평균</div><div class="ch-stat-val">16.8 / 50</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">검색 노출 기여</div><div class="ch-stat-val">71%</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">AI 답변 참조율</div><div class="ch-stat-val">34%</div></div>
+      </div>
+    </div>
+    <div class="ch">
+      <div class="ch-eye">Keyword Frequency</div>
+      <div class="ch-title">POD 태그 상위 포진 —<br>이움내과와 구조적으로 다른 강점</div>
+      <div class="ch-ax"><span>Keyword →</span><span>건수 / 79건</span></div>
+      <div class="ch-canvas"><canvas id="c-kw" role="img" aria-label="키워드 태그 빈도 차트"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">최다 언급</div><div class="ch-stat-val">자세 꼼꼼 57건 (72%)</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">선생님 실력</div><div class="ch-stat-val warn">48건 (61%)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notegrid">
+    <div class="note">
+      <div class="note-h">리뷰 길이 — 업종 평균 초과</div>
+      <p>79건 평균 <strong>183자</strong>. PT/피트니스 벤치마크 120~180자 상한을 초과. 200자 이상 리뷰 <strong>35건 (44%)</strong>으로 이움내과(5.6%)·디에스타 대비 월등히 우수하다. 단, 학원/교육 벤치마크(300~500자) 기준으로는 하한 미달 — <strong>고관여 스토리 구조 리뷰 유도로 AEO 30~40점대 대량 진입 가능.</strong></p>
+    </div>
+    <div class="note">
+      <div class="note-h">사장님 답글 — 심각한 공백</div>
+      <p>79건 중 답글 <strong>2건(2.5%)</strong>이며 2023년 4월 이후 <strong>3년간 신규 답글 없음</strong>. 벤치마크 30~60%와 극단적 차이. 답글은 알고리즘 신뢰도 +72% 신호이자 AEO에서 업주 시그니처 언어(프로그램명·자격·철학)를 추가 노출하는 유일한 채널. <strong>시급한 1순위 개선 과제.</strong></p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 — POP vs POD ───────────────────────────── -->
+<section id="pop" class="section" data-nav="POP vs POD" data-num="03">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 03 <span class="sep">·</span> POP(기본값) vs POD(차별점)</div>
+    <h2 class="s-title">기본 기대치와<br><span class="soft">차별화 지점을 구분한다</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>요가원에 갔는데 선생님이 불친절하거나 시설이 지저분하면 다시 안 가겠죠. 그런데 친절하다고, 깨끗하다고 해서 "여기를 꼭 가야 해"라고 추천하진 않습니다. 요가원이면 당연하니까요. 이게 <strong>POP — Point of Parity(기본값)</strong>입니다.</p>
+    <p>반면 "환도선다 통증이 컨디셔닝 수업 한 번에 사라졌다", "인사이드 플로우 6개월로 말려있던 어깨가 펴졌다"라고 하면 이야기가 달라집니다. 다른 요가원에서는 들을 수 없는 말이니까요. 이게 <strong>POD — Point of Difference(차별점)</strong>입니다.</p>
+  </div>
+
+  <table class="cmp-tbl">
+    <thead><tr><th></th><th>POP (기본값)</th><th>POD (차별점)</th></tr></thead>
+    <tbody>
+      <tr><td>의미</td><td>기본 기대치(없으면 탈락)</td><td>차별화 지점(선택 이유)</td></tr>
+      <tr><td>없으면?</td><td>탈락</td><td>선택지에는 들어감</td></tr>
+      <tr><td>있으면?</td><td>선택지에 들어감</td><td>선택의 이유가 됨</td></tr>
+      <tr><td>요가원 예시</td><td>"친절해요", "깔끔해요"</td><td>"컨디셔닝 프로그램 1:1로 환도선다 통증 해결"</td></tr>
+    </tbody>
+  </table>
+
+  <div class="prose">
+    <p>수잔요가의 구조적 특이점은 네이버 공식 태그가 POD 성격을 띠고 있다는 것입니다. "자세를 꼼꼼히 봐주세요(72%)", "선생님 실력이 좋아요(61%)", "맞춤 케어를 잘해줘요(58%)"는 일반 요가원이 받기 어려운 태그입니다. 하지만 <strong>태그는 태그일 뿐, 본문에서 POD가 구체적 언어로 나타나야 AEO 자산이 됩니다.</strong></p>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">네이버 공식 태그 분류 — 79건 기준</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>키워드</th><th>건수</th><th>비율</th><th>분류</th><th>근거</th></tr></thead>
+        <tbody>
+          <tr><td><strong>자세를 꼼꼼히 봐주세요</strong></td><td>57</td><td>72%</td><td><span class="tag t-pod">POD</span></td><td>1:1 케어 능력을 고객이 체감 — 원장 직강 구조 반영</td></tr>
+          <tr><td><strong>선생님 실력이 좋아요</strong></td><td>48</td><td>61%</td><td><span class="tag t-pod">POD</span></td><td>원장 실력 신뢰 — AEO 담당자실명 점수 직결</td></tr>
+          <tr><td><strong>맞춤 케어를 잘해줘요</strong></td><td>46</td><td>58%</td><td><span class="tag t-pod">POD</span></td><td>컨디셔닝 프로그램·개인 티칭 체감</td></tr>
+          <tr><td><strong>수업이 체계적이에요</strong></td><td>46</td><td>58%</td><td><span class="tag t-pod">POD</span></td><td>월별/요일별 프로그램 구조화가 인식됨</td></tr>
+          <tr><td><strong>친절해요</strong></td><td>41</td><td>52%</td><td><span class="tag t-pop">POP</span></td><td>요가원 기본 기대치</td></tr>
+          <tr><td><strong>프로그램이 다양해요</strong></td><td>27</td><td>34%</td><td><span class="tag t-par">경계</span></td><td>인사이드플로우·빈야사·컨디셔닝 등 다양성 인식</td></tr>
+          <tr><td><strong>시설이 깔끔해요</strong></td><td>26</td><td>33%</td><td><span class="tag t-pop">POP</span></td><td>요가원 기본 기대치</td></tr>
+          <tr><td><strong>분위기가 편안해요</strong></td><td>16</td><td>20%</td><td><span class="tag t-par">경계</span></td><td>힐링 테라피 요소 반영</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>태그 상위 5개 중 4개가 POD 성격이다.</strong> 이것 자체가 이움내과·디에스타 등 "친절"이 최상위인 업체와 구조적으로 다른 수잔요가의 강점이다. 고객은 이미 "이 요가원은 자세를 꼼꼼히 봐주고 선생님 실력이 좋다"는 POD를 네이버 태그 차원에서 인지하고 있다.</div>
+    <div class="tac-dir"><span class="arrow">→</span><strong>진짜 POD는 본문에서 발생한다.</strong> "자세를 꼼꼼히"가 태그 1위여도, 본문에 "컨디셔닝 프로그램으로 환도선다 통증이 해결됐다"처럼 <strong>프로그램명 + 증상 + 결과</strong>가 구조적으로 포함되어야 AEO 70점대 리뷰가 된다. 현재 A등급 2건(소정은·리르야)이 정확히 이 패턴을 따르는 리뷰다.</div>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">POD Cluster</div>
+      <div class="ch-title">본문 POD 시그니처 언급 빈도 — 업주 블로그 vs 방문자 리뷰</div>
+      <div class="ch-canvas tall"><canvas id="c-pod" role="img" aria-label="POD 클러스터 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="qgrid">
+    <div>
+      <div class="qgroup-title">POD 1 · 증상 해결 + 프로그램명 (A등급 73점)</div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">소</div><div><div class="qname">소정은</div><div class="qdate">2025.10.23</div></div></div>
+        <div class="qtext">"산전&산후 체형맞춤으로 컨디셔닝프로그램 잘한다고 입소문이 많은곳이라 방문했어요. 임신 7개월 때 붓기가 하루에 사라졌고, 출산 25일차에도 환도선다·꼬리뼈 통증이 수업 직후 사라졌어요. 운동할 때 자극 안 오는 분, 체형교정 원하는 분 무조건 받아보세요"</div>
+      </div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">kjj</div><div><div class="qname">kjj****</div><div class="qdate">2024.03.13 · 68점</div></div></div>
+        <div class="qtext">"어깨·허리통증 때문에 물리치료·도수치료·침 안 해본 거 없이 다 해보다 선택한 요가원. 수잔요가 등록 후 하루하루 신세계 경험. 어깨·등 너무 좋아지고 몸이 가벼워지고 삶의 질 높아져서 부지런히 다니고 있어요"</div>
+      </div>
+    </div>
+    <div>
+      <div class="qgroup-title">POD 2 · 원장 직강 신뢰 (A등급 71점)</div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">리</div><div><div class="qname">리르야</div><div class="qdate">2024.03.18 · 71점</div></div></div>
+        <div class="qtext">"수잔 요가 3개월째. 나에게 맞는 요가원이 이런 것이구나. 늘 달고 살았던 목과 무릎 통증이 많이 없어진 점! 수업을 들으며 몸의 정렬을 꾸준히 맞춰가다 보니 일상생활에서도 교정되더라고요. 고성에서 다니는데 매일 가고 싶을 정도"</div>
+      </div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">휴</div><div><div class="qname">휴먼썬빔</div><div class="qdate">2024.03.20 · 67점</div></div></div>
+        <div class="qtext">"수잔요가 5개월째. 필라테스도, PT도 받아봤지만 이만큼 보람있고 재밌지는 않았어요. 인사이드 플로우 제일 좋아해요. 실수해도 웃으면서 즐기자는 분위기, 원장님 이야기로 주변 사람들에게 감사한 마음 갖게 돼요. 비니쌤·예림쌤도 긍정적"</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 03 — 간극 분석 ─────────────────────────────── -->
+<section id="gap" class="section" data-nav="간극 분석" data-num="04">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 04 <span class="sep">·</span> 간극 분석</div>
+    <h2 class="s-title">전달하고 싶은 것과<br><span class="soft">실제로 전달된 것의 차이</span></h2>
+  </div>
+
+  <div class="note" style="border-top:1px solid var(--ink-4);margin-bottom:var(--sp-10)">
+    <div class="note-h">안내 — 실측치 기반 간극 분석</div>
+    <p>아래 "전달 의도"는 <strong>업주(수잔) 자체 블로그 포스팅 28건에서 해당 POD 키워드가 언급된 비율의 실측치</strong>입니다. 추정이 아닌 실제 업주의 강조 빈도이므로, 이와 방문자 리뷰 반영률의 차이가 <strong>채널 간 언어 단절</strong>의 정확한 크기를 보여줍니다.</p>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">Gap Analysis</div>
+      <div class="ch-title">업주 블로그 강조율 vs 방문자 리뷰 반영률</div>
+      <div class="ch-canvas tall"><canvas id="c-gap" role="img" aria-label="전달 의도 대비 리뷰 반영률 비교 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">POD 항목별 전달률 — 12개 항목</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>POD 항목</th><th>업주 블로그<br>(28건 중)</th><th>방문자 리뷰<br>(79건 중)</th><th>전달률</th><th>판정</th></tr></thead>
+        <tbody>
+          <tr><td><strong>원장 직강</strong></td><td>7%</td><td>24.1%</td><td>343%</td><td><span class="tag t-ok">초과 전달</span></td></tr>
+          <tr><td><strong>임산부 요가</strong></td><td>14%</td><td>7.6%</td><td>54%</td><td><span class="tag t-ok">양호</span></td></tr>
+          <tr><td><strong>인사이드 플로우 · 빈야사</strong></td><td>32%</td><td>16.5%</td><td>51%</td><td><span class="tag t-ok">부분 전이</span></td></tr>
+          <tr><td><strong>해부학 정렬</strong></td><td>29%</td><td>8.9%</td><td>30%</td><td><span class="tag t-par">부분 전달</span></td></tr>
+          <tr><td><strong>플라잉 요가</strong></td><td>29%</td><td>5.1%</td><td>18%</td><td><span class="tag t-gap">언어 단절</span></td></tr>
+          <tr><td><strong>힐링 · 아로마 · 스톤</strong></td><td>21%</td><td>3.8%</td><td>18%</td><td><span class="tag t-gap">언어 단절</span></td></tr>
+          <tr><td><strong>1:1 개인 레슨</strong></td><td>14%</td><td>7.6%</td><td>54%</td><td><span class="tag t-ok">양호</span></td></tr>
+          <tr><td><strong>원데이 특강</strong></td><td>11%</td><td>12.7%</td><td>116%</td><td><span class="tag t-ok">초과 전달</span></td></tr>
+          <tr><td><strong>블랙롤 테라피</strong></td><td>7%</td><td>3.8%</td><td>54%</td><td><span class="tag t-ok">양호</span></td></tr>
+          <tr><td><strong>새벽요가</strong></td><td>21%</td><td>1.3%</td><td>6%</td><td><span class="tag t-gap">심각 단절</span></td></tr>
+          <tr><td><strong>명상 클래스</strong></td><td>7%</td><td>2.5%</td><td>36%</td><td><span class="tag t-par">부분 전달</span></td></tr>
+          <tr><td><strong>컨디셔닝 프로그램</strong></td><td>0%</td><td>8.9%</td><td>—</td><td><span class="tag t-par">블로그 미언급 (최근 도입)</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning — 브랜드 인식 종합 문장</div>
+    <div class="tac-body">수잔요가는 리뷰만 봤을 때, <strong>"자세를 꼼꼼히 봐주는 원장 직강 요가원"</strong>으로 인식되며, <strong>"수잔 원장의 개인 실력에 의존하는 1인 브랜드"</strong>로 느껴진다. 원장 실명 언급은 의도(7%) 대비 초과 전달(24%)되고 있어 개인 귀속은 성공. 다만 시그니처 프로그램인 <strong>새벽요가(전달률 6%)·플라잉(18%)·힐링 테라피(18%)</strong>는 방문자 리뷰에 전이되지 않고 있어, 블로그 채널에서만 살아있는 POD 자산이 된다.</div>
+    <div class="tac-dir"><span class="arrow">→</span><strong>외부 블로그 8건은 평균 AEO 46%로 방문자 리뷰(34%)보다 POD 전달력이 높다.</strong> 즉 형식이 POD 전이를 결정한다. 단문 리뷰는 "친절·꼼꼼"에서 멈추지만, 장문은 프로그램명·자격·수치를 자연스럽게 담는다. 리뷰 유도 시 <strong>프로그램명을 질문에 직접 삽입</strong>("오늘 컨디셔닝에서 어떤 감각이 제일 기억에 남으세요?")하는 방식으로 단문에도 POD를 꽂아야 채널 단절이 해소된다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 04 — 고객 분석 ─────────────────────────────── -->
+<section id="customer" class="section" data-nav="고객 분석" data-num="05">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 05 <span class="sep">·</span> 고객 분석</div>
+    <h2 class="s-title">누가, 왜,<br><span class="soft">어디서 왔는가</span></h2>
+  </div>
+
+  <div class="pgrid">
+    <div class="persona"><div class="p-pct">41<span class="unit">%</span></div><div class="p-name">직장인 · 책상 체형 통증형</div><div class="p-kw">어깨, 목, 승모, 허리, 거북목, 사무직</div></div>
+    <div class="persona"><div class="p-pct">24<span class="unit">%</span></div><div class="p-name">입문자 · 초보형</div><div class="p-kw">처음, 초보, 뻣뻣, 입문, 유연성 없음</div></div>
+    <div class="persona"><div class="p-pct">19<span class="unit">%</span></div><div class="p-name">운동 경험자 · 몸 사용법 탐구형</div><div class="p-kw">필라테스, 헬스, 도수치료, PT 경험 후 이전</div></div>
+    <div class="persona"><div class="p-pct">14<span class="unit">%</span></div><div class="p-name">육아맘 · 체력 회복형</div><div class="p-kw">육아, 아이, 엄마, 체력 저하</div></div>
+    <div class="persona"><div class="p-pct">9<span class="unit">%</span></div><div class="p-name">임산부 · 산모 · 산전산후형</div><div class="p-kw">임신, 출산, 환도선다, 수유, 꼬리뼈</div></div>
+    <div class="persona"><div class="p-pct">6<span class="unit">%</span></div><div class="p-name">관광객 · 원데이 여행자</div><div class="p-kw">여행, 통영 관광, 원데이, 타지역</div></div>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">Key Finding</div>
+    <div class="db-h">41%가 직장인 통증형, 19%가 운동 경험자. <br><em>즉 60%의 고객이 "문제 해결"을 목적으로 방문한다.</em></div>
+    <div class="db-body"><p><strong>요가원이지만 고객의 60%가 일반적 "운동"이 목적이 아니라 어깨·허리·목·골반 통증 또는 기존 운동에서 해결 안 된 몸사용법을 찾으러 온다.</strong> 이 집단은 수업 후 "통증이 없어졌다"는 Before-After 스토리를 쓸 수 있는 유일한 고객군이다. AEO 70점+ 리뷰 2건(소정은·리르야) 모두 이 집단에 속한다. 리뷰 유도의 1순위 타겟.</p></div>
+  </div>
+
+  <div class="charts">
+    <div class="ch">
+      <div class="ch-eye">Before State</div>
+      <div class="ch-title">Before State — 왜 왔는가</div>
+      <div class="ch-canvas"><canvas id="c-before" role="img" aria-label="방문 사유 분포"></canvas></div>
+    </div>
+    <div class="ch">
+      <div class="ch-eye">Decision Trigger</div>
+      <div class="ch-title">수잔요가를 선택한 이유</div>
+      <div class="ch-canvas"><canvas id="c-trigger" role="img" aria-label="선택 이유 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning — 경쟁 구도</div>
+    <div class="tac-body"><strong>수잔요가의 경쟁 상대는 다른 요가원이 아니다.</strong> 리뷰 본문을 분석하면 고객의 Before State(오기 전에 뭘 했는가)는 필라테스·헬스·도수치료·물리치료·침이 대부분. 즉 실제 경쟁 대상은 <strong>필라테스 센터, 재활병원, 도수치료, 혼자 운동</strong>이다. 이것들이 "통증을 해결하지 못한다"는 점이 수잔요가를 찾는 결정적 이유.</div>
+    <div class="tac-dir"><span class="arrow">→</span>리뷰 유도 질문 1순위 타겟은 <strong>직장인 통증형 + 운동 경험자 집단</strong>. 질문 예시: "필라테스나 PT 해보신 분이라면, 여기서 달랐던 점이 뭐였어요?" / "처음 오셨을 때 어떤 통증이 있었고, 지금은 어떠세요?" — 이 질문이 비교 기반 POD 리뷰를 만든다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 05 — 담당자 인식 ──────────────────────────── -->
+<section id="trainer" class="section" data-nav="귀속 구조" data-num="06">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 06 <span class="sep">·</span> 담당자별 인식</div>
+    <h2 class="s-title">원장 1인 주도 구조와<br><span class="soft">브랜드 귀속 구조</span></h2>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">Attribution</div>
+      <div class="ch-title">귀속 구조 — 누구에게 점수가 가는가</div>
+      <div class="ch-canvas"><canvas id="c-attr" role="img" aria-label="귀속 구조 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="tgrid">
+    <div class="trainer">
+      <div class="t-num">01</div>
+      <div class="t-name">수잔 원장 (이수진)<span class="t-badge">실명</span></div>
+      <div class="t-meta">40건 · 51% · 압도적 실명 귀속</div>
+      <div class="t-pills"><span class="t-pill">인사이드 플로우</span><span class="t-pill">빈야사 정렬</span><span class="t-pill">컨디셔닝</span><span class="t-pill">꼼꼼한 티칭</span><span class="t-pill">원장 직강</span></div>
+      <div class="t-summary">PT/피트니스 업종 기준 실명 언급률 10% 이상이면 양호인데 수잔요가는 51% — 최상위권. 거의 모든 리뷰가 '수잔쌤/수잔선생님/수잔원장님'으로 이름을 호명</div>
+      <div class="t-quote">"수잔쌤의 세심한 티칭 덕분에 약해진 코어와 골반을 단단히 만들어가고있어요! 몸도 마음도 단단한 원장님 최곱니다"</div>
+    </div>
+    <div class="trainer">
+      <div class="t-num">02</div>
+      <div class="t-name">비니 선생님</div>
+      <div class="t-meta">5건 · 6% · 보조 강사 실명 귀속</div>
+      <div class="t-pills"><span class="t-pill">정렬 티칭</span><span class="t-pill">에너지</span><span class="t-pill">수잔쌤+비니쌤</span></div>
+      <div class="t-summary">수잔 원장과 함께 언급되는 경우가 많음. 독립적 팬덤보다는 "원장 + 보조" 구조</div>
+      <div class="t-quote">"수잔샘과 비니샘 덕분에 내면과 외면의 힘이 단단해졌습니다"</div>
+    </div>
+    <div class="trainer">
+      <div class="t-num">03</div>
+      <div class="t-name">예림 / 나연 선생님</div>
+      <div class="t-meta">예림 1건 · 나연 1건 · 각 1% · 특화 수업 귀속</div>
+      <div class="t-pills"><span class="t-pill">플라잉 요가</span><span class="t-pill">키즈 플라잉</span><span class="t-pill">로우 플라잉</span></div>
+      <div class="t-summary">예림 = 키즈플라잉 / 나연 = 로우 플라잉 등 특화 수업에 1:1 매칭되어 언급됨</div>
+      <div class="t-quote">"로우 플라잉 요가수업도 추천드립니다 수업을 진행하시는 나연쌤의 나긋나긋하고 따뜻한 목소리"</div>
+    </div>
+    <div class="trainer">
+      <div class="t-num">04</div>
+      <div class="t-name">수잔요가 (브랜드)</div>
+      <div class="t-meta">37건 · 47% · 브랜드 귀속</div>
+      <div class="t-pills"><span class="t-pill">통영요가</span><span class="t-pill">재등록</span><span class="t-pill">오래 다녀요</span><span class="t-pill">까미</span></div>
+      <div class="t-summary">브랜드명 직접 언급. "통영 요가는 수잔요가" 형태의 locality 결합이 자주 등장</div>
+      <div class="t-quote">"통영 요가는 수잔요가! 시간이 지날수록 건강한 몸은 물론이고 마음까지 힐링할 수 있는 곳"</div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning — 1인 브랜드의 양면성</div>
+    <div class="tac-body"><strong>원장 실명 언급 51%는 AEO 기준 최상위지만, 동시에 구조적 리스크다.</strong> PT/피트니스 업종 이상적 귀속 순서는 "시스템(방식) &gt; 브랜드 &gt; 개인"인데, 수잔요가는 "개인(51%) &gt; 브랜드(47%) &gt; 시스템(17% — 인사이드 플로우·빈야사 등)"으로 개인 집중형. 원장 1인에게 리뷰 자산이 과잉 귀속되어 있어, 개인 부상·휴직 시 자산이 함께 소멸하는 구조.</div>
+    <div class="tac-dir"><span class="arrow">→</span>액션 2단계: <strong>시스템/방식 귀속을 늘려야 한다.</strong> "수잔쌤이 잘 봐주셨다" → "컨디셔닝 프로그램에서 좌우 정렬을 잡아주셨다"로 언어 전환. 사장님 답글과 리뷰 유도 시 프로그램명을 직접 삽입해 시스템 귀속 비율을 현재 17% → 30%+ 로 끌어올리는 것이 장기 과제. 비니·예림·나연 강사들에게도 각자의 시그니처 수업 매칭(플라잉은 예림, 로우 플라잉은 나연 등)을 리뷰 유도에 포함.</div>
+  </div>
+</div>
+</section>
+
+<!-- 06 — 리뷰 추이 ─────────────────────────────── -->
+<section id="trend" class="section" data-nav="리뷰 추이" data-num="07">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 07 <span class="sep">·</span> 리뷰 추이</div>
+    <h2 class="s-title">리뷰 양은 충분하나<br><span class="soft">질적 전환이 필요하다</span></h2>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">Monthly Reviews</div>
+      <div class="ch-title">월별 리뷰 건수 — 유입 정체 구간</div>
+      <div class="ch-canvas tall"><canvas id="c-monthly" role="img" aria-label="월별 리뷰 추이"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">피크월 (2024.03)</div><div class="ch-stat-val">5건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">최근월 (2026.04)</div><div class="ch-stat-val warn">2건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">월 평균 (최근 12M)</div><div class="ch-stat-val warn">2.1건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">평균 리뷰 길이</div><div class="ch-stat-val ok">183자</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">Verdict</div>
+    <div class="db-h">양적 성장이 정체된 구간이다.<br><em>답글 공백 3년이 유입 엔진을 멈춰세운 것으로 보인다.</em></div>
+    <div class="db-body"><p>월 평균 2.1건은 PT/피트니스 벤치마크(월 10~30건) 하한에도 미치지 못한다. 2023년 3월~4월(5건·3건) 피크 이후 답글이 끊기면서, 신규 유입과 재등록 유도 신호가 약해졌다. <strong>리뷰 품질은 상위권(평균 183자·POD 태그 최상위)이지만, 이 품질을 "양"으로 확장하는 유도 시스템이 작동하지 않는다.</strong></p></div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>양과 질의 우선순위를 뒤집어야 한다.</strong> 일반적으로는 "양을 늘린 후 질을 개선"하지만, 수잔요가는 이미 질이 높으므로(A등급 2건·B등급 58건·평균 183자) <strong>"답글 복구 → 리뷰 유도 질문 삽입 → 양적 확대"</strong> 순으로 가야 한다. 답글이 살아나면 고객은 "본인 리뷰가 읽히고 있다"는 신호를 받고 신규 리뷰 작성 동기가 되살아난다. 답글 × 유도 질문 × 프로그램명 삽입 조합이 핵심.</div>
+    <div class="tac-dir"><span class="arrow">→</span>답글 루틴 정착 후 30일 동안 월간 리뷰 유입 변화를 모니터링. 목표: 월 10건+ 도달. 답글에는 <strong>프로그램명 + 원장 시그니처 멘트</strong>를 포함해 자체 SEO/AEO 신호도 함께 발생시킨다.</div>
+  </div>
+</div>
+</section>
+
+<!-- 07 — 액션 플랜 ─────────────────────────────── -->
+<section id="action" class="section" data-nav="액션 플랜" data-num="08">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 08 <span class="sep">·</span> 액션 플랜</div>
+    <h2 class="s-title">리뷰 데이터에서 도출된<br><span class="soft">구체적 실행 항목 7가지</span></h2>
+  </div>
+
+  <div class="actions">
+
+    <div class="action">
+      <div class="ac-left"><span class="n">01</span>ACTION<span class="pri">URGENT</span></div>
+      <div>
+        <div class="ac-title">사장님 답글 루틴 복구 — 가장 시급</div>
+        <div class="ac-desc">79건 중 답글 2건(2.5%)·3년 공백. 답글은 알고리즘 신뢰도 +72% 신호이자 AEO 업주 시그니처 언어를 추가 노출하는 유일한 채널이다. 빠진 답글을 현시점부터 채워 넣고, 신규 리뷰 24시간 이내 답글 루틴 정착.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">답글 템플릿 5종</div>
+          <div>1. <strong>컨디셔닝 후기:</strong> "○○님, 컨디셔닝으로 환도선다·꼬리뼈 통증을 풀어주는 수업 받으셨죠. 수잔요가는 해부학 정렬 기반 1:1 케어가 강점이에요"</div>
+          <div>2. <strong>임산부·산후:</strong> "안전한 산전산후 수업 받으시고 후기 남겨주셔서 감사합니다. 임산부 요가 지도자 과정 수료 기반으로 아이와 산모 모두 편안한 움직임 안내드려요"</div>
+          <div>3. <strong>새벽요가:</strong> "새벽을 여는 사람들 함께 해주셔서 감사해요. 내일도 기다리고 있습니다"</div>
+          <div>4. <strong>원데이 체험:</strong> "인사이드 플로우 처음이신데 잘 따라와 주셨어요. 정렬 수련 체계 궁금하시면 횟수권으로 이어가실 수 있어요"</div>
+          <div>5. <strong>재등록:</strong> "재등록 감사합니다. 월별·요일별 프로그램으로 몸의 변화를 이어갈게요"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">02</span>ACTION<span class="pri">URGENT</span></div>
+      <div>
+        <div class="ac-title">전 수강권 가격 공개 — 이탈 47% 해소</div>
+        <div class="ac-desc">현재 원데이 30,000원만 표시. 가격 미표시 상태에서 고객의 47%가 이탈한다. 기간제·횟수·정기권·새벽요가·임산부요가 등 실제 판매되는 모든 수강권을 플레이스 메뉴/가격 탭에 노출해야 한다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">공개 대상</div>
+          <div>· 원데이 수련권 30,000원 (유지)</div>
+          <div>· 원데이 특강 44,000원 (90분)</div>
+          <div>· 10회 횟수권 / 기간제권 1개월 / 3개월</div>
+          <div>· 새벽요가 1개월 16회 170,000원</div>
+          <div>· 임산부 요가 6:1 소그룹 4주 8회 180,000원</div>
+          <div>· 1:1 개인레슨 / 듀엣레슨 / 컨디셔닝 프로그램</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">03</span>ACTION<span class="pri">URGENT</span></div>
+      <div>
+        <div class="ac-title">메뉴 탭 전면 재정비 — 9개 프로그램 개별 등록</div>
+        <div class="ac-desc">실제 운영 프로그램 9개를 플레이스 메뉴 탭에 개별 항목으로 등록. 각 200자 이상 설명 + 사진. 블로그에 이미 존재하는 상세 설명을 메뉴 탭으로 이식만 하면 된다. "통영 컨디셔닝 프로그램", "통영 임산부 요가" 같은 롱테일 검색 진입점 확보.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">메뉴 구조 9개</div>
+          <div>① 컨디셔닝 프로그램 (1:1) · ② 인사이드 플로우 / 빈야사 · ③ 새벽요가 · ④ 임산부 요가 (6:1 소그룹)</div>
+          <div>⑤ 원데이 특강 · ⑥ 플라잉 요가 · ⑦ 키즈 플라잉 · ⑧ 블랙롤 테라피 · ⑨ 힐링 테라피 (아로마·싱잉볼·스톤)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">04</span>ACTION<span class="pri normal">IMPORTANT</span></div>
+      <div>
+        <div class="ac-title">리뷰 유도 질문에 프로그램명 직접 삽입</div>
+        <div class="ac-desc">수잔요가의 핵심 간극은 "업주 블로그에서 강조된 POD가 방문자 리뷰로 전이되지 않는 것"이다. 단순한 "리뷰 써주세요"는 "친절해요"로 끝난다. 프로그램명을 질문에 넣으면 고객도 그 언어로 답한다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">프로그램별 유도 질문</div>
+          <div>1. <strong>컨디셔닝 후:</strong> "오늘 컨디셔닝에서 어느 자세가 제일 기억에 남아요? 통증은 어땠나요?"</div>
+          <div>2. <strong>인사이드 플로우 후:</strong> "인사이드 플로우 정렬 수련, 평소 불편하던 부위가 어떻게 달라졌어요?"</div>
+          <div>3. <strong>새벽요가 2주차:</strong> "새벽요가 2주 해보시니 하루 시작이 어떻게 바뀌셨어요?"</div>
+          <div>4. <strong>임산부 수업 후:</strong> "주차별 몸의 변화에서 어떤 동작이 도움됐어요?"</div>
+          <div>5. <strong>운동 경험자:</strong> "필라테스/PT 해보셨던 분이신데, 여기서 달랐던 점은?"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">05</span>ACTION<span class="pri normal">IMPORTANT</span></div>
+      <div>
+        <div class="ac-title">플레이스 소개 문구 POD 키워드 강화</div>
+        <div class="ac-desc">현재 소개 문구는 "요가 맛집 수잔요가…" 수준으로 무난. 시그니처 POD 키워드를 직접 포함해 AEO 신호 강화.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">Before → After</div>
+          <span class="ex-before">"통영 무전동에 위치한 요가 맛집 수잔요가입니다. 개인레슨·듀엣레슨·그룹 전문 요가원입니다"</span>
+          <span class="ex-after">"현대 해부학 기반 빈야사 요가 전문 센터. 컨디셔닝 프로그램(1:1)으로 환도선다·허리·어깨 통증 해결, 인사이드 플로우 빈야사로 근력·유연성 동시. 임산부 요가 지도자 자격 보유 원장 직강. 새벽요가·원데이 클래스·블랙롤 테라피 운영 — 통영 무전동 무전대로 6 3층"</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">06</span>ACTION<span class="pri normal">GROWTH</span></div>
+      <div>
+        <div class="ac-title">슈퍼 리뷰어 앰배서더 활성화<span class="t-badge">SUPER</span></div>
+        <div class="ac-desc">리뷰 5회 작성한 minhuku, 4회의 뀨뀨꺄꺄뀨, 3회 hir****·MOCHA0·이수정5060·소정은·tjswl5218·hee****·il****·수미11 — 15명의 슈퍼 리뷰어 존재. 이들의 여정 리뷰(첫 수업 → 임신 → 산후)는 AEO 스토리 구조 최상위 자료.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">활용 방안</div>
+          <div>· 슈퍼 리뷰어에게 <strong>"여정 인터뷰"</strong> 요청 (첫 수업부터 지금까지의 변화를 시간순으로)</div>
+          <div>· 블로그 콘텐츠 출연 (뀨뀨꺄꺄뀨의 임신~출산 요가 여정 사례)</div>
+          <div>· 리뷰 가이드 모범 답안으로 노출 ("이 고객처럼 써주시면 좋아요")</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">07</span>ACTION<span class="pri normal">GROWTH</span></div>
+      <div>
+        <div class="ac-title">채널 언어 단절 해소 — 블로그 콘텐츠를 소식 탭 동시 게재</div>
+        <div class="ac-desc">업주 블로그 28건은 이미 양질의 자산. 이 콘텐츠를 <strong>플레이스 '소식' 탭에도 동시 게재</strong>하면 네이버 알고리즘 최신성 가중치 + 고객이 블로그 언어를 리뷰에 재활용하는 빈도 증가. 소식 발행 주 2~3회 달성 시 체류 10.4%↑ · 예약 8%↑ 효과.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">주간 발행 플랜 예시</div>
+          <div>· 월요일: 이번 주 시간표 + 금주 수업 스케치</div>
+          <div>· 수요일: 프로그램 하나 심화 소개 (주별 로테이션)</div>
+          <div>· 월 1회: 회원 변화 케이스 스터디</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- 08 — 리뷰 목록 ─────────────────────────────── -->
+<section id="list" class="section" data-nav="리뷰 목록" data-num="09">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 09 <span class="sep">·</span> 리뷰 목록</div>
+    <h2 class="s-title">통합 점수 순 정렬 —<br><span class="soft">상위 리뷰가 SEO/AEO 기여도가 높다</span></h2>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">Top 10 리뷰 — A/B 등급</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>닉네임</th><th>방문</th><th>SEO (45)</th><th>AEO (50)</th><th style="color:var(--accent)">통합 (95)</th><th>본문 요약</th></tr></thead>
+        <tbody>
+          <tr><td><strong>소정은</strong><span class="t-badge">SUPER</span></td><td>3</td><td>40</td><td>33</td><td style="color:var(--accent)"><strong>73</strong></td><td>산전·산후 체형맞춤 컨디셔닝. 임신 7개월 붓기·출산 25일차 환도선다 통증 해결. A등급</td></tr>
+          <tr><td><strong>리르야</strong></td><td>1</td><td>31</td><td>40</td><td style="color:var(--accent)"><strong>71</strong></td><td>3개월차. 목·무릎 통증 사라짐. 몸의 정렬 꾸준히 교정. 고성에서 통근 의사. A등급</td></tr>
+          <tr><td><strong>lov****</strong></td><td>1</td><td>36</td><td>32</td><td style="color:var(--accent)"><strong>68</strong></td><td>11개월차. 수잔쌤·비니쌤 정렬 티칭으로 내면·외면 단단해짐. 명상까지 운영</td></tr>
+          <tr><td><strong>kjj****</strong></td><td>1</td><td>32</td><td>36</td><td style="color:var(--accent)"><strong>68</strong></td><td>어깨·허리통증. 물리치료·도수치료·침 모두 실패 후 요가 선택. 하루하루 신세계</td></tr>
+          <tr><td><strong>휴먼썬빔</strong><span class="t-badge">SUPER</span></td><td>2</td><td>37</td><td>30</td><td style="color:var(--accent)"><strong>67</strong></td><td>5개월차. 필라테스·PT 경험자. 인사이드 플로우 최애. 비니·예림쌤 긍정 에너지</td></tr>
+          <tr><td>뀨뀨꺄꺄뀨<span class="t-badge">SUPER</span></td><td>4</td><td>39</td><td>27</td><td style="color:var(--accent)"><strong>66</strong></td><td>출산 전·임신 중·출산 후 3단계 여정. 환도선다 통증 관리·회복 완료</td></tr>
+          <tr><td>Hyuna</td><td>1</td><td>28</td><td>38</td><td style="color:var(--accent)"><strong>66</strong></td><td>1:1 컨디셔닝. 명확한 솔루션 + 혼자 할 숙제. 강추 의사 표명</td></tr>
+          <tr><td>찌니라</td><td>1</td><td>28</td><td>37</td><td style="color:var(--accent)"><strong>65</strong></td><td>필라테스 이전자. 출산 후 몸 망가짐. 도수 20회·밸런스 20회 실패 후 정착</td></tr>
+          <tr><td>JH46</td><td>1</td><td>32</td><td>32</td><td style="color:var(--accent)"><strong>64</strong></td><td>전신 통증 다년간. 컨디셔닝으로 "원래 몸은 이렇게 가벼웠구나" 체감</td></tr>
+          <tr><td>minhuku<span class="t-badge">SUPER</span></td><td>5</td><td>38</td><td>25</td><td style="color:var(--accent)"><strong>63</strong></td><td>5회 리뷰어. 골반 특강·어깨 특강 참여. 입문 → 3개월 → 심화 여정</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Reading Guide</div>
+    <div class="tac-body"><strong>A등급(70점+) 리뷰 2건이 이 업체의 AEO 자산 전부다.</strong> 소정은(73점)·리르야(71점) 두 건이 AI가 인용할 가능성이 있는 리뷰. 두 리뷰의 공통점: ① 방문 횟수 ≥1회 / ② 구체적 증상(환도선다·꼬리뼈·목·무릎) / ③ 프로그램명(컨디셔닝·정렬 수련) / ④ 결과 서사(통증 해결). 이 4요소가 A등급의 기본 공식.</div>
+    <div class="tac-dir"><span class="arrow">→</span>B등급(40~69점) 58건 중 AEO 점수만 +10점 끌어올리면 A등급으로 전환될 리뷰가 10건 이상 있다. 이들은 이미 재방문 이력과 길이를 갖춘 고관여 고객 — 다음 방문 시 <strong>"증상 + 프로그램명"</strong> 두 축만 유도 질문으로 삽입하면 A등급 진입. 리뷰 유도 1순위 타겟.</div>
+  </div>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER ─────────────────────────────────────── -->
+<footer class="footer" role="contentinfo">
+  <div class="ft-brand"><span class="dot"></span>RE:FEEEL</div>
+  <div class="ft-links">
+    <a href="https://refeeel.com" target="_blank" rel="noopener">refeeel.com</a>
+    <a href="https://instagram.com/nak__ta__" target="_blank" rel="noopener">@nak__ta__</a>
+  </div>
+  <div class="ft-copy">© 2026 RE:FEEEL. All rights reserved.</div>
+</footer>
+
+
+<script>
+/* ═══════════════════════════════════════════════
+   Navigation: top bar + side nav + drawer + progress
+   ═══════════════════════════════════════════════ */
+const sections = Array.from(document.querySelectorAll('[data-nav]'));
+const tbCurrent = document.getElementById('tb-current');
+const tbFill = document.getElementById('tb-fill');
+const tbNum = document.getElementById('tb-num');
+const snFill = document.getElementById('sn-fill');
+const snNum = document.getElementById('sn-num');
+const snItems = document.querySelectorAll('.sn-item');
+const dwItems = document.querySelectorAll('.dw-item');
+
+function updateNav(){
+  const vh = window.innerHeight;
+  const y = window.scrollY + vh * 0.35;
+  let current = sections[0];
+  sections.forEach(s => { if(s.offsetTop <= y) current = s; });
+
+  if(current){
+    const nav = current.dataset.nav;
+    const num = current.dataset.num;
+    const id = current.id;
+    if(tbCurrent) tbCurrent.innerHTML = `<span class="num">${num}</span>${nav}`;
+    snItems.forEach(it => it.classList.toggle('active', it.dataset.target === id));
+    dwItems.forEach(it => it.classList.toggle('active', it.dataset.target === id));
+  }
+
+  // Progress bar
+  const docH = document.documentElement.scrollHeight - vh;
+  const pct = Math.min(100, Math.max(0, (window.scrollY / docH) * 100));
+  const pctR = Math.round(pct) + '%';
+  if(tbFill) tbFill.style.width = pct + '%';
+  if(tbNum) tbNum.textContent = pctR;
+  if(snFill) snFill.style.width = pct + '%';
+  if(snNum) snNum.textContent = pctR;
+}
+window.addEventListener('scroll', updateNav, {passive:true});
+updateNav();
+
+/* Mobile drawer open/close */
+const drawer = document.getElementById('drawer');
+const drawerOpen = document.getElementById('drawer-open');
+const drawerClose = document.getElementById('drawer-close');
+
+function openDrawer(){
+  if(!drawer) return;
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden','false');
+  if(drawerOpen) drawerOpen.setAttribute('aria-expanded','true');
+  document.body.classList.add('drawer-open');
+}
+function closeDrawer(){
+  if(!drawer) return;
+  drawer.classList.remove('open');
+  drawer.setAttribute('aria-hidden','true');
+  if(drawerOpen) drawerOpen.setAttribute('aria-expanded','false');
+  document.body.classList.remove('drawer-open');
+}
+if(drawerOpen) drawerOpen.addEventListener('click', openDrawer);
+if(drawerClose) drawerClose.addEventListener('click', closeDrawer);
+if(drawer){
+  drawer.querySelectorAll('.dw-item a').forEach(a => {
+    a.addEventListener('click', () => setTimeout(closeDrawer, 120));
+  });
+}
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && drawer && drawer.classList.contains('open')) closeDrawer();
+});
+
+/* ═══════════════════════════════════════════════
+   Bar fill animations (on scroll into view)
+   ═══════════════════════════════════════════════ */
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-w]').forEach(b => {
+        const w = b.getAttribute('data-w');
+        if(b.classList.contains('g-bar')){
+          b.style.setProperty('--gauge-w', w + '%');
+        } else {
+          b.style.width = w + '%';
+        }
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.kwbars, .gauge-block').forEach(el => barObs.observe(el));
+
+/* ═══════════════════════════════════════════════
+   Fade-in animations
+   ═══════════════════════════════════════════════ */
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      animObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.08, rootMargin:'30px 0px'});
+document.querySelectorAll('.dark-block, .split, .persona, .trainer, .action, .tier, .tac').forEach(el => {
+  el.classList.add('anim');
+  animObs.observe(el);
+});
+
+/* ═══════════════════════════════════════════════
+   Diagrams — activate when scrolled into view
+   ═══════════════════════════════════════════════ */
+const diagramObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('in-view');
+      diagramObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.25});
+document.querySelectorAll('.cycle-wrap').forEach(el => diagramObs.observe(el));
+
+/* ═══════════════════════════════════════════════
+   Number counter (cover KPIs)
+   ═══════════════════════════════════════════════ */
+function animateCount(el, target, duration){
+  /* Preserve trailing unit span (e.g., %, 자) across innerHTML updates. */
+  const suffixMatch = el.innerHTML.match(/<span[^>]*>[\s\S]*?<\/span>/);
+  const suffix = suffixMatch ? suffixMatch[0] : '';
+  const isFloat = String(target).includes('.');
+  const start = performance.now();
+
+  function tick(now){
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const cur = target * eased;
+    const d = isFloat ? cur.toFixed(1) : Math.round(cur);
+    el.innerHTML = d + suffix;
+    if(p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const coverObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const kpis = e.target.querySelectorAll('.cv-kpi-val');
+      const targets = [18.2, 9.5, 71, 83];
+      const rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      kpis.forEach((el, i) => {
+        if(!targets[i]) return;
+        if(rm){
+          const isFloat = String(targets[i]).includes('.');
+          const span = el.querySelector('span');
+          el.textContent = isFloat ? targets[i].toFixed(1) : targets[i];
+          if(span) el.appendChild(span);
+        } else {
+          setTimeout(() => animateCount(el, targets[i], 750), i * 70);
+        }
+      });
+      coverObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+const ckBot = document.querySelector('.cv-bot');
+if(ckBot) coverObs.observe(ckBot);
+
+/* ═══════════════════════════════════════════════
+   CHART.JS SETUP — minimal editorial style
+   ═══════════════════════════════════════════════ */
+if(typeof Chart !== 'undefined'){
+  Chart.defaults.font.family = "'SUIT',-apple-system,sans-serif";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.plugins.legend.display = false;
+  Chart.defaults.color = '#8a8a8a';
+  Chart.defaults.animation = {duration:1400, easing:'easeOutQuart'};
+}
+
+const COLORS = {
+  ink: '#0a0a0a',
+  ink3: '#555555',
+  ink4: '#8a8a8a',
+  ink5: '#b8b8b8',
+  rule: '#e8e8e8',
+  ruleSoft: '#f0f0f0',
+  accent: '#e75519'
+};
+
+const charts = {};
+const chartFactory = {
+  'c-scatter': () => {
+    charts['c-scatter'] = new Chart(document.getElementById('c-scatter'), {
+      type:'scatter',
+      data:{datasets:[{
+        data:[{x:30,y:27},{x:27,y:8},{x:34,y:12},{x:38,y:16},{x:30,y:17},{x:38,y:27},{x:30,y:6},{x:33,y:25},{x:33,y:20},{x:31,y:27},{x:34,y:20},{x:25,y:8},{x:39,y:5},{x:39,y:34},{x:33,y:8},{x:35,y:15},{x:27,y:21},{x:27,y:6},{x:38,y:18},{x:35,y:10},{x:41,y:20},{x:33,y:14},{x:35,y:13},{x:33,y:19},{x:26,y:7},{x:26,y:13},{x:29,y:14},{x:40,y:19},{x:35,y:18},{x:29,y:11},{x:33,y:18},{x:33,y:23},{x:33,y:33},{x:36,y:20},{x:38,y:30},{x:35,y:25},{x:34,y:28},{x:41,y:25},{x:35,y:28},{x:36,y:19},{x:30,y:8},{x:33,y:24},{x:35,y:20},{x:41,y:11},{x:33,y:3},{x:34,y:31},{x:30,y:14},{x:38,y:21},{x:38,y:28},{x:36,y:22},{x:35,y:13},{x:38,y:30},{x:32,y:19},{x:36,y:20},{x:41,y:26},{x:38,y:33},{x:38,y:18},{x:35,y:8},{x:33,y:18},{x:30,y:0},{x:30,y:28},{x:27,y:5},{x:30,y:17},{x:25,y:15},{x:19,y:5},{x:30,y:16},{x:25,y:23},{x:22,y:5},{x:20,y:5},{x:28,y:20},{x:17,y:3},{x:30,y:15},{x:30,y:19},{x:24,y:8},{x:27,y:13},{x:24,y:5},{x:19,y:11},{x:19,y:17},{x:24,y:5}],
+        backgroundColor: c => (c.raw && c.raw.x + c.raw.y >= 70) ? COLORS.accent : ((c.raw && c.raw.x + c.raw.y >= 40) ? COLORS.ink3 : COLORS.ink5),
+        borderColor: c => (c.raw && c.raw.x + c.raw.y >= 70) ? COLORS.accent : COLORS.ink4,
+        pointRadius: c => (c.raw && c.raw.x + c.raw.y >= 70) ? 8 : 4,
+        pointHoverRadius: 8
+      }]},
+      options:{responsive:true, maintainAspectRatio:false,
+        scales:{
+          x:{min:15, max:45, title:{display:true, text:'SEO (45점 만점)', color:COLORS.ink4, font:{size:10, weight:'600'}},
+             grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
+          y:{min:-2, max:45, title:{display:true, text:'AEO (50점 만점)', color:COLORS.ink4, font:{size:10, weight:'600'}},
+             grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}}
+        }
+      }
+    });
+  },
+  'c-kw': () => {
+    charts['c-kw'] = new Chart(document.getElementById('c-kw'), {
+      type:'bar',
+      data:{
+        labels:['자세 꼼꼼 (POD)','선생님 실력 (POD)','맞춤 케어 (POD)','수업 체계 (POD)','친절 (POP)','프로그램 다양','시설 깔끔','분위기 편안'],
+        datasets:[{
+          data:[57,48,46,46,41,27,26,16],
+          backgroundColor:[COLORS.accent, COLORS.accent, COLORS.accent, COLORS.accent, COLORS.ink5, COLORS.ink3, COLORS.ink5, COLORS.ink4],
+          borderRadius:0,
+          barPercentage:0.75
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        scales:{
+          x:{max:65, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
+          y:{grid:{display:false}, border:{display:false}, ticks:{color:COLORS.ink3, font:{size:11, weight:'500'}, padding:10}}
+        }
+      }
+    });
+  },
+  'c-pod': () => {
+    charts['c-pod'] = new Chart(document.getElementById('c-pod'), {
+      type:'bar',
+      data:{
+        labels:['원장 직강 (수잔)','자세·정렬 교정','통증 해결','힐링/테라피','인사이드 플로우','원데이·특강','컨디셔닝','임산부·산후'],
+        datasets:[{
+          data:[40,31,24,16,13,10,7,6],
+          backgroundColor:[COLORS.accent, COLORS.ink, COLORS.ink3, COLORS.ink4, COLORS.accent, COLORS.ink4, COLORS.accent, COLORS.ink5],
+          borderRadius:0, barPercentage:0.72
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        animation:{duration:1400, easing:'easeOutQuart', delay:c => c.dataIndex * 80},
+        scales:{
+          x:{max:50, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
+          y:{grid:{display:false}, border:{display:false}, ticks:{color:COLORS.ink3, font:{size:12, weight:'500'}, padding:10}}
+        }
+      }
+    });
+  },
+  'c-gap': () => {
+    charts['c-gap'] = new Chart(document.getElementById('c-gap'), {
+      type:'bar',
+      data:{
+        labels:['인사이드플로우','해부학 정렬','플라잉 요가','힐링 테라피','새벽요가','임산부','1:1 레슨','원데이','블랙롤','컨디셔닝','명상','원장 직강'],
+        datasets:[
+          {label:'업주 블로그 강조율', data:[32,29,29,21,21,14,14,11,7,0,7,7], backgroundColor:COLORS.rule, borderRadius:0, barPercentage:0.72},
+          {label:'방문자 리뷰 반영률', data:[16.5,8.9,5.1,3.8,1.3,7.6,7.6,12.7,3.8,8.9,2.5,24.1], backgroundColor:COLORS.ink, borderRadius:0, barPercentage:0.72}
+        ]
+      },
+      options:{responsive:true, maintainAspectRatio:false,
+        animation:{duration:1600, easing:'easeOutQuart', delay:c => c.dataIndex * 60},
+        plugins:{legend:{display:true, position:'top', align:'end', labels:{font:{size:11, weight:'600'}, color:COLORS.ink3, boxWidth:10, boxHeight:10, padding:16, usePointStyle:false}}},
+        scales:{
+          y:{max:40, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{callback:v=>v+'%', color:COLORS.ink4, padding:8}},
+          x:{grid:{display:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink3, font:{size:10, weight:'500'}, maxRotation:30}}
+        }
+      }
+    });
+  },
+  'c-before': () => {
+    charts['c-before'] = new Chart(document.getElementById('c-before'), {
+      type:'doughnut',
+      data:{
+        labels:['직장인 통증형 (22%)','입문자 초보형 (27%)','운동 경험자 (11%)','임산부·산모 (8%)','육아맘 (4%)','관광객·여행자 (3%)'],
+        datasets:[{
+          data:[22,27,11,8,4,3],
+          backgroundColor:[COLORS.accent, COLORS.ink3, COLORS.ink4, COLORS.ink5, COLORS.rule, '#d0d0d0'],
+          borderWidth:3, borderColor:'#fff'
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, cutout:'68%',
+        plugins:{legend:{display:true, position:'bottom', labels:{font:{size:11, weight:'500'}, color:COLORS.ink3, padding:10, boxWidth:10, boxHeight:10}}}
+      }
+    });
+  },
+  'c-trigger': () => {
+    charts['c-trigger'] = new Chart(document.getElementById('c-trigger'), {
+      type:'bar',
+      data:{
+        labels:['원장 실력·티칭','추천·소개','프로그램 다양성','분위기·에너지','통증 완화 약속','체계적 수업','블로그·리뷰'],
+        datasets:[{
+          data:[29,24,23,22,16,7,4],
+          backgroundColor:[COLORS.accent, COLORS.ink3, COLORS.ink3, COLORS.ink4, COLORS.ink4, COLORS.ink5, COLORS.rule],
+          borderRadius:0, barPercentage:0.72
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false,
+        animation:{duration:1400, easing:'easeOutQuart', delay:c => c.dataIndex * 80},
+        scales:{
+          y:{max:35, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
+          x:{grid:{display:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink3, font:{size:10, weight:'500'}}}
+        }
+      }
+    });
+  },
+  'c-attr': () => {
+    charts['c-attr'] = new Chart(document.getElementById('c-attr'), {
+      type:'bar',
+      data:{
+        labels:['수잔 원장 (실명)','수잔요가 (브랜드)','시스템/방식','비니 선생님','예림/나연'],
+        datasets:[{
+          data:[51,47,16,6,3],
+          backgroundColor:[COLORS.accent, COLORS.ink, COLORS.ink3, COLORS.ink4, COLORS.ink5],
+          borderRadius:0, barPercentage:0.65
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        animation:{duration:1600, easing:'easeOutQuart', delay:c => c.dataIndex * 150},
+        scales:{
+          x:{max:60, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{callback:v=>v+'%', color:COLORS.ink4, padding:8}},
+          y:{grid:{display:false}, border:{display:false}, ticks:{color:COLORS.ink3, font:{size:12, weight:'500'}, padding:10}}
+        }
+      }
+    });
+  },
+  'c-monthly': () => {
+    const labels = ['23.01','23.02','23.03','23.04','23.05','23.06','23.07','23.08','23.09','23.10','23.11','23.12','24.01','24.02','24.03','24.04','24.05','24.06','24.07','24.08','24.09','24.10','24.11','24.12','25.01','25.02','25.03','25.04','25.05','25.06','25.07','25.08','25.09','25.10','25.11','25.12','26.01','26.02','26.03','26.04'];
+    const data = [0,0,2,2,8,2,0,0,0,5,1,2,0,1,4,0,0,2,3,1,0,0,0,2,4,4,2,2,2,6,4,2,2,2,1,4,2,0,3,4];
+    const peakIdx = 4; // 23.05
+    const colors = data.map((v,i) => i===peakIdx ? COLORS.accent : COLORS.ink5);
+    charts['c-monthly'] = new Chart(document.getElementById('c-monthly'), {
+      type:'line',
+      data:{
+        labels,
+        datasets:[{
+          data,
+          borderColor:COLORS.ink3,
+          backgroundColor:'rgba(10,10,10,0.04)',
+          fill:true, tension:0.3,
+          pointRadius:data.map((v,i) => i===peakIdx ? 6 : 3.5),
+          pointBackgroundColor:colors,
+          pointBorderColor:'#fff',
+          pointBorderWidth:2,
+          borderWidth:1.5
+        }]
+      },
+      options:{responsive:true, maintainAspectRatio:false,
+        animation:{duration:1800, easing:'easeOutQuart'},
+        scales:{
+          y:{min:0, max:10, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8, stepSize:2}},
+          x:{grid:{display:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, font:{size:9}, maxRotation:0, autoSkip:true, maxTicksLimit:12}}
+        }
+      }
+    });
+  }
+};
+
+/* Lazy chart init on scroll */
+function checkCharts(){
+  document.querySelectorAll('canvas[id^="c-"]').forEach(canvas => {
+    if(charts[canvas.id]) return;
+    const rect = canvas.getBoundingClientRect();
+    if(rect.top < window.innerHeight + 80 && rect.bottom > -80){
+      if(chartFactory[canvas.id]){
+        try { chartFactory[canvas.id](); } catch(e) { console.warn(e); }
+      }
+    }
+  });
+}
+
+function startChartWatch(){
+  checkCharts();
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if(!ticking){
+      ticking = true;
+      requestAnimationFrame(() => { checkCharts(); ticking = false; });
+    }
+  },{passive:true});
+}
+
+if(typeof Chart !== 'undefined'){
+  startChartWatch();
+} else {
+  const script = document.querySelector('script[src*="chart.js"]');
+  if(script) script.addEventListener('load', startChartWatch);
+}
+</script>
+</body>
+</html>
