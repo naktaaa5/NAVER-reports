@@ -1651,12 +1651,26 @@ table.dt tr:hover td{background:var(--bg-soft)}
     <div class="ch">
       <div class="ch-eye">Before State</div>
       <div class="ch-title">Before State — 스키당 오기 전 무엇을 했는가</div>
+      <div class="ch-ax"><span>방문 계기 →</span><span>언급 건수 / 1,315건</span></div>
       <div class="ch-canvas"><canvas id="c-before" role="img" aria-label="방문 사유 분포"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">최다 계기</div><div class="ch-stat-val ok">데이트·기념일 73건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">두 번째</div><div class="ch-stat-val">모임·회식·청첩장 41건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">메뉴 목적</div><div class="ch-stat-val">스키야키·샤브 의도 24건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">발견 경로</div><div class="ch-stat-val warn">블루리본 경유 1건</div></div>
+      </div>
     </div>
     <div class="ch">
       <div class="ch-eye">Decision Trigger</div>
       <div class="ch-title">스키당을 선택한 이유</div>
-      <div class="ch-canvas"><canvas id="c-trigger" role="img" aria-label="선택 이유 차트"></canvas></div>
+      <div class="ch-ax"><span>선택 이유 →</span><span>비율 (%)</span></div>
+      <div class="ch-canvas tall"><canvas id="c-trigger" role="img" aria-label="선택 이유 차트"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">1위 트리거</div><div class="ch-stat-val ok">위치 (교대역 접근성) 35%</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">2위 트리거</div><div class="ch-stat-val">메뉴 의도 25%</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">POD 경유 비율</div><div class="ch-stat-val warn">블루리본 등 8%</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">모임 목적</div><div class="ch-stat-val">18%</div></div>
+      </div>
     </div>
   </div>
 
@@ -1665,7 +1679,6 @@ table.dt tr:hover td{background:var(--bg-soft)}
     <div class="tac-body"><strong>가장 큰 Before State는 "교대역 근처 약속/일정" 후 방문(급 검색)이다.</strong> 두 번째가 "스키야키·샤브샤브 먹고 싶어서" 목적 검색. 세 번째가 "모임·회식·청첩장 장소 탐색"이다. 세 패턴 모두 사전 검색이 강하다 — 오피스 고객은 "교대역 맛집"을 찾고, 메뉴 의도 고객은 "관서식 스키야키"를 찾는다. 모임 기획자는 "교대역 청첩장모임 맛집"을 찾는다.</div>
     <div class="tac-dir"><span class="arrow">→</span>리뷰 유도 시 우선 타겟은 <strong>모임·청첩장 고객</strong>과 <strong>혼밥 고객</strong>이다. 모임 고객은 인원수·공간·대화 환경을 구체적으로 언급할 확률이 높고, 혼밥 고객은 "고기집인데 1인분" 같은 업종 비교 POD를 언어화할 확률이 높다. 두 세그먼트 모두 AI 인용 가능 리뷰 생성 확률이 상대적으로 높은 구간이다.</div>
   </div>
-</div>
 
   <div class="s-rule"></div>
 
@@ -1725,7 +1738,8 @@ table.dt tr:hover td{background:var(--bg-soft)}
     <div class="tac-dir"><span class="arrow">→</span>리뷰 유도 우선 타겟은 <strong>회식·데이트</strong>다. 이미 리뷰 길이가 길어 POD 언어를 품을 공간이 있다. 리뷰 유도 안내카드를 이 두 세그먼트에 먼저 배포. <strong>혼밥 세그먼트는 별도 유입 설계가 필요</strong>하다 — 지금은 POD가 있어도 고객이 없어 무용지물.</div>
   </div>
 
-</div></section>
+</div>
+</section>
 
 <!-- ST/07 — 시그니처 메뉴 인식 ──────────────────────────── -->
 <section id="trainer" class="section" data-nav="시그니처 인식" data-num="07">
@@ -2336,7 +2350,8 @@ const chartFactory = {
         labels:["교대역 근처 약속 → 급 검색", "메뉴 의도 (스키야키·샤브)", "모임·회식·청첩장", "친구·지인 추천", "데이트·기념일", "블루리본 보고"],
         datasets:[{
           label:'건수', data:[11, 24, 41, 1, 73, 1],
-          backgroundColor:'#2a2a2a', borderWidth:0
+          backgroundColor:['#8a8a8a','#8a8a8a','#555555','#b8b8b8','#e75519','#b8b8b8'],
+          borderWidth:0
         }]
       },
       options:{...BAR_OPT,
@@ -2352,12 +2367,12 @@ const chartFactory = {
         labels:['위치(교대역 접근성)','메뉴 의도(관서식·샤브)','모임 장소','친구 추천','블루리본 등'],
         datasets:[{
           data:[35,25,18,14,8],
-          backgroundColor:['#0a0a0a','#555','#8a8a8a','#b8b8b8','#e75519'],
+          backgroundColor:['#e75519','#0a0a0a','#555555','#8a8a8a','#b8b8b8'],
           borderColor:'#fff',borderWidth:2
         }]
       },
-      options:{responsive:true,maintainAspectRatio:false,
-        plugins:{legend:{position:'bottom',labels:{font:{size:10,family:"'SUIT',sans-serif"},color:'#2a2a2a',boxWidth:10,padding:10}},
+      options:{responsive:true,maintainAspectRatio:false,cutout:'66%',
+        plugins:{legend:{position:'bottom',labels:{font:{size:10,family:"'SUIT',sans-serif"},color:'#2a2a2a',boxWidth:10,padding:12,usePointStyle:false}},
           tooltip:{backgroundColor:'#0a0a0a',titleFont:{family:"'SUIT',sans-serif",weight:'600'},bodyFont:{family:"'SUIT',sans-serif"},padding:10,displayColors:false,callbacks:{label:(c)=>c.label+': '+c.parsed+'%'}}
         }
       }
