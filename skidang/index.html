@@ -2168,6 +2168,26 @@ if(typeof Chart !== 'undefined'){
   Chart.defaults.animation = {duration:1400, easing:'easeOutQuart'};
 }
 
+const BAR_OPT = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      backgroundColor: 'rgba(0,0,0,0.8)',
+      titleFont: { size: 12 },
+      bodyFont: { size: 11 },
+      padding: 10
+    }
+  }
+};
+
+const SCATTER_OPT = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: { legend: { display: false } }
+};
+
 const COLORS = {
   ink: '#0a0a0a',
   ink3: '#555555',
