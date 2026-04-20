@@ -16,7 +16,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="매끄롬 포항효자점 — 플레이스 리포트"/>
-<meta name="twitter:description" content="네이버 플레이스 리뷰 119건 기반 분석 · RE:FEEEL Place Report"/>
+<meta name="twitter:description" content="네이버 플레이스 분석 · RE:FEEEL Place Report"/>
 <meta name="twitter:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -318,7 +318,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
 .qname{font-size:12px;font-weight:600;color:var(--ink-2)}
 .qdate{font-size:11px;color:var(--ink-4)}
 .qtext{font-size:14px;line-height:1.85;color:var(--ink-2)}
-.qtext em{color:var(--accent);font-style:normal;font-weight:600}
+.qtext em{font-style:normal;font-weight:600;color:var(--ink)}
 @media(max-width:760px){.qgrid{grid-template-columns:1fr}}
 
 /* QFB */
@@ -597,13 +597,13 @@ table.dt tr:hover td{background:var(--bg-soft)}
   <div class="cv-mid">
     <div class="cv-label">피부·체형관리 에스테틱</div>
     <h1 class="cv-h1">매끄롬<span class="line2">포항효자점</span></h1>
-    <p class="cv-desc">방문자 리뷰 119건 기반 분석<br>분석 기간: 2021년 — 2026년 4월</p>
+    <p class="cv-desc">분석 기간: 2021년 — 2026년 4월</p>
   </div>
   <div class="cv-bot">
     <div class="cv-kpi"><div class="cv-kpi-val">24.5</div><div class="cv-kpi-lbl">SEO Score</div><div class="cv-kpi-sub">45점 만점 · 검색 기여 중간</div></div>
     <div class="cv-kpi"><div class="cv-kpi-val dim">6.4</div><div class="cv-kpi-lbl">AEO Score</div><div class="cv-kpi-sub">50점 만점 · AI 참조 낮음</div></div>
     <div class="cv-kpi"><div class="cv-kpi-val">63<span style="font-size:.5em;color:rgba(255,255,255,.7)">%</span></div><div class="cv-kpi-lbl">예약 인증률</div><div class="cv-kpi-sub">119건 분석 기준</div></div>
-    <div class="cv-kpi"><div class="cv-kpi-val lo">0<span style="font-size:.5em;color:rgba(255,255,255,.7)">건</span></div><div class="cv-kpi-lbl">AI 인용 가능</div><div class="cv-kpi-sub">70점+ A등급 / 전체 0%</div></div>
+    <div class="cv-kpi"><div class="cv-kpi-val dim">0<span style="font-size:.5em;color:rgba(255,255,255,.5)">건</span></div><div class="cv-kpi-lbl">AI 인용 가능</div><div class="cv-kpi-sub">70점+ A등급 / 전체 0%</div></div>
   </div>
 </div>
 </section>
@@ -947,7 +947,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
       <div class="ch-stats">
         <div class="ch-stat"><div class="ch-stat-lbl">SEO 평균</div><div class="ch-stat-val">24.5 / 45</div></div>
         <div class="ch-stat"><div class="ch-stat-lbl">AEO 평균</div><div class="ch-stat-val warn">6.4 / 50</div></div>
-        <div class="ch-stat"><div class="ch-stat-lbl">A등급 (70+)</div><div class="ch-stat-val warn">0건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">A등급 (70+)</div><div class="ch-stat-val">0건</div></div>
         <div class="ch-stat"><div class="ch-stat-lbl">B등급 (40-69)</div><div class="ch-stat-val">32건 (27%)</div></div>
       </div>
     </div>
@@ -1579,22 +1579,37 @@ table.dt tr:hover td{background:var(--bg-soft)}
 <div class="wrap">
   <div class="s-head">
     <div class="s-eyebrow">ST / 09 <span class="sep">·</span> 리뷰 목록</div>
-    <h2 class="s-title">이 리뷰들이<br><span class="soft">AI 답변에 인용될 수 있다</span></h2>
-    <p class="s-lead">통합 점수 70점 이상이 AI 인용 가능성이 있는 리뷰입니다. 현재 119건 중 70점+ 리뷰는 <strong>0건</strong>입니다. 아래 Top 10이 매끄롬의 리뷰 자산 중 가장 AI 인용 가능성이 높은 것들입니다.</p>
+    <h2 class="s-title">베스트 리뷰 원문 —<br><span class="soft">매끄롬의 POD가 가장 잘 담긴 리뷰</span></h2>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">Top 10 AEO 친화 리뷰 (119건 기준)</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>닉네임</th><th>방문</th><th>인증</th><th>방문일</th><th style="color:var(--accent)">점수</th><th>핵심 키</th></tr></thead>
+        <tbody>
+          <tr><td><strong>하리미64</strong></td><td>4회</td><td>예약</td><td>2025.02.04</td><td style="color:var(--accent)"><strong>66</strong></td><td>의료 대비 비교 · 담당자 2인 실명 · 장기 단골 8년+</td></tr>
+          <tr><td><strong>suum95</strong></td><td>2회</td><td>예약</td><td>2025.12.24</td><td style="color:var(--accent)"><strong>60</strong></td><td>Before 5-6년 스테로이드 · After 새 삶 · 1년+ 귀속</td></tr>
+          <tr><td><strong>nam****</strong></td><td>1회</td><td>영수증</td><td>2024.05.01</td><td style="color:var(--accent)"><strong>60</strong></td><td>"안아픈데 효과 미쳤어요" 직접 비교 POD · 증상 열거</td></tr>
+          <tr><td><strong>예님23</strong></td><td>2회</td><td>예약</td><td>2025.12.26</td><td style="color:var(--accent)"><strong>53</strong></td><td>회전근개·재활 한계 Before · 원장 교육 신뢰 언급</td></tr>
+          <tr><td><strong>서생원에고양이</strong></td><td>1회</td><td>예약</td><td>2024.07.13</td><td style="color:var(--accent)"><strong>47</strong></td><td>홈케어 처방 POD · 기대 초과 · 승모근 Before</td></tr>
+          <tr><td><strong>ggangee</strong></td><td>—</td><td>예약</td><td>2025.12~</td><td style="color:var(--accent)"><strong>48</strong></td><td>섬세한 케어 · 홈케어 언급</td></tr>
+          <tr><td><strong>hwa****</strong></td><td>—</td><td>예약</td><td>2025.12~</td><td style="color:var(--accent)"><strong>46</strong></td><td>다리 저림·부종 수치 · 3회차 변화</td></tr>
+          <tr><td><strong>ssu****</strong></td><td>—</td><td>예약</td><td>2026.01~</td><td style="color:var(--accent)"><strong>45</strong></td><td>3년 차 단골 · 피부 스트레스 Before</td></tr>
+          <tr><td><strong>ppuu</strong></td><td>—</td><td>예약</td><td>2026.03~</td><td style="color:var(--accent)"><strong>43</strong></td><td>소영 주임 실명 · 피부 맞춤 설명</td></tr>
+          <tr><td><strong>김용기2313</strong></td><td>—</td><td>예약</td><td>2026.04</td><td style="color:var(--accent)"><strong>40</strong></td><td>과정 묘사 · 홈케어 처방 · 과도한 권유 없음 POD</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="quote-full-block">
-    <div class="qfb-title">SEO/AEO 통합 점수 Top 10 — 95점 만점</div>
-    <div class="qfb-desc">현재 최고점은 <strong>66점(하리미64)</strong>으로 B등급입니다. 각 리뷰 아래 태그는 <strong>① Before 상태 → ② POD 표현 → ③ 담당자 실명 → ④ 구체 변화 → ⑤ 브랜드 귀속</strong> 중 어떤 요소가 있는지를 보여줍니다. A등급(70점+)이 되려면 이 5가지가 한 리뷰 안에 묶여야 합니다.
-    <div class="case-note" style="margin-top:var(--sp-6)">
-      <div class="case-note-lbl">타 에스테틱 사례에서는</div>
-      <div class="case-note-body">785건 Top 5 리뷰의 공통 패턴이 명확했습니다. <strong>① Before 상태(고민·타 업체 경험) → ② 브랜드 고유 POD 표현(개미지옥·목뽑기·기적) → ③ 담당자 실명 + 방문 횟수 → ④ 구체적 변화(얼굴형·수치) → ⑤ 브랜드 귀속("단언컨대 케이엠")</strong>. 이 5요소가 모두 있는 리뷰가 점수가 가장 높았습니다. 현재 70점+ A등급 리뷰는 0건이었지만, 액션 플랜 적용 후 <strong>3~6개월 내 A등급 리뷰 비율 15% 이상</strong>으로 끌어올릴 수 있다는 것도 확인됐습니다. 매끄롬도 동일한 구조를 목표로 합니다.</div>
-    </div>
-    </div>
+    <div class="qfb-title">Top 10 리뷰 원문 — 이 구조가 AI에 인용된다</div>
+    <div class="qfb-desc">아래 열 건은 매끄롬 119건 중 SEO·AEO 통합 점수 상위 10위입니다. 현재 최고점은 <strong>66점(하리미64)</strong>으로 B등급이며 A등급(70점+)은 0건입니다. 각 리뷰에서 주목할 요소는 <strong>① Before 상태(고민·타 업체 경험) → ② 매끄롬만의 POD 표현(아프지 않은 효과·홈케어 처방·과도한 권유 없음) → ③ 담당자 실명(은영 원장·소영 주임) → ④ 구체적 변화(기간·부위·의료 비교) → ⑤ 브랜드 귀속("매끄롬 따라다닌다")</strong>입니다. 이 5요소가 한 리뷰 안에 묶일수록 AI 브리핑이 "포항 피부관리", "포항 홈케어 알려주는 에스테틱" 같은 검색에 매끄롬을 인용할 확률이 높아집니다.</div>
 
     <div class="qfb-card">
       <div class="qfb-head">
-        <div class="qfb-head-l"><div class="qfb-rank">01</div><div><div class="qfb-name">하리미64</div><div class="qfb-meta">2025.02.04 · 예약 인증 · 4번째 방문 · 은영 원장 + 소영 주임 실명</div></div></div>
+        <div class="qfb-head-l"><div class="qfb-rank">01</div><div><div class="qfb-name">하리미64<span class="t-badge">의료 대비 비교</span></div><div class="qfb-meta">4번째 방문 · 은영 원장 + 소영 주임 · 2025.02.04 · 예약 인증</div></div></div>
         <div><div class="qfb-score">통합 점수</div><div><span class="qfb-score-num">66</span><span class="qfb-score">/95 · B등급</span></div></div>
       </div>
       <div class="qfb-body">포항에 이사와서 아이 낳고 다니기 시작했는데 벌써 아이가 초딩이됩니다. 그동안 원장님께 작은얼굴관리 받다가 최근에 허리,무릎,다리가 안좋아 소영님께 등+하체 받은지 2회차 입니당. 지난 번에도 받으니 너무 좋았어요. 병원에서 물리치료 받고 한의원 가서 침 맞았는 것보다도 훨씬~~ 오랫동안 몸이 편안했습니다.</div>
@@ -1603,7 +1618,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
 
     <div class="qfb-card">
       <div class="qfb-head">
-        <div class="qfb-head-l"><div class="qfb-rank">02</div><div><div class="qfb-name">suum95</div><div class="qfb-meta">2025.12.24 · 예약 인증 · 2번째 방문</div></div></div>
+        <div class="qfb-head-l"><div class="qfb-rank">02</div><div><div class="qfb-name">suum95<span class="t-badge">Before-After</span></div><div class="qfb-meta">2번째 방문 · 2025.12.24 · 예약 인증</div></div></div>
         <div><div class="qfb-score">통합 점수</div><div><span class="qfb-score-num">60</span><span class="qfb-score">/95 · B등급</span></div></div>
       </div>
       <div class="qfb-body">5-6년 스테로이드 먹으면서 스트레스 받고 하다가 정말 마지막 기회다 하고 간 매끄롬에서 원장님의 관리 루틴 덕분에 새 삶을 살고 있습니다! 처음엔 의심도 많이하고 다시 약을 먹어야하는가 생각했지만 그때마다 멘탈도 다시 잡아주시고 회차를 거듭할수록 좋아지는게 눈에 보여서 벌써 1년 넘게 원장님관리 받고 있어요.</div>
@@ -1612,7 +1627,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
 
     <div class="qfb-card">
       <div class="qfb-head">
-        <div class="qfb-head-l"><div class="qfb-rank">03</div><div><div class="qfb-name">nam****</div><div class="qfb-meta">2024.05.01 · 영수증 인증 · 1번째 방문 · 웨딩 케어</div></div></div>
+        <div class="qfb-head-l"><div class="qfb-rank">03</div><div><div class="qfb-name">nam****<span class="t-badge">직접 비교 POD</span></div><div class="qfb-meta">1번째 방문 · 웨딩 케어 · 2024.05.01 · 영수증 인증</div></div></div>
         <div><div class="qfb-score">통합 점수</div><div><span class="qfb-score-num">60</span><span class="qfb-score">/95 · B등급</span></div></div>
       </div>
       <div class="qfb-body">웨딩관리를 이곳저곳 알아보다가 매끄롬을 방문하게되었어요. 제가 평소에 고민이였던 이중턱,얼굴비대칭, 얼굴길이,거북목 등 자세하게 상담해주셔서 웨딩관리로 선택했어요! 평소 다른곳 관리는 받을 때마다 아프고 압만 쎄고 효과도 없었는데 매끄롬은 하나도 안아픈데 효과는 미쳤어요.</div>
@@ -1621,7 +1636,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
 
     <div class="qfb-card">
       <div class="qfb-head">
-        <div class="qfb-head-l"><div class="qfb-rank">04</div><div><div class="qfb-name">예님23</div><div class="qfb-meta">2025.12.26 · 예약 인증 · 2번째 방문 · 1년+ 방문</div></div></div>
+        <div class="qfb-head-l"><div class="qfb-rank">04</div><div><div class="qfb-name">예님23<span class="t-badge">재활 한계 극복</span></div><div class="qfb-meta">2번째 방문 · 1년+ · 2025.12.26 · 예약 인증</div></div></div>
         <div><div class="qfb-score">통합 점수</div><div><span class="qfb-score-num">53</span><span class="qfb-score">/95 · B등급</span></div></div>
       </div>
       <div class="qfb-body">운동으로 회전근개 찢어지고 말린 어깨에 전방활주 어깨 등등 총체적 난국이었고, 재활 치료 운동만으로 100프로 해결이 안되서 뭐라도 해보자 해서 시작한 관리인데 여러모로 얼굴형도 다듬어지고 어깨도 좋아지고 기대 이상으로 만족스러운 결과들입니다. 원장님이 꾸준히 계속 교육 받으러 다니시면서 공부하시는데 더더욱 신뢰감 상승이지 않나요?!</div>
@@ -1630,7 +1645,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
 
     <div class="qfb-card">
       <div class="qfb-head">
-        <div class="qfb-head-l"><div class="qfb-rank">05</div><div><div class="qfb-name">서생원에고양이</div><div class="qfb-meta">2024.07.13 · 예약 인증 · 1번째 방문</div></div></div>
+        <div class="qfb-head-l"><div class="qfb-rank">05</div><div><div class="qfb-name">서생원에고양이<span class="t-badge">홈케어 처방</span></div><div class="qfb-meta">1번째 방문 · 2024.07.13 · 예약 인증</div></div></div>
         <div><div class="qfb-score">통합 점수</div><div><span class="qfb-score-num">47</span><span class="qfb-score">/95 · B등급</span></div></div>
       </div>
       <div class="qfb-body">늘 굳어있고 아픈 승모근때문에 방문했어요. 인스타를 보니 딱 제가 생각했던 관리를 해주시는 곳이어서 방문하기로 했어요. 솔직히 한번 받아서는 눈에띄게 좋아질거라고 기대하지 않았는데, 전후사진 보고 정말 놀랐네요. 어깨뿐만이 아니라 등 전체적인 라인도 깔끔하게 정리돼서 너무너무 신기했어요. 그리고 집에 가서도 어떻게 관리해야할지 알려주셔서 유지도 잘 된것같아요.</div>
@@ -1729,14 +1744,31 @@ document.querySelectorAll('.kwbars, .gauge-block').forEach(el => barObs.observe(
 const diagramObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in-view'); diagramObs.unobserve(e.target); } });
 },{threshold:0.25});
-document.querySelectorAll('.cycle-wrap').forEach(el => diagramObs.observe(el));
+
+const diagramTargets = Array.from(document.querySelectorAll('.cycle-wrap'));
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    diagramTargets.forEach(el => diagramObs.observe(el));
+  });
+});
 
 /* ── 페이드인 ── */
 const animObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); animObs.unobserve(e.target); } });
-},{threshold:0.08, rootMargin:'30px 0px'});
-document.querySelectorAll('.dark-block, .split, .persona, .trainer, .action, .tier, .tac').forEach(el => {
-  el.classList.add('anim'); animObs.observe(el);
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      animObs.unobserve(e.target);
+      if(typeof checkCharts === 'function') requestAnimationFrame(checkCharts);
+    }
+  });
+},{threshold:0.08, rootMargin:'-20px 0px'});
+
+const animTargets = Array.from(document.querySelectorAll('.dark-block, .split, .persona, .trainer, .action, .tier, .tac'));
+animTargets.forEach(el => el.classList.add('anim'));
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    animTargets.forEach(el => animObs.observe(el));
+  });
 });
 
 /* ── 커버 KPI 카운터 ── */
@@ -1770,7 +1802,11 @@ const coverObs = new IntersectionObserver((entries) => {
   });
 },{threshold:0.2});
 const ckBot = document.querySelector('.cv-bot');
-if(ckBot) coverObs.observe(ckBot);
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    if(ckBot) coverObs.observe(ckBot);
+  });
+});
 
 /* ── 토글 ── */
 /* toggle은 onclick="this.parentElement.classList.toggle('open')" 인라인으로 처리 */
