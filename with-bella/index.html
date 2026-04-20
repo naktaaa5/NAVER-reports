@@ -2157,6 +2157,7 @@ const chartFactory = {
         pointHoverRadius: 8
       }]},
       options:{responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
         scales:{
           x:{min:8, max:27, title:{display:true, text:'SEO', color:COLORS.ink4, font:{size:10, weight:'600'}},
              grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
@@ -2179,6 +2180,7 @@ const chartFactory = {
         }]
       },
       options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        plugins:{legend:{display:false}},
         scales:{
           x:{max:42, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
           y:{grid:{display:false}, border:{display:false}, ticks:{color:COLORS.ink3, font:{size:12, weight:'500'}, padding:10}}
@@ -2198,6 +2200,7 @@ const chartFactory = {
         }]
       },
       options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        plugins:{legend:{display:false}},
         animation:{duration:1400, easing:'easeOutQuart', delay:c => c.dataIndex * 80},
         scales:{
           x:{max:70, title:{display:true, text:'샘플 65건 중 등장률 %', color:COLORS.ink4, font:{size:10, weight:'600'}},
@@ -2255,6 +2258,7 @@ const chartFactory = {
         }]
       },
       options:{responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
         animation:{duration:1400, easing:'easeOutQuart', delay:c => c.dataIndex * 80},
         scales:{
           y:{max:65, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{callback:v=>v+'%', color:COLORS.ink4, padding:8}},
@@ -2275,6 +2279,7 @@ const chartFactory = {
         }]
       },
       options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        plugins:{legend:{display:false}},
         animation:{duration:1600, easing:'easeOutQuart', delay:c => c.dataIndex * 150},
         scales:{
           x:{max:65, title:{display:true, text:'샘플 65건 중 등장률 %', color:COLORS.ink4, font:{size:10, weight:'600'}},
@@ -2305,6 +2310,7 @@ const chartFactory = {
         }]
       },
       options:{responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
         animation:{duration:1800, easing:'easeOutQuart'},
         scales:{
           y:{min:0, max:50, title:{display:true, text:'월 리뷰 건수', color:COLORS.ink4, font:{size:10, weight:'600'}},
