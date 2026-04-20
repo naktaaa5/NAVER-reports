@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>매끄롬 포항효자점 — 플레이스 분석 리포트</title>
+<meta name="description" content="매끄롬 포항효자점 네이버 플레이스 리뷰 119건 기반 분석. SEO·AEO 점수, POP vs POD, 언어 전이 GAP, 고객 분석, 액션 플랜."/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="매끄롬 포항효자점 — 플레이스 리포트"/>
+<meta property="og:description" content="네이버 플레이스 리뷰 119건 기반 분석 · RE:FEEEL Place Report"/>
+<meta property="og:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
+<meta property="og:site_name" content="RE:FEEEL"/>
+<meta property="og:image:alt" content="RE:FEEEL"/>
+<meta property="og:locale" content="ko_KR"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="매끄롬 포항효자점 — 플레이스 리포트"/>
+<meta name="twitter:description" content="네이버 플레이스 리뷰 119건 기반 분석 · RE:FEEEL Place Report"/>
+<meta name="twitter:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════════
+   RE:FEEEL — 매끄롬 포항효자점 Place Report v3
+   ═══════════════════════════════════════════════ */
+:root{
+  --bg:#ffffff;--bg-soft:#fafafa;
+  --ink:#0a0a0a;--ink-2:#2a2a2a;--ink-3:#555555;--ink-4:#8a8a8a;--ink-5:#b8b8b8;
+  --rule:#e8e8e8;--rule-soft:#f0f0f0;
+  --accent:#e75519;--accent-soft:rgba(231,85,25,.08);
+  --danger:#b03030;--success:#1a7a3a;--warn:#8a8a8a;
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;
+  --sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-14:56px;--sp-16:64px;
+  --sp-20:80px;--sp-24:96px;--sp-28:112px;--sp-32:128px;--sp-40:160px;
+  --max-w:1120px;--pp:clamp(24px,5vw,80px);
+}
+@property --gauge-w{syntax:'<percentage>';inherits:false;initial-value:0%}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{font-family:'SUIT',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--ink-2);font-size:15px;line-height:1.75;font-weight:400;letter-spacing:-.005em;-webkit-font-smoothing:antialiased;overflow-x:clip}
+:focus-visible{outline:1.5px solid var(--accent);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0}.skip-link:focus{left:8px;top:8px;padding:8px 12px;background:var(--ink);color:#fff;z-index:9999}
+
+/* TOPBAR */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);height:56px;display:flex;align-items:center;padding:0 var(--pp)}
+.tb-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--sp-6)}
+.tb-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--ink);flex-shrink:0}
+.tb-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle;margin-top:-2px}
+.tb-current{font-size:12px;color:var(--ink-4);font-weight:500;flex:1;text-align:center;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-current .num{color:var(--ink);font-weight:700;margin-right:6px}
+.tb-progress{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.tb-prog-bar{width:80px;height:2px;background:var(--rule);position:relative;overflow:hidden}
+.tb-prog-fill{position:absolute;top:0;left:0;height:100%;background:var(--ink);width:0%;transition:width .3s}
+.tb-prog-num{font-size:11px;font-weight:700;color:var(--ink-4);font-variant-numeric:tabular-nums;min-width:32px;text-align:right}
+.tb-menu{background:none;border:none;padding:8px;margin-right:-8px;cursor:pointer;color:var(--ink);display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+.tb-menu:hover{color:var(--accent)}
+.tb-menu-icon{display:inline-flex;flex-direction:column;gap:3px;width:16px}
+.tb-menu-icon span{display:block;height:1.5px;background:currentColor;border-radius:1px}
+.tb-menu-icon span:nth-child(2){width:75%}
+@media(max-width:680px){.tb-current{display:none}.tb-prog-bar{width:60px}.tb-menu{font-size:0;gap:0}}
+@media(min-width:1280px){.topbar{display:none}}
+
+/* SIDENAV */
+.sidenav{display:none}
+@media(min-width:1280px){
+  :root{--nav-w:260px}
+  .sidenav{display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;width:var(--nav-w);z-index:80;padding:40px 24px 28px 32px;background:var(--bg);border-right:1px solid var(--rule);box-sizing:border-box}
+  .sn-masthead{margin-bottom:48px}
+  .sn-client{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.4px;line-height:1.35;margin-bottom:8px}
+  .sn-tagline{font-size:10px;font-weight:600;color:var(--ink-4);letter-spacing:1.8px;text-transform:uppercase}
+  .sn-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;flex:1;overflow-y:auto;-ms-overflow-style:none;scrollbar-width:none}
+  .sn-list::-webkit-scrollbar{display:none}
+  .sn-group{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--ink-5);text-transform:uppercase;margin:16px 0 8px;padding-left:14px}
+  .sn-item a{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:baseline;padding:6px 0 6px 14px;text-decoration:none;border-left:2px solid transparent;transition:border-color .2s,color .2s,transform .3s cubic-bezier(.2,.8,.2,1)}
+  .sn-item a:hover{transform:translateX(3px)}
+  .sn-item a:hover .sn-title{color:var(--ink)}
+  .sn-num{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--ink-5);font-variant-numeric:tabular-nums}
+  .sn-title{font-size:13px;font-weight:500;color:var(--ink-3);letter-spacing:-.2px;transition:color .2s}
+  .sn-item.active .sn-num{color:var(--accent)}
+  .sn-item.active .sn-title{color:var(--accent);font-weight:700}
+  .sn-credit{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-4);text-transform:uppercase;margin-top:28px;margin-bottom:20px}
+  .sn-foot{padding-top:20px;border-top:1px solid var(--rule)}
+  .sn-foot-lbl{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-4);text-transform:uppercase;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+  .sn-foot-num{color:var(--ink);font-variant-numeric:tabular-nums}
+  .sn-prog{width:160px;height:2px;background:var(--rule);position:relative;overflow:hidden}
+  .sn-prog-fill{position:absolute;top:0;left:0;height:100%;background:var(--ink);width:0%;transition:width .3s}
+}
+
+/* DRAWER */
+.drawer{position:fixed;inset:0;z-index:200;background:#0a0a0a;color:#fff;display:flex;flex-direction:column;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s cubic-bezier(.2,.8,.2,1),visibility 0s linear .3s}
+.drawer.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .3s cubic-bezier(.2,.8,.2,1),visibility 0s linear 0s}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px var(--pp);height:56px;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}
+.drawer-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:#fff;display:flex;align-items:center}
+.drawer-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px}
+.drawer-close{background:none;border:none;color:#fff;cursor:pointer;padding:8px;font-size:22px;line-height:1}
+.drawer-close:hover{color:var(--accent)}
+.drawer-body{flex:1;overflow-y:auto;padding:32px var(--pp) 48px}
+.drawer-eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.55);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.drawer-eyebrow::before{content:"";width:18px;height:1px;background:var(--accent)}
+.dw-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.dw-group{font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.45);text-transform:uppercase;margin:24px 0 8px}
+.dw-group:first-child{margin-top:0}
+.dw-item a{display:grid;grid-template-columns:48px 1fr 24px;gap:12px;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.08);text-decoration:none;color:inherit;transition:padding-left .3s cubic-bezier(.2,.8,.2,1)}
+.dw-item a:hover,.dw-item a:active{padding-left:6px}
+.dw-num{font-size:11px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.5);font-variant-numeric:tabular-nums;padding-top:2px}
+.dw-body{display:flex;flex-direction:column;gap:4px}
+.dw-title{font-size:17px;font-weight:600;color:#fff;letter-spacing:-.3px}
+.dw-desc{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5}
+.dw-arrow{font-size:14px;color:rgba(255,255,255,.4);padding-top:4px;text-align:right}
+.dw-item.active .dw-num{color:var(--accent)}
+.dw-item.active .dw-title::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:10px;vertical-align:middle;margin-top:-2px}
+body.drawer-open{overflow:hidden}
+
+/* MAIN */
+main{padding-top:56px}
+@media(min-width:1280px){main{padding-top:0;padding-left:var(--nav-w)}}
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--pp)}
+
+/* COVER */
+.cover{background:#0a0a0a;color:#fff;min-height:100vh;display:flex;flex-direction:column;padding:var(--sp-16) var(--pp) var(--sp-12);position:relative;overflow:hidden}
+.cover-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;flex-direction:column;flex:1}
+.cv-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:var(--sp-12);font-size:11px;letter-spacing:2.5px;color:rgba(255,255,255,.65);text-transform:uppercase;font-weight:600}
+.cv-top .r{text-align:right;line-height:1.8}
+.cv-mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:var(--sp-24) 0}
+.cv-label{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:var(--sp-10);display:flex;align-items:center;gap:10px}
+.cv-label::before{content:"";width:24px;height:1px;background:var(--accent)}
+.cv-h1{font-size:clamp(56px,8.5vw,120px);font-weight:800;letter-spacing:-3.5px;line-height:.92;color:#fff;margin-bottom:var(--sp-10)}
+.cv-h1 .line2{display:block;color:rgba(255,255,255,.35);font-weight:400}
+.cv-desc{font-size:15px;line-height:1.8;color:rgba(255,255,255,.72);max-width:500px}
+.cv-bot{padding-top:var(--sp-10);display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-6)}
+.cv-kpi{padding:var(--sp-2) 0}
+.cv-kpi-val{font-size:clamp(32px,3.5vw,46px);font-weight:800;letter-spacing:-2px;line-height:1;color:#fff;margin-bottom:var(--sp-3)}
+.cv-kpi-val.dim{color:rgba(255,255,255,.6)}.cv-kpi-val.lo{color:var(--accent)}
+.cv-kpi-lbl{font-size:13px;font-weight:600;color:#fff;margin-bottom:2px}
+.cv-kpi-sub{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5}
+@media(max-width:760px){.cv-bot{grid-template-columns:repeat(2,1fr);gap:var(--sp-8) var(--sp-4)}}
+
+/* SECTION */
+.section{padding:var(--sp-28) 0}
+.section:first-of-type{padding-top:var(--sp-40)}
+.s-head{margin-bottom:var(--sp-16);max-width:900px}
+.s-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:2.5px;color:var(--ink-4);text-transform:uppercase;margin-bottom:var(--sp-8)}
+.s-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.s-eyebrow .sep{color:var(--ink-5);margin:0 4px}
+.s-title{font-size:clamp(32px,4.2vw,52px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;color:var(--ink)}
+.s-title .soft{color:var(--ink-4);font-weight:400}
+.s-sub{margin-top:var(--sp-8);font-size:16px;line-height:1.8;color:var(--ink-3);max-width:680px}
+.s-lead{margin-top:var(--sp-6);font-size:15px;line-height:1.85;color:var(--ink-3);max-width:800px}
+.s-rule{height:1px;background:var(--rule);margin:var(--sp-16) 0 var(--sp-14)}
+
+/* PROSE */
+.prose{font-size:15px;line-height:1.85;color:var(--ink-3);max-width:800px}
+.prose p+p{margin-top:var(--sp-5)}
+.prose strong{color:var(--ink);font-weight:600}
+
+/* NBLOCKS */
+.nblocks{display:grid;gap:1px;background:var(--rule);margin:var(--sp-16) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.nblocks-3{grid-template-columns:repeat(3,1fr)}.nblocks-2{grid-template-columns:repeat(2,1fr)}.nblocks-4{grid-template-columns:repeat(4,1fr)}
+.nblock{background:var(--bg);padding:var(--sp-10) var(--sp-8) var(--sp-12);min-height:220px;display:flex;flex-direction:column}
+.nblock .n-num{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:var(--ink-4);letter-spacing:1.5px;margin-bottom:var(--sp-6)}
+.nblock .n-num::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.nblock .n-title{font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.3px;line-height:1.35;margin-bottom:var(--sp-4)}
+.nblock .n-body{font-size:14px;line-height:1.8;color:var(--ink-3);flex:1}
+.nblock .n-body strong{color:var(--ink);font-weight:600}
+@media(max-width:820px){.nblocks-3,.nblocks-4{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.nblocks-3,.nblocks-4,.nblocks-2{grid-template-columns:1fr}}
+
+/* KV LIST */
+.kvlist{margin:var(--sp-10) 0}
+.kv{display:grid;grid-template-columns:200px 1fr;gap:var(--sp-8);padding:var(--sp-8) 0;border-top:1px solid var(--rule)}
+.kv:last-child{border-bottom:1px solid var(--rule)}
+.kv-label{font-size:11px;font-weight:700;color:var(--ink);letter-spacing:1.5px;text-transform:uppercase;padding-top:2px}
+.kv-title{font-size:18px;font-weight:600;color:var(--ink);letter-spacing:-.3px;line-height:1.4;margin-bottom:var(--sp-2)}
+.kv-body{font-size:14px;line-height:1.8;color:var(--ink-3)}
+.kv-body strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){.kv{grid-template-columns:1fr;gap:var(--sp-3)}}
+
+/* DARK BLOCK */
+.dark-block{background:#0a0a0a;color:#fff;padding:var(--sp-16) max(var(--pp), calc((100vw - var(--max-w)) / 2 + var(--pp)));margin:var(--sp-16) 0;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);box-sizing:border-box}
+@media(min-width:1280px){.dark-block{width:calc(100vw - var(--nav-w));margin-left:calc(50% - 50vw + var(--nav-w)/2);margin-right:calc(50% - 50vw + var(--nav-w)/2);padding:var(--sp-16) max(var(--pp), calc((100vw - var(--nav-w) - var(--max-w)) / 2 + var(--pp)))}}
+.db-inner{max-width:var(--max-w);margin:0 auto}
+.db-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-8);display:flex;align-items:center;gap:10px}
+.db-label::before{content:"";width:18px;height:1px;background:var(--accent)}
+.db-h{font-size:clamp(20px,2.4vw,28px);font-weight:700;letter-spacing:-.5px;line-height:1.45;color:#fff;margin-bottom:var(--sp-8)}
+.db-h em{font-style:normal;color:#fff;font-weight:600}
+.db-h .ac{font-weight:600;font-style:normal}
+.db-body{font-size:14px;line-height:1.9;color:rgba(255,255,255,.72);max-width:800px}
+.db-body p+p{margin-top:var(--sp-4)}
+.db-body strong{color:#fff;font-weight:600}
+
+/* LINE SUPPRESSION */
+.dark-block + .tac{border-top:none;padding-top:0}
+.dark-block + .tiers{border-top:none !important}
+.dark-block + .split{border-top:none}
+.dark-block + .nblocks{border-top:none}
+.dark-block + .tbl{border-top:none}
+.dark-block + .s-rule{display:none}
+.dark-block + .pgrid{border-top:none}
+.dark-block + .tgrid{border-top:none}
+.split + .tac,.tbl + .tac,.tgrid + .tac,.pgrid + .tac,.nblocks + .tac,.tiers + .tac{border-top:none;padding-top:0}
+.s-rule + .s-rule{display:none}
+.tiers + .s-rule{display:none}
+.tbl + .s-rule{display:none}
+.split + .s-rule{display:none}
+.pgrid + .s-rule{display:none}
+.tgrid + .s-rule{display:none}
+.nblocks + .s-rule{display:none}
+
+/* STATUS GRID */
+.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);margin:var(--sp-8) 0 0;border:1px solid rgba(255,255,255,.1)}
+.status-cell{background:#0a0a0a;padding:var(--sp-5) var(--sp-6)}
+.sc-lbl{font-size:10px;color:rgba(255,255,255,.6);letter-spacing:1px;margin-bottom:var(--sp-2);text-transform:uppercase}
+.sc-val{font-size:15px;font-weight:700;color:#fff;margin-bottom:2px}
+.sc-val.warn{color:var(--accent)}.sc-val.ok{color:#fff}.sc-val.risk{color:var(--danger)}
+.sc-sub{font-size:11px;color:rgba(255,255,255,.6);line-height:1.5}
+@media(max-width:760px){.status-grid{grid-template-columns:1fr 1fr}}
+
+/* SPLIT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.split-col{padding:var(--sp-10) 0;padding-right:var(--sp-10)}
+.split-col+.split-col{border-left:1px solid var(--rule);padding-left:var(--sp-10);padding-right:0}
+.sp-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-5);display:flex;align-items:center;gap:10px}
+.sp-label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ink-4)}
+.sp-label.risk{color:var(--accent)}
+.sp-label.risk::before{background:var(--accent)}
+.sp-body{font-size:15px;line-height:1.85;color:var(--ink-3);margin-bottom:var(--sp-8)}
+.sp-body strong{color:var(--ink);font-weight:600}
+.hi{font-weight:600}
+.risk{font-weight:600}
+.sp-stats{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);padding-top:var(--sp-6);border-top:1px solid var(--rule)}
+.sp-stat-val{font-size:26px;font-weight:800;letter-spacing:-1px;color:var(--ink);margin-bottom:2px;line-height:1}
+.sp-stat-val.lo{color:var(--ink-4)}.sp-stat-val.mid{color:var(--ink-4)}
+.sp-stat-lbl{font-size:12px;color:var(--ink-4);line-height:1.5}
+@media(max-width:760px){.split{grid-template-columns:1fr}.split-col+.split-col{border-left:none;border-top:1px solid var(--rule);padding-left:0;padding-top:var(--sp-10)}.split-col{padding-right:0}}
+
+/* CHARTS */
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-12);margin:var(--sp-14) 0}
+.charts-1{grid-template-columns:1fr}
+@media(max-width:820px){.charts,.charts-1{grid-template-columns:1fr;gap:var(--sp-12)}}
+.ch{padding:var(--sp-6) 0}
+.ch-eye{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-2)}
+.ch-title{font-size:18px;font-weight:600;color:var(--ink);letter-spacing:-.3px;line-height:1.4;margin-bottom:var(--sp-6);max-width:420px}
+.ch-ax{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-4);margin-bottom:var(--sp-3)}
+.ch-canvas{position:relative;height:220px}
+.ch-canvas.tall{height:280px}
+.ch-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin-top:var(--sp-6);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.ch-stat{background:var(--bg);padding:var(--sp-5) var(--sp-4) var(--sp-4)}
+.ch-stat-lbl{font-size:11px;color:var(--ink-4);margin-bottom:var(--sp-2)}
+.ch-stat-val{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.2px}
+.ch-stat-val.ok{color:var(--accent)}.ch-stat-val.warn{color:var(--accent)}
+@media(max-width:820px){.charts{grid-template-columns:1fr;gap:var(--sp-12)}}
+
+/* TABLE */
+.tbl{margin:var(--sp-14) 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+.tbl-cap{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);padding:var(--sp-4) 0 var(--sp-3)}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl-scroll::-webkit-scrollbar{height:4px}
+.tbl-scroll::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+table.dt{width:100%;border-collapse:collapse;min-width:600px}
+table.dt th{text-align:left;padding:var(--sp-4);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-4);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg);white-space:nowrap}
+table.dt td{padding:var(--sp-4);font-size:14px;color:var(--ink-3);border-bottom:1px solid var(--rule-soft);vertical-align:middle;line-height:1.6}
+table.dt td strong{color:var(--ink);font-weight:600}
+table.dt tr:last-child td{border-bottom:none}
+table.dt tr:hover td{background:var(--bg-soft)}
+
+/* CMP TABLE */
+.cmp-tbl{width:80%;margin:var(--sp-8) auto;border-collapse:collapse;font-size:13px}
+.cmp-tbl th,.cmp-tbl td{padding:var(--sp-4) var(--sp-5);text-align:left;border-bottom:1px solid var(--rule)}
+.cmp-tbl th{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-4);border-bottom:1px solid var(--ink)}
+.cmp-tbl th:first-child{color:var(--ink-4)}
+.cmp-tbl th:not(:first-child){color:var(--ink)}
+.cmp-tbl td{color:var(--ink-3);line-height:1.6;vertical-align:top}
+.cmp-tbl td:first-child{color:var(--ink-4);font-size:12px;white-space:nowrap;width:100px}
+.cmp-tbl tr:last-child td{border-bottom:none}
+@media(max-width:900px){.cmp-tbl{width:100%}}
+@media(max-width:640px){.cmp-tbl{display:block;overflow-x:auto}}
+
+/* GAP ITEMS */
+.gap-grid{margin:var(--sp-10) 0;border-top:1px solid var(--ink)}
+.gap-item{padding:var(--sp-8) 0 var(--sp-8) var(--sp-6);border-bottom:1px solid var(--rule);border-left:3px solid var(--rule)}
+.gap-item.critical{border-left-color:var(--accent)}
+.gap-item.warn{border-left-color:var(--ink-4)}
+.gap-item.ok{border-left-color:var(--accent);background:var(--bg-soft)}
+.gap-layout{display:grid;grid-template-columns:1fr auto;gap:var(--sp-8);align-items:start}
+.gap-name{font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.2px;margin-bottom:var(--sp-3)}
+.gap-nums{display:flex;gap:var(--sp-10);flex-shrink:0}
+.gap-num-block{text-align:center}
+.gap-sosik{font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:2px}
+.gap-sosik span{color:var(--accent)}
+.gap-review{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:2px}
+.gap-review.zero{color:var(--accent)}.gap-review.low{color:var(--ink-4)}.gap-review.ok{color:var(--accent)}
+.gap-label{font-size:11px;color:var(--ink-4);display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.gap-fix{font-size:13px;line-height:1.75;color:var(--ink-3);margin-top:var(--sp-4);max-width:800px}
+.gap-fix strong{color:var(--ink);font-weight:600}
+@media(max-width:640px){.gap-layout{grid-template-columns:1fr}.gap-nums{justify-content:flex-start}}
+
+/* BADGES */
+.badge-ok{display:inline-block;font-size:10px;font-weight:700;padding:2px 6px;background:var(--ink);color:#fff;letter-spacing:.3px;vertical-align:middle}
+.badge-warn{display:inline-block;font-size:10px;font-weight:700;padding:2px 6px;background:var(--ink-4);color:#fff;letter-spacing:.3px;vertical-align:middle}
+.badge-bad{display:inline-block;font-size:10px;font-weight:700;padding:2px 6px;background:var(--accent);color:#fff;letter-spacing:.3px;vertical-align:middle}
+
+/* TAGS */
+.tag{display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;letter-spacing:.5px;border:1px solid var(--rule);color:var(--ink-3);white-space:nowrap}
+.t-pod{border-color:var(--accent);color:var(--accent)}.t-pop{border-color:var(--ink-4);color:var(--ink-4)}
+.t-par{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.t-ok{border-color:var(--ink);color:var(--ink)}.t-gap{border-color:var(--danger);color:var(--danger)}.t-risk{border-color:var(--danger);background:var(--danger);color:#fff}
+.t-info{border-color:var(--accent);color:var(--accent)}
+.t-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 6px;background:var(--accent);color:#fff;vertical-align:middle;margin-left:6px;text-transform:uppercase}
+
+/* QUOTES */
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-10);margin:var(--sp-10) 0}
+.qgroup-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-4);margin-bottom:var(--sp-5);padding-bottom:var(--sp-3);border-bottom:1px solid var(--ink)}
+.qcard{padding:var(--sp-6) 0;border-bottom:1px solid var(--rule)}
+.qcard:last-child{border-bottom:none}
+.qhead{display:flex;align-items:center;gap:10px;margin-bottom:var(--sp-3)}
+.qavatar{width:26px;height:26px;border-radius:50%;background:var(--bg-soft);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;color:var(--ink-4);font-size:10px;font-weight:700;flex-shrink:0}
+.qname{font-size:12px;font-weight:600;color:var(--ink-2)}
+.qdate{font-size:11px;color:var(--ink-4)}
+.qtext{font-size:14px;line-height:1.85;color:var(--ink-2)}
+.qtext em{color:var(--accent);font-style:normal;font-weight:600}
+@media(max-width:760px){.qgrid{grid-template-columns:1fr}}
+
+/* QFB */
+.quote-full-block{margin:var(--sp-14) 0;border-top:1px solid var(--ink)}
+.qfb-title{font-size:14px;font-weight:700;color:var(--ink);padding:var(--sp-6) 0 var(--sp-2)}
+.qfb-desc{font-size:13px;line-height:1.85;color:var(--ink-3);max-width:900px;padding-bottom:var(--sp-8);border-bottom:1px solid var(--rule)}
+.qfb-desc strong{color:var(--ink);font-weight:600}
+.qfb-card{padding:var(--sp-8) 0;border-bottom:1px solid var(--rule)}
+.qfb-card:last-child{border-bottom:none}
+.qfb-head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-6);margin-bottom:var(--sp-5);padding-bottom:var(--sp-4);border-bottom:1px solid var(--rule-soft)}
+.qfb-head-l{display:flex;align-items:flex-start;gap:var(--sp-5)}
+.qfb-rank{font-size:24px;font-weight:800;letter-spacing:-1px;color:var(--ink);line-height:1;padding-top:2px;min-width:36px}
+.qfb-name{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.2px;margin-bottom:4px;display:flex;align-items:center}
+.qfb-meta{font-size:12px;color:var(--ink-4);line-height:1.5}
+.qfb-score{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;white-space:nowrap;padding-top:6px}
+.qfb-score-num{font-size:22px;font-weight:800;letter-spacing:-.5px;color:var(--accent);margin-right:3px}
+.qfb-body{font-size:15px;line-height:1.95;color:var(--ink-2);padding:var(--sp-2) 0 var(--sp-4);max-width:900px;white-space:pre-wrap}
+.qfb-tags{display:flex;flex-wrap:wrap;gap:6px;padding-top:var(--sp-3);border-top:1px solid var(--rule-soft)}
+@media(max-width:640px){.qfb-head{flex-direction:column;gap:var(--sp-3)}.qfb-rank{font-size:20px}}
+
+/* PERSONAS */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.persona{background:var(--bg);padding:var(--sp-10) var(--sp-8)}
+.p-num{font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--ink-4);margin-bottom:var(--sp-6)}
+.p-pct{font-size:42px;font-weight:800;letter-spacing:-2px;color:var(--ink);line-height:1;margin-bottom:var(--sp-4)}
+.p-pct .unit{font-size:14px;color:var(--ink-4);font-weight:500;margin-left:2px}
+.p-name{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.2px;margin-bottom:var(--sp-2)}
+.p-kw{font-size:12px;color:var(--ink-4);line-height:1.6}
+@media(max-width:760px){.pgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.pgrid{grid-template-columns:1fr}}
+
+/* STAFF CARDS */
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:var(--sp-14) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.trainer{background:var(--bg);padding:var(--sp-10) var(--sp-8)}
+.t-num{font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--ink-4);margin-bottom:var(--sp-4)}
+.t-name{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.5px;margin-bottom:var(--sp-2)}
+.t-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 6px;background:var(--accent);color:#fff;vertical-align:middle;margin-left:6px;text-transform:uppercase}
+.t-meta{font-size:12px;color:var(--ink-4);padding-bottom:var(--sp-5);margin-bottom:var(--sp-5);border-bottom:1px solid var(--rule)}
+.t-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:var(--sp-4)}
+.t-pill{display:inline-block;font-size:10px;font-weight:500;padding:3px 8px;border:1px solid var(--rule);color:var(--ink-3)}
+.t-summary{font-size:13px;color:var(--ink-3);line-height:1.7;margin-bottom:var(--sp-5)}
+.t-quote{padding:var(--sp-4) 0 0;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.75;font-style:italic}
+@media(max-width:760px){.tgrid{grid-template-columns:1fr}}
+
+/* ACTIONS */
+.actions{margin:var(--sp-10) 0}
+.action{padding:var(--sp-14) 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:160px 1fr;gap:var(--sp-10)}
+.action:last-child{border-bottom:1px solid var(--rule)}
+.ac-left{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--ink-4);padding-top:6px}
+.ac-left .n{color:var(--ink);margin-right:6px}
+.ac-left .pri{display:block;margin-top:var(--sp-2);font-size:10px;color:var(--accent)}
+.ac-left .pri.normal{color:var(--ink-4)}
+.ac-title{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.5px;line-height:1.35;margin-bottom:var(--sp-4)}
+.ac-desc{font-size:14px;line-height:1.85;color:var(--ink-3);margin-bottom:var(--sp-5)}
+.ac-desc strong{color:var(--ink);font-weight:600}
+.ac-box{border-left:2px solid var(--accent);padding:var(--sp-4) var(--sp-6);background:var(--bg-soft);font-size:14px;line-height:1.8;color:var(--ink-2)}
+.ac-box-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-3)}
+.ac-box strong{color:var(--ink);font-weight:600}
+.ex-before{color:var(--ink-4);text-decoration:line-through;display:block;margin-bottom:var(--sp-2)}
+.ex-after{color:var(--ink);font-weight:600;display:block}
+@media(max-width:760px){.action{grid-template-columns:1fr;gap:var(--sp-4)}}
+
+/* GAUGE */
+.gauge-block{margin:var(--sp-16) 0;border-top:1px solid var(--ink);padding-top:var(--sp-10)}
+.gauge-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:var(--sp-8);letter-spacing:-.2px}
+.gauge{padding:var(--sp-6) 0}
+.gauge+.gauge{margin-top:var(--sp-2)}
+.g-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-3)}
+.g-head-l{display:flex;align-items:baseline;gap:var(--sp-4)}
+.g-name{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.2px}
+.g-pct{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.5px}
+.g-pct.mid{color:var(--ink-4)}
+.g-pct.low{color:var(--accent)}
+.g-pct.good{color:var(--accent)}
+.g-note{font-size:11px;color:var(--ink-4);letter-spacing:.3px}
+.g-bar{height:2px;background:linear-gradient(to right,var(--gauge-color,var(--ink)) var(--gauge-w,0%),var(--rule) 0);transition:--gauge-w 1.2s cubic-bezier(.2,.8,.2,1)}
+.g-bar.low{--gauge-color:var(--accent)}.g-bar.mid{--gauge-color:var(--ink-4)}
+.g-bar.good{--gauge-color:var(--accent)}
+.g-sub{font-size:12px;color:var(--ink-4);margin-top:var(--sp-2);line-height:1.6}
+
+/* TIERS */
+.tiers{margin:var(--sp-14) 0;border-top:1px solid var(--ink)}
+.tier{display:grid;grid-template-columns:140px 1fr;gap:var(--sp-10);padding:var(--sp-10) 0;border-bottom:1px solid var(--rule)}
+.tier-left{font-size:11px;letter-spacing:1.5px;color:var(--ink-4);padding-top:2px}
+.tier-left .n{color:var(--ink);font-weight:700;margin-right:6px}
+.tier-name{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.3px;margin-top:var(--sp-3);margin-bottom:var(--sp-2)}
+.tier-name:first-child{margin-top:0}
+.tier:has(.tier-name:first-child)>.tier-left{padding-top:6px}
+.tier-weight{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:var(--sp-3)}
+.tier-body{font-size:14px;line-height:1.85;color:var(--ink-3)}
+.tier-body strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){.tier{grid-template-columns:1fr;gap:var(--sp-3)}}
+
+/* NOTE GRID */
+.notegrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-10);margin:var(--sp-10) 0}
+.note{border-top:1px solid var(--ink);padding:var(--sp-6) 0 0;font-size:14px;line-height:1.85;color:var(--ink-3)}
+.note-h{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:var(--sp-3);letter-spacing:-.2px}
+.note p,.note div{font-size:14px;color:var(--ink-3);line-height:1.75}
+.note strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){.notegrid{grid-template-columns:1fr;gap:var(--sp-8)}}
+
+/* TAC */
+.tac{border-top:1px solid var(--ink);padding:var(--sp-10) 0;margin:var(--sp-16) 0}
+.tac-label{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-6)}
+.tac-body{font-size:16px;line-height:1.85;color:var(--ink-2);max-width:900px}
+.tac-body strong{color:var(--ink);font-weight:700}
+.tac-dir{margin-top:var(--sp-6);padding-top:var(--sp-6);border-top:1px solid var(--rule);font-size:14px;line-height:1.85;color:var(--ink-3);max-width:900px}
+.tac-dir strong{color:var(--ink);font-weight:600}
+.tac-dir .arrow{color:var(--accent);font-weight:700;margin-right:6px}
+
+/* CASE NOTE (타 에스테틱 사례) */
+.case-note{border-top:1px solid var(--ink-5);padding:var(--sp-6) 0 0;margin:var(--sp-8) 0}
+.case-note-lbl{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-5);margin-bottom:var(--sp-3);display:flex;align-items:center;gap:8px}
+.case-note-lbl::before{content:"";width:14px;height:1px;background:var(--ink-5)}
+.case-note-body{font-size:14px;line-height:1.85;color:var(--ink-4)}
+.case-note-body strong{color:var(--ink-3);font-weight:600}
+
+/* KWBARS */
+.kwbars{margin:var(--sp-6) 0}
+.kwbar{padding:var(--sp-4) 0;border-bottom:1px solid var(--rule)}
+.kwbar:last-child{border-bottom:none}
+.kwb-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-2);font-size:13px}
+.kwb-name{color:var(--ink-2);font-weight:500}
+.kwb-val{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+.kwb-track{height:2px;background:var(--rule)}
+.kwb-fill{height:100%;background:var(--ink);width:0;transition:width 1s ease}
+.kwb-fill.soft{background:var(--ink-4)}
+
+/* RANK ROWS */
+.rank-row{display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3) 0;border-bottom:1px solid var(--rule)}
+.rank-row:last-child{border-bottom:none}
+.rank-name{font-size:13px;color:var(--ink-2);font-weight:500}
+.rank-right{display:flex;align-items:center;gap:12px;font-size:11px}
+.rank-lbl{color:var(--ink-4);font-weight:600;min-width:60px;text-align:right}
+.rank-dots{letter-spacing:3px;font-size:10px}
+.rank-dots .on{color:var(--ink)}.rank-dots .off{color:var(--rule)}
+
+/* TOGGLE */
+.toggle{border-top:1px solid var(--rule)}
+.toggle:last-of-type{border-bottom:1px solid var(--rule)}
+.toggle-btn{width:100%;background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;display:flex;align-items:center;gap:var(--sp-4);padding:var(--sp-6) 0;min-height:52px;font-size:14px;font-weight:600;color:var(--ink)}
+.toggle-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.toggle-dot.soft{background:var(--ink-4)}
+.toggle-lbl{flex:1;line-height:1.5}
+.toggle-arr{font-size:14px;color:var(--ink-4);transition:transform .3s;flex-shrink:0}
+.toggle.open .toggle-arr{transform:rotate(180deg)}
+.toggle-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.toggle.open .toggle-body{max-height:1200px}
+.toggle-inner{padding:0 0 var(--sp-8);font-size:14px;color:var(--ink-3);line-height:1.85;max-width:900px}
+.toggle-inner p+p{margin-top:var(--sp-4)}
+.toggle-inner strong{color:var(--ink);font-weight:600}
+
+/* CYCLE */
+.cycle-wrap{margin:var(--sp-12) auto;max-width:680px}
+.cycle-wrap svg{display:block;width:100%;height:auto}
+.cycle-wrap svg>g{opacity:0;transition:opacity .5s cubic-bezier(.2,.8,.2,1)}
+.cycle-wrap svg>line{stroke-dasharray:220;stroke-dashoffset:220;transition:stroke-dashoffset .5s cubic-bezier(.2,.8,.2,1)}
+.cycle-wrap.in-view svg>g{opacity:1}
+.cycle-wrap.in-view svg>line{stroke-dashoffset:0}
+.cycle-wrap.in-view svg>g:nth-of-type(1){transition-delay:.08s}
+.cycle-wrap.in-view svg>line:nth-of-type(1){transition-delay:.42s}
+.cycle-wrap.in-view svg>g:nth-of-type(2){transition-delay:.22s}
+.cycle-wrap.in-view svg>line:nth-of-type(2){transition-delay:.56s}
+.cycle-wrap.in-view svg>g:nth-of-type(3){transition-delay:.36s}
+.cycle-wrap.in-view svg>line:nth-of-type(3){transition-delay:.7s}
+.cycle-wrap.in-view svg>g:nth-of-type(4){transition-delay:.5s}
+.cycle-wrap.in-view svg>line:nth-of-type(4){transition-delay:.84s}
+.cycle-wrap.in-view svg>g:nth-of-type(5){transition-delay:1s}
+.cy-spin{transform-origin:340px 182px}
+.cycle-wrap.in-view .cy-spin{animation:cySpin 14s linear infinite}
+@keyframes cySpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.cycle-mobile{display:none}
+@media(max-width:640px){.cycle-wrap svg{display:none}.cycle-mobile{display:flex;flex-direction:column;gap:2px}}
+.cy-step{border:1px solid var(--rule);padding:18px 20px;text-align:center;background:var(--bg)}
+.cy-step-num{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);margin-bottom:6px}
+.cy-step-text{font-size:15px;font-weight:600;color:var(--ink);line-height:1.4}
+.cy-step-arrow{text-align:center;color:#b8b8b8;font-size:20px;padding:6px 0}
+.cy-step-loop{margin-top:14px;text-align:center;color:var(--ink-4);font-size:12px}
+
+/* ANIMATIONS */
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.anim.visible{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+.footer{background:#0a0a0a;color:rgba(255,255,255,.65);padding:var(--sp-16) var(--pp);text-align:center;margin-top:var(--sp-16)}
+@media(min-width:1280px){.footer{padding-left:calc(var(--pp) + var(--nav-w))}}
+.ft-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:#fff;margin-bottom:var(--sp-5)}
+.ft-brand .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle;margin-top:-2px}
+.ft-links{display:flex;justify-content:center;gap:var(--sp-8);margin-bottom:var(--sp-6);flex-wrap:wrap}
+.ft-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;letter-spacing:.3px;transition:color .2s}
+.ft-links a:hover{color:#fff}
+.ft-copy{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.5px}
+
+/* PRINT / REDUCED MOTION */
+@media print{.topbar,.skip-link{display:none!important}main{padding-top:0}.section{break-inside:avoid;padding:20px 0}.cover{min-height:auto;padding:40px 0;break-after:page}.dark-block,.cover,.footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.cy-spin{animation:none!important}.cycle-wrap svg>g{opacity:1!important}.cycle-wrap svg>line{stroke-dashoffset:0!important}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#cover">본문으로 건너뛰기</a>
+
+<header class="topbar" role="banner">
+  <div class="tb-inner">
+    <div class="tb-brand"><span class="dot"></span>RE:FEEEL</div>
+    <div class="tb-current" id="tb-current"><span class="num">—</span>매끄롬 포항효자점</div>
+    <div class="tb-progress"><div class="tb-prog-bar"><div class="tb-prog-fill" id="tb-fill"></div></div><div class="tb-prog-num" id="tb-num">0%</div></div>
+    <button class="tb-menu" id="drawer-open" type="button" aria-label="목차 열기" aria-controls="drawer" aria-expanded="false">
+      <span class="tb-menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>MENU</span>
+    </button>
+  </div>
+</header>
+
+<aside class="sidenav" aria-label="섹션 네비게이션">
+  <div class="sn-masthead">
+    <div class="sn-client">매끄롬<br>포항효자점</div>
+    <div class="sn-tagline">Place Report · 2026</div>
+  </div>
+  <ul class="sn-list" id="sn-list">
+    <li class="sn-item" data-target="cover"><a href="#cover"><span class="sn-num">—</span><span class="sn-title">Cover</span></a></li>
+    <li class="sn-group">Diagnosis · 진단</li>
+    <li class="sn-item" data-target="intro"><a href="#intro"><span class="sn-num">00</span><span class="sn-title">리포트 개요</span></a></li>
+    <li class="sn-item" data-target="place"><a href="#place"><span class="sn-num">01</span><span class="sn-title">플레이스 상태</span></a></li>
+    <li class="sn-item" data-target="overview"><a href="#overview"><span class="sn-num">02</span><span class="sn-title">종합 진단</span></a></li>
+    <li class="sn-group">Analysis · 분석</li>
+    <li class="sn-item" data-target="pod"><a href="#pod"><span class="sn-num">03</span><span class="sn-title">POP vs POD</span></a></li>
+    <li class="sn-item" data-target="gap"><a href="#gap"><span class="sn-num">04</span><span class="sn-title">간극 분석</span></a></li>
+    <li class="sn-item" data-target="transfer"><a href="#transfer"><span class="sn-num">05</span><span class="sn-title">언어 전이 GAP</span></a></li>
+    <li class="sn-item" data-target="staff"><a href="#staff"><span class="sn-num">06</span><span class="sn-title">담당자 인식</span></a></li>
+    <li class="sn-item" data-target="persona"><a href="#persona"><span class="sn-num">07</span><span class="sn-title">고객 페르소나</span></a></li>
+    <li class="sn-group">Action · 실행</li>
+    <li class="sn-item" data-target="trend"><a href="#trend"><span class="sn-num">07-B</span><span class="sn-title">리뷰 추이</span></a></li>
+    <li class="sn-item" data-target="action"><a href="#action"><span class="sn-num">08</span><span class="sn-title">액션 플랜</span></a></li>
+    <li class="sn-item" data-target="list"><a href="#list"><span class="sn-num">09</span><span class="sn-title">리뷰 목록</span></a></li>
+  </ul>
+  <div class="sn-credit">by RE:FEEEL</div>
+  <div class="sn-foot">
+    <div class="sn-foot-lbl"><span>Progress</span><span class="sn-foot-num" id="sn-num">0%</span></div>
+    <div class="sn-prog"><div class="sn-prog-fill" id="sn-fill"></div></div>
+  </div>
+</aside>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="목차" aria-hidden="true">
+  <div class="drawer-head">
+    <div class="drawer-brand"><span class="dot"></span>RE:FEEEL</div>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="목차 닫기"><span aria-hidden="true">×</span></button>
+  </div>
+  <div class="drawer-body">
+    <div class="drawer-eyebrow">매끄롬 포항효자점 · 플레이스 리포트</div>
+    <ul class="dw-list">
+      <li class="dw-group">Diagnosis · 진단</li>
+      <li class="dw-item" data-target="intro"><a href="#intro"><span class="dw-num">00</span><div class="dw-body"><div class="dw-title">리포트 개요</div><div class="dw-desc">이 리포트가 보는 것</div></div><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="place"><a href="#place"><span class="dw-num">01</span><div class="dw-body"><div class="dw-title">플레이스 상태</div><div class="dw-desc">13개 항목 진단</div></div><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="overview"><a href="#overview"><span class="dw-num">02</span><div class="dw-body"><div class="dw-title">종합 진단</div><div class="dw-desc">SEO/AEO 점수 현황</div></div><span class="dw-arrow">→</span></a></li>
+      <li class="dw-group">Analysis · 분석</li>
+      <li class="dw-item" data-target="pod"><a href="#pod"><span class="dw-num">03</span><div class="dw-body"><div class="dw-title">POP vs POD</div><div class="dw-desc">고객 관점 차별점 분류</div></div><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="gap"><a href="#gap"><span class="dw-num">04</span><div class="dw-body"><div class="dw-title">간극 분석</div><div class="dw-desc">브랜드 의도 vs 고객 언어</div></div><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="transfer"><a href="#transfer"><span class="dw-num">05</span><div class="dw-body"><div class="dw-title">언어 전이 GAP</div><div class="dw-desc">브랜드 언어가 왜 리뷰에 없는가</div></div><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="staff"><a href="#staff"><span class="dw-num">06</span><div class="dw-body"><div class="dw-title">담당자 인식</div><div class="dw-desc">은영 원장 & 소영 주임</div></div><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="persona"><a href="#persona"><span class="dw-num">07</span><div class="dw-body"><div class="dw-title">고객 페르소나</div><div class="dw-desc">7가지 방문 유형</div></div><span class="dw-arrow">→</span></a></li>
+      <li class="dw-group">Action · 실행</li>
+      <li class="dw-item" data-target="trend"><a href="#trend"><span class="dw-num">07-B</span><div class="dw-body"><div class="dw-title">리뷰 추이</div><div class="dw-desc">월별 리뷰 건수 · 유입 정체 구간</div></div><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="action"><a href="#action"><span class="dw-num">08</span><div class="dw-body"><div class="dw-title">액션 플랜</div><div class="dw-desc">9가지 실행 항목</div></div><span class="dw-arrow">→</span></a></li>
+      <li class="dw-item" data-target="list"><a href="#list"><span class="dw-num">09</span><div class="dw-body"><div class="dw-title">리뷰 목록</div><div class="dw-desc">Top 10 원문 · AI 인용 구조</div></div><span class="dw-arrow">→</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- COVER -->
+<section id="cover" class="cover" data-nav="Cover" data-num="—">
+<div class="cover-inner">
+  <div class="cv-top"><span>Place Report</span><span class="r">경북 포항시 남구<br>2026.04</span></div>
+  <div class="cv-mid">
+    <div class="cv-label">피부·체형관리 에스테틱</div>
+    <h1 class="cv-h1">매끄롬<span class="line2">포항효자점</span></h1>
+    <p class="cv-desc">방문자 리뷰 119건 기반 분석<br>분석 기간: 2021년 — 2026년 4월</p>
+  </div>
+  <div class="cv-bot">
+    <div class="cv-kpi"><div class="cv-kpi-val">24.5</div><div class="cv-kpi-lbl">SEO Score</div><div class="cv-kpi-sub">45점 만점 · 검색 기여 중간</div></div>
+    <div class="cv-kpi"><div class="cv-kpi-val dim">6.4</div><div class="cv-kpi-lbl">AEO Score</div><div class="cv-kpi-sub">50점 만점 · AI 참조 낮음</div></div>
+    <div class="cv-kpi"><div class="cv-kpi-val">63<span style="font-size:.5em;color:rgba(255,255,255,.7)">%</span></div><div class="cv-kpi-lbl">예약 인증률</div><div class="cv-kpi-sub">119건 분석 기준</div></div>
+    <div class="cv-kpi"><div class="cv-kpi-val lo">0<span style="font-size:.5em;color:rgba(255,255,255,.7)">건</span></div><div class="cv-kpi-lbl">AI 인용 가능</div><div class="cv-kpi-sub">70점+ A등급 / 전체 0%</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ST/00 — 리포트 개요 -->
+<section id="intro" class="section" data-nav="리포트 개요" data-num="00">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 00 <span class="sep">·</span> 이 리포트가 보는 것</div>
+    <h2 class="s-title">리뷰와 플레이스 데이터로<br><span class="soft">현재 상태를 진단한다</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>이 리포트는 매끄롬 포항효자점 네이버 플레이스에 쌓인 <strong>방문자 리뷰 119건</strong>과 <strong>플레이스 운영 상태</strong>를 함께 진단한 결과입니다. 리뷰 하나하나에 SEO(검색 노출 기여도)와 AEO(AI 답변 참조 가능성)를 채점하고, 플레이스 정보 충실도·예약 구조·답글 운영·브랜드 인식까지 종합적으로 봅니다.</p>
+    <p>이 리포트는 별점이나 만족도를 다루지 않습니다. <strong>"고객이 리뷰에 쓴 단어가 검색과 AI에서 어떤 가치를 만드는가"</strong>, 그리고 <strong>"플레이스 자체가 예약 전환에 최적화되어 있는가"</strong>를 봅니다.</p>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">핵심 발견 — 미리보기</div>
+    <div class="db-h">리뷰는 충분히 길고,<br>고객은 깊이 신뢰한다.<br><span class="ac">하지만 브랜드의 진짜 무기를 고객은 말하지 않는다.</span></div>
+    <div class="db-body">
+      <p>매끄롬의 리뷰는 에스테틱 업종 안에서 길이와 충성도 모두 상위 수준입니다. 8~9년 단골, 웨딩→임산부→산후 연속 방문, 의료 대비 효과 비교 — 이건 단단한 자산입니다.</p>
+      <p style="margin-top:12px">문제는 브랜드가 가장 자랑하는 것들이 고객의 언어에 거의 존재하지 않는다는 사실입니다. <strong>"아프지 않은 효과"는 리뷰의 10% 미만, "홈케어 처방"은 4%, "중력윤곽"이라는 브랜드 시술명은 ~3건.</strong> 브랜드가 가장 자랑하는 것들이 고객의 언어에 없습니다.</p>
+    </div>
+  </div>
+
+
+  <div class="prose" style="margin-top:var(--sp-14)">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;margin-bottom:var(--sp-4);letter-spacing:-.3px">네이버가 가장 높게 평가하는 선순환 구조</p>
+    <p>단순히 리뷰가 많다고 1등을 주지 않습니다. 네이버는 이 네 단계가 반복되는 패턴이 확인될 때 가중치를 대폭 부여합니다.</p>
+  </div>
+
+  <div class="cycle-wrap">
+    <svg viewBox="0 0 680 420" role="img" aria-label="네이버 플레이스 선순환 구조 다이어그램">
+      <defs><marker id="cy-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+      <g>
+        <rect x="60" y="40" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="180" y="64" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">01 · 검색</text>
+        <text x="180" y="90" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">특정 키워드로 플레이스 진입</text>
+      </g>
+      <line x1="302" y1="78" x2="378" y2="78" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="380" y="40" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="500" y="64" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">02 · 탐색</text>
+        <text x="500" y="90" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">리뷰·시술 정보를 30초+ 체류</text>
+      </g>
+      <line x1="500" y1="118" x2="500" y2="288" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="380" y="290" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="500" y="314" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">03 · 의도 확인</text>
+        <text x="500" y="340" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">저장하기 또는 길찾기 실행</text>
+      </g>
+      <line x1="378" y1="328" x2="302" y2="328" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="60" y="290" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="180" y="314" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">04 · 경험 완결</text>
+        <text x="180" y="340" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">방문 후 예약 인증 리뷰 작성</text>
+      </g>
+      <line x1="180" y1="288" x2="180" y2="118" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <g class="cy-spin"><text x="340" y="182" text-anchor="middle" font-size="22" fill="#e75519" opacity=".35">↻</text></g>
+        <text x="340" y="206" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="11" fill="#8a8a8a">이 순환이 반복될수록</text>
+        <text x="340" y="222" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="11" fill="#8a8a8a">순위가 올라간다</text>
+      </g>
+    </svg>
+    <div class="cycle-mobile" aria-hidden="true">
+      <div class="cy-step"><div class="cy-step-num">01 · 검색</div><div class="cy-step-text">특정 키워드로 플레이스 진입</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">02 · 탐색</div><div class="cy-step-text">리뷰·시술 정보를 30초+ 체류</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">03 · 의도 확인</div><div class="cy-step-text">저장하기 또는 길찾기 실행</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">04 · 경험 완결</div><div class="cy-step-text">방문 후 예약 인증 리뷰 작성</div></div>
+      <div class="cy-step-loop"><span class="sp">↻</span>이 순환이 반복될수록 순위가 올라간다</div>
+    </div>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose" style="margin-bottom:var(--sp-12)">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;margin-bottom:var(--sp-4);letter-spacing:-.3px">이 리포트의 접근</p>
+    <p>리뷰 119건 안에는 고객이 왜 예약했는지, 왜 다시 오는지, 어떤 경험이 가장 달랐는지가 전부 들어 있습니다. 이 데이터로 세 가지 층위를 동시에 진단하고, 인위적 트래픽 없이 선순환이 자생적으로 작동하는 구조를 설계합니다.</p>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">플레이스 현재 상태</div>
+    <div class="db-h"><em>매끄롬 포항효자점</em> · 피부·체형관리 · 경북 포항시 남구 중흥로 29</div>
+    <div class="db-body" style="margin-bottom:var(--sp-6)">
+      <p><strong>방문자 리뷰 123건</strong> · 블로그 리뷰 97건 · 이미지 999+</p>
+      <p><strong>스태프</strong> · 은영 원장 (예아트 시절부터 핵심 인력) · 소영 주임 (독립 예약 운영)</p>
+      <p><strong>주요 서비스</strong> · 아픈피부·문제성피부 · 얼굴윤곽·중력윤곽 · 바디 체형교정 · 웨딩 케어 · 임산부·산후 관리 · 하이푸 리프팅</p>
+      <p><strong>예약 시스템</strong> · 은영 원장 전용 · 소영 주임 전용 · 신규고객(첫만남) · 매끄롬 회원권</p>
+    </div>
+    <div class="status-grid">
+      <div class="status-cell"><div class="sc-lbl">가격표</div><div class="sc-val ok">등록</div><div class="sc-sub">아픈피부 130,000~ · 윤곽 100,000~</div></div>
+      <div class="status-cell"><div class="sc-lbl">예약 시스템</div><div class="sc-val ok">4종 운영</div><div class="sc-sub">원장·주임·신규·회원권 분리 예약</div></div>
+      <div class="status-cell"><div class="sc-lbl">주차 정보</div><div class="sc-val ok">전용주차장</div><div class="sc-sub">건물 앞·뒤 전용주차장 명시</div></div>
+      <div class="status-cell"><div class="sc-lbl">소식 발행</div><div class="sc-val ok">운영 중</div><div class="sc-sub">팬밀리세일·이벤트 4건 확인</div></div>
+      <div class="status-cell"><div class="sc-lbl">소개 문구</div><div class="sc-val warn">개선 권고</div><div class="sc-sub">철학 중심 → 고객 언어로 재작성 필요</div></div>
+      <div class="status-cell"><div class="sc-lbl">답글 작성</div><div class="sc-val ok">~95%</div><div class="sc-sub">내용이 감사 인사 중심 → POD 삽입 필요</div></div>
+      <div class="status-cell"><div class="sc-lbl">블로그 연동</div><div class="sc-val ok">등록</div><div class="sc-sub">blog.naver.com/ley129</div></div>
+      <div class="status-cell"><div class="sc-lbl">편의시설</div><div class="sc-val ok">6종</div><div class="sc-sub">무선인터넷·화장실·예약·대기공간·간편결제·주차</div></div>
+      <div class="status-cell"><div class="sc-lbl">민생회복 지원금</div><div class="sc-val ok">사용처</div><div class="sc-sub">전 지점 지원금 결제 가능</div></div>
+    </div>
+  </div>
+
+  <div class="prose" style="margin-top:var(--sp-12)">
+    <p>네이버에서 '포항 피부관리'를 검색하면 플레이스 목록이 뜹니다. 그 목록에서 위에 뜨느냐를 결정하는 게 <strong>SEO(Search Engine Optimization)</strong>입니다. 리뷰 수, 영수증 인증 비율, 키워드 태그, 재방문율 같은 요소들이 영향을 줍니다. 검색했을 때 눈에 보이는 곳에 올라가는 것까지가 SEO의 역할입니다.</p>
+  </div>
+
+  <table class="cmp-tbl">
+    <thead><tr><th></th><th>SEO</th><th>AEO</th></tr></thead>
+    <tbody>
+      <tr><td>목표</td><td>검색 목록에 올라가기</td><td>AI의 답변에 선택되기</td></tr>
+      <tr><td>작동 방식</td><td>리뷰 수, 인증, 키워드 태그</td><td>리뷰의 구체성, 스토리, 수치, 시술명</td></tr>
+      <tr><td>리뷰 예시</td><td>"친절해요" (태그 수 기여)</td><td>"5-6년 스테로이드 먹다가 매끄롬에서 새 삶을 살고 있습니다"</td></tr>
+      <tr><td>비유</td><td>전화번호부에 이름 올리기</td><td>지인이 직접 추천해주는 것</td></tr>
+    </tbody>
+  </table>
+
+  <div class="prose">
+    <p>이제는 검색 결과를 하나씩 보는 게 아닙니다. 네이버 AI가 리뷰 전체를 읽고 요약해주고, 고객은 그 한 줄 요약으로 방문 여부를 판단합니다. 이때 AI가 근거로 참조하는 게 리뷰인데, 이걸 <strong>AEO(Answer Engine Optimization)</strong>라고 합니다. "스테로이드 6년 먹다가 매끄롬에서 새 삶을 살고 있어요"처럼 구체적 경험이 담긴 리뷰는 AI가 인용할 수 있지만, "친절하고 꼼꼼해요"는 AI가 가져갈 게 없습니다.</p>
+  </div>
+
+  <div class="notegrid" style="margin-top:var(--sp-14)">
+    <div class="note">
+      <div class="note-h">이런 리뷰일수록 검색과 AI에 더 잘 잡힙니다</div>
+      <div class="kwbars">
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">구체적 증상 + 결과</span><span class="kwb-val">+45%</span></div><div class="kwb-track"><div class="kwb-fill" data-w="100"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">고화질 이미지 3장 이상</span><span class="kwb-val">+30%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="67"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">브랜드 고유 표현 (시술명 포함)</span><span class="kwb-val">+25%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="56"></div></div></div>
+        <div class="kwbar"><div class="kwb-head"><span class="kwb-name">담당자 실명 언급</span><span class="kwb-val">+15%</span></div><div class="kwb-track"><div class="kwb-fill soft" data-w="33"></div></div></div>
+      </div>
+    </div>
+    <div class="note">
+      <div class="note-h">네이버 순위 가중치 구조</div>
+      <div style="margin-top:var(--sp-4)">
+        <div class="rank-row"><div class="rank-name">사용자 행동 (체류·예약·재방문)</div><div class="rank-right"><span class="rank-lbl">최상</span><span class="rank-dots"><span class="on">● ● ● ● ●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">검색어 매칭 (리뷰 내 키워드)</div><div class="rank-right"><span class="rank-lbl">매우 높음</span><span class="rank-dots"><span class="on">● ● ● ●</span> <span class="off">●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">인기도 (리뷰·저장·클릭)</div><div class="rank-right"><span class="rank-lbl">높음</span><span class="rank-dots"><span class="on">● ● ●</span> <span class="off">● ●</span></span></div></div>
+        <div class="rank-row"><div class="rank-name">정보 충실도 (설명·사진·메뉴)</div><div class="rank-right"><span class="rank-lbl">중간</span><span class="rank-dots"><span class="on">● ●</span> <span class="off">● ● ●</span></span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ST/01 — 플레이스 상태 -->
+<section id="place" class="section" data-nav="플레이스 상태" data-num="01">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 01 <span class="sep">·</span> 플레이스 상태 · 정보 최적화</div>
+    <h2 class="s-title">고객이 오기 전,<br><span class="soft">플레이스가 먼저 판단된다</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>플레이스 셋팅의 역할은 <strong>'입장권'</strong>입니다. 정보를 빠짐없이 채우고, 예약 시스템을 갖추고, 키워드를 배치하는 것 — 이것만으로 순위가 올라가던 시대는 지났습니다. 하지만 이 기본값이 갖춰져 있지 않으면 노출 자체가 되지 않습니다.</p>
+    <p>아래는 매끄롬 포항효자점 플레이스가 이 입장권을 어디까지 확보하고 있는지 점검한 결과입니다.</p>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose" style="margin-bottom:var(--sp-8)">
+    <p>이 리포트는 세 가지 관점에서 플레이스를 분석합니다.</p>
+  </div>
+
+  <div class="tiers" style="margin-bottom:var(--sp-12)">
+    <div class="tier">
+      <div class="tier-left"><span class="n">01</span>LAYER</div>
+      <div>
+        <div class="tier-name">알고리즘이 보는 것.<br><span style="color:var(--ink-4)">순위의 기반.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">네이버 검색 시스템이 플레이스 정보를 어떻게 평가하는지. 영업시간, 예약 시스템, 사진, 편의시설 같은 항목들이 <strong>'정보 충실도'</strong>라는 이름으로 검색 순위에 반영됩니다. 대부분의 대행사도 다루는 영역이지만, 빠져 있으면 나머지가 작동하지 않는 토대입니다.</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">02</span>LAYER</div>
+      <div>
+        <div class="tier-name">검색에 걸리는 것.<br><span style="color:var(--ink-4)">AI가 추천하는 재료.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">고객이 "포항 아픈피부 관리", "포항 홈케어 알려주는 에스테틱"이라고 검색했을 때 뜨느냐를 결정하는 요소입니다. 소개 문구에 어떤 키워드가 들어 있는지, 메뉴 설명에 고객이 원하는 단어(아픈피부·중력윤곽·홈케어 처방)가 포함되어 있는지가 여기에 해당합니다. <strong>네이버 AI 브리핑은 이 텍스트들을 읽고 추천의 근거로 활용합니다.</strong></div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-left"><span class="n">03</span>LAYER</div>
+      <div>
+        <div class="tier-name">고객이 보고 <span style="color:var(--ink-4)">결정하는 것.</span></div>
+        <div class="tier-body" style="margin-top:var(--sp-4)">검색에 노출되고, 고객이 클릭해서 플레이스에 들어왔습니다. <strong>그다음은 3초입니다.</strong> 대표 사진, 리뷰, 가격 정보를 보고 "여기 예약해야지"거나 "다른 데 볼까"를 결정합니다. 1등으로 뜨더라도 전환이 안 되면 의미가 없습니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>이 세 가지는 따로 노는 게 아닙니다. 정보 충실도가 높아야 검색에 걸리고, 검색에 걸려야 고객이 들어오고, 들어온 고객이 전환하려면 결정을 돕는 요소가 갖춰져 있어야 합니다. 아래는 이 세 가지 관점을 기준으로, 현재 플레이스의 상태를 점검한 결과입니다.</p>
+  </div>
+
+  <div class="gauge-block">
+    <div class="gauge-title">Score Summary · 3-Layer Assessment</div>
+    <div class="gauge">
+      <div class="g-head"><div class="g-head-l"><span class="g-name">정보 충실도</span><span class="g-pct mid">82%</span></div><span class="g-note">13개 중 9충족 · 3부분 · 1미충족</span></div>
+      <div class="g-bar mid" data-w="82"></div>
+      <div class="g-sub">알고리즘이 보는 기본 셋팅 — 예약 시스템·가격표·주차 모두 충족</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head"><div class="g-head-l"><span class="g-name">검색 매칭</span><span class="g-pct mid">60%</span></div><span class="g-note">대표 키워드 5개 · 소개 문구 철학 중심 · 고객 언어 약함</span></div>
+      <div class="g-bar mid" data-w="60"></div>
+      <div class="g-sub">AI가 찾을 수 있는 키워드 존재 여부 — 소개 문구 재작성 권고</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head"><div class="g-head-l"><span class="g-name">예약 전환</span><span class="g-pct good">85%</span></div><span class="g-note">4종 예약·민생회복 지원금·주차 명시 · 답글 95%</span></div>
+      <div class="g-bar good" data-w="85"></div>
+      <div class="g-sub">클릭한 고객이 예약까지 가는 구조 — 현재 가장 잘 갖춰진 레이어</div>
+    </div>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">항목별 상세 — 13개 항목</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>항목</th><th>현재 상태</th><th>기준</th><th>판정</th><th>영향</th></tr></thead>
+        <tbody>
+          <tr><td><strong>카테고리</strong></td><td>피부, 체형관리 — 정확</td><td>실제 업종과 일치</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>사진</strong></td><td>999+ 등록</td><td>최소 10장, 상위 업체 20장+</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>예약 시스템</strong></td><td>4종 분리 예약 활성화</td><td>네이버 예약 활성화 시 7배 클릭</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>가격 표시</strong></td><td>아픈피부 130,000~ · 윤곽 100,000~</td><td>명시 시 전환 30%↑, 미표시 이탈 47%</td><td><span class="tag t-ok">충족</span></td><td>전환</td></tr>
+          <tr><td><strong>주차 정보</strong></td><td>건물 앞·뒤 전용주차장 명시</td><td>자차 이용 고객 전환 핵심</td><td><span class="tag t-ok">충족</span></td><td>전환</td></tr>
+          <tr><td><strong>편의시설</strong></td><td>6종 등록</td><td>주요 편의 5개+ 등록</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>민생회복 지원금</strong></td><td>사용처 등록</td><td>2026년 유입 증가 요인</td><td><span class="tag t-ok">충족</span></td><td>전환</td></tr>
+          <tr><td><strong>블로그 연동</strong></td><td>blog.naver.com/ley129</td><td>1개 이상 + 최근 포스팅</td><td><span class="tag t-ok">충족</span></td><td>순위</td></tr>
+          <tr><td><strong>답글 작성</strong></td><td>~95% · 내용 감사 인사 중심</td><td>답글 업체 신뢰도 72%, POD 키워드 포함 권고</td><td><span class="tag t-par">부분</span></td><td>전환</td></tr>
+          <tr><td><strong>소개 문구</strong></td><td>이완의 기술 · POD 키워드 부분 누락</td><td>300~500자, 고객 언어 POD 포함</td><td><span class="tag t-par">부분</span></td><td>검색</td></tr>
+          <tr><td><strong>소식 발행</strong></td><td>팬밀리세일·이벤트 4건 확인</td><td>주 1~2회, 체류 시간↑ 예약↑</td><td><span class="tag t-par">부분</span></td><td>순위</td></tr>
+          <tr><td><strong>자격·수상 이력</strong></td><td>은영 원장 교육 이력 미등재</td><td>자격/수상 섹션 등록 시 신뢰 가중치</td><td><span class="tag t-gap">미충족</span></td><td>전환</td></tr>
+          <tr><td><strong>시술 상세 설명</strong></td><td>가격표 외 시술 설명 부분적</td><td>시술별 설명 100~200자 + 특징</td><td><span class="tag t-par">부분</span></td><td>검색</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="font-size:14px;font-weight:700;color:var(--ink);margin:var(--sp-12) 0 var(--sp-4);letter-spacing:-.2px">개선 항목 — 3건</div>
+
+  <div class="toggle open">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot"></span>
+      <span class="toggle-lbl">소개 문구 — 고객 언어 한 단락 추가 (가장 빠른 검색 매칭 효과)</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p>현재 소개 문구 "<strong>자극이 아닌 이완의 기술</strong>"은 브랜드 철학을 정확하게 담고 있습니다. 다만 고객은 "이완의 기술"을 검색하지 않습니다. 아래 한 단락을 추가하면 AI 검색 매칭이 즉시 달라집니다.</p>
+      <p style="margin-top:var(--sp-4)"><strong>추가 제안:</strong> "포항에서 아픈피부·문제성피부 관리, 얼굴윤곽, 산후 케어, 웨딩 관리까지 — 안 아프게, 하지만 확실하게 변합니다. 관리 후 홈케어 처방도 함께 드립니다."</p>
+      <p style="margin-top:var(--sp-3);font-size:12px;color:var(--ink-4)">이 단락에 포함된 키워드: 아픈피부, 문제성피부, 얼굴윤곽, 산후 케어, 웨딩 관리, 홈케어 처방 — 모두 고객이 실제 검색하는 단어입니다.</p>
+    </div></div>
+  </div>
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot"></span>
+      <span class="toggle-lbl">사장님 답글 — 감사 인사에 POD 키워드 1개 삽입</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p><strong>현재 패턴:</strong> "소중한 후기 감사드려요 다음에도 만족하실 수 있도록 최선을 다하겠습니다."</p>
+      <p style="margin-top:var(--sp-4)"><strong>개선 패턴:</strong> "감사드려요. 저희 매끄롬은 디엘더아로마 고가 아로마를 아낌없이 써드리고, 관리 후 홈케어 처방도 꼼꼼히 챙겨드리고 있습니다. 다음에도 기대해주세요."</p>
+      <p style="margin-top:var(--sp-3);font-size:12px;color:var(--ink-4)">답글에 POD 키워드를 자연스럽게 삽입하면 SEO 2차 효과를 얻습니다. 신규 고객이 답글도 읽기 때문입니다.</p>
+    </div></div>
+  </div>
+  <div class="toggle">
+    <button class="toggle-btn" onclick="this.parentElement.classList.toggle('open')">
+      <span class="toggle-dot soft"></span>
+      <span class="toggle-lbl">이벤트 리뷰 조건 — "관리명 한 줄 포함" 추가</span>
+      <span class="toggle-arr">⌄</span>
+    </button>
+    <div class="toggle-body"><div class="toggle-inner">
+      <p>현재 "첫만남 30% 할인" 이벤트 조건에 리뷰 작성 요구가 있습니다. 이 조건에 아래 한 줄을 추가하면 시술명이 리뷰에 즉시 등장하기 시작합니다.</p>
+      <p style="margin-top:var(--sp-4)"><strong>기존:</strong> 네이버 예약 → 방문 → 포토리뷰 작성 → 30% 할인</p>
+      <p style="margin-top:var(--sp-2)"><strong>추가:</strong> + 받으신 관리 이름 포함 (예: 중력윤곽, 아픈피부 관리, 하이푸 리프팅 등)</p>
+      <div class="case-note" style="margin-top:var(--sp-5)">
+        <div class="case-note-lbl">타 에스테틱 사례에서는</div>
+        <div class="case-note-body">785건을 분석한 결과, 소식에 18회 등장한 대표 고가 시술이 방문자 리뷰에는 <strong>단 1건</strong>만 나타났습니다. 이벤트 조건에 "시술명 포함"을 추가한 후 해당 시술명이 리뷰에 즉시 등장하기 시작했습니다. 단, <strong>보상형 이벤트 리뷰는 짧고 형식적인 경향이 있어 AEO 점수가 낮아집니다.</strong> "관리명 포함 + 변화 한 줄" 조건이 가장 효과적입니다.</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="dark-block" style="margin-top:var(--sp-14)">
+    <div class="db-label">블로그 리뷰 97건의 전략적 맥락</div>
+    <div class="db-h">방문자 123건 대비 블로그가 <em>0.8배</em> — 건강한 구조.<br>하지만 블로그의 전문 언어가 방문자 리뷰에 전이되지 않고 있다.</div>
+    <div class="db-body">
+      <p>블로그 97건 · 방문자 123건. 약 1:1.3으로 방문자 리뷰가 앞서는 구조는 이움내과·체험단 위주 샵과 달리 건강한 비율입니다.</p>
+      <p style="margin-top:12px"><strong>문제는 언어 단절입니다.</strong> 블로그에는 "중력윤곽", "이완의 기술", "생애주기 관리", "홈케어 처방"이라는 전문 언어가 있습니다. 그런데 방문자 리뷰에는 이 언어들이 거의 없습니다. 담당자가 시술 중/후 구두로 "오늘 중력윤곽 받으셨는데 변화가 느껴지세요?" 확인하면, 고객은 자연스럽게 그 언어를 리뷰에 씁니다. 자세한 분석은 ST/05 언어 전이 GAP에서 다룹니다.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ST/02 — 종합 진단 -->
+<section id="overview" class="section" data-nav="종합 진단" data-num="02">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 02 <span class="sep">·</span> 종합 진단</div>
+    <h2 class="s-title">고객들은 매끄롬을<br><span class="soft">어떻게 인식하고 있는가</span></h2>
+  </div>
+
+  <div class="split">
+    <div class="split-col">
+      <div class="sp-label">Strength</div>
+      <div class="sp-body">리뷰에서 매끄롬은 <span class="hi">"친절하고 꼼꼼한 맞춤 케어를 받을 수 있는 곳"</span>으로 인식되며, <span class="hi">"원장님에 대한 깊은 신뢰와 장기 재방문 충성도"</span>가 느껴집니다. 특히 맞춤 케어 1위(101명)는 에스테틱 업종 벤치마크와 다른 결과입니다. 8~9년 장기 단골, 예아트 시절부터 이어온 팬덤 구조는 단단한 자산입니다.</div>
+      <div class="sp-stats">
+        <div><div class="sp-stat-val">169<span style="font-size:.55em;color:var(--ink-4)">자</span></div><div class="sp-stat-lbl">평균 리뷰 길이<br>벤치마크 150~250자</div></div>
+        <div><div class="sp-stat-val">24.5<span style="font-size:.55em;color:var(--ink-4)">/45</span></div><div class="sp-stat-lbl">SEO 평균 점수</div></div>
+      </div>
+    </div>
+    <div class="split-col">
+      <div class="sp-label risk">Risk</div>
+      <div class="sp-body"><span class="risk">중력윤곽(브랜드 시술명)은 119건 중 ~3건</span>, <span class="risk">홈케어 처방은 ~5건</span>, <span class="risk">아프지 않은 효과는 ~10건</span>만 등장합니다. AI 인용 가능 점수(AEO) 평균은 <span class="risk">6.4/50</span>으로, A등급(70점+) 리뷰는 <span class="risk">0건</span>입니다.</div>
+      <div class="sp-stats">
+        <div><div class="sp-stat-val lo">6.4<span style="font-size:.55em">/50</span></div><div class="sp-stat-lbl">AEO 평균 점수</div></div>
+        <div><div class="sp-stat-val lo">0<span style="font-size:.55em">건</span></div><div class="sp-stat-lbl">AI 인용 가능(70+)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>"맞춤 케어 + 꼼꼼 + 친절"이라는 인식은 어떤 에스테틱도 받을 수 있는 평가다.</strong> 매끄롬의 실제 차별점인 아프지 않은 효과·홈케어 처방·중력윤곽·생애주기 케어는 리뷰에 거의 등장하지 않는다. AI 브리핑이 참조할 구체적 경험 데이터가 없으면, "포항 아픈 피부 관리", "포항 홈케어 알려주는 에스테틱" 같은 검색에서 노출되기 어렵다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>매끄롬은 "POD를 안 만든 샵"이 아니라 <strong>"POD를 만들어두고 전달하지 않은 샵"</strong>이다. 1순위 과제는 새 차별점 생성이 아니라 기존 POD 자산의 고객 언어화 — 리뷰 유도 질문 설계와 답글에 POD 키워드 주입이 가장 낮은 비용의 개선안이다.</div>
+  </div>
+
+  <div class="charts">
+    <div class="ch">
+      <div class="ch-eye">Keyword Tags (네이버 집계)</div>
+      <div class="ch-title">맞춤 케어 1위 —<br>운영 방식이 차별점으로 인식됨</div>
+      <div class="ch-ax"><span>키워드 →</span><span>선택 인원 / 123건</span></div>
+      <div class="ch-canvas"><canvas id="c-kw" role="img" aria-label="키워드 태그 빈도 차트"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">1위 (POD)</div><div class="ch-stat-val ok">맞춤케어 101명</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">3위 (POP)</div><div class="ch-stat-val">친절해요 90명</div></div>
+      </div>
+    </div>
+    <div class="ch">
+      <div class="ch-eye">Score Distribution</div>
+      <div class="ch-title">SEO 24.5 · AEO 6.4 —<br>A등급 0건</div>
+      <div class="ch-ax"><span>SEO Score →</span><span>AEO Score ↑</span></div>
+      <div class="ch-canvas"><canvas id="c-scatter" role="img" aria-label="SEO-AEO 산점도"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">SEO 평균</div><div class="ch-stat-val">24.5 / 45</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">AEO 평균</div><div class="ch-stat-val warn">6.4 / 50</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">A등급 (70+)</div><div class="ch-stat-val warn">0건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">B등급 (40-69)</div><div class="ch-stat-val">32건 (27%)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gauge-block">
+    <div class="gauge-title">Score Summary · SEO / AEO 채점 항목별 현황</div>
+
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">SEO — 인증 방식</span><span class="g-pct good">70%</span></div>
+        <span class="g-note">예약 인증 63% · 영수증 36% · 7/10점</span>
+      </div>
+      <div class="g-bar good" data-w="70"></div>
+      <div class="g-sub">예약 인증 비율이 높아 신뢰 신호는 충분</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">SEO — 리뷰 길이</span><span class="g-pct good">70%</span></div>
+        <span class="g-note">평균 169자 · 벤치마크 150~250자 충족 · 7/10점</span>
+      </div>
+      <div class="g-bar good" data-w="70"></div>
+      <div class="g-sub">길이 자체는 기준치 안, 내용의 구체성이 관건</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">SEO — 키워드 태그 수</span><span class="g-pct mid">46%</span></div>
+        <span class="g-note">평균 2.3개 · 목표 4~5개 · 4.6/10점</span>
+      </div>
+      <div class="g-bar mid" data-w="46"></div>
+      <div class="g-sub">태그 수가 적어 검색 키워드 매칭폭이 좁음</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">SEO — 브랜드명 언급</span><span class="g-pct mid">30%</span></div>
+        <span class="g-note">119건 중 약 36건 · 1.5/5점</span>
+      </div>
+      <div class="g-bar mid" data-w="30"></div>
+      <div class="g-sub">"매끄롬" 직접 언급이 적어 브랜드 인지도 축적 저조</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">SEO — 재방문 횟수</span><span class="g-pct low">30%</span></div>
+        <span class="g-note">71% 1회차 작성 · 반복 방문 증거 약함 · 3/10점</span>
+      </div>
+      <div class="g-bar low" data-w="30"></div>
+      <div class="g-sub">충성 고객이 많음에도 재방문 리뷰 작성율이 낮음</div>
+    </div>
+
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">AEO — 스토리 구조 (문제+결과)</span><span class="g-pct mid">35%</span></div>
+        <span class="g-note">부분 존재 · Before-After 미완성 · 3.5/10점</span>
+      </div>
+      <div class="g-bar mid" data-w="35"></div>
+      <div class="g-sub">POD 리뷰 일부에 구조 있음 — 전체로 확장 필요</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">AEO — 담당자 실명 (은영·소영)</span><span class="g-pct low">20%</span></div>
+        <span class="g-note">약 20건 · 실명 언급 시 인용 확률 상승 · 2/10점</span>
+      </div>
+      <div class="g-bar low" data-w="20"></div>
+      <div class="g-sub">실명이 있어야 AI가 "담당자 전문성" 근거로 인용 가능</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">AEO — 수치 근거 (기간·횟수·변화량)</span><span class="g-pct low">20%</span></div>
+        <span class="g-note">낮음 · "8년", "2회" 극소수 · 2/10점</span>
+      </div>
+      <div class="g-bar low" data-w="20"></div>
+      <div class="g-sub">숫자 있는 리뷰는 AI 인용 가중치 +45% — 현재 거의 없음</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">AEO — 경험 구체성 (증상·부위·비교)</span><span class="g-pct low">15%</span></div>
+        <span class="g-note">매우 낮음 · "친절해요" 수준 다수 · 1.5/10점</span>
+      </div>
+      <div class="g-bar low" data-w="15"></div>
+      <div class="g-sub">AI가 인용하려면 "어떤 문제를 어떻게 해결했는지"가 있어야 함</div>
+    </div>
+    <div class="gauge">
+      <div class="g-head">
+        <div class="g-head-l"><span class="g-name">AEO — 고유 가치 (브랜드 고유 표현)</span><span class="g-pct low">12%</span></div>
+        <span class="g-note">중력윤곽·홈케어·목숨테라피 극소수 · 1.2/10점</span>
+      </div>
+      <div class="g-bar low" data-w="12"></div>
+      <div class="g-sub">브랜드 고유어가 리뷰에 없으면 AI가 다른 곳과 구별 못 함</div>
+    </div>
+  </div>
+
+  <div class="notegrid">
+    <div class="note">
+      <div class="note-h">리뷰 길이 — 벤치마크 내, 내용이 문제</div>
+      <p>119건 평균 <strong>169자</strong>. 피부·뷰티 업종 벤치마크(150~250자) 안에 들어갑니다. "길이가 짧다"는 문제보다 <strong>169자 안에서 증상·비교·결과가 담겨 있는지</strong>가 핵심입니다. 현재는 AI가 인용할 수 있는 서사 구조를 가진 리뷰가 거의 없습니다.</p>
+    </div>
+    <div class="note">
+      <div class="note-h">답글률 ~95% — 내용 개선 여지</div>
+      <p>거의 모든 리뷰에 답글이 달려 있어 신뢰도 신호는 매우 강합니다. 그러나 <strong>답글 내용이 감사 인사 + 격려 중심</strong>입니다. "디엘더아로마", "이완 중심 관리", "홈케어 처방까지"처럼 POD 키워드를 자연스럽게 넣으면 2차 SEO 효과를 얻습니다.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ST/03 — POP vs POD -->
+<section id="pod" class="section" data-nav="POP vs POD" data-num="03">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 03 <span class="sep">·</span> POP(기본값) vs POD(차별점)</div>
+    <h2 class="s-title">기본 기대치와<br><span class="soft">차별화 지점을 구분한다</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>에스테틱에 갔는데 원장님이 불친절하거나 시설이 지저분하면 다시 안 가겠죠. 그런데 친절하다고, 깨끗하다고 해서 "여기를 꼭 가야 해"라고 추천하진 않습니다. 에스테틱이면 당연한 거니까요. 이게 <strong>POP — Point of Parity(기본값)</strong>입니다. 없으면 탈락하지만, 있어도 선택 이유가 되지 않는 것. "친절해요", "꼼꼼해요"가 대부분의 리뷰에 나온다면, 그건 포항 어느 에스테틱에서도 똑같이 받을 수 있는 평가입니다.</p>
+    <p>반면 "다른 곳은 아프고 압만 셌는데 매끄롬은 안 아픈데 효과가 미쳤어요", "집에서도 관리법 알려줘서 2주가 지나도 유지됩니다"라고 하면 이야기가 달라지죠. 다른 에스테틱에서는 들을 수 없는 말이니까요. 이게 <strong>POD — Point of Difference(차별점)</strong>입니다. 경쟁자는 줄 수 없는, 매끄롬을 골라야 하는 이유.</p>
+  </div>
+
+  <table class="cmp-tbl">
+    <thead><tr><th></th><th>POP (기본값)</th><th>POD (차별점)</th></tr></thead>
+    <tbody>
+      <tr><td>의미</td><td>기본 기대치(없으면 탈락)</td><td>차별화 지점(선택 이유)</td></tr>
+      <tr><td>없으면?</td><td>탈락</td><td>선택지에는 들어감</td></tr>
+      <tr><td>있으면?</td><td>선택지에 들어감</td><td>선택의 이유가 됨</td></tr>
+      <tr><td>리뷰 예시</td><td>"친절해요", "꼼꼼해요", "편안해요"</td><td>"안 아픈데 효과가 미쳤어요", "홈케어 처방까지 알려줘서 유지됨"</td></tr>
+    </tbody>
+  </table>
+
+  <div class="prose">
+    <p>이 리포트에서 POP(기본값)로 분류된 항목을 플레이스 대표 문구로 쓰고 있다면, 아주 당연한 것을 차별점이라고 내세우는 것과 같습니다. 포항 모든 에스테틱이 친절하다면, 고객은 리뷰를 보고 매끄롬을 선택할 이유가 없는 거죠. <strong>POD(차별점)로 분류된 항목이 소개 문구·답글·예약 탭 설명의 핵심이 되어야 합니다.</strong></p>
+    <p>매끄롬의 흥미로운 점은, <strong>POD가 이미 리뷰 안에 존재한다</strong>는 것입니다. "목숨테라피", "성형 의혹", "들고 가고 싶다" — 이런 표현은 어떤 에스테틱도 흉내 낼 수 없습니다. 문제는 이 언어들이 아직 119건 안에 극소수로만 존재한다는 것입니다.</p>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">본문 언어 기반 분류 — 고객이 실제로 쓴 표현</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>표현 유형</th><th>언급</th><th>비율</th><th>분류</th><th>판단 근거</th></tr></thead>
+        <tbody>
+          <tr><td><strong>친절해요</strong></td><td>90명</td><td>73%</td><td><span class="tag t-pop">POP</span></td><td>서비스업 공통 기대치 — 비교 맥락 없이 나열</td></tr>
+          <tr><td><strong>시술이 꼼꼼해요</strong></td><td>83명</td><td>67%</td><td><span class="tag t-pop">POP</span></td><td>유료 전문 서비스의 기본 기대치</td></tr>
+          <tr><td><strong>분위기가 편안해요</strong></td><td>~13명</td><td>11%</td><td><span class="tag t-pop">POP</span></td><td>릴랙스·힐링은 에스테틱 카테고리 기본 약속</td></tr>
+          <tr><td><strong>관리 효과가 좋아요</strong></td><td>92명</td><td>75%</td><td><span class="tag t-par">경계</span></td><td>단순 "효과 좋다" = POP. "다른 곳 못 하던 걸 여기서 처음" = POD</td></tr>
+          <tr><td><strong>상담이 자세해요</strong></td><td>48명</td><td>39%</td><td><span class="tag t-par">경계</span></td><td>태그는 POP지만 "이렇게까지 설명해주는 곳은 유일" → 내용 깊이가 POD</td></tr>
+          <tr><td><strong>비싼 만큼 가치있어요</strong></td><td>~5명</td><td>~4%</td><td><span class="tag t-pod">POD</span></td><td>고객이 스스로 가격 저항을 해소한 표현 — 프리미엄 포지셔닝의 가장 강력한 증거</td></tr>
+          <tr><td><strong>★ 아프지 않은데 효과가 있다</strong></td><td>~10건+</td><td>본문 직접</td><td><span class="tag t-pod">POD 핵심</span></td><td>"다른 곳은 아프고 압만 셌는데 매끄롬은 안아픈데 효과 미쳤어요" — 직접 비교</td></tr>
+          <tr><td><strong>★ 홈케어 처방</strong></td><td>~5건+</td><td>본문 직접</td><td><span class="tag t-pod">POD 희소</span></td><td>"집에서도 관리법 알려줘서 유지됨" — 업종 내 희소. "~까지"가 기대 초과 표현</td></tr>
+          <tr><td><strong>★ 과도한 권유 없음</strong></td><td>~5건+</td><td>본문 직접</td><td><span class="tag t-pod">POD</span></td><td>"다른 곳은 제품팔려고 안달인데 여기는 상태만 봐줘" — 경쟁 업체 직접 대조</td></tr>
+          <tr><td><strong>★ 의료 대비 효과</strong></td><td>~5건+</td><td>본문 직접</td><td><span class="tag t-pod">POD</span></td><td>"물리치료·침보다 훨씬 오랫동안 편안" — 카테고리 뛰어넘는 비교</td></tr>
+          <tr><td><strong>★ 장기 단골 이탈 없음</strong></td><td>8건+</td><td>본문 직접</td><td><span class="tag t-pod">POD</span></td><td>"이렇게 오래 다닌 샵이 없었는데" — 비교 맥락 명시</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="prose" style="margin-top:var(--sp-16)">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;margin-bottom:var(--sp-4);letter-spacing:-.3px">고객이 자발적으로 만들어낸 언어 — 이것이 진짜 POD다</p>
+    <p>키워드 태그는 네이버가 준 선택지입니다. 진짜 POD는 고객이 아무도 시키지 않았는데 쓴 말에서 나옵니다. 아래 표현들은 어떤 에스테틱도 흉내 낼 수 없는 매끄롬만의 언어입니다.</p>
+  </div>
+
+  <div class="nblocks nblocks-3">
+    <div class="nblock">
+      <div class="n-num">POD 01</div>
+      <div class="n-title">목숨테라피</div>
+      <div class="n-body">고객이 자발적으로 시술을 네이밍한 사례. <strong>"담과 어깨뭉침을 단 2회만에 통증완화 — 목숨테라피 강추"</strong>. 이런 표현은 검색 유입 가능성까지 있습니다.</div>
+    </div>
+    <div class="nblock">
+      <div class="n-num">POD 02</div>
+      <div class="n-title">인생 픽 · 정착</div>
+      <div class="n-body"><strong>"포항에서 관리 몇 번 다녀봤는데 단연코 최고"</strong>, <strong>"드디어 정착하게 됐습니다"</strong>. 비교 경험 후 선택한 최상위 표현 — AI 인용 1순위 구조.</div>
+    </div>
+    <div class="nblock">
+      <div class="n-num">POD 03</div>
+      <div class="n-title">8년 · 따라다닌다</div>
+      <div class="n-body"><strong>"어디로 가시든 늘 함께 따라다니고 있습니다"</strong>. 브랜드 귀속 은어의 완성형 — 의도적으로 만들 수 없는 종류의 POD입니다.</div>
+    </div>
+    <div class="nblock">
+      <div class="n-num">POD 04</div>
+      <div class="n-title">성형 의혹</div>
+      <div class="n-body"><strong>"얼마 전에는 성형 의혹(?)까지 받았어요"</strong>. 시술 효과가 주변에서 인식될 만큼 변화했다는 최강 증거. Before-After 완성형.</div>
+    </div>
+    <div class="nblock">
+      <div class="n-num">POD 05</div>
+      <div class="n-title">새 삶 · 마지막 기회</div>
+      <div class="n-body"><strong>"5-6년 스테로이드 먹으면서 정말 마지막 기회다 하고 간 매끄롬에서 새 삶을 살고 있습니다"</strong>. 감정 강도 최상위 + Before-After 스토리 완성형.</div>
+    </div>
+    <div class="nblock">
+      <div class="n-num">POD 06</div>
+      <div class="n-title">들고 가고 싶다</div>
+      <div class="n-body"><strong>"다른 곳 발령나면 샵 전체를 들고 같이 가고 싶은 마음"</strong>. 장기 단골 귀속의 완성형. 신규 고객 전환에 가장 강력한 신뢰 신호.</div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>매끄롬의 진짜 POD는 "목숨테라피", "성형 의혹", "들고 가고 싶다"처럼 고객이 자발적으로 만들어낸 언어에 있습니다.</strong> 이 표현들은 어떤 에스테틱도 흉내 낼 수 없습니다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>현재 소개 문구의 <strong>"자극이 아닌 이완의 기술"</strong>은 브랜드 철학으로 정확하지만 고객 검색 언어와 거리가 있습니다. <strong>"안 아픈데 효과가 달라요"처럼 고객 언어를 흡수한 표현</strong>이 검색과 AI 모두에 더 강합니다.</div>
+  </div>
+
+  <div class="case-note">
+    <div class="case-note-lbl">타 에스테틱 사례에서는</div>
+    <div class="case-note-body"><strong>"비싼 만큼 가치있어요"</strong> 태그를 선택한 고객 비율이 10% 미만이었지만, 분석 결과 이것이 프리미엄 포지셔닝의 가장 강력한 POD 증거로 분류됐습니다. 고객이 스스로 가격 저항을 해소하는 언어이기 때문입니다. 매끄롬에도 이 태그를 선택한 고객이 존재합니다 — 이 고객들의 리뷰 본문을 확인하면 "비싼 이유"를 설명하는 언어가 들어 있을 가능성이 높습니다. 별도 리뷰 유도 질문("관리비가 아깝지 않다고 느끼신 순간이 있으셨나요?")으로 이 패턴을 더 유도할 수 있습니다. <br><br>또한 <strong>"필요한 대화만 오가요"</strong> 태그는 표면적으로 단순해 보이지만, 에스테틱 업종에서 "불필요한 세일즈 없음"을 암시하는 POD 신호입니다. "과도한 권유가 없어요" 태그(4건)와 함께, 매끄롬에서 가장 아직 덜 활용된 포지셔닝 소재입니다.</div>
+  </div>
+</div>
+</section>
+
+<!-- ST/04 — 간극 분석 -->
+<section id="gap" class="section" data-nav="간극 분석" data-num="04">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 04 <span class="sep">·</span> 간극 분석 (Perception Gap)</div>
+    <h2 class="s-title">브랜드가 말하는 것과<br><span class="soft">고객이 쓰는 것의 차이</span></h2>
+    <p class="s-lead">브랜드가 가장 자랑하는 강점이 고객 리뷰에 얼마나 반영되어 있는지를 측정했습니다. 30% 이상이면 전달됨, 10% 미만이면 미전달입니다.</p>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">Gap Analysis</div>
+      <div class="ch-title">전달 의도 vs 리뷰 반영률 — 브랜드 자산이 고객 언어에 없다</div>
+      <div class="ch-ax"><span>전달 의도 항목 →</span><span>브랜드 노출 vs 리뷰 전이</span></div>
+      <div class="ch-canvas tall"><canvas id="c-gap" role="img" aria-label="전달 의도 대비 리뷰 반영률 비교 차트"></canvas></div>
+    </div>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">간극 상세 — 브랜드 의도 vs 고객 리뷰 반영률</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>전달 의도</th><th>출처</th><th>리뷰 언급</th><th>반영률</th><th>판정</th><th>개선 방향</th></tr></thead>
+        <tbody>
+          <tr><td><strong>맞춤 케어</strong></td><td>운영 방식 전반</td><td>101명 태그</td><td>~82%</td><td><span class="tag t-ok">전달됨</span></td><td>지속 커뮤니케이션의 결과. 나머지 언어의 목표 상태</td></tr>
+          <tr><td><strong>아프지 않은 효과</strong></td><td>소개 문구 핵심</td><td>~10건</td><td>~8%</td><td><span class="tag t-par">부분 전달</span></td><td>"다른 곳과 비교해서 어떠셨어요?" 유도 질문</td></tr>
+          <tr><td><strong>홈케어 처방</strong></td><td>시술 후 루틴</td><td>~5건</td><td>~4%</td><td><span class="tag t-gap">미전달</span></td><td>"집에서 알려드린 루틴 중 기억에 남는 게 뭐예요?" 확인 질문</td></tr>
+          <tr><td><strong>과도한 권유 없음</strong></td><td>브랜드 운영 원칙</td><td>~5건</td><td>~4%</td><td><span class="tag t-gap">미전달</span></td><td>"관리 중 가장 편했던 점" 유도 질문</td></tr>
+          <tr><td><strong>생애주기 6대 카테고리</strong></td><td>예약 탭 설명</td><td>~2건</td><td>~2%</td><td><span class="tag t-gap">미전달</span></td><td>연속 방문 고객에게 "매끄롬과 함께한 단계" 스토리 유도</td></tr>
+          <tr><td><strong>중력윤곽 (브랜드 시술명)</strong></td><td>블로그·소개</td><td>~3건</td><td>~2%</td><td><span class="tag t-gap">미전달</span></td><td>시술 후 "중력윤곽 받으셨는데 변화가 느껴지세요?" 언급</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>전달 의도 6개 중 "전달됨"은 맞춤 케어 1가지뿐이다.</strong> 브랜드가 가장 자랑하는 아프지 않은 효과·홈케어 처방·브랜드 시술명은 리뷰에 사실상 없다. 고객이 이 언어를 모르는 게 아니라, 리뷰를 쓸 때 "꼼꼼해요", "친절해요" 이외의 언어를 가지고 있지 않기 때문이다. 담당자가 시술 중/후 직접 시술명과 POD를 언급하면 고객은 그 언어를 리뷰에 그대로 쓴다.</div>
+    <div class="tac-dir"><span class="arrow">→</span><strong>가장 치명적인 gap은 홈케어 처방이다.</strong> 원장님이 실제로 처방하고 있고 고객 유지력의 핵심인데 AI는 이 사실을 모른다. "포항 피부관리 홈케어 알려주는 곳" 검색에 매끄롬이 노출되려면, 시술 후 "오늘 알려드린 홈케어 루틴 중 가장 기억에 남는 게 뭐예요?"라는 한 문장이 리뷰를 바꾼다.</div>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-label">브랜드 인식 종합 문장</div>
+    <div class="db-h">이 샵은 리뷰만 봤을 때, <em>"포항에서 맞춤 케어를 꼼꼼하게 잘해주는 고급스러운 에스테틱"</em>으로 인식된다. 다만 브랜드의 핵심 철학인 <em>"아프지 않은 효과"</em>와 <em>"홈케어 처방"</em>이 리뷰에 거의 반영되지 않아, AI 검색이 매끄롬만의 차별점을 인식하기 어려운 상태다.</div>
+    <div class="db-body"><p>가장 치명적인 gap은 홈케어 처방입니다. 원장님이 실제로 처방하고 있고 고객 유지력의 핵심인데, AI는 이 사실을 모릅니다. "포항 피부관리 홈케어 알려주는 곳"을 검색해도 매끄롬은 안 나옵니다.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ST/05 — 언어 전이 GAP (NEW) -->
+<section id="transfer" class="section" data-nav="언어 전이 GAP" data-num="05">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 05 <span class="sep">·</span> 언어 전이 GAP</div>
+    <h2 class="s-title">브랜드 언어가<br><span class="soft">왜 리뷰에 없는가</span></h2>
+    <p class="s-lead">매끄롬은 소개 문구, 예약 탭 설명, 원장 답글에 일관된 전문 언어를 사용합니다. 그런데 이 언어들이 방문자 리뷰에는 거의 나타나지 않습니다. <strong>콘텐츠가 부족한 게 아닙니다. 고객에게 언어가 전이되는 구조가 없는 것입니다.</strong></p>
+  </div>
+
+  <div class="charts">
+    <div class="ch">
+      <div class="ch-eye">Language Transfer GAP</div>
+      <div class="ch-title">맞춤 케어만 전이 성공 —<br>나머지는 아직 고객 언어가 아니다</div>
+      <div class="ch-ax"><span>브랜드 언어 →</span><span>리뷰 전이 건수</span></div>
+      <div class="ch-canvas"><canvas id="c-gap" role="img" aria-label="언어 전이 GAP 차트"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">맞춤 케어 (전이 성공)</div><div class="ch-stat-val ok">브랜드→리뷰 101명</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">중력윤곽 (전이 실패)</div><div class="ch-stat-val warn">브랜드→리뷰 ~3건</div></div>
+      </div>
+    </div>
+    <div class="ch">
+      <div class="ch-eye">Review Length Distribution</div>
+      <div class="ch-title">100~199자가 47% 지배 —<br>길이 안에 내용을 채워야 한다</div>
+      <div class="ch-ax"><span>리뷰 길이 →</span><span>119건 기준</span></div>
+      <div class="ch-canvas"><canvas id="c-len" role="img" aria-label="리뷰 길이 분포 차트"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">200자 이상</div><div class="ch-stat-val ok">21건 (30%)</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">50자 미만</div><div class="ch-stat-val warn">3건 (4%)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl">
+    <div class="tbl-cap">브랜드 언어 → 리뷰 전이 현황</div>
+    <div class="tbl-scroll">
+      <table class="dt">
+        <thead><tr><th>브랜드 언어</th><th>등장 위치</th><th>리뷰 전이</th><th>전이율</th><th>판정</th><th>처방</th></tr></thead>
+        <tbody>
+          <tr><td><strong>맞춤 케어</strong></td><td>운영 방식 전반</td><td>101명 태그</td><td>~82%</td><td><span class="badge-ok">✅ 전이 성공</span></td><td>지속 커뮤니케이션의 결과. 나머지 언어의 목표 상태</td></tr>
+          <tr><td><strong>아프지 않은 효과</strong></td><td>소개 문구 핵심</td><td>~10건</td><td>~8%</td><td><span class="badge-warn">△ 부분 전이</span></td><td>"다른 경락과 비교해서 달랐던 점" 유도 질문</td></tr>
+          <tr><td><strong>홈케어 처방</strong></td><td>시술 후 루틴</td><td>~5건</td><td>~4%</td><td><span class="badge-bad">⛔ 없음</span></td><td>시술 후 "집에서 어떻게 관리할지 기억나세요?" 확인 질문</td></tr>
+          <tr><td><strong>중력윤곽</strong></td><td>브랜드 시술명</td><td>~3건</td><td>~2%</td><td><span class="badge-bad">⛔ 없음</span></td><td>시술 후 "중력윤곽 받으셨는데 변화가 느껴지세요?" 언급</td></tr>
+          <tr><td><strong>목숨테라피</strong></td><td>브랜드 시술명</td><td>1건</td><td>~1%</td><td><span class="badge-bad">⛔ 없음</span></td><td>이미 1건 발생 — 이벤트 조건에 시술명 포함 추가</td></tr>
+          <tr><td><strong>생애주기 케어</strong></td><td>예약 탭 설명</td><td>~2건</td><td>~2%</td><td><span class="badge-bad">⛔ 없음</span></td><td>웨딩→임산부→산후 연속 고객에게 스토리 유도</td></tr>
+          <tr><td><strong>이완의 기술</strong></td><td>소개 문구</td><td>0건</td><td>0%</td><td><span class="badge-bad">⛔ 없음</span></td><td>고객이 검색하지 않는 표현. "안 아프게"로 번역 필요</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-inner">
+      <div class="db-label">언어 전이 GAP의 구조적 원인</div>
+      <div class="db-h">브랜드는 언어를 만들었지만,<br><span class="ac">고객이 그 언어를 습득할 경로가 없다.</span></div>
+      <div class="db-body">
+        <p>매끄롬의 소개 문구, 예약 탭, 원장 답글에는 일관된 전문 언어가 있습니다. 그런데 이 언어가 리뷰에 나타나지 않습니다.</p>
+        <p style="margin-top:12px"><strong>이유는 하나입니다.</strong> 고객이 소개 문구를 읽고 시술을 받지만, 시술 현장에서 그 언어를 다시 듣거나 확인하는 구조가 없기 때문입니다. 담당자가 시술 중/후 구두로 "오늘 중력윤곽 받으셨는데 변화가 느껴지시나요?" 확인하면, 고객은 자연스럽게 그 언어를 리뷰에 씁니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-note">
+    <div class="case-note-lbl">타 에스테틱 사례에서는</div>
+    <div class="case-note-body">785건을 분석한 결과, 소식/블로그에 <strong>10년 이상 반복</strong>한 "윤곽관리"만이 리뷰에서 156건으로 완전 전이에 성공했습니다. 같은 기간 소식에 91회 등장한 이 언어가 리뷰에서 171%로 나타난 것은 지속적인 커뮤니케이션의 결과입니다. 반면 소식에 18회 등장한 최고가 시술명은 방문자 리뷰에 <strong>단 1건</strong>만 나타났습니다. 콘텐츠 양이 문제가 아니라, <strong>시술 현장에서 고객이 그 언어를 다시 접하는 구조</strong>가 없었기 때문입니다.</div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">핵심 전략 — 시술 현장에서 언어를 심어라</div>
+    <div class="tac-body">가장 빠른 방법은 <strong>시술 후 확인 질문</strong>입니다. "오늘 중력윤곽 받으셨는데 라인이 달라진 게 느껴지세요?", "홈케어 처방 드린 방법 기억나세요?" — 이 한 마디가 고객이 리뷰에 해당 언어를 쓰게 만드는 트리거입니다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>"맞춤 케어"가 1위가 된 건 담당자들이 자연스럽게 "개개인 맞춤으로"라는 표현을 반복 사용한 결과입니다. <strong>다른 POD들도 같은 방식으로 전이시킬 수 있습니다.</strong></div>
+  </div>
+</div>
+</section>
+
+<!-- ST/06 — 담당자 인식 -->
+<section id="staff" class="section" data-nav="담당자 인식" data-num="06">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 06 <span class="sep">·</span> 담당자별 고객 인식</div>
+    <h2 class="s-title">담당자 팬덤은 강하다<br><span class="soft">브랜드 귀속이 과제다</span></h2>
+    <p class="s-lead">이상적인 귀속 순서는 <strong>시스템(방식) → 브랜드 → 개인</strong>입니다. 매끄롬은 현재 <strong>개인 ≥ 브랜드</strong> 구조입니다. 담당자 팬덤은 자산이지만, 이탈 시 리뷰 자산이 함께 사라지는 리스크가 있습니다.</p>
+  </div>
+
+  <div class="tgrid">
+    <div class="trainer">
+      <div class="t-num">STAFF 01 · AEO 평균 8.4점</div>
+      <div class="t-name">은영 원장<span class="t-badge">CORE</span></div>
+      <div class="t-meta">예아트 시절부터 이어진 핵심 인력 · 장기 단골 핵심 연결고리 · 귀속 리뷰 9건+</div>
+      <div class="t-pills"><div class="t-pill">아픈피부 전문</div><div class="t-pill">생애주기 케어</div><div class="t-pill">맞춤 진단</div><div class="t-pill">원장 교육/성장</div><div class="t-pill">장기 단골 유지</div></div>
+      <div class="t-summary">8~9년 단골 리뷰가 은영 원장을 중심으로 형성되어 있습니다. "학생 때 만나서 결혼준비까지", "아이가 초등학생이 됐는데 아직도"처럼 <strong>생애주기를 함께하는 관계</strong>가 고객 언어에 나타납니다. AEO 8.4점은 장기 단골 리뷰가 있음에도 불구하고 스토리 구조가 약하다는 뜻입니다.</div>
+      <div class="t-quote">"원장님과 인연을 맺은 지도 벌써 8년쯤 된 것 같아요. 아이가 돌 무렵 처음 뵈었는데, 그 아이가 어느새 초등학생이 됐네요." — 하리미64</div>
+    </div>
+    <div class="trainer">
+      <div class="t-num">STAFF 02 · AEO 평균 9.5점</div>
+      <div class="t-name">소영 주임</div>
+      <div class="t-meta">2024년 이후 독립적 예약 상품 운영 · 기술 전문성 성장 중 · 귀속 리뷰 14건+</div>
+      <div class="t-pills"><div class="t-pill">윤곽 관리</div><div class="t-pill">하체 바디</div><div class="t-pill">하이푸 리프팅</div><div class="t-pill">전후 사진 비교</div><div class="t-pill">구체 언어 유발</div></div>
+      <div class="t-summary">AEO 9.5점으로 은영 원장보다 높습니다. 이는 소영 주임 귀속 리뷰에서 <strong>구체적인 시술명(하이푸, 윤곽)과 즉각 효과 묘사</strong>가 더 자주 나타나기 때문입니다. 신규 유입 고객이 많아 1회차 리뷰에서 Before-After가 선명하게 나타납니다.</div>
+      <div class="t-quote">"소영주임님 친절은 당연했고요 진짜 손맛이 끝내줬어요. 태어나서 관리 처음 받아보는데 첫도전부터 성공적이여서." — 꽃다뇽</div>
+    </div>
+  </div>
+
+  <div class="case-note">
+    <div class="case-note-lbl">타 에스테틱 사례에서는 (1)</div>
+    <div class="case-note-body">4인 스태프를 보유한 에스테틱에서 AEO 1위는 <strong>"고객이 가장 구체적인 언어로 묘사하는 담당자"</strong>였습니다(50.5점). 기술적 숙련도가 높아 고객이 "손맛", "목뽑기" 같은 고유 언어를 자발적으로 만들어냈습니다. 매끄롬에서도 <strong>소영 주임이 "하이푸", "1회차에 효과"처럼 구체적 언어를 유발</strong>하고 있다는 점이 AEO가 더 높게 나타나는 이유와 동일합니다.</div>
+  </div>
+
+  <div class="case-note">
+    <div class="case-note-lbl">타 에스테틱 사례에서는 (2)</div>
+    <div class="case-note-body">대표원장의 수상이력과 경력이 플레이스에 전혀 등록되어 있지 않아 <strong>신뢰 자산이 방치</strong>되고 있었습니다. 고객이 원장의 전문성을 경험하지만 언어화하지 않는 전형적 간극 — 자격/수상 섹션에 등록하거나 소개 문구에 포함하면 AI 검색에서 전문가 포지셔닝이 강화됩니다. 매끄롬도 <strong>은영 원장의 교육 이력, 자격증, 수상 경력</strong>이 플레이스에 표시되어 있는지 확인하고 등록을 권고합니다. 예님23의 "꾸준히 교육 받으러 다니신다"는 자발적 언급이 실제로 존재 — 이를 공식 자격으로 뒷받침하면 신뢰 전환율이 높아집니다.</div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">귀속 구조 리스크 & 전략</div>
+    <div class="tac-body">은영 원장 귀속 리뷰에 9년 단골이 포함되어 있어, 이탈 시 핵심 단골 이탈 가능성이 있습니다. 소영 주임 귀속 리뷰는 상대적으로 개인 귀속 비율이 높아 이탈 시 소멸 리스크가 있습니다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>이상적 귀속 순서: <strong>시스템(매끄롬의 방식) → 브랜드(매끄롬) → 개인</strong>. 사장님 답글에서 "케이엠만의 방식으로"처럼 <strong>"매끄롬의 이완 방식으로", "매끄롬의 홈케어 처방으로"</strong>처럼 브랜드 귀속 언어를 지속 삽입하면 시간이 지나면서 고객 리뷰에도 전이됩니다.</div>
+  </div>
+</div>
+</section>
+
+<!-- ST/07 — 고객 페르소나 -->
+<section id="persona" class="section" data-nav="고객 페르소나" data-num="07">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 07 <span class="sep">·</span> 고객 페르소나</div>
+    <h2 class="s-title">7가지 방문 유형,<br><span class="soft">각각 다른 전환 전략</span></h2>
+  </div>
+
+  <div class="pgrid">
+    <div class="persona">
+      <div class="p-num">PERSONA 01</div>
+      <div class="p-pct">35<span class="unit">%</span></div>
+      <div class="p-name">예비신부 A</div>
+      <div class="p-kw">웨딩 3~6개월 전<br>얼굴윤곽·어깨라인·피부<br>1~3회차에 즉각 변화 인식<br>웨딩 후 산후·일반 케어 전환 가능</div>
+    </div>
+    <div class="persona">
+      <div class="p-num">PERSONA 02</div>
+      <div class="p-pct">18<span class="unit">%</span></div>
+      <div class="p-name">아픈피부 완치 추구형 B</div>
+      <div class="p-kw">스테로이드·여드름·트러블 장기 고민<br>타샵 이탈 경험 있음<br>3~5회차에 변화 인식<br>장기 단골 전환 최상</div>
+    </div>
+    <div class="persona">
+      <div class="p-num">PERSONA 03</div>
+      <div class="p-pct">15<span class="unit">%</span></div>
+      <div class="p-name">통증·체형 교정형 C</div>
+      <div class="p-kw">승모근·거북목·비대칭·회전근개<br>재활 병행 경우 많음<br>1회차에 즉각 통증 완화<br>주 1회 정기 방문 패턴</div>
+    </div>
+    <div class="persona">
+      <div class="p-num">PERSONA 04</div>
+      <div class="p-pct">10<span class="unit">%</span></div>
+      <div class="p-name">생애주기 장기 고객 D</div>
+      <div class="p-kw">예아트 시절부터 7~9년 단골<br>원장 이동 시에도 따라오는 팬덤<br>가족·지인 소개 패턴<br>브랜드 슬랭 생성 주체</div>
+    </div>
+    <div class="persona">
+      <div class="p-num">PERSONA 05</div>
+      <div class="p-pct">10<span class="unit">%</span></div>
+      <div class="p-name">임산부·산후 케어형 E</div>
+      <div class="p-kw">임신 중·출산 후 부종·회복<br>1회차에 즉각 부종 완화<br>임신→산후→일반 케어 연속 방문</div>
+    </div>
+    <div class="persona">
+      <div class="p-num">PERSONA 06</div>
+      <div class="p-pct">7<span class="unit">%</span></div>
+      <div class="p-name">지인 추천 유입형 F</div>
+      <div class="p-kw">지인 추천으로 기대치 이미 높음<br>"추천 받고 왔는데" 표현 다수<br>Before State가 리뷰에 자연 반영<br>AEO 가장 강력한 비교 경험 유형</div>
+    </div>
+    <div class="persona">
+      <div class="p-num">PERSONA 07</div>
+      <div class="p-pct">5<span class="unit">%</span></div>
+      <div class="p-name">이벤트 진입형 G</div>
+      <div class="p-kw">첫만남 30% 할인으로 진입<br>진입 장벽 낮음 — 정착 전환이 관건<br>⚠ 이벤트 리뷰는 AEO 낮은 경향<br>조건형 이벤트 + 내용 유도 필요</div>
+    </div>
+  </div>
+
+  <div class="case-note">
+    <div class="case-note-lbl">타 에스테틱 사례에서는</div>
+    <div class="case-note-body">지인 추천으로 방문하는 고객은 이미 기대치가 높습니다. <strong>"추천해 주신 분이 뭐라고 하셨어요? 그 이유가 리뷰에 담기면 좋겠어요"</strong>라고 물으면, Before State가 자연스럽게 리뷰에 반영됩니다. 타 업체 이전 고객의 비교 경험 리뷰는 <strong>AEO 관점에서 가장 강력한 리뷰 유형</strong>입니다. 보상형 이벤트 리뷰는 리뷰 수 증가에는 유리하지만 <strong>AEO 점수가 낮아지는 경향</strong>이 있습니다 — "조건 있는 이벤트 + 내용 유도"가 훨씬 효과적입니다.<br><br><strong>웨딩 클러스터</strong>는 3~5월·10~11월에 집중 발생했습니다. 매끄롬 예비신부 페르소나(35%)도 같은 패턴이 예상됩니다. 웨딩 시즌에 맞춰 <strong>"결혼식 사진 찍을 때 가장 달라진 부분이 뭐예요?"</strong> 특화 유도 질문을 쓰면 효과적입니다. <br><br>"결혼 준비 → 임신 → 출산" 연속 방문 고객의 리뷰가 연속 방문 스토리로 높은 AEO 점수를 받았습니다. 매끄롬에도 퐁565("3달 뒤 결혼식"), ssum95(장기 방문) 등 이 패턴의 고객이 존재합니다 — <strong>"매끄롬과 함께한 삶의 단계"를 이야기하게 하는 스토리 유도</strong>가 가장 강력한 AEO 소재가 됩니다.</div>
+  </div>
+
+  <div class="qgrid">
+    <div>
+      <div class="qgroup-title">아픈피부형 B — 최고 AEO 리뷰</div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">su</div><div><div class="qname">suum95</div><div class="qdate">2025.12.24 · 예약 인증</div></div></div>
+        <div class="qtext"><em>5-6년 스테로이드 먹으면서 스트레스 받고 하다가 정말 마지막 기회다 하고 간 매끄롬에서 원장님의 관리 루틴 덕분에 새 삶을 살고 있습니다!</em> 처음엔 의심도 많이하고 다시 약을 먹어야하는가 생각했지만 벌써 1년 넘게 원장님관리 받고 있어요.</div>
+      </div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">km</div><div><div class="qname">kmh****</div><div class="qdate">2025.09.11 · 예약 인증</div></div></div>
+        <div class="qtext">좁쌀여드름으로 학생때부터 에스테틱 정말 여러곳 다녀봤는데 <em>매끄롬은 정말 다르다고 생각한건 상담을 정말 잘해주세요 — 이렇게까지 설명해주는 곳은 매끄롬이 유일하지 않을까싶습니다.</em></div>
+      </div>
+    </div>
+    <div>
+      <div class="qgroup-title">지인 추천형 F & 통증형 C — 비교 경험 리뷰</div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">서</div><div><div class="qname">서생원에고양이</div><div class="qdate">2024.07.13 · 예약 인증</div></div></div>
+        <div class="qtext">인스타를 보니 딱 제가 생각했던 관리를 해주시는 곳이어서 방문하기로 했어요. 솔직히 한번 받아서는 눈에띄게 좋아질거라고 기대하지 않았는데, 전후사진 보고 정말 놀랐네요. <em>집에 가서도 어떻게 관리해야할지 알려주셔서 유지도 잘 된것같아요.</em></div>
+      </div>
+      <div class="qcard">
+        <div class="qhead"><div class="qavatar">예</div><div><div class="qname">예님23</div><div class="qdate">2025.12.26 · 예약 인증</div></div></div>
+        <div class="qtext"><em>회전근개 찢어지고 말린 어깨에 전방활주 어깨 등 총체적 난국이었고, 재활 치료 운동만으로 100% 해결이 안돼서</em> 뭐라도 해보자 해서 시작한 관리인데 기대 이상으로 만족스러운 결과들입니다. 원장님이 꾸준히 교육 받으러 다니시는데 더더욱 신뢰감 상승이지 않나요?!</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ST/07-B — 리뷰 추이 -->
+<section id="trend" class="section" data-nav="리뷰 추이" data-num="07-B">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 07-B <span class="sep">·</span> 월별 리뷰 추이</div>
+    <h2 class="s-title">월별 리뷰 건수 —<br><span class="soft">유입 정체 구간</span></h2>
+  </div>
+
+  <div class="prose">
+    <p>2023년 1월부터 2026년 4월까지 매끄롬 포항효자점 방문자 리뷰 119건의 월별 분포입니다. 2023년 5월 피크(8건) 이후 월 평균 2~4건 수준의 정체가 지속되고 있습니다. 스키당(개점 직후 월 57건)·위드벨라(성장 추세) 대비 절대적 볼륨이 낮으며, 이는 <strong>플레이스 유입 자체의 부재</strong>보다 <strong>리뷰 작성 유도 누락</strong>이 원인일 가능성이 높습니다.</p>
+  </div>
+
+  <div class="charts charts-1">
+    <div class="ch">
+      <div class="ch-eye">Monthly Reviews</div>
+      <div class="ch-title">월별 리뷰 건수 — 유입 정체 구간</div>
+      <div class="ch-ax"><span>월 →</span><span>리뷰 건수</span></div>
+      <div class="ch-canvas tall"><canvas id="c-monthly" role="img" aria-label="월별 리뷰 추이 라인 차트"></canvas></div>
+      <div class="ch-stats">
+        <div class="ch-stat"><div class="ch-stat-lbl">전체 리뷰</div><div class="ch-stat-val">119건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">피크</div><div class="ch-stat-val ok">2023.05 · 8건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">최근 월평균</div><div class="ch-stat-val">2~4건</div></div>
+        <div class="ch-stat"><div class="ch-stat-lbl">분석 기간</div><div class="ch-stat-val">2023.01 — 2026.04</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Tactical Meaning</div>
+    <div class="tac-body"><strong>피크(2023.05)가 오픈 효과라면, 이후 3년이 정체다.</strong> 충성 고객은 존재하지만 리뷰 볼륨으로 이어지지 않고 있다. 이미 119건이 있는 상황에서 월 1~2건 추가는 검색 순위 유지에도 불충분하다. 경쟁 샵이 월 10건 이상이면 격차는 매달 벌어진다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>목표는 <strong>월 8건 → 월 15건</strong>으로 끌어올리는 것이다. 리뷰 유도 카드 설치(시술 후 즉시), 답글에 "오늘 케어 어떠셨어요?" 패턴 교체, 장기 단골에게 업데이트 리뷰 요청 — 이 세 가지만 실행해도 3개월 내 월 10건 달성 가능하다.</div>
+  </div>
+</div>
+</section>
+
+<!-- ST/08 — 액션 플랜 -->
+<section id="action" class="section" data-nav="액션 플랜" data-num="08">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 08 <span class="sep">·</span> 액션 플랜</div>
+    <h2 class="s-title">지금 바로 할 수 있는<br><span class="soft">8가지 실행 항목</span></h2>
+    <p class="s-sub">지금 당장 리뷰 유도 질문 한 개만 바꿔도 3개월 안에 A등급 리뷰가 생깁니다. 3~6개월 내 A등급 비율 15% 이상이 목표입니다.</p>
+  </div>
+
+  <div class="actions">
+    <div class="action">
+      <div class="ac-left"><span class="n">01</span>ACTION<span class="pri">CRITICAL</span></div>
+      <div>
+        <div class="ac-title">홈케어 처방 — 가장 희소한 POD를 리뷰에 담아라</div>
+        <div class="ac-desc">리뷰 반영률 4%. 에스테틱에서 홈케어 처방까지 해주는 곳은 드뭅니다. AI가 <strong>"포항 피부관리 홈케어 알려주는 곳"</strong>을 검색할 때 매끄롬이 나오려면 리뷰 본문에 이 경험이 담겨 있어야 합니다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">리뷰 유도 질문</div>
+          "집에서 알려주신 방법 중에 도움이 됐던 게 있으셨나요? 있으시다면 어떤 게 효과적이었는지 리뷰에 남겨주시면 저희도 더 발전할 수 있어요."
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">02</span>ACTION<span class="pri">CRITICAL</span></div>
+      <div>
+        <div class="ac-title">아프지 않은 효과 — 비교 리뷰를 이끌어내라</div>
+        <div class="ac-desc">매끄롬의 핵심 철학이 고객 언어로 담기려면 비교 경험을 묻는 질문이 필요합니다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">리뷰 유도 질문</div>
+          "다른 경락이나 마사지를 받아보셨다면, 매끄롬과 비교해서 가장 다르게 느끼신 점이 무엇이었나요?"
+          <div style="margin-top:var(--sp-5)">
+            <div class="ex-before">이전 리뷰: "친절하고 꼼꼼해요"</div>
+            <div class="ex-after">목표 리뷰: "다른 곳은 아프기만 했는데 매끄롬은 안아픈데 효과가 달라요"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">03</span>ACTION<span class="pri">CRITICAL</span></div>
+      <div>
+        <div class="ac-title">아픈피부 Before→After 스토리 리뷰</div>
+        <div class="ac-desc">suum95의 "5-6년 스테로이드 → 새 삶"은 AEO 스토리 점수 10점 만점 구조입니다. 5회차 이상 아픈피부 고객에게 이 질문을 씁니다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">리뷰 유도 질문</div>
+          "처음 오셨을 때 피부 상태와 지금을 비교하면 가장 달라진 점이 뭐예요? 구체적으로 써주시면 비슷한 고민을 가진 분들에게 정말 도움이 됩니다."
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">04</span>ACTION<span class="pri">CRITICAL</span></div>
+      <div>
+        <div class="ac-title">이벤트 리뷰 조건 — 시술명 한 줄 추가</div>
+        <div class="ac-desc">현재 "첫만남 30% 할인" 이벤트 조건에 시술명 포함을 추가하면 "중력윤곽", "목숨테라피" 같은 브랜드 언어가 리뷰에 즉시 등장하기 시작합니다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">조건 수정 예시</div>
+          <strong>기존:</strong> 네이버 예약 → 방문 → 포토리뷰 작성 → 30% 할인<br>
+          <strong>추가:</strong> + 받으신 관리 이름 포함 + 변화나 느낌 한 줄 포함
+          <div style="margin-top:var(--sp-4);font-size:12px;color:var(--ink-4)">⚠ 단, 보상형 이벤트만으로는 AEO 점수가 낮아지는 경향이 있습니다. "내용 조건"을 함께 설계해야 효과적입니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">05</span>ACTION<span class="pri">GROWTH</span></div>
+      <div>
+        <div class="ac-title">수치 포함 리뷰 유도 — "몇 회차에"가 핵심</div>
+        <div class="ac-desc">hwa****의 "3회차 관리 때부터 하체 라인이 달라졌어요"는 AEO 수치근거 4점. 이런 리뷰가 쌓이면 AI가 "매끄롬 몇 회면 효과 있나요?"에 구체적으로 답할 수 있게 됩니다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">리뷰 유도 질문</div>
+          "시작하기 전과 지금 — 가장 달라진 점이 뭐예요? 혹시 몇 회차쯤에 변화가 처음 느껴지셨나요?"
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">06</span>ACTION<span class="pri">GROWTH</span></div>
+      <div>
+        <div class="ac-title">시술 현장 언어 심기 — 중력윤곽·목숨테라피 전이</div>
+        <div class="ac-desc">브랜드 시술명이 리뷰에 거의 없는 이유는 시술 현장에서 그 이름을 다시 확인하지 않기 때문입니다. 시술 후 한 마디가 언어 전이의 트리거입니다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">시술 후 확인 멘트</div>
+          "오늘 중력윤곽 받으셨는데 라인이 달라진 게 느껴지세요?" / "목숨테라피 후에 어깨가 가벼워지셨나요?" — 이 한 마디가 고객이 리뷰에 시술명을 쓰게 만듭니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">07</span>ACTION<span class="pri">GROWTH</span></div>
+      <div>
+        <div class="ac-title">사장님 답글에 POD 키워드 삽입</div>
+        <div class="ac-desc">매끄롬 답글은 ~95%로 작성되고 있습니다. 내용이 감사 인사 중심인 것만 바꿔도 SEO 2차 효과를 얻습니다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">답글 개선 예시</div>
+          <div class="ex-before">현재: "소중한 후기 감사드려요 다음에도 만족하실 수 있도록 최선을 다하겠습니다"</div>
+          <div class="ex-after">개선: "감사드려요. 저희 매끄롬은 디엘더아로마 고가 아로마를 아낌없이 써드리고, 관리 후 홈케어 처방도 꼼꼼히 챙겨드리고 있습니다. 다음에도 기대해주세요."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">08</span>ACTION<span class="pri normal">RETENTION</span></div>
+      <div>
+        <div class="ac-title">장기 단골 리뷰 유도 — 이탈 없음이 최강 신뢰 신호</div>
+        <div class="ac-desc">하리미64(8년), 별9256(예아트 시절부터)처럼 오래 다닌 고객의 리뷰는 신규 고객 전환에 직접적으로 영향을 미칩니다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">리뷰 유도 질문</div>
+          "매끄롬을 꾸준히 찾아오시는 가장 큰 이유가 무엇인가요? 처음 오셨을 때와 지금을 비교하면 어떻게 달라지셨나요?"
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <div class="ac-left"><span class="n">09</span>ACTION<span class="pri normal">GROWTH</span></div>
+      <div>
+        <div class="ac-title">의료·피부과 비교 리뷰 + 자존감 키워드 유도</div>
+        <div class="ac-desc">하리미64의 "물리치료·한의원 침보다 훨씬 오랫동안 편안" 리뷰는 에스테틱이 의료를 대체하는 경험을 담은 AEO 황금 소재입니다. "피부과도 고민했는데 결국엔 에스테틱에서 해결"처럼 <strong>의료 기관과 비교하는 리뷰는 AI가 "포항 스테로이드 피부 관리", "포항 승모근 통증 에스테틱"같은 의료 연관 검색에 매끄롬을 올릴 수 있는 가장 강력한 소재</strong>입니다. 또한 "다른 데 관리 받으러 갔을 때는 자존감이 바닥이었는데" 같은 감정적 Before State도 AEO 스토리 점수를 높입니다.</div>
+        <div class="ac-box">
+          <div class="ac-box-lbl">리뷰 유도 질문</div>
+          "병원이나 한의원에서도 관리를 받아보셨나요? 매끄롬과 비교해서 달랐던 점이 있었다면 어떤 부분인지 리뷰에 남겨주시면 비슷한 고민을 가진 분들에게 정말 큰 도움이 됩니다."
+          <div style="margin-top:var(--sp-4)">
+            <div class="ex-before">이전 유형: "효과가 너무 좋아요" (AEO 스토리 0점)</div>
+            <div class="ex-after">목표 유형: "물리치료 6개월 받아도 안 잡히던 승모근이 매끄롬 3회차에 풀렸어요"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ST/09 — 리뷰 목록 -->
+<section id="list" class="section" data-nav="리뷰 목록" data-num="09">
+<div class="wrap">
+  <div class="s-head">
+    <div class="s-eyebrow">ST / 09 <span class="sep">·</span> 리뷰 목록</div>
+    <h2 class="s-title">이 리뷰들이<br><span class="soft">AI 답변에 인용될 수 있다</span></h2>
+    <p class="s-lead">통합 점수 70점 이상이 AI 인용 가능성이 있는 리뷰입니다. 현재 119건 중 70점+ 리뷰는 <strong>0건</strong>입니다. 아래 Top 10이 매끄롬의 리뷰 자산 중 가장 AI 인용 가능성이 높은 것들입니다.</p>
+  </div>
+
+  <div class="quote-full-block">
+    <div class="qfb-title">SEO/AEO 통합 점수 Top 10 — 95점 만점</div>
+    <div class="qfb-desc">현재 최고점은 <strong>66점(하리미64)</strong>으로 B등급입니다. 각 리뷰 아래 태그는 <strong>① Before 상태 → ② POD 표현 → ③ 담당자 실명 → ④ 구체 변화 → ⑤ 브랜드 귀속</strong> 중 어떤 요소가 있는지를 보여줍니다. A등급(70점+)이 되려면 이 5가지가 한 리뷰 안에 묶여야 합니다.
+    <div class="case-note" style="margin-top:var(--sp-6)">
+      <div class="case-note-lbl">타 에스테틱 사례에서는</div>
+      <div class="case-note-body">785건 Top 5 리뷰의 공통 패턴이 명확했습니다. <strong>① Before 상태(고민·타 업체 경험) → ② 브랜드 고유 POD 표현(개미지옥·목뽑기·기적) → ③ 담당자 실명 + 방문 횟수 → ④ 구체적 변화(얼굴형·수치) → ⑤ 브랜드 귀속("단언컨대 케이엠")</strong>. 이 5요소가 모두 있는 리뷰가 점수가 가장 높았습니다. 현재 70점+ A등급 리뷰는 0건이었지만, 액션 플랜 적용 후 <strong>3~6개월 내 A등급 리뷰 비율 15% 이상</strong>으로 끌어올릴 수 있다는 것도 확인됐습니다. 매끄롬도 동일한 구조를 목표로 합니다.</div>
+    </div>
+    </div>
+
+    <div class="qfb-card">
+      <div class="qfb-head">
+        <div class="qfb-head-l"><div class="qfb-rank">01</div><div><div class="qfb-name">하리미64</div><div class="qfb-meta">2025.02.04 · 예약 인증 · 4번째 방문 · 은영 원장 + 소영 주임 실명</div></div></div>
+        <div><div class="qfb-score">통합 점수</div><div><span class="qfb-score-num">66</span><span class="qfb-score">/95 · B등급</span></div></div>
+      </div>
+      <div class="qfb-body">포항에 이사와서 아이 낳고 다니기 시작했는데 벌써 아이가 초딩이됩니다. 그동안 원장님께 작은얼굴관리 받다가 최근에 허리,무릎,다리가 안좋아 소영님께 등+하체 받은지 2회차 입니당. 지난 번에도 받으니 너무 좋았어요. 병원에서 물리치료 받고 한의원 가서 침 맞았는 것보다도 훨씬~~ 오랫동안 몸이 편안했습니다.</div>
+      <div class="qfb-tags"><span class="t-pill">의료 대비 비교 POD</span><span class="t-pill">은영 원장 + 소영 주임 실명 2인</span><span class="t-pill">수치(2회차)</span><span class="t-pill">장기 단골 8년+</span></div>
+    </div>
+
+    <div class="qfb-card">
+      <div class="qfb-head">
+        <div class="qfb-head-l"><div class="qfb-rank">02</div><div><div class="qfb-name">suum95</div><div class="qfb-meta">2025.12.24 · 예약 인증 · 2번째 방문</div></div></div>
+        <div><div class="qfb-score">통합 점수</div><div><span class="qfb-score-num">60</span><span class="qfb-score">/95 · B등급</span></div></div>
+      </div>
+      <div class="qfb-body">5-6년 스테로이드 먹으면서 스트레스 받고 하다가 정말 마지막 기회다 하고 간 매끄롬에서 원장님의 관리 루틴 덕분에 새 삶을 살고 있습니다! 처음엔 의심도 많이하고 다시 약을 먹어야하는가 생각했지만 그때마다 멘탈도 다시 잡아주시고 회차를 거듭할수록 좋아지는게 눈에 보여서 벌써 1년 넘게 원장님관리 받고 있어요.</div>
+      <div class="qfb-tags"><span class="t-pill">Before: 5-6년 스테로이드</span><span class="t-pill">After: 새 삶</span><span class="t-pill">수치(1년+)</span><span class="t-pill">매끄롬 귀속</span></div>
+    </div>
+
+    <div class="qfb-card">
+      <div class="qfb-head">
+        <div class="qfb-head-l"><div class="qfb-rank">03</div><div><div class="qfb-name">nam****</div><div class="qfb-meta">2024.05.01 · 영수증 인증 · 1번째 방문 · 웨딩 케어</div></div></div>
+        <div><div class="qfb-score">통합 점수</div><div><span class="qfb-score-num">60</span><span class="qfb-score">/95 · B등급</span></div></div>
+      </div>
+      <div class="qfb-body">웨딩관리를 이곳저곳 알아보다가 매끄롬을 방문하게되었어요. 제가 평소에 고민이였던 이중턱,얼굴비대칭, 얼굴길이,거북목 등 자세하게 상담해주셔서 웨딩관리로 선택했어요! 평소 다른곳 관리는 받을 때마다 아프고 압만 쎄고 효과도 없었는데 매끄롬은 하나도 안아픈데 효과는 미쳤어요.</div>
+      <div class="qfb-tags"><span class="t-pill">직접 비교 POD (핵심)</span><span class="t-pill">증상 열거 (이중턱·비대칭·거북목)</span><span class="t-pill">웨딩 케어</span><span class="t-pill">매끄롬 귀속</span></div>
+    </div>
+
+    <div class="qfb-card">
+      <div class="qfb-head">
+        <div class="qfb-head-l"><div class="qfb-rank">04</div><div><div class="qfb-name">예님23</div><div class="qfb-meta">2025.12.26 · 예약 인증 · 2번째 방문 · 1년+ 방문</div></div></div>
+        <div><div class="qfb-score">통합 점수</div><div><span class="qfb-score-num">53</span><span class="qfb-score">/95 · B등급</span></div></div>
+      </div>
+      <div class="qfb-body">운동으로 회전근개 찢어지고 말린 어깨에 전방활주 어깨 등등 총체적 난국이었고, 재활 치료 운동만으로 100프로 해결이 안되서 뭐라도 해보자 해서 시작한 관리인데 여러모로 얼굴형도 다듬어지고 어깨도 좋아지고 기대 이상으로 만족스러운 결과들입니다. 원장님이 꾸준히 계속 교육 받으러 다니시면서 공부하시는데 더더욱 신뢰감 상승이지 않나요?!</div>
+      <div class="qfb-tags"><span class="t-pill">Before: 회전근개·전방활주·재활 한계</span><span class="t-pill">원장 교육 언급</span><span class="t-pill">기대 초과 반응</span></div>
+    </div>
+
+    <div class="qfb-card">
+      <div class="qfb-head">
+        <div class="qfb-head-l"><div class="qfb-rank">05</div><div><div class="qfb-name">서생원에고양이</div><div class="qfb-meta">2024.07.13 · 예약 인증 · 1번째 방문</div></div></div>
+        <div><div class="qfb-score">통합 점수</div><div><span class="qfb-score-num">47</span><span class="qfb-score">/95 · B등급</span></div></div>
+      </div>
+      <div class="qfb-body">늘 굳어있고 아픈 승모근때문에 방문했어요. 인스타를 보니 딱 제가 생각했던 관리를 해주시는 곳이어서 방문하기로 했어요. 솔직히 한번 받아서는 눈에띄게 좋아질거라고 기대하지 않았는데, 전후사진 보고 정말 놀랐네요. 어깨뿐만이 아니라 등 전체적인 라인도 깔끔하게 정리돼서 너무너무 신기했어요. 그리고 집에 가서도 어떻게 관리해야할지 알려주셔서 유지도 잘 된것같아요.</div>
+      <div class="qfb-tags"><span class="t-pill">홈케어 처방 POD (희소)</span><span class="t-pill">기대 초과 반응</span><span class="t-pill">Before: 승모근 통증</span></div>
+    </div>
+
+    <div class="qfb-card">
+      <div class="qfb-head">
+        <div class="qfb-head-l"><div class="qfb-rank">06–10</div><div><div class="qfb-name">ggangee · hwa**** · ssu**** · ppuu · 김용기2313</div><div class="qfb-meta">2025.12 ~ 2026.04 · 예약 인증</div></div></div>
+        <div><div class="qfb-score">통합 점수</div><div><span class="qfb-score-num">40~48</span><span class="qfb-score">/95 · B등급</span></div></div>
+      </div>
+      <div class="qfb-body">【공통 특징】 ggangee — "대화 중 흘리듯 나온 말에도 섬세하게 아팠던 부분을 풀어줘요", 홈케어 언급. hwa**** — 다리 저림·부종, 3회차부터 하체 라인 변화 (수치 명시). ssu**** — 3년 차, 피부 스트레스 → 계절 변화 기대됨. ppuu — 소영주임님 실명, 피부 상태 맞춤 설명. 김용기2313 — "관리 들어가기 전에 뭘 할 건지, 홈케어 방법, 주의사항까지" 과정 묘사 + 과도한 권유 없음 언급.</div>
+      <div class="qfb-tags"><span class="t-pill">수치 언급</span><span class="t-pill">담당자 실명</span><span class="t-pill">홈케어 POD</span><span class="t-pill">과도한 권유 없음 POD</span></div>
+    </div>
+  </div>
+
+  <div class="tac">
+    <div class="tac-label">Reading Guide</div>
+    <div class="tac-body"><strong>A등급 리뷰 0건. 최고점 66점이 아직 B등급입니다.</strong> 하나의 리뷰 안에서 "증상 → 매끄롬 → 변화 + 홈케어 처방 + 담당자 실명"이 묶이면 즉시 A등급이 됩니다.</div>
+    <div class="tac-dir"><span class="arrow">→</span>A등급이 되려면 SEO 30점 + AEO 40점이 필요합니다. 현재 B등급 최상위 리뷰들은 SEO가 충분하지만 AEO에서 "경험 구체성 + 스토리 구조 + 고유 가치"가 동시에 부족합니다. 시술 후 <strong>"오늘 관리 전에 다른 곳 다녀보신 적 있으세요?"</strong>, <strong>"어디서 매끄롬을 알게 되셨어요?"</strong>, <strong>"오늘 가장 크게 달라진 게 느껴지는 부분이 있으시다면?"</strong> — 이 3개 질문만 현장에서 적용하면 3개월 안에 A등급 리뷰 달성 가능합니다.</div>
+  </div>
+</div>
+</section>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="ft-brand"><span class="dot"></span>RE:FEEEL</div>
+  <div class="ft-links">
+    <a href="https://refeeel.com" target="_blank" rel="noopener">refeeel.com</a>
+    <a href="https://instagram.com/nak__ta__" target="_blank" rel="noopener">@nak__ta__</a>
+  </div>
+  <div class="ft-copy">© 2026 RE:FEEEL. All rights reserved.</div>
+</footer>
+
+<script>
+/* ── 네비게이션 + 진행률 ── */
+const sections = Array.from(document.querySelectorAll('[data-nav]'));
+const tbCurrent = document.getElementById('tb-current');
+const tbFill = document.getElementById('tb-fill');
+const tbNum = document.getElementById('tb-num');
+const snFill = document.getElementById('sn-fill');
+const snNum = document.getElementById('sn-num');
+const snItems = document.querySelectorAll('.sn-item');
+const dwItems = document.querySelectorAll('.dw-item');
+
+function updateNav(){
+  const vh = window.innerHeight;
+  const y = window.scrollY + vh * 0.35;
+  let current = sections[0];
+  sections.forEach(s => { if(s.offsetTop <= y) current = s; });
+  if(current){
+    const nav = current.dataset.nav, num = current.dataset.num, id = current.id;
+    if(tbCurrent) tbCurrent.innerHTML = `<span class="num">${num}</span>${nav}`;
+    snItems.forEach(it => it.classList.toggle('active', it.dataset.target === id));
+    dwItems.forEach(it => it.classList.toggle('active', it.dataset.target === id));
+  }
+  const docH = document.documentElement.scrollHeight - vh;
+  const pct = Math.min(100, Math.max(0, (window.scrollY / docH) * 100));
+  const pctR = Math.round(pct) + '%';
+  if(tbFill) tbFill.style.width = pct + '%';
+  if(tbNum) tbNum.textContent = pctR;
+  if(snFill) snFill.style.width = pct + '%';
+  if(snNum) snNum.textContent = pctR;
+}
+window.addEventListener('scroll', updateNav, {passive:true});
+updateNav();
+
+/* ── 드로어 ── */
+const drawer = document.getElementById('drawer');
+const drawerOpen = document.getElementById('drawer-open');
+const drawerClose = document.getElementById('drawer-close');
+function openDrawer(){ if(!drawer) return; drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); if(drawerOpen) drawerOpen.setAttribute('aria-expanded','true'); document.body.classList.add('drawer-open'); }
+function closeDrawer(){ if(!drawer) return; drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); if(drawerOpen) drawerOpen.setAttribute('aria-expanded','false'); document.body.classList.remove('drawer-open'); }
+if(drawerOpen) drawerOpen.addEventListener('click', openDrawer);
+if(drawerClose) drawerClose.addEventListener('click', closeDrawer);
+if(drawer){ drawer.querySelectorAll('.dw-item a').forEach(a => a.addEventListener('click', () => setTimeout(closeDrawer, 120))); }
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && drawer && drawer.classList.contains('open')) closeDrawer(); });
+
+/* ── 게이지 + kwbar barObs ── */
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-w]').forEach(b => {
+        const w = b.getAttribute('data-w');
+        if(b.classList.contains('g-bar')) b.style.setProperty('--gauge-w', w + '%');
+        else b.style.width = w + '%';
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.kwbars, .gauge-block').forEach(el => barObs.observe(el));
+
+/* ── 사이클 다이어그램 ── */
+const diagramObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in-view'); diagramObs.unobserve(e.target); } });
+},{threshold:0.25});
+document.querySelectorAll('.cycle-wrap').forEach(el => diagramObs.observe(el));
+
+/* ── 페이드인 ── */
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); animObs.unobserve(e.target); } });
+},{threshold:0.08, rootMargin:'30px 0px'});
+document.querySelectorAll('.dark-block, .split, .persona, .trainer, .action, .tier, .tac').forEach(el => {
+  el.classList.add('anim'); animObs.observe(el);
+});
+
+/* ── 커버 KPI 카운터 ── */
+function animateCount(el, target, duration){
+  const suffixMatch = el.innerHTML.match(/<span[^>]*>[\s\S]*?<\/span>/);
+  const suffix = suffixMatch ? suffixMatch[0] : '';
+  const isFloat = String(target).includes('.');
+  const start = performance.now();
+  function tick(now){
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const cur = target * eased;
+    el.innerHTML = (isFloat ? cur.toFixed(1) : Math.round(cur)) + suffix;
+    if(p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+const coverObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const kpis = e.target.querySelectorAll('.cv-kpi-val');
+      const targets = [24.5, 6.4, 63, 0];
+      const rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      kpis.forEach((el, i) => {
+        if(targets[i] === undefined) return;
+        if(rm){ el.textContent = String(targets[i]).includes('.') ? targets[i].toFixed(1) : targets[i]; }
+        else { setTimeout(() => animateCount(el, targets[i], 750), i * 70); }
+      });
+      coverObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+const ckBot = document.querySelector('.cv-bot');
+if(ckBot) coverObs.observe(ckBot);
+
+/* ── 토글 ── */
+/* toggle은 onclick="this.parentElement.classList.toggle('open')" 인라인으로 처리 */
+
+/* ── Chart.js 기본 설정 ── */
+if(typeof Chart !== 'undefined'){
+  Chart.defaults.font.family = "'SUIT',-apple-system,sans-serif";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.plugins.legend.display = false;
+  Chart.defaults.color = '#8a8a8a';
+  Chart.defaults.animation = {duration:1400, easing:'easeOutQuart'};
+}
+
+const COLORS = {ink:'#0a0a0a',ink3:'#555555',ink4:'#8a8a8a',ink5:'#b8b8b8',rule:'#e8e8e8',ruleSoft:'#f0f0f0',accent:'#e75519'};
+
+const charts = {};
+const chartFactory = {
+  'c-kw': () => {
+    charts['c-kw'] = new Chart(document.getElementById('c-kw'), {
+      type:'bar',
+      data:{
+        labels:['맞춤 케어를 잘해줘요','관리 효과가 좋아요','친절해요','시술이 꼼꼼해요','상담이 자세해요','고급스러워요','분위기가 편안해요','매장이 청결해요'],
+        datasets:[{data:[101,92,90,83,48,20,13,13],backgroundColor:[COLORS.accent,COLORS.ink3,COLORS.ink5,COLORS.ink5,COLORS.ink3,COLORS.ink5,COLORS.ink5,COLORS.ink5],borderRadius:0,barPercentage:.75}]
+      },
+      options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.x+'명'}}},
+        scales:{x:{max:120,grid:{color:COLORS.ruleSoft,drawTicks:false},border:{color:COLORS.rule},ticks:{color:COLORS.ink4,padding:8}},y:{grid:{display:false},border:{display:false},ticks:{color:COLORS.ink3,font:{size:11,weight:'500'},padding:10}}}
+      }
+    });
+  },
+  'c-len': () => {
+    charts['c-len'] = new Chart(document.getElementById('c-len'), {
+      type:'bar',
+      data:{
+        labels:['50자 미만','50~99자','100~199자','200~299자','300자 이상'],
+        datasets:[{data:[3,13,33,14,7],backgroundColor:[COLORS.ink5,COLORS.ink5,COLORS.accent,COLORS.ink3,COLORS.ink],borderRadius:0,barPercentage:.7}]
+      },
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.y+'건 ('+Math.round(ctx.parsed.y/70*100)+'%)'}}},
+        scales:{y:{max:40,grid:{color:COLORS.ruleSoft,drawTicks:false},border:{color:COLORS.rule},ticks:{color:COLORS.ink4,padding:8}},x:{grid:{display:false},border:{color:COLORS.rule},ticks:{color:COLORS.ink3,font:{size:11}}}}
+      }
+    });
+  },
+  'c-gap': () => {
+    charts['c-gap'] = new Chart(document.getElementById('c-gap'), {
+      type:'bar',
+      data:{
+        labels:['맞춤 케어','아프지 않은 효과','홈케어 처방','중력윤곽 (시술명)','이완의 기술 (소개)','목숨테라피 (시술명)'],
+        datasets:[
+          {label:'브랜드 노출 (상대)',data:[100,30,20,10,15,5],backgroundColor:COLORS.ink5+'aa',borderRadius:0,barPercentage:.7},
+          {label:'리뷰 전이 건수',data:[101,10,5,3,0,1],backgroundColor:[COLORS.accent,COLORS.ink4,COLORS.ink5,COLORS.ink5,COLORS.ink5,COLORS.ink5],borderRadius:0,barPercentage:.7}
+        ]
+      },
+      options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+        plugins:{legend:{display:true,position:'bottom',labels:{font:{size:11},color:COLORS.ink4,boxWidth:12}}},
+        scales:{x:{max:120,grid:{color:COLORS.ruleSoft,drawTicks:false},border:{color:COLORS.rule},ticks:{color:COLORS.ink4,padding:8}},y:{grid:{display:false},border:{display:false},ticks:{color:COLORS.ink3,font:{size:11,weight:'500'},padding:10}}}
+      }
+    });
+  },
+  'c-scatter': () => {
+    const bData=[{x:33,y:33},{x:30,y:30},{x:30,y:30},{x:25,y:28},{x:27,y:25},{x:25,y:22},{x:31,y:23},{x:28,y:16},{x:25,y:20},{x:29,y:18}];
+    const cData=[];
+    for(let i=0;i<87;i++) cData.push({x:12+Math.random()*18,y:1+Math.random()*10});
+    charts['c-scatter'] = new Chart(document.getElementById('c-scatter'),{
+      type:'scatter',
+      data:{datasets:[
+        {label:'B등급 (40-69)',data:bData,backgroundColor:COLORS.ink3,pointRadius:5,pointHoverRadius:7},
+        {label:'C등급 (<40)',data:cData,backgroundColor:COLORS.ink5+'99',pointRadius:3,pointHoverRadius:5}
+      ]},
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:true,position:'bottom',labels:{font:{size:11},color:COLORS.ink4,boxWidth:10}}},
+        scales:{x:{min:8,max:45,title:{display:true,text:'SEO / 45점',color:COLORS.ink4,font:{size:10,weight:'600'}},grid:{color:COLORS.ruleSoft,drawTicks:false},border:{color:COLORS.rule},ticks:{color:COLORS.ink4,padding:8}},y:{min:-2,max:50,title:{display:true,text:'AEO / 50점',color:COLORS.ink4,font:{size:10,weight:'600'}},grid:{color:COLORS.ruleSoft,drawTicks:false},border:{color:COLORS.rule},ticks:{color:COLORS.ink4,padding:8}}}
+      }
+    });
+  },
+  'c-monthly': () => {
+    const labels = ['23.01','23.02','23.03','23.04','23.05','23.06','23.07','23.08','23.09','23.10','23.11','23.12','24.01','24.02','24.03','24.04','24.05','24.06','24.07','24.08','24.09','24.10','24.11','24.12','25.01','25.02','25.03','25.04','25.05','25.06','25.07','25.08','25.09','25.10','25.11','25.12','26.01','26.02','26.03','26.04'];
+    const data =   [1,     2,     0,     2,     8,     2,     0,     0,     1,     2,     0,     0,     0,     0,     0,     4,     0,     2,     4,     0,     0,     0,     0,     3,     4,     4,     2,     2,     6,     4,     2,     2,     2,     2,     2,     1,     4,     2,     3,     4];
+    const peakIdx = data.indexOf(Math.max(...data));
+    const ptColors = data.map((v,i) => i === peakIdx ? COLORS.accent : COLORS.ink5);
+    const ptSizes  = data.map((v,i) => i === peakIdx ? 7 : 3);
+    charts['c-monthly'] = new Chart(document.getElementById('c-monthly'), {
+      type:'line',
+      data:{
+        labels,
+        datasets:[{
+          data,
+          borderColor: COLORS.ink,
+          borderWidth: 1.5,
+          pointBackgroundColor: ptColors,
+          pointRadius: ptSizes,
+          pointHoverRadius: 6,
+          fill: true,
+          backgroundColor: 'rgba(10,10,10,0.04)',
+          tension: 0
+        }]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}, tooltip:{callbacks:{label:(c)=>c.parsed.y+'건'}}},
+        scales:{
+          x:{grid:{display:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, font:{size:10}, maxRotation:0, autoSkip:true, maxTicksLimit:12}},
+          y:{min:0, max:10, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, stepSize:2, font:{size:10}}}
+        }
+      }
+    });
+  },
+};
+
+function checkCharts(){
+  document.querySelectorAll('canvas[id^="c-"]').forEach(canvas => {
+    if(charts[canvas.id]) return;
+    const rect = canvas.getBoundingClientRect();
+    if(rect.top < window.innerHeight + 80 && rect.bottom > -80){
+      if(chartFactory[canvas.id]){ try { chartFactory[canvas.id](); } catch(e){ console.warn(e); } }
+    }
+  });
+}
+function startChartWatch(){
+  checkCharts();
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if(!ticking){ ticking = true; requestAnimationFrame(() => { checkCharts(); ticking = false; }); }
+  },{passive:true});
+}
+if(typeof Chart !== 'undefined'){ startChartWatch(); }
+else { const s = document.querySelector('script[src*="chart.js"]'); if(s) s.addEventListener('load', startChartWatch); }
+</script>
+</body>
+</html>
