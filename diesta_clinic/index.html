@@ -2172,6 +2172,7 @@ const chartFactory = {
       },
       options:{responsive:true, maintainAspectRatio:false,
         animation:{duration:1800, easing:'easeOutQuart'},
+                     plugins:{legend:{display:false}},
         scales:{
           y:{min:0, max:140, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
           x:{grid:{display:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, font:{size:10}, maxRotation:0, autoSkip:true, maxTicksLimit:11}}
