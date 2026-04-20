@@ -1996,10 +1996,14 @@ const animObs = new IntersectionObserver((entries) => {
       animObs.unobserve(e.target);
     }
   });
-},{threshold:0.08, rootMargin:'30px 0px'});
-document.querySelectorAll('.dark-block, .split, .persona, .trainer, .action, .tier, .tac').forEach(el => {
-  el.classList.add('anim');
-  animObs.observe(el);
+},{threshold:0.08, rootMargin:'-20px 0px'});
+
+const animTargets = Array.from(document.querySelectorAll('.dark-block, .split, .persona, .trainer, .action, .tier, .tac'));
+animTargets.forEach(el => el.classList.add('anim'));
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    animTargets.forEach(el => animObs.observe(el));
+  });
 });
 
 /* ═══════════════════════════════════════════════
