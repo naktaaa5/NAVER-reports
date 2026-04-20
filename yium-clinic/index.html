@@ -2046,6 +2046,7 @@ const chartFactory = {
         pointHoverRadius: 8
       }]},
       options:{responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
         scales:{
           x:{min:8, max:25, title:{display:true, text:'SEO', color:COLORS.ink4, font:{size:10, weight:'600'}},
              grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
@@ -2068,6 +2069,7 @@ const chartFactory = {
         }]
       },
       options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        plugins:{legend:{display:false}},
         scales:{
           x:{max:130, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
           y:{grid:{display:false}, border:{display:false}, ticks:{color:COLORS.ink3, font:{size:12, weight:'500'}, padding:10}}
@@ -2087,6 +2089,7 @@ const chartFactory = {
         }]
       },
       options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        plugins:{legend:{display:false}},
         animation:{duration:1400, easing:'easeOutQuart', delay:c => c.dataIndex * 80},
         scales:{
           x:{max:45, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
@@ -2143,6 +2146,7 @@ const chartFactory = {
         }]
       },
       options:{responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
         animation:{duration:1400, easing:'easeOutQuart', delay:c => c.dataIndex * 80},
         scales:{
           y:{max:50, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8}},
@@ -2163,6 +2167,7 @@ const chartFactory = {
         }]
       },
       options:{responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        plugins:{legend:{display:false}},
         animation:{duration:1600, easing:'easeOutQuart', delay:c => c.dataIndex * 150},
         scales:{
           x:{max:30, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{callback:v=>v+'%', color:COLORS.ink4, padding:8}},
@@ -2193,6 +2198,7 @@ const chartFactory = {
         }]
       },
       options:{responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
         animation:{duration:1800, easing:'easeOutQuart'},
         scales:{
           y:{min:0, max:16, grid:{color:COLORS.ruleSoft, drawTicks:false}, border:{color:COLORS.rule}, ticks:{color:COLORS.ink4, padding:8, stepSize:4}},
