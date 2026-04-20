@@ -2054,7 +2054,13 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.anim, .cycle-wrap').forEach(el => observer.observe(el));
+
+const animTargets = Array.from(document.querySelectorAll('.anim, .cycle-wrap'));
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    animTargets.forEach(el => observer.observe(el));
+  });
+});
 
 /* ── CHARTS ─────────────────────────────── */
 const COLORS = {
