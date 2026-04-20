@@ -1559,29 +1559,25 @@ document.querySelectorAll('.cycle-wrap').forEach(el => cycleObs.observe(el));
 /* .anim scroll fade-in */
 const animObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); animObs.unobserve(e.target); } });
-}, {threshold:0.08, rootMargin:'30px 0px'});
-document.querySelectorAll([
-  /* 섹션 공통 */
+}, {threshold:0.08, rootMargin:'-20px 0px'});
+
+/* rAF 이중 래핑 — opacity:0 페인트 후 observe 시작 (race condition 방지) */
+const animTargets = Array.from(document.querySelectorAll([
   '.dark-block', '.split', '.tac', '.note', '.tbl',
-  /* 개요 · 진단 */
   '.gauge-block', '.gauge', '.sp-stats', '.cycle-wrap',
-  /* 카드 단위 */
   '.persona', '.trainer', '.nblock', '.qfb-card',
-  /* 액션 */
-  '.action',
-  /* Tier · 구조 */
-  '.tier', '.nblocks',
-  /* 차트 */
-  '.charts',
-  /* 플레이스 상태 */
+  '.action', '.tier', '.nblocks', '.charts',
   '.status-grid', '.toggle',
-  /* 간극 분석 */
   '.gap-grid', '.gap-item',
-  /* 리뷰 목록 */
   '.quote-full-block'
-].join(',')).forEach(el => {
-  el.classList.add('anim');
-  animObs.observe(el);
+].join(',')));
+
+animTargets.forEach(el => el.classList.add('anim'));
+
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    animTargets.forEach(el => animObs.observe(el));
+  });
 });
 
 /* Toggle */
