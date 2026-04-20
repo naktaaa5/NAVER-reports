@@ -21,8 +21,18 @@
 <meta name="twitter:description" content="네이버 플레이스 리뷰 375건 기반 분석 · RE:FEEEL Place Report"/>
 <meta name="twitter:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
 
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css"/>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.0/fonts/static/woff2/SUIT.css"/>
+<!-- Chart.js: primary CDN (Cloudflare, 99.9% SLA) + jsDelivr fallback -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+<script>
+  if(typeof Chart==='undefined'){
+    document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"><\/script>');
+  }
+</script>
 <style>
 /* ═══════════════════════════════════════════════════════
    RE:FEEEL — Editorial Minimalist System
@@ -2480,34 +2490,31 @@ const chartFactory = {
   }
 };
 
-function checkCharts(){
-  document.querySelectorAll('canvas[id^="c-"]').forEach(canvas => {
-    if(charts[canvas.id]) return;
-    const rect = canvas.getBoundingClientRect();
-    if(rect.top < window.innerHeight + 80 && rect.bottom > -80){
-      if(chartFactory[canvas.id]){
-        try { chartFactory[canvas.id](); } catch(e) { console.warn(e); }
-      }
-    }
-  });
+function initChart(id){
+  if(charts[id] || !chartFactory[id]) return;
+  try { chartFactory[id](); } catch(e){ console.warn('chart error:', id, e); }
 }
 
 function startChartWatch(){
-  checkCharts();
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if(!ticking){
-      ticking = true;
-      requestAnimationFrame(() => { checkCharts(); ticking = false; });
-    }
-  },{passive:true});
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        initChart(e.target.id);
+        obs.unobserve(e.target);
+      }
+    });
+  }, {rootMargin:'120px 0px', threshold:0});
+
+  document.querySelectorAll('canvas[id^="c-"]').forEach(canvas => {
+    obs.observe(canvas);
+  });
 }
 
 if(typeof Chart !== 'undefined'){
   startChartWatch();
 } else {
-  const script = document.querySelector('script[src*="chart.js"]');
-  if(script) script.addEventListener('load', startChartWatch);
+  document.querySelector('script[src*="chart.umd"]')
+    ?.addEventListener('load', startChartWatch);
 }
 </script>
 </body>
