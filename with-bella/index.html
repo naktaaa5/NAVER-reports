@@ -9,7 +9,7 @@
 <!-- Open Graph / Link Preview -->
 <meta property="og:type" content="article"/>
 <meta property="og:title" content="위드벨라 체형교정 &amp; 다이어트 — 플레이스 리포트"/>
-<meta property="og:description" content="네이버 플레이스 리뷰 469건 기반 분석 · RE:FEEEL Place Report"/>
+<meta property="og:description" content="방문자 리뷰 469건 · 블로그 리뷰 36건 기반 분석 · RE:FEEEL Place Report"/>
 <meta property="og:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
 <meta property="og:image:alt" content="RE:FEEEL"/>
 <meta property="og:site_name" content="RE:FEEEL"/>
@@ -18,11 +18,12 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="위드벨라 체형교정 &amp; 다이어트 — 플레이스 리포트"/>
-<meta name="twitter:description" content="네이버 플레이스 리뷰 469건 기반 분석 · RE:FEEEL Place Report"/>
+<meta name="twitter:description" content="방문자 리뷰 469건 · 블로그 리뷰 36건 기반 분석 · RE:FEEEL Place Report"/>
 <meta name="twitter:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
 
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css"/>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.0/fonts/static/woff2/SUIT.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>if(typeof Chart==="undefined"){document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"><\/script>');}</script>
 <style>
 /* ═══════════════════════════════════════════════════════
    RE:FEEEL — Editorial Minimalist System
@@ -1028,7 +1029,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
       위드벨라<br>
       <span class="line2">체형교정 &amp; 다이어트</span>
     </h1>
-    <p class="cv-desc">네이버 플레이스 리뷰 469건 기반 분석<br>분석 기간: 2023년 9월 — 2026년 2월</p>
+    <p class="cv-desc">방문자 리뷰 469건 · 블로그 리뷰 36건 기반 분석<br>분석 기간: 2023년 9월 — 2026년 2월</p>
   </div>
   <div class="cv-bot">
     <div class="cv-kpi">
@@ -1049,7 +1050,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
     <div class="cv-kpi">
       <div class="cv-kpi-val">248<span style="font-size:.5em;color:rgba(255,255,255,.7)">자</span></div>
       <div class="cv-kpi-lbl">평균 리뷰 길이</div>
-      <div class="cv-kpi-sub">벤치마크 150~250자 상회</div>
+      <div class="cv-kpi-sub">피트니스·스튜디오 벤치마크 150~250자 상회</div>
     </div>
   </div>
 </div>
@@ -1179,7 +1180,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
       <div class="status-cell"><div class="sc-lbl">프로그램 상세 설명</div><div class="sc-val ok">우수</div><div class="sc-sub">프로그램별 목표·대상·강사 명시</div></div>
       <div class="status-cell"><div class="sc-lbl">편의 정보</div><div class="sc-val ok">양호</div><div class="sc-sub">예약 · 주차 · 무선인터넷 · 층 분리</div></div>
       <div class="status-cell"><div class="sc-lbl">SNS 연동</div><div class="sc-val ok">만점</div><div class="sc-sub">유튜브 · 홈페이지 · 인스타 · 블로그</div></div>
-      <div class="status-cell"><div class="sc-lbl">리뷰 품질</div><div class="sc-val ok">최상</div><div class="sc-sub">평균 248자 / 벤치마크 150~250자</div></div>
+      <div class="status-cell"><div class="sc-lbl">리뷰 품질</div><div class="sc-val ok">최상</div><div class="sc-sub">평균 248자 / 피트니스·스튜디오 벤치마크 150~250자</div></div>
       <div class="status-cell"><div class="sc-lbl">예약 인증률</div><div class="sc-val ok">97%</div><div class="sc-sub">네이버 예약 시스템 통한 검증</div></div>
     </div>
   </div>
@@ -2326,35 +2327,26 @@ const chartFactory = {
   }
 };
 
-/* Lazy chart init on scroll */
-function checkCharts(){
-  document.querySelectorAll('canvas[id^="c-"]').forEach(canvas => {
-    if(charts[canvas.id]) return;
-    const rect = canvas.getBoundingClientRect();
-    if(rect.top < window.innerHeight + 80 && rect.bottom > -80){
-      if(chartFactory[canvas.id]){
-        try { chartFactory[canvas.id](); } catch(e) { console.warn(e); }
-      }
-    }
-  });
+/* Lazy chart init — IntersectionObserver */
+function initChart(id){
+  if(charts[id] || !chartFactory[id]) return;
+  try { chartFactory[id](); } catch(e){ console.warn('chart error:', id, e); }
 }
 
 function startChartWatch(){
-  checkCharts();
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if(!ticking){
-      ticking = true;
-      requestAnimationFrame(() => { checkCharts(); ticking = false; });
-    }
-  },{passive:true});
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ initChart(e.target.id); obs.unobserve(e.target); }
+    });
+  }, {rootMargin:'120px 0px', threshold:0});
+  document.querySelectorAll('canvas[id^="c-"]').forEach(c => obs.observe(c));
 }
 
 if(typeof Chart !== 'undefined'){
   startChartWatch();
 } else {
-  const script = document.querySelector('script[src*="chart.js"]');
-  if(script) script.addEventListener('load', startChartWatch);
+  document.querySelector('script[src*="chart.umd"]')
+    ?.addEventListener('load', startChartWatch);
 }
 </script>
 </body>
