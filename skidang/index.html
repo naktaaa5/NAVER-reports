@@ -1060,7 +1060,60 @@ table.dt tr:hover td{background:var(--bg-soft)}
     <div class="db-body">네이버가 순위를 올려주는 페이지는 결국, 사람들이 머물고 싶은 페이지입니다. 리뷰에 스토리가 있고, 사장님 답글이 복붙이 아니고, 사진이 다채로우면 — 사람들은 그 페이지에서 오래 머물고, 저장하고, 길찾기를 누르죠. 고객 전환이 되는 페이지가 곧 네이버가 올려주는 페이지입니다.</div>
   </div>
 
-  <div class="prose" style="margin-top:var(--sp-14);margin-bottom:var(--sp-12)">
+
+  <div class="prose" style="margin-top:var(--sp-14)">
+    <p style="font-size:18px;color:var(--ink);font-weight:600;margin-bottom:var(--sp-4);letter-spacing:-.3px">네이버가 가장 높게 평가하는 선순환 구조</p>
+    <p>단순히 리뷰가 많다고 1등을 주지 않습니다. 네이버는 이 네 단계가 반복되는 패턴이 확인될 때 가중치를 대폭 부여합니다.</p>
+  </div>
+
+  <div class="cycle-wrap">
+    <svg viewBox="0 0 680 420" role="img" aria-label="네이버 플레이스 선순환 구조 다이어그램">
+      <defs><marker id="cy-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+      <g>
+        <rect x="60" y="40" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="180" y="64" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">01 · 검색</text>
+        <text x="180" y="90" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">특정 키워드로 플레이스 진입</text>
+      </g>
+      <line x1="302" y1="78" x2="378" y2="78" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="380" y="40" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="500" y="64" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">02 · 탐색</text>
+        <text x="500" y="90" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">리뷰·메뉴 정보를 30초+ 체류</text>
+      </g>
+      <line x1="500" y1="118" x2="500" y2="288" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="380" y="290" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="500" y="314" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">03 · 의도 확인</text>
+        <text x="500" y="340" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">저장하기 또는 길찾기 실행</text>
+      </g>
+      <line x1="378" y1="328" x2="302" y2="328" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <rect x="60" y="290" width="240" height="76" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+        <text x="180" y="314" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="10" font-weight="700" fill="#e75519" letter-spacing="1.5">04 · 경험 완결</text>
+        <text x="180" y="340" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">방문 후 영수증 리뷰 작성</text>
+      </g>
+      <line x1="180" y1="288" x2="180" y2="118" stroke="#b8b8b8" stroke-width="1" marker-end="url(#cy-arrow)"/>
+      <g>
+        <g class="cy-spin"><text x="340" y="182" text-anchor="middle" font-size="22" fill="#e75519" opacity=".35">↻</text></g>
+        <text x="340" y="206" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="11" fill="#8a8a8a">이 순환이 반복될수록</text>
+        <text x="340" y="222" text-anchor="middle" font-family="'SUIT',sans-serif" font-size="11" fill="#8a8a8a">순위가 올라간다</text>
+      </g>
+    </svg>
+    <div class="cycle-mobile" aria-hidden="true">
+      <div class="cy-step"><div class="cy-step-num">01 · 검색</div><div class="cy-step-text">특정 키워드로 플레이스 진입</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">02 · 탐색</div><div class="cy-step-text">리뷰·메뉴 정보를 30초+ 체류</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">03 · 의도 확인</div><div class="cy-step-text">저장하기 또는 길찾기 실행</div></div>
+      <div class="cy-step-arrow">↓</div>
+      <div class="cy-step"><div class="cy-step-num">04 · 경험 완결</div><div class="cy-step-text">방문 후 영수증 리뷰 작성</div></div>
+      <div class="cy-step-loop"><span class="sp">↻</span>이 순환이 반복될수록 순위가 올라간다</div>
+    </div>
+  </div>
+
+  <div class="s-rule"></div>
+
+  <div class="prose" style="margin-bottom:var(--sp-12)">
     <p style="font-size:18px;color:var(--ink);font-weight:600;margin-bottom:var(--sp-4);letter-spacing:-.3px">이 리포트의 접근</p>
     <p>리뷰 1,315건 안에는 손님이 왜 저장했는지, 왜 방문했는지, 어떤 경로로 왔는지가 전부 들어 있습니다. 이 데이터로 세 가지 층위를 동시에 진단하고, 인위적 트래픽 없이 이 선순환이 자생적으로 작동하는 구조를 설계합니다.</p>
   </div>
@@ -2181,6 +2234,31 @@ const COLORS = {
   accent: '#e75519'
 };
 
+const SCATTER_OPT = {
+  responsive:true, maintainAspectRatio:false,
+  plugins:{legend:{display:false}, tooltip:{callbacks:{label:(c)=>`SEO ${c.raw.x} · AEO ${c.raw.y}`}}},
+};
+
+const BAR_OPT = {
+  responsive:true, maintainAspectRatio:false,
+  animation:{duration:1400, easing:'easeOutQuart', delay:c=>c.dataIndex*60},
+  plugins:{
+    legend:{display:false},
+    tooltip:{callbacks:{label:(c)=>String(c.raw)}}
+  },
+  scales:{
+    x:{grid:{color:'#f0f0f0',drawTicks:false}, border:{color:'#e8e8e8'}, ticks:{color:'#8a8a8a',padding:8}},
+    y:{grid:{color:'#f0f0f0',drawTicks:false}, border:{color:'#e8e8e8'}, ticks:{color:'#8a8a8a',padding:8}}
+  }
+};
+
+const DONUT_OPT = {
+  responsive:true, maintainAspectRatio:false, cutout:'66%',
+  plugins:{legend:{display:true, position:'bottom', labels:{font:{size:11,weight:'500'}, color:'#555555', padding:12, boxWidth:10, boxHeight:10}}}
+};
+
+
+
 const charts = {};
 const chartFactory = {
   'c-scatter': () => {
@@ -2223,7 +2301,7 @@ const chartFactory = {
         labels:['모임 설계(공간)','대파크림(사이드)','1인 팟 인덕션','관서식 정통성','고기집 혼밥','네기도로·캐비어','블루리본·레드리본','가쓰오부시 육수'],
         datasets:[{
           label:'언급 건수', data:[218,22,21,15,12,7,8,3],
-          backgroundColor:['#e8a854','#bf6030','#bf6030','#bf6030','#bf6030','#bf6030','#bf6030','#bf6030'],
+          backgroundColor:['#e75519','#555555','#555555','#555555','#555555','#8a8a8a','#8a8a8a','#b8b8b8'],
           borderWidth:0
         }]
       },
@@ -2241,7 +2319,7 @@ const chartFactory = {
         labels:["음식 맛 품질", "친절한 서비스", "관서식 스키야키 정통성", "1인 1팟 인덕션 시스템", "모임 설계 레스토랑", "블루리본·레드리본", "고기집 대비 혼밥 가능", "네기도로·대파크림 시그니처", "가쓰오부시 육수", "교대역 접근성", "브랜드 아이덴티티(스키당)"],
         datasets:[{
           label:'리뷰 반영률 (%)', data:[72.8, 17.4, 1.0, 1.5, 16.6, 0.6, 0.9, 0.7, 0.2, 6.2, 7.5],
-          backgroundColor:['#1a7a3a','#e8a854','#b03030','#b03030','#e8a854','#b03030','#b03030','#b03030','#b03030','#b03030','#b03030'], borderWidth:0
+          backgroundColor:['#e75519','#8a8a8a','#b8b8b8','#b8b8b8','#8a8a8a','#b8b8b8','#b8b8b8','#b8b8b8','#b8b8b8','#b8b8b8','#b8b8b8'], borderWidth:0
         }]
       },
       options:{...BAR_OPT,
@@ -2279,7 +2357,7 @@ const chartFactory = {
         }]
       },
       options:{responsive:true,maintainAspectRatio:false,
-        plugins:{legend:{position:'right',labels:{font:{size:10,family:"'SUIT',sans-serif"},color:'#2a2a2a',boxWidth:10,padding:8}},
+        plugins:{legend:{position:'bottom',labels:{font:{size:10,family:"'SUIT',sans-serif"},color:'#2a2a2a',boxWidth:10,padding:10}},
           tooltip:{backgroundColor:'#0a0a0a',titleFont:{family:"'SUIT',sans-serif",weight:'600'},bodyFont:{family:"'SUIT',sans-serif"},padding:10,displayColors:false,callbacks:{label:(c)=>c.label+': '+c.parsed+'%'}}
         }
       }
@@ -2303,9 +2381,6 @@ const chartFactory = {
     });
   },
   'c-monthly': () => {
-    const labels = ['24.05','24.06','24.07','24.08','24.09','24.10','24.11','24.12','25.01','25.02','25.03','25.04','25.05','25.06','25.07','25.08','25.09','25.10','25.11','25.12','26.01','26.02','26.03','26.04'];
-    const data = [32,47,28,38,18,30,17,9,7,2,8,7,2,12,5,2,1,1,4,14,31,10,10,7];
-    const colors = data.map((v,i) => i===20 ? COLORS.accent : COLORS.ink5);
     charts['c-monthly'] = new Chart(document.getElementById('c-monthly'), {
       type:'bar',
       data:{
@@ -2342,7 +2417,7 @@ const chartFactory = {
       data:{
         labels:['맛·재료','분위기·공간','편의·접근성','서비스','가격·가치'],
         datasets:[
-          {label:'긍정', data:[939,553,474,234,44], backgroundColor:'#1a7a3a', borderWidth:0, stack:'s'},
+          {label:'긍정', data:[939,553,474,234,44], backgroundColor:'#0a0a0a', borderWidth:0, stack:'s'},
           {label:'중립', data:[48,33,55,19,5], backgroundColor:'#b8b8b8', borderWidth:0, stack:'s'},
           {label:'부정', data:[1,0,1,0,0], backgroundColor:'#b03030', borderWidth:0, stack:'s'}
         ]
@@ -2359,7 +2434,7 @@ const chartFactory = {
         datasets:[{
           label:'리뷰 건수',
           data:[188,157,233,192,268,268,9],
-          backgroundColor:['#8a8a8a','#8a8a8a','#e8a854','#8a8a8a','#e75519','#e75519','#b03030'],
+          backgroundColor:['#8a8a8a','#8a8a8a','#555555','#8a8a8a','#e75519','#e75519','#b03030'],
           borderWidth:0
         }]
       },
@@ -2375,7 +2450,7 @@ const chartFactory = {
         datasets:[{
           label:'평균 길이(자)',
           data:[104.7,103.6,94.2,80.3,75.9,75.2],
-          backgroundColor:['#1a7a3a','#1a7a3a','#e8a854','#8a8a8a','#b8b8b8','#b8b8b8'],
+          backgroundColor:['#e75519','#e75519','#555555','#8a8a8a','#b8b8b8','#b8b8b8'],
           borderWidth:0
         }]
       },
