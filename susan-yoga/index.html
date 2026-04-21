@@ -1984,7 +1984,7 @@ const barObs = new IntersectionObserver((entries) => {
       barObs.unobserve(e.target);
     }
   });
-},{threshold:0.2});
+},{rootMargin:'120px 0px',threshold:0});
 document.querySelectorAll('.kwbars, .gauge-block').forEach(el => barObs.observe(el));
 
 /* ═══════════════════════════════════════════════
@@ -1997,7 +1997,7 @@ const animObs = new IntersectionObserver((entries) => {
       animObs.unobserve(e.target);
     }
   });
-},{threshold:0.08, rootMargin:'-20px 0px'});
+},{threshold:0.05, rootMargin:'80px 0px'});
 
 const animTargets = Array.from(document.querySelectorAll('.dark-block, .split, .persona, .trainer, .action, .tier, .tac'));
 animTargets.forEach(el => el.classList.add('anim'));
@@ -2017,7 +2017,7 @@ const diagramObs = new IntersectionObserver((entries) => {
       diagramObs.unobserve(e.target);
     }
   });
-},{threshold:0.25});
+},{rootMargin:'120px 0px',threshold:0});
 document.querySelectorAll('.cycle-wrap').forEach(el => diagramObs.observe(el));
 
 /* ═══════════════════════════════════════════════
@@ -2061,7 +2061,7 @@ const coverObs = new IntersectionObserver((entries) => {
       coverObs.unobserve(e.target);
     }
   });
-},{threshold:0.2});
+},{rootMargin:'120px 0px',threshold:0});
 const ckBot = document.querySelector('.cv-bot');
 if(ckBot) coverObs.observe(ckBot);
 
