@@ -2400,21 +2400,7 @@ const chartFactory = {
       }
     });
   },
-  'c-monthly': () => {
-    charts['c-monthly'] = new Chart(document.getElementById('c-monthly'), {
-      type:'bar',
-      data:{
-        labels:["2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04"],
-        datasets:[{
-          label:'월별 리뷰 건수', data:[21, 57, 46, 23, 39, 48, 40, 10, 35, 44, 42, 32, 40, 65, 81, 125, 51, 53, 75, 65, 47, 50, 56, 77, 42, 45, 6],
-          backgroundColor:'#2a2a2a', borderWidth:0
-        }]
-      },
-      options:{...BAR_OPT,
-        plugins:{legend:{display:false},tooltip:{...BAR_OPT.plugins.tooltip,callbacks:{label:(c)=>c.parsed.y+'건'}}},
-        scales:{x:{grid:{display:false},ticks:{color:'#555',font:{size:9},maxRotation:45,minRotation:45}},y:{grid:{color:'#f0f0f0'},ticks:{color:'#8a8a8a',font:{size:10}},beginAtZero:true}}
-      }
-    });
+  'c-absa-freq': () => {
     charts['c-absa-freq'] = new Chart(document.getElementById('c-absa-freq'), {
       type:'bar',
       data:{
@@ -2432,6 +2418,8 @@ const chartFactory = {
         scales:{x:{grid:{color:'#f0f0f0'},ticks:{color:'#8a8a8a',font:{size:10},callback:(v)=>v+'%'},min:0,max:80},y:{grid:{display:false},ticks:{color:'#555',font:{size:11}}}}
       }
     });
+  },
+  'c-absa-sent': () => {
     charts['c-absa-sent'] = new Chart(document.getElementById('c-absa-sent'), {
       type:'bar',
       data:{
@@ -2447,6 +2435,8 @@ const chartFactory = {
         scales:{x:{stacked:true,grid:{display:false},ticks:{color:'#555',font:{size:11}}},y:{stacked:true,grid:{color:'#f0f0f0'},ticks:{color:'#8a8a8a',font:{size:10}}}}
       }
     });
+  },
+  'c-dow': () => {
     charts['c-dow'] = new Chart(document.getElementById('c-dow'), {
       type:'bar',
       data:{
@@ -2463,6 +2453,8 @@ const chartFactory = {
         scales:{x:{grid:{display:false},ticks:{color:'#555',font:{size:12,weight:'600'}}},y:{grid:{color:'#f0f0f0'},ticks:{color:'#8a8a8a',font:{size:10}},beginAtZero:true}}
       }
     });
+  },
+  'c-purpose': () => {
     charts['c-purpose'] = new Chart(document.getElementById('c-purpose'), {
       type:'bar',
       data:{
@@ -2480,7 +2472,22 @@ const chartFactory = {
         scales:{x:{grid:{color:'#f0f0f0'},ticks:{color:'#8a8a8a',font:{size:10},callback:(v)=>v+'자'}},y:{grid:{display:false},ticks:{color:'#555',font:{size:11}}}}
       }
     });
-
+  },
+  'c-monthly': () => {
+    charts['c-monthly'] = new Chart(document.getElementById('c-monthly'), {
+      type:'bar',
+      data:{
+        labels:["2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04"],
+        datasets:[{
+          label:'월별 리뷰 건수', data:[21, 57, 46, 23, 39, 48, 40, 10, 35, 44, 42, 32, 40, 65, 81, 125, 51, 53, 75, 65, 47, 50, 56, 77, 42, 45, 6],
+          backgroundColor:'#2a2a2a', borderWidth:0
+        }]
+      },
+      options:{...BAR_OPT,
+        plugins:{legend:{display:false},tooltip:{...BAR_OPT.plugins.tooltip,callbacks:{label:(c)=>c.parsed.y+'건'}}},
+        scales:{x:{grid:{display:false},ticks:{color:'#555',font:{size:9},maxRotation:45,minRotation:45}},y:{grid:{color:'#f0f0f0'},ticks:{color:'#8a8a8a',font:{size:10}},beginAtZero:true}}
+      }
+    });
   }
 };
 
