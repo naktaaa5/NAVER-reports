@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>바다당 해운대 청사포역 — 리뷰 분석 리포트</title>
-<meta name="description" content="바다당 해운대 청사포역 네이버 플레이스 리뷰 분석 리포트. SEO·AEO 점수, POP vs POD, 고객 분석, 액션 플랜."/>
+<title>바다당 해운대 청사포역 — 네이버 플레이스 분석 리포트</title>
+<meta name="description" content="바다당 해운대 청사포역 네이버 플레이스 분석 리포트. SEO·AEO 점수, POP vs POD, 고객 분석, 액션 플랜."/>
 
 <!-- Open Graph / Link Preview -->
 <meta property="og:type" content="article"/>
-<meta property="og:title" content="바다당 해운대 청사포역 — 플레이스 리포트"/>
+<meta property="og:title" content="바다당 해운대 청사포역 — 네이버 플레이스 분석 리포트"/>
 <meta property="og:description" content="방문자 리뷰 408건 · 블로그 리뷰 344건 기반 분석 · RE:FEEEL Place Report"/>
 <meta property="og:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
 <meta property="og:image:alt" content="RE:FEEEL"/>
@@ -17,7 +17,7 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="바다당 해운대 청사포역 — 플레이스 리포트"/>
+<meta name="twitter:title" content="바다당 해운대 청사포역 — 네이버 플레이스 분석 리포트"/>
 <meta name="twitter:description" content="방문자 리뷰 408건 · 블로그 리뷰 344건 기반 분석 · RE:FEEEL Place Report"/>
 <meta name="twitter:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
 
@@ -982,7 +982,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
     <span class="r">2026.04.19</span>
   </div>
   <div class="cv-mid">
-    <div class="cv-label">네이버 플레이스 리뷰 분석 리포트</div>
+    <div class="cv-label">네이버 플레이스 분석 리포트</div>
     <h1 class="cv-h1">
       바다당 해운대<br>
       <span class="line2">청사포역</span>
@@ -1890,7 +1890,7 @@ const barObs = new IntersectionObserver((entries) => {
       barObs.unobserve(e.target);
     }
   });
-},{threshold:0.2});
+},{rootMargin:'120px 0px',threshold:0});
 document.querySelectorAll('.kwbars, .gauge-block').forEach(el => barObs.observe(el));
 
 /* ═══════════════════════════════════════════════
@@ -1903,7 +1903,7 @@ const animObs = new IntersectionObserver((entries) => {
       animObs.unobserve(e.target);
     }
   });
-},{threshold:0.08, rootMargin:'-20px 0px'});
+},{threshold:0.05, rootMargin:'80px 0px'});
 
 const animTargets = Array.from(document.querySelectorAll('.dark-block, .split, .persona, .trainer, .action, .tier, .tac'));
 animTargets.forEach(el => el.classList.add('anim'));
@@ -1923,7 +1923,7 @@ const diagramObs = new IntersectionObserver((entries) => {
       diagramObs.unobserve(e.target);
     }
   });
-},{threshold:0.25});
+},{rootMargin:'120px 0px',threshold:0});
 document.querySelectorAll('.cycle-wrap').forEach(el => diagramObs.observe(el));
 
 /* ═══════════════════════════════════════════════
@@ -1967,7 +1967,7 @@ const coverObs = new IntersectionObserver((entries) => {
       coverObs.unobserve(e.target);
     }
   });
-},{threshold:0.2});
+},{rootMargin:'120px 0px',threshold:0});
 const ckBot = document.querySelector('.cv-bot');
 if(ckBot) coverObs.observe(ckBot);
 
