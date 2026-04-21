@@ -2474,18 +2474,38 @@ const chartFactory = {
     });
   },
   'c-monthly': () => {
+    const monthlyData = [21, 57, 46, 23, 39, 48, 40, 10, 35, 44, 42, 32, 40, 65, 81, 125, 51, 53, 75, 65, 47, 50, 56, 77, 42, 45, 6];
+    const peakIdx = monthlyData.indexOf(Math.max(...monthlyData)); // 2025-05 = index 15
     charts['c-monthly'] = new Chart(document.getElementById('c-monthly'), {
-      type:'bar',
+      type:'line',
       data:{
-        labels:["2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04"],
+        labels:["2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04"],
         datasets:[{
-          label:'월별 리뷰 건수', data:[21, 57, 46, 23, 39, 48, 40, 10, 35, 44, 42, 32, 40, 65, 81, 125, 51, 53, 75, 65, 47, 50, 56, 77, 42, 45, 6],
-          backgroundColor:'#2a2a2a', borderWidth:0
+          label:'월별 리뷰 건수',
+          data: monthlyData,
+          borderColor:'#0a0a0a',
+          borderWidth:2,
+          backgroundColor:'rgba(10,10,10,0.06)',
+          fill:true,
+          tension:0.35,
+          pointRadius: monthlyData.map((_,i) => i === peakIdx ? 6 : 2),
+          pointBackgroundColor: monthlyData.map((_,i) => i === peakIdx ? '#e75519' : '#0a0a0a'),
+          pointBorderColor: monthlyData.map((_,i) => i === peakIdx ? '#e75519' : '#0a0a0a'),
+          pointBorderWidth:0,
+          pointHoverRadius:5
         }]
       },
-      options:{...BAR_OPT,
-        plugins:{legend:{display:false},tooltip:{...BAR_OPT.plugins.tooltip,callbacks:{label:(c)=>c.parsed.y+'건'}}},
-        scales:{x:{grid:{display:false},ticks:{color:'#555',font:{size:9},maxRotation:45,minRotation:45}},y:{grid:{color:'#f0f0f0'},ticks:{color:'#8a8a8a',font:{size:10}},beginAtZero:true}}
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        animation:{duration:1400, easing:'easeOutQuart'},
+        plugins:{
+          legend:{display:false},
+          tooltip:{backgroundColor:'#0a0a0a',titleFont:{family:"'SUIT',sans-serif",weight:'600'},bodyFont:{family:"'SUIT',sans-serif"},padding:10,displayColors:false,callbacks:{label:(c)=>c.parsed.y+'건'}}
+        },
+        scales:{
+          x:{grid:{display:false},border:{color:'#e8e8e8'},ticks:{color:'#555',font:{size:9},maxRotation:45,minRotation:45}},
+          y:{grid:{color:'#f0f0f0'},border:{color:'#e8e8e8'},ticks:{color:'#8a8a8a',font:{size:10}},beginAtZero:true}
+        }
       }
     });
   }
