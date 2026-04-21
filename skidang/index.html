@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>스키당 교대점 — 분석 리포트</title>
+<title>스키당 교대점 — 네이버 플레이스 분석 리포트</title>
 <meta name="description" content="스키당 교대점 네이버 플레이스 분석 리포트. SEO·AEO 점수, POP vs POD, 고객 분석, 액션 플랜."/>
 
 <!-- Open Graph / Link Preview -->
 <meta property="og:type" content="article"/>
-<meta property="og:title" content="스키당 교대점 — 플레이스 리포트"/>
-<meta property="og:description" content="네이버 플레이스 리뷰 1,315건 기반 분석 · RE:FEEEL Place Report"/>
+<meta property="og:title" content="스키당 교대점 — 네이버 플레이스 분석 리포트"/>
+<meta property="og:description" content="방문자 리뷰 1,420건 · 블로그 리뷰 2,744건 기반 분석 · RE:FEEEL Place Report"/>
 <meta property="og:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
 <meta property="og:image:alt" content="RE:FEEEL"/>
 <meta property="og:site_name" content="RE:FEEEL"/>
@@ -17,12 +17,13 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="스키당 교대점 — 플레이스 리포트"/>
-<meta name="twitter:description" content="네이버 플레이스 리뷰 1,315건 기반 분석 · RE:FEEEL Place Report"/>
+<meta name="twitter:title" content="스키당 교대점 — 네이버 플레이스 분석 리포트"/>
+<meta name="twitter:description" content="방문자 리뷰 1,420건 · 블로그 리뷰 2,744건 기반 분석 · RE:FEEEL Place Report"/>
 <meta name="twitter:image" content="https://pub-f337889f68dc417a957731031766fb4f.r2.dev/logo_black.png"/>
 
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css"/>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.0/fonts/static/woff2/SUIT.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>if(typeof Chart==="undefined"){document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"><\/script>');}</script>
 <style>
 /* ═══════════════════════════════════════════════════════
    RE:FEEEL — Editorial Minimalist System
@@ -1014,7 +1015,7 @@ table.dt tr:hover td{background:var(--bg-soft)}
       스키당<br>
       <span class="line2">교대점</span>
     </h1>
-    <p class="cv-desc">플레이스 리뷰 1,315건 기반 분석<br>분석 기간: 2024년 2월 — 2026년 4월</p>
+    <p class="cv-desc">방문자 리뷰 1,420건 · 블로그 리뷰 2,744건 기반 분석<br>분석 기간: 2024년 2월 — 2026년 4월</p>
   </div>
   <div class="cv-bot">
     <div class="cv-kpi">
@@ -2150,7 +2151,7 @@ const barObs = new IntersectionObserver((entries) => {
       barObs.unobserve(e.target);
     }
   });
-},{threshold:0.2});
+},{rootMargin:'120px 0px',threshold:0});
 document.querySelectorAll('.kwbars, .gauge-block').forEach(el => barObs.observe(el));
 
 /* ═══════════════════════════════════════════════
@@ -2163,7 +2164,7 @@ const animObs = new IntersectionObserver((entries) => {
       animObs.unobserve(e.target);
     }
   });
-},{threshold:0.08, rootMargin:'-20px 0px'});
+},{threshold:0.05, rootMargin:'80px 0px'});
 
 const animTargets = Array.from(document.querySelectorAll('.dark-block, .split, .persona, .trainer, .action, .tier, .tac'));
 animTargets.forEach(el => el.classList.add('anim'));
@@ -2183,7 +2184,7 @@ const diagramObs = new IntersectionObserver((entries) => {
       diagramObs.unobserve(e.target);
     }
   });
-},{threshold:0.25});
+},{rootMargin:'120px 0px',threshold:0});
 document.querySelectorAll('.cycle-wrap').forEach(el => diagramObs.observe(el));
 
 /* ═══════════════════════════════════════════════
@@ -2227,7 +2228,7 @@ const coverObs = new IntersectionObserver((entries) => {
       coverObs.unobserve(e.target);
     }
   });
-},{threshold:0.2});
+},{rootMargin:'120px 0px',threshold:0});
 const ckBot = document.querySelector('.cv-bot');
 if(ckBot) coverObs.observe(ckBot);
 
@@ -2483,35 +2484,26 @@ const chartFactory = {
   }
 };
 
-/* Lazy chart init on scroll */
-function checkCharts(){
-  document.querySelectorAll('canvas[id^="c-"]').forEach(canvas => {
-    if(charts[canvas.id]) return;
-    const rect = canvas.getBoundingClientRect();
-    if(rect.top < window.innerHeight + 80 && rect.bottom > -80){
-      if(chartFactory[canvas.id]){
-        try { chartFactory[canvas.id](); } catch(e) { console.warn(e); }
-      }
-    }
-  });
+/* Lazy chart init — IntersectionObserver */
+function initChart(id){
+  if(charts[id] || !chartFactory[id]) return;
+  try { chartFactory[id](); } catch(e){ console.warn('chart error:', id, e); }
 }
 
 function startChartWatch(){
-  checkCharts();
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if(!ticking){
-      ticking = true;
-      requestAnimationFrame(() => { checkCharts(); ticking = false; });
-    }
-  },{passive:true});
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ initChart(e.target.id); obs.unobserve(e.target); }
+    });
+  }, {rootMargin:'120px 0px', threshold:0});
+  document.querySelectorAll('canvas[id^="c-"]').forEach(c => obs.observe(c));
 }
 
 if(typeof Chart !== 'undefined'){
   startChartWatch();
 } else {
-  const script = document.querySelector('script[src*="chart.js"]');
-  if(script) script.addEventListener('load', startChartWatch);
+  document.querySelector('script[src*="chart.umd"]')
+    ?.addEventListener('load', startChartWatch);
 }
 </script>
 </body>
