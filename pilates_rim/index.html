@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>필라테스림 — 네이버 플레이스 AI 노출 분석 리포트</title>
+<meta name="description" content="필라테스림(인천 부평 삼산동) 방문자 리뷰 276건 SEO/AEO/GEO 3축 분석 — 네이버 밖 생성형 AI 노출(GEO) 진단 · RE:FEEEL"/>
+<meta property="og:title" content="필라테스림 — 네이버 플레이스 AI 노출 분석 리포트"/>
+<meta property="og:description" content="리뷰 276건 · SEO/AEO/GEO 3축 · 2026 AI 답변 시대 진단 · RE:FEEEL"/>
+<meta property="og:type" content="article"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>:root{--bg:#fff;--soft:#fafafa;--ink:#0a0a0a;--ink2:#2a2a2a;--ink3:#555;--ink4:#8a8a8a;--rule:#e8e8e8;--accent:#e75519;--danger:#b03030;--max:1080px;--pp:clamp(22px,5vw,72px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'SUIT',-apple-system,'Malgun Gothic',sans-serif;background:var(--bg);color:var(--ink2);font-size:15px;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased}
+.topbar{position:fixed;top:0;left:0;right:0;height:52px;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);display:flex;align-items:center;padding:0 var(--pp)}
+.tb-in{max-width:var(--max);margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center}
+.tb-b{font-size:11px;font-weight:800;letter-spacing:2px}.tb-b .d{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:7px;vertical-align:middle}
+.tb-p{font-size:11px;color:var(--ink4);font-weight:700}
+main{padding-top:52px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pp)}
+section{padding:clamp(72px,11vw,128px) 0;border-top:1px solid var(--rule)}
+section.soft{background:var(--soft)}
+.ey{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--accent);text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.ey::before{content:"";width:18px;height:1px;background:var(--accent)}
+h2{font-size:clamp(26px,4.5vw,42px);font-weight:800;letter-spacing:-1.5px;line-height:1.15;margin-bottom:18px}
+.lead{font-size:clamp(15px,2.2vw,18px);color:var(--ink3);max-width:62ch;margin-bottom:8px}
+.lead b{color:var(--ink);font-weight:700}.hl{color:var(--accent);font-weight:800}
+.cover{background:#0a0a0a;color:#fff;min-height:92vh;display:flex;flex-direction:column;padding:var(--pp);border:none}
+.cv-in{max-width:var(--max);margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
+.cv-top{display:flex;justify-content:space-between;font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.6);text-transform:uppercase;padding-bottom:40px}
+.cv-mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+.cv-lab{font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.7);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.cv-lab::before{content:"";width:24px;height:1px;background:var(--accent)}
+.cv-h1{font-size:clamp(40px,7.5vw,96px);font-weight:800;letter-spacing:-3px;line-height:.98;margin-bottom:22px}
+.cv-h1 .s{display:block;color:rgba(255,255,255,.4);font-weight:400;font-size:.5em;letter-spacing:-1px;margin-top:14px}
+.cv-desc{font-size:15px;color:rgba(255,255,255,.75);max-width:520px}
+.cv-bot{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-top:36px}
+.kpi .v{font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-1.5px;line-height:1}
+.kpi .v small{font-size:14px;color:rgba(255,255,255,.55)}
+.kpi .l{font-size:13px;font-weight:600;margin-top:8px}.kpi .s{font-size:11px;color:rgba(255,255,255,.55)}
+.kpi.bad .v{color:var(--accent)}
+@media(max-width:680px){.cv-bot{grid-template-columns:repeat(2,1fr);gap:24px 16px}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.card{border:1px solid var(--rule);border-radius:14px;background:#fff;padding:22px}
+.card.k{background:#0a0a0a;color:#fff;border-color:#0a0a0a}.card.k .chart-t{color:#fff}.card.k .mexp{color:rgba(255,255,255,.8)}.card.k .mexp b{color:#fff}
+.chart{position:relative;height:300px}
+.chart-t{font-size:13px;font-weight:700;margin-bottom:14px;color:var(--ink2)}
+.stat{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+@media(max-width:680px){.stat{grid-template-columns:repeat(2,1fr)}}
+.stat .b{border:1px solid var(--rule);border-radius:12px;padding:18px}
+.stat .n{font-size:30px;font-weight:800;letter-spacing:-1px;color:var(--accent)}
+.stat .b.d .n{color:var(--danger)}
+.stat .k{font-size:12px;color:var(--ink4);margin-top:6px;line-height:1.4}
+.tbl{width:100%;border-collapse:collapse;margin-top:24px;font-size:14px}
+.tbl th{background:#0a0a0a;color:#fff;text-align:left;padding:10px 12px;font-weight:700}
+.tbl td{border-bottom:1px solid var(--rule);padding:10px 12px;vertical-align:top}
+.tbl tr:hover td{background:var(--soft)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:rgba(231,85,25,.1);color:var(--accent)}
+.tag.r{background:#fee;color:var(--danger)}
+.note{border-left:3px solid var(--accent);padding:14px 18px;background:var(--soft);margin-top:24px;font-size:14px;border-radius:0 8px 8px 0}
+ul.x{list-style:none;margin-top:18px}ul.x li{padding:10px 0 10px 22px;position:relative;border-top:1px solid var(--rule);font-size:14px}
+ul.x li::before{content:"";position:absolute;left:0;top:18px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+ul.x li b{color:var(--ink)}
+.foot{background:#0a0a0a;color:rgba(255,255,255,.6);padding:48px var(--pp);text-align:center;font-size:12px}
+.foot b{color:#fff}
+.mexp{font-size:14.5px;line-height:1.78;color:var(--ink3)}.mexp b{color:var(--ink)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}}</style></head><body>
+<div class="topbar"><div class="tb-in"><a href="https://refeeel.com" target="_blank" rel="noopener" class="tb-b" style="text-decoration:none;color:inherit"><span class="d"></span>RE:FEEEL PLACE REPORT</a><div class="tb-p" id="prog">0%</div></div></div>
+<main>
+<section class="cover"><div class="cv-in">
+  <div class="cv-top"><span>네이버 플레이스 AI 노출 리포트 · RF-2607-NPR</span><span>2026.07 · RE:FEEEL</span></div>
+  <div class="cv-mid">
+    <div class="cv-lab">필라테스 · 인천 부평구 삼산동</div>
+    <div class="cv-h1">필라테스림<span class="s">굴포천역 8번 출구 · 방문자 리뷰 276건 전수 분석</span></div>
+    <div class="cv-desc">네이버 검색 노출(SEO)을 넘어, <b style="color:#fff">네이버 안의 AI(AEO)</b>와 <b style="color:#e75519">네이버 밖의 AI(GEO)</b>가 이 스튜디오를 추천 후보로 인용하는가를 3축으로 채점했습니다.</div>
+  </div>
+  <div class="cv-bot">
+    <div class="kpi"><div class="v">5.3<small>/10</small></div><div class="l">평균 SEO</div><div class="s">네이버 검색 노출</div></div>
+    <div class="kpi"><div class="v">7.69<small>/10</small></div><div class="l">평균 AEO</div><div class="s">네이버 AI 인용</div></div>
+    <div class="kpi bad"><div class="v">2.97<small>/10</small></div><div class="l">평균 GEO</div><div class="s">밖의 AI 추천</div></div>
+    <div class="kpi"><div class="v">100.0<small>%</small></div><div class="l">답글률</div><div class="s">276/276건 전건</div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="ey">00 · 리포트 개요</div>
+  <h2>리뷰 276건, 답글률 100%.<br>그런데 <span class="hl">밖의 AI가 인용할 리뷰는 0.7%</span>입니다.</h2>
+  <p class="lead">필라테스림의 리뷰는 <b>질이 좋습니다.</b> 상세한 후기가 많아 <b>네이버 내부 AI(큐:·AI 브리핑)가 인용하기 좋은 재료(AEO)</b>는 상위권. 문제는 그 재료가 <b>네이버 밖(ChatGPT·퍼플렉시티·구글 AI)</b>으로 나가면 거의 쓰이지 못한다는 것입니다.</p>
+  <div class="stat">
+    <div class="b"><div class="n">276</div><div class="k">방문자 리뷰 전수<br>(블로그 971 · 3.5배)</div></div>
+    <div class="b"><div class="n">47.5%</div><div class="k">AEO A등급<br>네이버 AI 인용 강</div></div>
+    <div class="b d"><div class="n">0.7%</div><div class="k">GEO A등급 (2건)<br>밖의 AI 인용 자산 희소</div></div>
+    <div class="b"><div class="n">52</div><div class="k">재방문 2회+<br>진성 관계 자산</div></div>
+  </div>
+</div></section>
+
+<section class="soft"><div class="wrap">
+  <div class="ey">방법론 · 이 리포트를 읽는 법</div>
+  <h2>SEO·AEO·GEO,<br>세 개의 다른 문입니다.</h2>
+  <p class="lead">리뷰를 세 축으로 채점했습니다 — <b>검색에 걸리는가(SEO)</b>, <b>네이버 AI가 인용하는가(AEO)</b>, 그리고 <span class="hl">네이버 밖 AI가 추천하는가(GEO)</span>. 특히 세 번째가 2026년의 승부처입니다.</p>
+  <div class="grid2">
+    <div class="card"><div class="chart-t">SEO — 검색 노출 기여</div><p class="mexp">네이버 플레이스 <b>검색 순위</b> 기여. 최신성·리뷰 길이·업종/지역 키워드·재방문·답글로 채점. 높을수록 <b>'검색하면 위에 뜬다'</b>.</p></div>
+    <div class="card"><div class="chart-t">AEO — 네이버 안의 AI</div><p class="mexp">네이버 큐:·AI 브리핑은 <b>리뷰 원문을 직접 읽어</b> 요약·인용합니다. 속성 커버·수치·스토리로 채점. <b>필라테스림의 강점 구간.</b></p></div>
+  </div>
+  <div class="grid2">
+    <div class="card k"><div class="chart-t" style="color:#e75519">GEO — 네이버 밖의 AI (신규 축)</div><p class="mexp">ChatGPT·퍼플렉시티는 <b>네이버 리뷰를 직접 못 읽습니다</b>(봇 차단). 그래서 ①이름·위치 일관성 ②수치·전문성이 담긴 '인용 가능한 정보 블록' ③블로그·유튜브 등 오프사이트 교차검증이 있어야 추천됩니다.</p></div>
+    <div class="card"><div class="chart-t">POP · POD · ABSA</div><p class="mexp"><b>POP</b>(동등점 — 없으면 탈락, 있어도 선택 이유는 안 됨) vs <b>POD</b>(차별점 — 희소한 강점). <b>ABSA</b>: 리뷰를 5개 속성으로 쪼개 언급률을 봅니다.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="ey">01 · 플레이스 상태</div>
+  <h2>리뷰 자산은 강한데,<br>&lsquo;밖의 AI용&rsquo; 형태가 아닙니다.</h2>
+  <p class="lead">답글률 <b>100%</b>·사진 리뷰 <b>63.0%</b>로 온드 자산은 최상급입니다. 다만 <b>블로그 리뷰가 971건(방문자의 3.5배)</b>인데도, 방문자 리뷰 안에서 밖으로 이식될 &lsquo;사실 블록&rsquo; 신호는 낮습니다.</p>
+  <div class="stat">
+    <div class="b"><div class="n">100%</div><div class="k">사장님 답글률<br>AI 컨텍스트 최상</div></div>
+    <div class="b"><div class="n">63.0%</div><div class="k">사진 동반 리뷰<br>멀티모달 신호</div></div>
+    <div class="b"><div class="n">3.5x</div><div class="k">블로그/방문자<br>온드는 풍부</div></div>
+    <div class="b"><div class="n">149자</div><div class="k">평균 본문<br>PT 벤치 120~180 부합</div></div>
+  </div>
+  <div class="note"><b>답글이 왜 중요할까요:</b> 답글은 단순 응대가 아니라 <b>AI가 답변을 만들 때 참조하는 컨텍스트이자 신뢰 신호</b>입니다. 필라테스림은 <b>전건 답글(100%)</b>로 이미 최상급 — 여기에 <b>후기 속 결과·강사명·기구명을 되짚어주는</b> 답글을 더하면 AEO·GEO 인용까지 이어집니다.</div>
+</div></section>
+
+<section class="soft"><div class="wrap">
+  <div class="ey">02 · 종합 진단</div>
+  <h2>점수로 보면 —<br>세 축이 <span class="hl">따로 논다</span>.</h2>
+  <p class="lead">리뷰별 SEO·AEO를 채점하고 점 색으로 <b>GEO 등급</b>을 얹었습니다. 오른쪽 위(AEO 강)에 몰려 있지만 <b>점 색이 대부분 회색</b> — 네이버 AI엔 강해도 <b>밖의 AI가 쓸 자산은 거의 없다</b>는 뜻입니다.</p>
+  <div class="grid2">
+    <div class="card"><div class="chart-t">리뷰별 SEO × AEO · 점 색 = GEO 등급 (276건)</div><div class="chart"><canvas id="cscatter"></canvas></div></div>
+    <div class="card"><div class="chart-t">리뷰 키워드 태그 — POP 상위 (건)</div><div class="chart"><canvas id="cpop"></canvas></div></div>
+  </div>
+  <div class="stat">
+    <div class="b"><div class="n">7.69</div><div class="k">평균 AEO / 10<br>A등급 47.5%</div></div>
+    <div class="b"><div class="n">5.3</div><div class="k">평균 SEO / 10<br>A등급 6.2%</div></div>
+    <div class="b d"><div class="n">2.97</div><div class="k">평균 GEO / 10<br>A등급 0.7%</div></div>
+    <div class="b"><div class="n">52</div><div class="k">재방문 리뷰<br>관계 자산</div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="ey">03 · POP vs POD</div>
+  <h2>다들 말하는 건 똑같습니다.</h2>
+  <p class="lead"><b>POP(동등점):</b> &lsquo;자세 꼼꼼히(84%)·친절(83%)·체계적(78%)&rsquo; — 어느 필라테스나 있는 말이 상위를 독식합니다. 정작 밖의 AI가 이 업체를 <em>구별</em>해 추천할 <b>POD(차별점)는 전부 16% 미만</b>으로 묻혀 있습니다.</p>
+  <div class="grid2">
+    <div class="card"><div class="chart-t">POD 후보 — 모두 16% 미만 (%)</div><div class="chart"><canvas id="cpod"></canvas></div></div>
+    <div class="card"><div class="chart-t">속성별 언급률 · ABSA 5축 (%)</div><div class="chart"><canvas id="cabsa"></canvas></div></div>
+  </div>
+  <div class="note"><b>핵심:</b> &lsquo;재활·산후·교정·기구 특화&rsquo; 같은 <b>차별점(POD)</b>이 리뷰에 안 담기면, 밖의 AI는 &ldquo;삼산동 <b>재활</b> 필라테스 추천&rdquo; 질의에 이 업체를 꺼낼 근거가 없습니다. POP만으로는 &lsquo;그 동네 여러 곳 중 하나&rsquo;로만 인식됩니다.</div>
+</div></section>
+
+<section class="soft"><div class="wrap">
+  <div class="ey">04 · 핵심 진단 · GEO 심층</div>
+  <h2>밖의 AI에겐<br><span class="hl">D등급 131건</span>, 사실상 투명인간.</h2>
+  <p class="lead">276건 중 GEO A등급은 <b>2건</b>, D등급이 <b>131건</b>. 반면 AEO는 A+B가 <b>235건(85%)</b> — <b>네이버 안에선 강하지만 밖으로 나가는 순간 자산이 사라집니다.</b></p>
+  <div class="grid2">
+    <div class="card"><div class="chart-t">GEO 등급 분포 (밖의 AI 인용력)</div><div class="chart"><canvas id="cgeoband"></canvas></div></div>
+    <div class="card"><div class="chart-t">AEO 등급 분포 (네이버 AI 인용력)</div><div class="chart"><canvas id="caeoband"></canvas></div></div>
+  </div>
+  <div class="card" style="margin-top:28px"><div class="chart-t">밖의 AI 인용 신호 보유율 (%)</div><div class="chart"><canvas id="cgeosig"></canvas></div></div>
+  <div class="note"><b>숫자로 본 간극:</b> 강사 전문성·자격 언급 <b>5.1%</b>, 오프사이트 교차검증 신호 <b>1.8%</b>. 블로그 971건이라는 온드 자산이 있는데도 <b>&lsquo;AI가 읽어갈 구조&rsquo;로 정리돼 있지 않습니다.</b></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="ey">05 · 리뷰 추이</div>
+  <h2>흐름과 최신성.</h2>
+  <p class="lead">최근 3개월 리뷰가 AI 답변 생성의 핵심 게이트입니다. 꾸준한 유입은 유지되나, <b>&lsquo;정보 밀도 높은 최신 리뷰&rsquo;</b>의 지속 공급이 3축을 동시에 끌어올립니다.</p>
+  <div class="grid2">
+    <div class="card"><div class="chart-t">리뷰 최신성 분포 (건)</div><div class="chart"><canvas id="crecency"></canvas></div></div>
+    <div class="card"><div class="chart-t">월별 방문자 리뷰 (건)</div><div class="chart"><canvas id="cmonthly"></canvas></div></div>
+  </div>
+</div></section>
+
+<section class="soft"><div class="wrap">
+  <div class="ey">06 · 액션 플랜</div>
+  <h2>그래서 무엇을.</h2>
+  <table class="tbl"><tr><th>전략</th><th>근거</th><th>전환 방향</th></tr>
+    <tr><td><b>POD를 리뷰·소식에 &lsquo;정보 블록&rsquo;으로 심는다</b></td><td>POD 키워드 전부 16% 미만 · GEO D등급 131건</td><td>&lsquo;거북목 6주 교정, 리포머+체어 1:1&rsquo;처럼 수치·기구·결과 유도</td></tr>
+    <tr><td><b>강사를 &lsquo;전문가 엔티티&rsquo;로 세운다</b></td><td>강사 전문성 언급 5.1%뿐</td><td>자격·경력(물리치료·재활·국제자격)을 프로필·소식에 구조화</td></tr>
+    <tr><td><b>온드 → 오프사이트로 이식한다</b></td><td>블로그 971건 강점 · 오프사이트 신호 1.8%</td><td>같은 사실(위치·POD·수치) 반복되는 FAQ·상세페이지 · NAP 일관성</td></tr>
+    <tr><td><b>답글에 결과·고유명사를 담는다</b></td><td>답글 100%(양호)이나 정형 응대 위주</td><td>후기 속 결과·강사명·기구명 되짚는 답글</td></tr>
+    <tr><td><b>최신·고밀도 리뷰 유도 설계</b></td><td>최근 3개월이 AI 답변 게이트</td><td>수업 종료 시 &lsquo;가장 달라진 점 한 줄&rsquo; 질문 유도</td></tr>
+  </table>
+  <div class="note"><b>다음 단계 · 수요측 진단:</b> 이 리포트는 <b>공급측(우리 리뷰 자산)</b> 진단입니다. 실제로 ChatGPT·퍼플렉시티에 &lsquo;삼산동/부평 필라테스 추천&rsquo;을 물어 이 업체와 경쟁사의 <b>인용 점유율(SOV)</b>을 <b>월 1회</b> 측정하면, 개선 추세를 수치로 볼 수 있습니다.</div>
+</div></section>
+
+<div class="foot"><a href="https://refeeel.com" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;border-bottom:1px solid var(--accent)"><b>RE:FEEEL</b></a> · 네이버 플레이스 AI 노출 리포트 · 필라테스림(인천 부평 삼산동)<br>방문자 리뷰 276건 전수 · SEO/AEO/GEO 3축 채점 · 2026.07</div>
+</main>
+<script>const CD={"scatter": [[10, 10, "B"], [9.0, 9.4, "B"], [8.5, 10, "C"], [8.5, 8.3, "D"], [10, 8.6, "B"], [10, 10, "C"], [6, 10, "C"], [6.5, 10, "B"], [6, 8.8, "D"], [6.5, 9.6, "C"], [7.5, 6.6, "C"], [8.0, 5.4, "D"], [6.5, 9.6, "C"], [5.5, 10, "C"], [6.5, 4.9, "C"], [7.0, 6.1, "D"], [5.5, 7.4, "C"], [5, 10, "B"], [5.5, 7.6, "C"], [4, 8.4, "C"], [5.5, 6.4, "D"], [5.5, 8.6, "D"], [5, 9.6, "C"], [5, 7.1, "D"], [6.5, 10, "C"], [5, 7.4, "C"], [4, 7.8, "D"], [5.5, 6.6, "D"], [6.5, 10, "C"], [4, 8.6, "C"], [6.5, 9.6, "C"], [4, 6.4, "D"], [4, 7.1, "D"], [6.5, 8.4, "C"], [5.5, 8.8, "D"], [3, 6.1, "D"], [4, 5.9, "D"], [4.5, 4.9, "C"], [6.5, 9.6, "C"], [5.5, 6.6, "D"], [6.5, 10, "B"], [4, 8.6, "D"], [6.5, 6.4, "D"], [5, 8.6, "C"], [5.5, 7.6, "D"], [5.5, 7.6, "D"], [6.5, 8.8, "D"], [8.0, 9.6, "C"], [3, 6.3, "D"], [6.5, 10, "C"], [4.5, 4.8, "D"], [8.0, 7.4, "B"], [4, 6.3, "D"], [3, 10, "C"], [6.5, 9.8, "C"], [6.5, 9.8, "D"], [4, 5.4, "D"], [5.5, 8.6, "D"], [8.0, 9.6, "B"], [4.5, 7.1, "C"], [5.5, 8.6, "C"], [5.5, 8.8, "C"], [8.0, 10, "C"], [5, 10, "C"], [8.0, 10, "B"], [6.5, 6.1, "D"], [5, 8.6, "C"], [6.5, 8.8, "D"], [3, 6.6, "D"], [4.5, 4.8, "D"], [5.5, 9.6, "C"], [3, 2.4, "D"], [4, 7.1, "D"], [7.0, 9.1, "C"], [3, 5.1, "D"], [6.5, 8.4, "B"], [8.0, 7.1, "B"], [5, 8.6, "D"], [6.5, 8.8, "D"], [4, 5.1, "D"], [3, 3.9, "D"], [4, 6.6, "D"], [6.5, 10, "B"], [6.5, 7.6, "D"], [8.0, 10, "B"], [4.5, 3.6, "D"], [4.5, 10, "C"], [6.5, 10, "C"], [3, 6.1, "D"], [6.5, 10, "C"], [5, 8.6, "C"], [5, 8.6, "B"], [4.5, 9.8, "C"], [5.5, 8.6, "D"], [6.5, 5.9, "C"], [5, 10, "C"], [5.5, 8.8, "D"], [6.5, 10, "C"], [7.0, 6.4, "D"], [5, 10, "C"], [6.5, 7.6, "D"], [8.0, 5.9, "D"], [5, 10, "D"], [3, 6.3, "D"], [6.5, 9.8, "D"], [4, 9.8, "D"], [4.5, 5.1, "C"], [5, 9.8, "D"], [5.5, 8.6, "C"], [3, 7.6, "C"], [4, 3.9, "D"], [6.5, 8.8, "D"], [6.5, 9.3, "C"], [3, 6.4, "C"], [4.5, 3.6, "D"], [4, 7.1, "C"], [6.5, 8.6, "C"], [4, 6.1, "D"], [4, 7.6, "B"], [3, 4.9, "D"], [6.5, 9.3, "D"], [6.5, 10, "B"], [3, 3.6, "D"], [4, 7.9, "C"], [6.5, 10, "B"], [6.5, 8.6, "C"], [4, 7.6, "C"], [4.5, 6.1, "D"], [4, 7.8, "D"], [5.5, 6.1, "D"], [4, 4.9, "D"], [5, 7.4, "C"], [6.5, 9.6, "C"], [6.5, 9.8, "D"], [6.5, 10, "C"], [8.0, 10, "B"], [5.5, 8.3, "D"], [4, 10, "C"], [6.5, 8.6, "C"], [5.5, 6.4, "B"], [5.5, 5.4, "D"], [5.5, 6.4, "B"], [7.0, 9.1, "C"], [5, 6.1, "D"], [5.5, 5.9, "C"], [5.5, 6.4, "C"], [5.5, 7.4, "C"], [5.5, 7.1, "D"], [5.5, 6.1, "D"], [5.5, 8.6, "C"], [5.5, 8.6, "C"], [6.5, 7.4, "C"], [6.5, 10, "C"], [4, 6.4, "D"], [5.5, 5.4, "D"], [5.5, 9.8, "C"], [6.5, 10, "B"], [4, 8.6, "D"], [4, 7.6, "C"], [3, 6.3, "D"], [5.5, 8.6, "B"], [5.5, 9.8, "C"], [4, 4.9, "D"], [4, 6.6, "D"], [4.5, 7.8, "D"], [4, 7.6, "D"], [6.5, 7.4, "C"], [4, 6.4, "D"], [4, 6.4, "C"], [6.5, 9.5, "C"], [6.5, 10, "B"], [4, 7.6, "C"], [4, 7.1, "D"], [4.5, 6.3, "D"], [5.5, 7.1, "D"], [6.5, 8.4, "B"], [5.5, 7.5, "D"], [5.5, 5.9, "D"], [3, 8.6, "C"], [4.5, 5.1, "D"], [4, 3.9, "D"], [6.5, 10, "B"], [6.5, 10, "C"], [5.5, 7.4, "D"], [4, 7.3, "D"], [4, 8.6, "D"], [5.5, 6.6, "D"], [5.5, 6.4, "D"], [4.5, 2.4, "D"], [4, 7.6, "C"], [4, 10, "C"], [4, 6.1, "D"], [4.5, 3.9, "D"], [4, 6.4, "D"], [7.0, 6.1, "D"], [6.5, 10, "B"], [5.5, 8.4, "C"], [4, 8.8, "C"], [5.5, 7.4, "B"], [5.5, 7.4, "D"], [4, 7.6, "C"], [6.0, 7.6, "C"], [3, 3.6, "D"], [5.5, 8.9, "C"], [5, 10, "C"], [6.5, 10, "B"], [4, 7.9, "C"], [4.5, 5.1, "D"], [5, 8.4, "C"], [4, 9.6, "C"], [5.5, 7.6, "D"], [5.5, 9.1, "C"], [4, 6.1, "D"], [5, 10, "C"], [6.5, 7.1, "D"], [6.5, 8.6, "C"], [4, 3.9, "D"], [5.5, 7.1, "C"], [6.5, 7.1, "D"], [6.5, 9.9, "A"], [4.5, 2.4, "D"], [6.5, 8.6, "B"], [3, 8.6, "B"], [4, 10, "C"], [4.5, 5.4, "D"], [6.5, 7.6, "D"], [6.5, 8.9, "C"], [6.5, 10, "C"], [8.0, 10, "B"], [3, 7.3, "D"], [4, 8.8, "D"], [6.5, 10, "B"], [6.5, 8.4, "C"], [4, 10, "C"], [5.5, 7.8, "D"], [5.5, 8.6, "C"], [6.5, 8.6, "D"], [4.5, 3.6, "D"], [4, 7.6, "D"], [4, 3.9, "D"], [6.5, 9.8, "A"], [6.5, 10, "B"], [4, 3.9, "D"], [3, 7.3, "D"], [5.5, 6.3, "D"], [4, 6.6, "D"], [6.5, 9.6, "C"], [3, 3.6, "D"], [5.5, 10, "C"], [3, 4.8, "D"], [3, 5.1, "D"], [5.5, 6.4, "D"], [4.5, 5.6, "D"], [4, 9.1, "C"], [4, 8.8, "D"], [5.5, 5.4, "D"], [6.5, 9.6, "C"], [5.5, 9.6, "C"], [6.5, 8.4, "C"], [4, 5.4, "D"], [4, 7.3, "D"], [3, 6.3, "D"], [5.5, 6.4, "C"], [5.5, 5.4, "D"], [4.5, 3.9, "D"], [3, 7.3, "C"], [4, 8.8, "C"], [5, 10, "B"], [3, 6.1, "C"], [3, 6.4, "B"], [5.5, 10, "C"], [3, 5.1, "D"], [7.0, 6.6, "C"], [6.5, 6.4, "C"], [5.5, 5.4, "D"], [5.5, 6.3, "D"]], "pop": {"labels": ["자세를 꼼꼼히 봐주세요", "친절해요", "수업이 체계적이에요", "상담이 자세해요", "선생님 실력이 좋아요", "시설이 깔끔해요"], "data": [233, 229, 215, 152, 143, 135]}, "pod": {"labels": ["가격이 합리적이에요", "맞춤 케어를 잘해줘요", "기구가 다양해요", "공간이 넓어요", "주차하기 편해요", "과도한 권유가 없어요", "프로그램이 다양해요"], "data": [15.6, 15.2, 13.0, 8.0, 3.3, 2.2, 1.8]}, "absa": {"labels": ["강사·지도", "몸의 변화·효과", "시설·기구", "비용·정책", "접근·운영"], "data": [100.0, 94.2, 63.0, 33.7, 12.3]}, "geoband": {"labels": ["A 인용가능", "B 보강여지", "C 약함", "D 신호없음"], "data": [2, 35, 108, 131]}, "aeoband": {"labels": ["A", "B", "C", "D"], "data": [131, 104, 38, 3]}, "geosig": {"labels": ["인용가능 정보블록", "무인지 카테고리 대응", "강사 전문성·자격", "오프사이트 교차검증"], "data": [47.8, 25.7, 5.1, 1.8]}, "recency": {"labels": ["1개월", "1-3개월", "3-6개월", "6개월+"], "data": [9, 4, 16, 247]}, "monthly": {"labels": ["2022-12", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-05", "2026-06", "2026-07"], "data": [1, 8, 17, 14, 12, 8, 8, 14, 15, 19, 5, 11, 13, 10, 6, 19, 1, 28, 4, 5, 7, 7, 2, 1, 1, 11, 10, 1, 5, 4, 8, 1]}, "kpi": {"seo": 5.3, "aeo": 7.69, "geo": 2.97, "reply": 100.0}};const C={ink:'#0a0a0a',g:'#8a8a8a',g2:'#555',g3:'#b8b8b8',acc:'#e75519',red:'#b03030',rule:'#f0f0f0'};
+Chart.defaults.font.family="'SUIT',sans-serif";Chart.defaults.font.size=11;Chart.defaults.plugins.legend.display=false;Chart.defaults.color='#8a8a8a';
+const BAR={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:C.rule}},y:{grid:{color:C.rule}}}};
+function acc(arr,hi){return arr.map((_,i)=>i<hi?C.acc:C.g)}
+const BC={A:C.acc,B:'#f0a072',C:C.g3,D:'#e0ddd5'};
+new Chart(cscatter,{type:'scatter',data:{datasets:[{data:CD.scatter.map(p=>({x:p[0],y:p[1]})),pointBackgroundColor:CD.scatter.map(p=>BC[p[2]]||C.g),pointRadius:4,pointHoverRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>`SEO ${c.raw.x} · AEO ${c.raw.y}`}}},scales:{x:{title:{display:true,text:'SEO 노출 (0-10)'},min:0,max:10,grid:{color:C.rule}},y:{title:{display:true,text:'AEO 네이버AI인용 (0-10)'},min:0,max:10,grid:{color:C.rule}}}}});
+new Chart(cpop,{type:'bar',data:{labels:CD.pop.labels,datasets:[{data:CD.pop.data,backgroundColor:acc(CD.pop.data,3)}]},options:{...BAR,indexAxis:'y'}});
+new Chart(cpod,{type:'bar',data:{labels:CD.pod.labels,datasets:[{data:CD.pod.data,backgroundColor:C.ink}]},options:{...BAR,indexAxis:'y',plugins:{tooltip:{callbacks:{label:c=>c.parsed.x+'%'}}},scales:{x:{grid:{color:C.rule},min:0,max:100},y:{grid:{display:false}}}}});
+new Chart(cabsa,{type:'bar',data:{labels:CD.absa.labels,datasets:[{data:CD.absa.data,backgroundColor:CD.absa.data.map(v=>v>=50?C.acc:v<15?C.red:C.g)}]},options:{...BAR,indexAxis:'y',plugins:{tooltip:{callbacks:{label:c=>c.parsed.x+'%'}}},scales:{x:{grid:{color:C.rule},min:0,max:100},y:{grid:{display:false}}}}});
+new Chart(cgeoband,{type:'doughnut',data:{labels:CD.geoband.labels,datasets:[{data:CD.geoband.data,backgroundColor:[C.acc,'#f0a072',C.g3,'#e0ddd5'],borderColor:'#fff',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:true,position:'bottom',labels:{font:{size:10},boxWidth:9}}}}});
+new Chart(caeoband,{type:'doughnut',data:{labels:CD.aeoband.labels,datasets:[{data:CD.aeoband.data,backgroundColor:[C.acc,'#f0a072',C.g3,'#e0ddd5'],borderColor:'#fff',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:true,position:'bottom',labels:{font:{size:10},boxWidth:9}}}}});
+new Chart(cgeosig,{type:'bar',data:{labels:CD.geosig.labels,datasets:[{data:CD.geosig.data,backgroundColor:CD.geosig.data.map(v=>v>=40?C.acc:v<10?C.red:C.g)}]},options:{...BAR,indexAxis:'y',plugins:{tooltip:{callbacks:{label:c=>c.parsed.x+'%'}}},scales:{x:{grid:{color:C.rule},min:0,max:100},y:{grid:{display:false}}}}});
+new Chart(crecency,{type:'bar',data:{labels:CD.recency.labels,datasets:[{data:CD.recency.data,backgroundColor:CD.recency.data.map((v,i)=>i<2?C.acc:C.g)}]},options:BAR});
+const md=CD.monthly.data,pk=md.indexOf(Math.max(...md));
+new Chart(cmonthly,{type:'line',data:{labels:CD.monthly.labels,datasets:[{data:md,borderColor:C.ink,borderWidth:2,backgroundColor:'rgba(10,10,10,.05)',fill:true,tension:.35,pointRadius:md.map((_,i)=>i===pk?6:2),pointBackgroundColor:md.map((_,i)=>i===pk?C.acc:C.ink)}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>c.parsed.y+'건'}}},scales:{x:{grid:{display:false},ticks:{maxRotation:45,minRotation:45,font:{size:9}}},y:{grid:{color:C.rule},beginAtZero:true}}}});
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(!RM){const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{threshold:.06,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.card,.stat>.b,.note,section h2,section .lead,.tbl tbody tr').forEach(e=>{e.classList.add('reveal');ro.observe(e)});}
+function cu(el){if(!el.firstChild)return;const t=parseFloat(el.firstChild.textContent);if(isNaN(t))return;const f=String(t).includes('.');let s=null;function k(ts){if(!s)s=ts;const p=Math.min((ts-s)/900,1);const v=t*(1-Math.pow(1-p,3));el.firstChild.textContent=(f?v.toFixed(1):Math.round(v));if(p<1)requestAnimationFrame(k)}requestAnimationFrame(k)}
+if(!RM)document.querySelectorAll('.cv-bot .kpi .v').forEach(cu);
+const pr=document.getElementById('prog');addEventListener('scroll',()=>{const h=document.documentElement;pr.textContent=Math.round(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});</script>
+</body></html>
