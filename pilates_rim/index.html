@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>필라테스림 — 네이버 플레이스 AI 노출 분석 리포트</title>
-<meta name="description" content="필라테스림(인천 부평 삼산동) 방문자 리뷰 276건 SEO/AEO/GEO 3축 분석 — 네이버 밖 생성형 AI 노출(GEO) 진단 · RE:FEEEL"/>
+<meta name="description" content="필라테스림(인천 부평 삼산동) 방문자 리뷰 276건 SEO/AEO/GEO 3축 + 정성 분석 — 네이버 밖 생성형 AI 노출(GEO) 진단 · RE:FEEEL"/>
 <meta property="og:title" content="필라테스림 — 네이버 플레이스 AI 노출 분석 리포트"/>
-<meta property="og:description" content="리뷰 276건 · SEO/AEO/GEO 3축 · 2026 AI 답변 시대 진단 · RE:FEEEL"/>
+<meta property="og:description" content="리뷰 276건 전수 · SEO/AEO/GEO 3축 + 페르소나·담당자·POD 정성 진단 · RE:FEEEL"/>
 <meta property="og:type" content="article"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -21,7 +21,7 @@ section.soft{background:var(--soft)}
 .ey{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--accent);text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:18px}
 .ey::before{content:"";width:18px;height:1px;background:var(--accent)}
 h2{font-size:clamp(26px,4.5vw,42px);font-weight:800;letter-spacing:-1.5px;line-height:1.15;margin-bottom:18px}
-.lead{font-size:clamp(15px,2.2vw,18px);color:var(--ink3);max-width:62ch;margin-bottom:8px}
+.lead{font-size:clamp(15px,2.2vw,18px);color:var(--ink3);max-width:64ch;margin-bottom:8px}
 .lead b{color:var(--ink);font-weight:700}.hl{color:var(--accent);font-weight:800}
 .cover{background:#0a0a0a;color:#fff;min-height:92vh;display:flex;flex-direction:column;padding:var(--pp);border:none}
 .cv-in{max-width:var(--max);margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
@@ -55,8 +55,9 @@ h2{font-size:clamp(26px,4.5vw,42px);font-weight:800;letter-spacing:-1.5px;line-h
 .tbl td{border-bottom:1px solid var(--rule);padding:10px 12px;vertical-align:top}
 .tbl tr:hover td{background:var(--soft)}
 .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:rgba(231,85,25,.1);color:var(--accent)}
-.tag.r{background:#fee;color:var(--danger)}
+.tag.r{background:#fee;color:var(--danger)}.tag.g{background:#eef;color:#447}
 .note{border-left:3px solid var(--accent);padding:14px 18px;background:var(--soft);margin-top:24px;font-size:14px;border-radius:0 8px 8px 0}
+.note.k{background:#111;border-color:var(--accent);color:rgba(255,255,255,.85)}.note.k b{color:#fff}
 ul.x{list-style:none;margin-top:18px}ul.x li{padding:10px 0 10px 22px;position:relative;border-top:1px solid var(--rule);font-size:14px}
 ul.x li::before{content:"";position:absolute;left:0;top:18px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
 ul.x li b{color:var(--ink)}
@@ -72,7 +73,7 @@ ul.x li b{color:var(--ink)}
   <div class="cv-mid">
     <div class="cv-lab">필라테스 · 인천 부평구 삼산동</div>
     <div class="cv-h1">필라테스림<span class="s">굴포천역 8번 출구 · 방문자 리뷰 276건 전수 분석</span></div>
-    <div class="cv-desc">네이버 검색 노출(SEO)을 넘어, <b style="color:#fff">네이버 안의 AI(AEO)</b>와 <b style="color:#e75519">네이버 밖의 AI(GEO)</b>가 이 스튜디오를 추천 후보로 인용하는가를 3축으로 채점했습니다.</div>
+    <div class="cv-desc">네이버 검색 노출(SEO)을 넘어, <b style="color:#fff">네이버 안의 AI(AEO)</b>와 <b style="color:#e75519">네이버 밖의 AI(GEO)</b>가 이 스튜디오를 추천 후보로 인용하는가를 3축으로 채점하고, 리뷰 본문을 정독해 고객·차별점·담당자까지 분석했습니다.</div>
   </div>
   <div class="cv-bot">
     <div class="kpi"><div class="v">5.3<small>/10</small></div><div class="l">평균 SEO</div><div class="s">네이버 검색 노출</div></div>
@@ -85,40 +86,41 @@ ul.x li b{color:var(--ink)}
 <section><div class="wrap">
   <div class="ey">00 · 리포트 개요</div>
   <h2>리뷰 276건, 답글률 100%.<br>그런데 <span class="hl">밖의 AI가 인용할 리뷰는 0.7%</span>입니다.</h2>
-  <p class="lead">필라테스림의 리뷰는 <b>질이 좋습니다.</b> 상세한 후기가 많아 <b>네이버 내부 AI(큐:·AI 브리핑)가 인용하기 좋은 재료(AEO)</b>는 상위권. 문제는 그 재료가 <b>네이버 밖(ChatGPT·퍼플렉시티·구글 AI)</b>으로 나가면 거의 쓰이지 못한다는 것입니다.</p>
+  <p class="lead">필라테스림의 리뷰는 <b>질이 좋습니다.</b> 상세한 후기가 많아 <b>네이버 내부 AI(큐:·AI 브리핑)가 인용하기 좋은 재료(AEO)</b>는 상위권이고, 재방문·장기 재등록이 많아 관계 자산도 탄탄합니다. 문제는 그 재료가 <b>네이버 밖(ChatGPT·퍼플렉시티·구글 AI)</b>으로 나가면 거의 쓰이지 못한다는 것입니다.</p>
   <div class="stat">
     <div class="b"><div class="n">276</div><div class="k">방문자 리뷰 전수<br>(블로그 971 · 3.5배)</div></div>
     <div class="b"><div class="n">47.5%</div><div class="k">AEO A등급<br>네이버 AI 인용 강</div></div>
-    <div class="b d"><div class="n">0.7%</div><div class="k">GEO A등급 (2건)<br>밖의 AI 인용 자산 희소</div></div>
-    <div class="b"><div class="n">52</div><div class="k">재방문 2회+<br>진성 관계 자산</div></div>
+    <div class="b d"><div class="n">0.7%</div><div class="k">GEO A등급 (2건)<br>밖의 AI 인용 희소</div></div>
+    <div class="b"><div class="n">18.8%</div><div class="k">재방문 2회+<br>진성 관계 자산</div></div>
   </div>
+  <div class="note"><b>이 리포트가 답하는 질문:</b> 손님이 AI에게 &ldquo;삼산동/부평에서 <b>허리 아픈 직장인</b> 다닐 만한 필라테스 추천해줘&rdquo;라고 물었을 때, AI의 답변에 <b>필라테스림이 불릴 근거가 리뷰에 있는가?</b> — 이 한 가지를 3축·정성 두 층으로 뜯어봅니다.</div>
 </div></section>
 
 <section class="soft"><div class="wrap">
   <div class="ey">방법론 · 이 리포트를 읽는 법</div>
   <h2>SEO·AEO·GEO,<br>세 개의 다른 문입니다.</h2>
-  <p class="lead">리뷰를 세 축으로 채점했습니다 — <b>검색에 걸리는가(SEO)</b>, <b>네이버 AI가 인용하는가(AEO)</b>, 그리고 <span class="hl">네이버 밖 AI가 추천하는가(GEO)</span>. 특히 세 번째가 2026년의 승부처입니다.</p>
+  <p class="lead">리뷰를 세 축으로 채점했습니다 — <b>검색에 걸리는가(SEO)</b>, <b>네이버 AI가 인용하는가(AEO)</b>, 그리고 <span class="hl">네이버 밖 AI가 추천하는가(GEO)</span>. 2026년의 승부처는 세 번째입니다. AI의 답변엔 &lsquo;2페이지&rsquo;가 없습니다 — 인용되지 못하면 존재하지 않는 것과 같습니다.</p>
   <div class="grid2">
-    <div class="card"><div class="chart-t">SEO — 검색 노출 기여</div><p class="mexp">네이버 플레이스 <b>검색 순위</b> 기여. 최신성·리뷰 길이·업종/지역 키워드·재방문·답글로 채점. 높을수록 <b>'검색하면 위에 뜬다'</b>.</p></div>
-    <div class="card"><div class="chart-t">AEO — 네이버 안의 AI</div><p class="mexp">네이버 큐:·AI 브리핑은 <b>리뷰 원문을 직접 읽어</b> 요약·인용합니다. 속성 커버·수치·스토리로 채점. <b>필라테스림의 강점 구간.</b></p></div>
+    <div class="card"><div class="chart-t">SEO — 검색 노출 기여</div><p class="mexp">네이버 플레이스 <b>검색 순위</b> 기여. 최신성·리뷰 길이·업종/지역 키워드·재방문·답글로 채점. 높을수록 <b>&lsquo;검색하면 위에 뜬다&rsquo;</b>.</p></div>
+    <div class="card"><div class="chart-t">AEO — 네이버 안의 AI</div><p class="mexp">네이버 큐:·AI 브리핑은 <b>리뷰 원문을 직접 읽어</b> 요약·인용합니다. 속성 커버·수치·담당자·문제→결과 스토리로 채점. <b>필라테스림의 강점 구간.</b></p></div>
   </div>
   <div class="grid2">
-    <div class="card k"><div class="chart-t" style="color:#e75519">GEO — 네이버 밖의 AI (신규 축)</div><p class="mexp">ChatGPT·퍼플렉시티는 <b>네이버 리뷰를 직접 못 읽습니다</b>(봇 차단). 그래서 ①이름·위치 일관성 ②수치·전문성이 담긴 '인용 가능한 정보 블록' ③블로그·유튜브 등 오프사이트 교차검증이 있어야 추천됩니다.</p></div>
-    <div class="card"><div class="chart-t">POP · POD · ABSA</div><p class="mexp"><b>POP</b>(동등점 — 없으면 탈락, 있어도 선택 이유는 안 됨) vs <b>POD</b>(차별점 — 희소한 강점). <b>ABSA</b>: 리뷰를 5개 속성으로 쪼개 언급률을 봅니다.</p></div>
+    <div class="card k"><div class="chart-t" style="color:#e75519">GEO — 네이버 밖의 AI (신규 축)</div><p class="mexp">ChatGPT·퍼플렉시티·구글 AI는 <b>네이버 리뷰를 직접 못 읽습니다</b>(robots.txt로 봇 차단). 그래서 리뷰가 ①이름·위치가 일관되고 ②수치·전문성이 담긴 &lsquo;인용 가능한 정보 블록&rsquo;이며 ③블로그·유튜브 등 밖에도 같은 사실이 있어야 &mdash; 그제서야 추천 후보가 됩니다.</p></div>
+    <div class="card"><div class="chart-t">POP · POD · ABSA</div><p class="mexp"><b>POP</b>(동등점 — 60%+, 없으면 탈락이나 선택 이유는 못 됨) vs <b>POD</b>(차별점 — 희소한 강점, AI 인용·검색 롱테일의 핵심). <b>ABSA</b>: 리뷰를 5개 속성으로 쪼개 언급률을 봅니다.</p></div>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <div class="ey">01 · 플레이스 상태</div>
   <h2>리뷰 자산은 강한데,<br>&lsquo;밖의 AI용&rsquo; 형태가 아닙니다.</h2>
-  <p class="lead">답글률 <b>100%</b>·사진 리뷰 <b>63.0%</b>로 온드 자산은 최상급입니다. 다만 <b>블로그 리뷰가 971건(방문자의 3.5배)</b>인데도, 방문자 리뷰 안에서 밖으로 이식될 &lsquo;사실 블록&rsquo; 신호는 낮습니다.</p>
+  <p class="lead">답글률 <b>100%</b>·사진 리뷰 <b>63.0%</b>·평균 본문 149자로 온드 자산은 최상급입니다. 다만 <b>블로그 리뷰가 971건(방문자의 3.5배)</b>인데도, 정작 방문자 리뷰 안에서 밖으로 이식될 &lsquo;사실 블록&rsquo; 신호는 낮습니다.</p>
   <div class="stat">
     <div class="b"><div class="n">100%</div><div class="k">사장님 답글률<br>AI 컨텍스트 최상</div></div>
     <div class="b"><div class="n">63.0%</div><div class="k">사진 동반 리뷰<br>멀티모달 신호</div></div>
     <div class="b"><div class="n">3.5x</div><div class="k">블로그/방문자<br>온드는 풍부</div></div>
     <div class="b"><div class="n">149자</div><div class="k">평균 본문<br>PT 벤치 120~180 부합</div></div>
   </div>
-  <div class="note"><b>답글이 왜 중요할까요:</b> 답글은 단순 응대가 아니라 <b>AI가 답변을 만들 때 참조하는 컨텍스트이자 신뢰 신호</b>입니다. 필라테스림은 <b>전건 답글(100%)</b>로 이미 최상급 — 여기에 <b>후기 속 결과·강사명·기구명을 되짚어주는</b> 답글을 더하면 AEO·GEO 인용까지 이어집니다.</div>
+  <div class="note"><b>답글이 왜 중요할까요:</b> 답글은 단순 응대가 아니라 <b>AI가 답변을 만들 때 참조하는 컨텍스트이자 신뢰 신호</b>입니다(답글 다는 업체는 고객 신뢰도가 오르고, 24시간 내 답글이 효과적). 필라테스림은 <b>전건 답글(100%)</b>로 이미 최상급 — 여기에 <b>후기 속 결과·강사명·기구명을 되짚어주는</b> 답글을 더하면 AEO·GEO 인용까지 이어집니다.</div>
 </div></section>
 
 <section class="soft"><div class="wrap">
@@ -140,12 +142,22 @@ ul.x li b{color:var(--ink)}
 <section><div class="wrap">
   <div class="ey">03 · POP vs POD</div>
   <h2>다들 말하는 건 똑같습니다.</h2>
-  <p class="lead"><b>POP(동등점):</b> &lsquo;자세 꼼꼼히(84%)·친절(83%)·체계적(78%)&rsquo; — 어느 필라테스나 있는 말이 상위를 독식합니다. 정작 밖의 AI가 이 업체를 <em>구별</em>해 추천할 <b>POD(차별점)는 전부 16% 미만</b>으로 묻혀 있습니다.</p>
+  <p class="lead"><b>POP(동등점):</b> &lsquo;자세 꼼꼼히(84%)·친절(83%)·체계적(78%)&rsquo; — 어느 필라테스나 있는 말이 상위를 독식합니다. 정작 밖의 AI가 이 업체를 <em>구별</em>해 추천할 <b>POD(차별점)는 태그상 전부 16% 미만</b>으로 묻혀 있습니다.</p>
   <div class="grid2">
-    <div class="card"><div class="chart-t">POD 후보 — 모두 16% 미만 (%)</div><div class="chart"><canvas id="cpod"></canvas></div></div>
+    <div class="card"><div class="chart-t">POD 후보 태그 — 모두 16% 미만 (%)</div><div class="chart"><canvas id="cpod"></canvas></div></div>
     <div class="card"><div class="chart-t">속성별 언급률 · ABSA 5축 (%)</div><div class="chart"><canvas id="cabsa"></canvas></div></div>
   </div>
-  <div class="note"><b>핵심:</b> &lsquo;재활·산후·교정·기구 특화&rsquo; 같은 <b>차별점(POD)</b>이 리뷰에 안 담기면, 밖의 AI는 &ldquo;삼산동 <b>재활</b> 필라테스 추천&rdquo; 질의에 이 업체를 꺼낼 근거가 없습니다. POP만으로는 &lsquo;그 동네 여러 곳 중 하나&rsquo;로만 인식됩니다.</div>
+  <div class="card" style="margin-top:28px"><div class="chart-t">본문에서 검증된 진짜 차별점 (태그엔 약하지만 실재)</div>
+   <ul class="x">
+    <li><b>1:1 개인 레슨 · 원장 직접 상담</b> — 본문 언급 33건 + 원장 지도 11건. &ldquo;왜 개인 레슨이 필요한지 확실히 느꼈다&rdquo;류 다수 <span class="tag">강력 POD</span></li>
+    <li><b>재활·통증 특화</b> — 35건. 허리디스크·통증·부상 후 재활 목적 진입이 뚜렷한데 <span class="tag r">태그·GEO에 거의 0</span></li>
+    <li><b>체험 후 등록 전환</b> — 44건. &ldquo;체험 받고 바로 결정&rdquo; — 전환 자산이나 콘텐츠로 안 쓰임</li>
+    <li><b>그룹+개인 병행 설계</b> — 45건. 그룹 회원도 재등록 상담 때 개인 케어를 받는 구조</li>
+    <li><b>기구(리포머·체어) 다양</b> — 35건. &lsquo;기구가 다양해요&rsquo; 태그는 13%뿐</li>
+    <li><b>장기 재등록(관계 자산)</b> — 68건. 7~9개월째·두세 번 재등록 다수 <span class="tag g">리텐션 강점</span></li>
+   </ul>
+  </div>
+  <div class="note"><b>핵심:</b> &lsquo;재활·1:1 정밀·기구 특화&rsquo;라는 <b>진짜 차별점이 본문엔 있는데 태그·GEO 신호로는 거의 안 잡힙니다.</b> 밖의 AI는 &ldquo;삼산동 <b>재활</b> 필라테스 추천&rdquo; 질의에 이 업체를 꺼낼 근거가 없습니다. 이 POD를 리뷰 유도·소식·홈페이지에 &lsquo;정보 블록&rsquo;으로 올리는 것이 1순위 과제입니다.</div>
 </div></section>
 
 <section class="soft"><div class="wrap">
@@ -157,46 +169,99 @@ ul.x li b{color:var(--ink)}
     <div class="card"><div class="chart-t">AEO 등급 분포 (네이버 AI 인용력)</div><div class="chart"><canvas id="caeoband"></canvas></div></div>
   </div>
   <div class="card" style="margin-top:28px"><div class="chart-t">밖의 AI 인용 신호 보유율 (%)</div><div class="chart"><canvas id="cgeosig"></canvas></div></div>
-  <div class="note"><b>숫자로 본 간극:</b> 강사 전문성·자격 언급 <b>5.1%</b>, 오프사이트 교차검증 신호 <b>1.8%</b>. 블로그 971건이라는 온드 자산이 있는데도 <b>&lsquo;AI가 읽어갈 구조&rsquo;로 정리돼 있지 않습니다.</b></div>
+  <div class="note k"><b>왜 이 세 신호가 GEO를 가르나:</b> ①<b>인용가능 정보블록</b> — AI는 &lsquo;좋아요&rsquo;는 못 옮기고 &lsquo;6주 만에 허리 통증↓&rsquo;처럼 수치·조건이 든 문장만 그대로 복붙합니다. ②<b>강사 전문성·자격</b> — 물리치료·재활 경력이 명시돼야 AI가 &lsquo;전문성 있는 곳&rsquo;으로 분류. ③<b>오프사이트 교차검증</b> — 블로그·유튜브에 같은 사실이 있어야 밖의 AI가 확인·인용. 지금은 셋 다 약합니다(강사 자격 5.1% · 오프사이트 1.8%).</div>
 </div></section>
 
 <section><div class="wrap">
-  <div class="ey">05 · 리뷰 추이</div>
+  <div class="ey">05 · ABSA · 속성 심층</div>
+  <h2>속성별로 쪼개면,<br>한쪽만 환합니다.</h2>
+  <p class="lead">리뷰를 5개 속성으로 분해하면 <b>강사·지도(100%)·몸의 변화(94%)</b>는 또렷하지만, <b>접근·운영(12%)·비용·정책(34%)</b>은 상대적으로 어둡습니다. 감성은 <b>긍정 267건</b>으로 압도적이며, 주의(권유·가격 등 언급)는 <b>9건</b>에 불과합니다.</p>
+  <div class="grid2">
+    <div class="card"><div class="chart-t">속성별 언급률 (%)</div><div class="chart"><canvas id="cabsaShow"></canvas></div></div>
+    <div class="card"><div class="chart-t">요일별 리뷰 분포 (건)</div><div class="chart"><canvas id="cdow"></canvas></div></div>
+  </div>
+  <div class="note"><b>운영 인사이트:</b> 요일은 <b>월·금 피크, 토 최저</b> — 리뷰 유도·이벤트는 평일 방문 마무리 시점이 효율적입니다. 속성 중 <b>비용·접근성</b>이 어두운 건 나쁜 게 아니라 &lsquo;안 적히는 것&rsquo; — 가격 합리성·주차/역세권을 리뷰 유도 문구에 살짝 얹으면 무인지 고객 대응 폭이 넓어집니다.</div>
+</div></section>
+
+<section class="soft"><div class="wrap">
+  <div class="ey">06 · 고객 분석</div>
+  <h2>누가, 왜 오는가.</h2>
+  <p class="lead">본문을 정독해 <b>오기 전 상태(Before)</b>와 <b>결정 트리거</b>를 뽑았습니다. <b>자세·체형 교정(133)·통증(68)·입문(60)</b>이 주 진입 동기이고, 결정은 <b>강사·원장 실력(95)·상담 신뢰(59)·지인 추천(51)·체험(44)</b> 순으로 일어납니다.</p>
+  <div class="grid2">
+    <div class="card"><div class="chart-t">Before State — 오기 전 상태 (건)</div><div class="chart"><canvas id="cbefore"></canvas></div></div>
+    <div class="card"><div class="chart-t">결정 트리거 (건)</div><div class="chart"><canvas id="ctrigger"></canvas></div></div>
+  </div>
+  <table class="tbl"><tr><th>페르소나</th><th>오기 전 상태 · 니즈</th><th>콘텐츠·소구 전략</th></tr>
+    <tr><td><b>통증·재활 목적자</b></td><td>허리디스크·어깨·목 통증, 부상 후 회복</td><td>&lsquo;재활 필라테스&rsquo; POD 전면화 · 1:1 정밀 지도 · 통증 개선 결과 리뷰 유도</td></tr>
+    <tr><td><b>자세·체형 교정 니즈</b></td><td>거북목·골반 틀어짐·라운드숄더</td><td>체형분석 상담 · 비포/애프터 · 개인레슨 필요성 설명</td></tr>
+    <tr><td><b>필라테스 입문자</b></td><td>처음·초보, 긴장·부담</td><td>체험 수업 · &lsquo;친절·쉬운 설명&rsquo; 강점 · 부담 낮추기</td></tr>
+    <tr><td><b>장기 단골</b></td><td>7~9개월째 재등록, 관계 기반</td><td>그룹+개인 병행 · 재등록 리워드 · 슈퍼리뷰어 앰배서더화</td></tr>
+  </table>
+</div></section>
+
+<section><div class="wrap">
+  <div class="ey">07 · 귀속 구조 · 사람과 시그니처</div>
+  <h2>사람에게 신뢰가 쌓였습니다.</h2>
+  <p class="lead">담당자 <b>실명 언급이 43.5%</b> — 원장과 강사진에 강한 신뢰가 형성돼 있습니다. 이 &lsquo;사람 자산&rsquo;을 <b>전문가 엔티티(자격·경력)</b>로 구조화하면 그대로 GEO 자산이 됩니다.</p>
+  <div class="grid2">
+    <div class="card"><div class="chart-t">담당자 실명 언급 (건)</div><div class="chart"><canvas id="cinstr"></canvas></div></div>
+    <div class="card"><div class="chart-t">본문 검증 시그니처·차별점 (건)</div><div class="chart"><canvas id="csig"></canvas></div></div>
+  </div>
+  <ul class="x">
+    <li><b>원장 직강·상담</b> — 언급 28건. 등록 전환의 핵심 접점(&ldquo;원장님 상담 덕분에 바로 등록&rdquo;)</li>
+    <li><b>강사진 팬덤</b> — 원장님(28) · 수현쌤(15) · 가림쌤(15) · 지민쌤(7) · 유정쌤(4) · 이유정쌤(2) 등 실명 다수. 개인 귀속이 강하니 <b>&lsquo;림 메소드&rsquo;처럼 시스템 네이밍</b>으로 확장 여지</li>
+    <li><b>슈퍼리뷰어 &ldquo;베이글쏠&rdquo;</b> — 6회 방문 재작성 <span class="tag">앰배서더 후보</span></li>
+    <li>귀속 순서 <b>사람 &gt; 브랜드 &gt; 시스템</b> → 재활·1:1 메소드를 시스템으로 브랜딩해 개인 의존도를 낮추면 확장·GEO 모두 유리</li>
+  </ul>
+</div></section>
+
+<section class="soft"><div class="wrap">
+  <div class="ey">08 · 리뷰 추이</div>
   <h2>흐름과 최신성.</h2>
-  <p class="lead">최근 3개월 리뷰가 AI 답변 생성의 핵심 게이트입니다. 꾸준한 유입은 유지되나, <b>&lsquo;정보 밀도 높은 최신 리뷰&rsquo;</b>의 지속 공급이 3축을 동시에 끌어올립니다.</p>
+  <p class="lead">최근 3개월 리뷰가 AI 답변 생성의 핵심 게이트입니다. 꾸준한 유입은 유지되나, <b>&lsquo;정보 밀도 높은 최신 리뷰&rsquo;</b>의 지속 공급이 세 축을 동시에 끌어올립니다.</p>
   <div class="grid2">
     <div class="card"><div class="chart-t">리뷰 최신성 분포 (건)</div><div class="chart"><canvas id="crecency"></canvas></div></div>
     <div class="card"><div class="chart-t">월별 방문자 리뷰 (건)</div><div class="chart"><canvas id="cmonthly"></canvas></div></div>
   </div>
 </div></section>
 
-<section class="soft"><div class="wrap">
-  <div class="ey">06 · 액션 플랜</div>
+<section><div class="wrap">
+  <div class="ey">09 · 액션 플랜</div>
   <h2>그래서 무엇을.</h2>
   <table class="tbl"><tr><th>전략</th><th>근거</th><th>전환 방향</th></tr>
-    <tr><td><b>POD를 리뷰·소식에 &lsquo;정보 블록&rsquo;으로 심는다</b></td><td>POD 키워드 전부 16% 미만 · GEO D등급 131건</td><td>&lsquo;거북목 6주 교정, 리포머+체어 1:1&rsquo;처럼 수치·기구·결과 유도</td></tr>
-    <tr><td><b>강사를 &lsquo;전문가 엔티티&rsquo;로 세운다</b></td><td>강사 전문성 언급 5.1%뿐</td><td>자격·경력(물리치료·재활·국제자격)을 프로필·소식에 구조화</td></tr>
-    <tr><td><b>온드 → 오프사이트로 이식한다</b></td><td>블로그 971건 강점 · 오프사이트 신호 1.8%</td><td>같은 사실(위치·POD·수치) 반복되는 FAQ·상세페이지 · NAP 일관성</td></tr>
-    <tr><td><b>답글에 결과·고유명사를 담는다</b></td><td>답글 100%(양호)이나 정형 응대 위주</td><td>후기 속 결과·강사명·기구명 되짚는 답글</td></tr>
-    <tr><td><b>최신·고밀도 리뷰 유도 설계</b></td><td>최근 3개월이 AI 답변 게이트</td><td>수업 종료 시 &lsquo;가장 달라진 점 한 줄&rsquo; 질문 유도</td></tr>
+    <tr><td><b>&lsquo;재활·1:1 정밀&rsquo; POD를 정보 블록으로 전면화</b></td><td>본문엔 재활 35·1:1 33건인데 태그·GEO엔 거의 0</td><td>&lsquo;거북목 6주 교정, 리포머+체어 1:1&rsquo;처럼 수치·기구·결과 유도</td></tr>
+    <tr><td><b>강사를 &lsquo;전문가 엔티티&rsquo;로 세운다</b></td><td>실명 언급 43.5%(신뢰 강)이나 자격·경력은 미노출</td><td>원장·강사 자격(물리치료·재활·지도자 과정)을 프로필·소식·홈페이지에 구조화</td></tr>
+    <tr><td><b>온드 → 오프사이트로 이식한다</b></td><td>블로그 971건 강점 · 오프사이트 신호 1.8%</td><td>같은 사실(위치·POD·수치) 반복되는 FAQ·상세페이지 · NAP(이름·주소·전화) 일관성</td></tr>
+    <tr><td><b>체험→등록 전환 스토리를 콘텐츠화</b></td><td>체험 후 등록 44건의 강한 전환</td><td>체험 1회 &lsquo;달라진 점&rsquo; 후기 유도 · 무인지 고객 유입 콘텐츠</td></tr>
+    <tr><td><b>답글에 결과·고유명사를 담는다</b></td><td>답글 100%(양호)이나 정형 응대 위주</td><td>후기 속 결과·강사명·기구명 되짚는 답글로 AEO·GEO 동시 강화</td></tr>
   </table>
-  <div class="note"><b>다음 단계 · 수요측 진단:</b> 이 리포트는 <b>공급측(우리 리뷰 자산)</b> 진단입니다. 실제로 ChatGPT·퍼플렉시티에 &lsquo;삼산동/부평 필라테스 추천&rsquo;을 물어 이 업체와 경쟁사의 <b>인용 점유율(SOV)</b>을 <b>월 1회</b> 측정하면, 개선 추세를 수치로 볼 수 있습니다.</div>
+  <div class="note"><b>리뷰 유도 질문 예:</b> &ldquo;오늘 수업에서 가장 달라졌다고 느낀 부분(자세·통증·유연성)과, 어떤 기구/수업(리포머·체어·1:1·그룹)이었는지 한 줄로 남겨주실 수 있을까요?&rdquo; → 수치·기구·결과가 든 <b>GEO 고득점 리뷰</b>를 유도.</div>
+  <div class="note"><b>다음 단계 · 수요측 진단:</b> 이 리포트는 <b>공급측(우리 리뷰 자산)</b> 진단입니다. 실제 ChatGPT·퍼플렉시티에 &lsquo;삼산동/부평 필라테스 추천&rsquo;·&lsquo;부평 재활 필라테스&rsquo;를 물어 이 업체와 경쟁사의 <b>인용 점유율(SOV)</b>을 <b>월 1회</b> 측정하면, 개선 추세를 수치로 볼 수 있습니다.</div>
 </div></section>
 
-<div class="foot"><a href="https://refeeel.com" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;border-bottom:1px solid var(--accent)"><b>RE:FEEEL</b></a> · 네이버 플레이스 AI 노출 리포트 · 필라테스림(인천 부평 삼산동)<br>방문자 리뷰 276건 전수 · SEO/AEO/GEO 3축 채점 · 2026.07</div>
+<div class="foot"><a href="https://refeeel.com" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;border-bottom:1px solid var(--accent)"><b>RE:FEEEL</b></a> · 네이버 플레이스 AI 노출 리포트 · 필라테스림(인천 부평 삼산동)<br>방문자 리뷰 276건 전수 · SEO/AEO/GEO 3축 채점 + 본문 정성 정독 · 2026.07</div>
 </main>
-<script>const CD={"scatter": [[10, 10, "B"], [9.0, 9.4, "B"], [8.5, 10, "C"], [8.5, 8.3, "D"], [10, 8.6, "B"], [10, 10, "C"], [6, 10, "C"], [6.5, 10, "B"], [6, 8.8, "D"], [6.5, 9.6, "C"], [7.5, 6.6, "C"], [8.0, 5.4, "D"], [6.5, 9.6, "C"], [5.5, 10, "C"], [6.5, 4.9, "C"], [7.0, 6.1, "D"], [5.5, 7.4, "C"], [5, 10, "B"], [5.5, 7.6, "C"], [4, 8.4, "C"], [5.5, 6.4, "D"], [5.5, 8.6, "D"], [5, 9.6, "C"], [5, 7.1, "D"], [6.5, 10, "C"], [5, 7.4, "C"], [4, 7.8, "D"], [5.5, 6.6, "D"], [6.5, 10, "C"], [4, 8.6, "C"], [6.5, 9.6, "C"], [4, 6.4, "D"], [4, 7.1, "D"], [6.5, 8.4, "C"], [5.5, 8.8, "D"], [3, 6.1, "D"], [4, 5.9, "D"], [4.5, 4.9, "C"], [6.5, 9.6, "C"], [5.5, 6.6, "D"], [6.5, 10, "B"], [4, 8.6, "D"], [6.5, 6.4, "D"], [5, 8.6, "C"], [5.5, 7.6, "D"], [5.5, 7.6, "D"], [6.5, 8.8, "D"], [8.0, 9.6, "C"], [3, 6.3, "D"], [6.5, 10, "C"], [4.5, 4.8, "D"], [8.0, 7.4, "B"], [4, 6.3, "D"], [3, 10, "C"], [6.5, 9.8, "C"], [6.5, 9.8, "D"], [4, 5.4, "D"], [5.5, 8.6, "D"], [8.0, 9.6, "B"], [4.5, 7.1, "C"], [5.5, 8.6, "C"], [5.5, 8.8, "C"], [8.0, 10, "C"], [5, 10, "C"], [8.0, 10, "B"], [6.5, 6.1, "D"], [5, 8.6, "C"], [6.5, 8.8, "D"], [3, 6.6, "D"], [4.5, 4.8, "D"], [5.5, 9.6, "C"], [3, 2.4, "D"], [4, 7.1, "D"], [7.0, 9.1, "C"], [3, 5.1, "D"], [6.5, 8.4, "B"], [8.0, 7.1, "B"], [5, 8.6, "D"], [6.5, 8.8, "D"], [4, 5.1, "D"], [3, 3.9, "D"], [4, 6.6, "D"], [6.5, 10, "B"], [6.5, 7.6, "D"], [8.0, 10, "B"], [4.5, 3.6, "D"], [4.5, 10, "C"], [6.5, 10, "C"], [3, 6.1, "D"], [6.5, 10, "C"], [5, 8.6, "C"], [5, 8.6, "B"], [4.5, 9.8, "C"], [5.5, 8.6, "D"], [6.5, 5.9, "C"], [5, 10, "C"], [5.5, 8.8, "D"], [6.5, 10, "C"], [7.0, 6.4, "D"], [5, 10, "C"], [6.5, 7.6, "D"], [8.0, 5.9, "D"], [5, 10, "D"], [3, 6.3, "D"], [6.5, 9.8, "D"], [4, 9.8, "D"], [4.5, 5.1, "C"], [5, 9.8, "D"], [5.5, 8.6, "C"], [3, 7.6, "C"], [4, 3.9, "D"], [6.5, 8.8, "D"], [6.5, 9.3, "C"], [3, 6.4, "C"], [4.5, 3.6, "D"], [4, 7.1, "C"], [6.5, 8.6, "C"], [4, 6.1, "D"], [4, 7.6, "B"], [3, 4.9, "D"], [6.5, 9.3, "D"], [6.5, 10, "B"], [3, 3.6, "D"], [4, 7.9, "C"], [6.5, 10, "B"], [6.5, 8.6, "C"], [4, 7.6, "C"], [4.5, 6.1, "D"], [4, 7.8, "D"], [5.5, 6.1, "D"], [4, 4.9, "D"], [5, 7.4, "C"], [6.5, 9.6, "C"], [6.5, 9.8, "D"], [6.5, 10, "C"], [8.0, 10, "B"], [5.5, 8.3, "D"], [4, 10, "C"], [6.5, 8.6, "C"], [5.5, 6.4, "B"], [5.5, 5.4, "D"], [5.5, 6.4, "B"], [7.0, 9.1, "C"], [5, 6.1, "D"], [5.5, 5.9, "C"], [5.5, 6.4, "C"], [5.5, 7.4, "C"], [5.5, 7.1, "D"], [5.5, 6.1, "D"], [5.5, 8.6, "C"], [5.5, 8.6, "C"], [6.5, 7.4, "C"], [6.5, 10, "C"], [4, 6.4, "D"], [5.5, 5.4, "D"], [5.5, 9.8, "C"], [6.5, 10, "B"], [4, 8.6, "D"], [4, 7.6, "C"], [3, 6.3, "D"], [5.5, 8.6, "B"], [5.5, 9.8, "C"], [4, 4.9, "D"], [4, 6.6, "D"], [4.5, 7.8, "D"], [4, 7.6, "D"], [6.5, 7.4, "C"], [4, 6.4, "D"], [4, 6.4, "C"], [6.5, 9.5, "C"], [6.5, 10, "B"], [4, 7.6, "C"], [4, 7.1, "D"], [4.5, 6.3, "D"], [5.5, 7.1, "D"], [6.5, 8.4, "B"], [5.5, 7.5, "D"], [5.5, 5.9, "D"], [3, 8.6, "C"], [4.5, 5.1, "D"], [4, 3.9, "D"], [6.5, 10, "B"], [6.5, 10, "C"], [5.5, 7.4, "D"], [4, 7.3, "D"], [4, 8.6, "D"], [5.5, 6.6, "D"], [5.5, 6.4, "D"], [4.5, 2.4, "D"], [4, 7.6, "C"], [4, 10, "C"], [4, 6.1, "D"], [4.5, 3.9, "D"], [4, 6.4, "D"], [7.0, 6.1, "D"], [6.5, 10, "B"], [5.5, 8.4, "C"], [4, 8.8, "C"], [5.5, 7.4, "B"], [5.5, 7.4, "D"], [4, 7.6, "C"], [6.0, 7.6, "C"], [3, 3.6, "D"], [5.5, 8.9, "C"], [5, 10, "C"], [6.5, 10, "B"], [4, 7.9, "C"], [4.5, 5.1, "D"], [5, 8.4, "C"], [4, 9.6, "C"], [5.5, 7.6, "D"], [5.5, 9.1, "C"], [4, 6.1, "D"], [5, 10, "C"], [6.5, 7.1, "D"], [6.5, 8.6, "C"], [4, 3.9, "D"], [5.5, 7.1, "C"], [6.5, 7.1, "D"], [6.5, 9.9, "A"], [4.5, 2.4, "D"], [6.5, 8.6, "B"], [3, 8.6, "B"], [4, 10, "C"], [4.5, 5.4, "D"], [6.5, 7.6, "D"], [6.5, 8.9, "C"], [6.5, 10, "C"], [8.0, 10, "B"], [3, 7.3, "D"], [4, 8.8, "D"], [6.5, 10, "B"], [6.5, 8.4, "C"], [4, 10, "C"], [5.5, 7.8, "D"], [5.5, 8.6, "C"], [6.5, 8.6, "D"], [4.5, 3.6, "D"], [4, 7.6, "D"], [4, 3.9, "D"], [6.5, 9.8, "A"], [6.5, 10, "B"], [4, 3.9, "D"], [3, 7.3, "D"], [5.5, 6.3, "D"], [4, 6.6, "D"], [6.5, 9.6, "C"], [3, 3.6, "D"], [5.5, 10, "C"], [3, 4.8, "D"], [3, 5.1, "D"], [5.5, 6.4, "D"], [4.5, 5.6, "D"], [4, 9.1, "C"], [4, 8.8, "D"], [5.5, 5.4, "D"], [6.5, 9.6, "C"], [5.5, 9.6, "C"], [6.5, 8.4, "C"], [4, 5.4, "D"], [4, 7.3, "D"], [3, 6.3, "D"], [5.5, 6.4, "C"], [5.5, 5.4, "D"], [4.5, 3.9, "D"], [3, 7.3, "C"], [4, 8.8, "C"], [5, 10, "B"], [3, 6.1, "C"], [3, 6.4, "B"], [5.5, 10, "C"], [3, 5.1, "D"], [7.0, 6.6, "C"], [6.5, 6.4, "C"], [5.5, 5.4, "D"], [5.5, 6.3, "D"]], "pop": {"labels": ["자세를 꼼꼼히 봐주세요", "친절해요", "수업이 체계적이에요", "상담이 자세해요", "선생님 실력이 좋아요", "시설이 깔끔해요"], "data": [233, 229, 215, 152, 143, 135]}, "pod": {"labels": ["가격이 합리적이에요", "맞춤 케어를 잘해줘요", "기구가 다양해요", "공간이 넓어요", "주차하기 편해요", "과도한 권유가 없어요", "프로그램이 다양해요"], "data": [15.6, 15.2, 13.0, 8.0, 3.3, 2.2, 1.8]}, "absa": {"labels": ["강사·지도", "몸의 변화·효과", "시설·기구", "비용·정책", "접근·운영"], "data": [100.0, 94.2, 63.0, 33.7, 12.3]}, "geoband": {"labels": ["A 인용가능", "B 보강여지", "C 약함", "D 신호없음"], "data": [2, 35, 108, 131]}, "aeoband": {"labels": ["A", "B", "C", "D"], "data": [131, 104, 38, 3]}, "geosig": {"labels": ["인용가능 정보블록", "무인지 카테고리 대응", "강사 전문성·자격", "오프사이트 교차검증"], "data": [47.8, 25.7, 5.1, 1.8]}, "recency": {"labels": ["1개월", "1-3개월", "3-6개월", "6개월+"], "data": [9, 4, 16, 247]}, "monthly": {"labels": ["2022-12", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-05", "2026-06", "2026-07"], "data": [1, 8, 17, 14, 12, 8, 8, 14, 15, 19, 5, 11, 13, 10, 6, 19, 1, 28, 4, 5, 7, 7, 2, 1, 1, 11, 10, 1, 5, 4, 8, 1]}, "kpi": {"seo": 5.3, "aeo": 7.69, "geo": 2.97, "reply": 100.0}};const C={ink:'#0a0a0a',g:'#8a8a8a',g2:'#555',g3:'#b8b8b8',acc:'#e75519',red:'#b03030',rule:'#f0f0f0'};
+<script>const CD={"scatter": [[10, 10, "B"], [9.0, 9.4, "B"], [8.5, 10, "C"], [8.5, 8.3, "D"], [10, 8.6, "B"], [10, 10, "C"], [6, 10, "C"], [6.5, 10, "B"], [6, 8.8, "D"], [6.5, 9.6, "C"], [7.5, 6.6, "C"], [8.0, 5.4, "D"], [6.5, 9.6, "C"], [5.5, 10, "C"], [6.5, 4.9, "C"], [7.0, 6.1, "D"], [5.5, 7.4, "C"], [5, 10, "B"], [5.5, 7.6, "C"], [4, 8.4, "C"], [5.5, 6.4, "D"], [5.5, 8.6, "D"], [5, 9.6, "C"], [5, 7.1, "D"], [6.5, 10, "C"], [5, 7.4, "C"], [4, 7.8, "D"], [5.5, 6.6, "D"], [6.5, 10, "C"], [4, 8.6, "C"], [6.5, 9.6, "C"], [4, 6.4, "D"], [4, 7.1, "D"], [6.5, 8.4, "C"], [5.5, 8.8, "D"], [3, 6.1, "D"], [4, 5.9, "D"], [4.5, 4.9, "C"], [6.5, 9.6, "C"], [5.5, 6.6, "D"], [6.5, 10, "B"], [4, 8.6, "D"], [6.5, 6.4, "D"], [5, 8.6, "C"], [5.5, 7.6, "D"], [5.5, 7.6, "D"], [6.5, 8.8, "D"], [8.0, 9.6, "C"], [3, 6.3, "D"], [6.5, 10, "C"], [4.5, 4.8, "D"], [8.0, 7.4, "B"], [4, 6.3, "D"], [3, 10, "C"], [6.5, 9.8, "C"], [6.5, 9.8, "D"], [4, 5.4, "D"], [5.5, 8.6, "D"], [8.0, 9.6, "B"], [4.5, 7.1, "C"], [5.5, 8.6, "C"], [5.5, 8.8, "C"], [8.0, 10, "C"], [5, 10, "C"], [8.0, 10, "B"], [6.5, 6.1, "D"], [5, 8.6, "C"], [6.5, 8.8, "D"], [3, 6.6, "D"], [4.5, 4.8, "D"], [5.5, 9.6, "C"], [3, 2.4, "D"], [4, 7.1, "D"], [7.0, 9.1, "C"], [3, 5.1, "D"], [6.5, 8.4, "B"], [8.0, 7.1, "B"], [5, 8.6, "D"], [6.5, 8.8, "D"], [4, 5.1, "D"], [3, 3.9, "D"], [4, 6.6, "D"], [6.5, 10, "B"], [6.5, 7.6, "D"], [8.0, 10, "B"], [4.5, 3.6, "D"], [4.5, 10, "C"], [6.5, 10, "C"], [3, 6.1, "D"], [6.5, 10, "C"], [5, 8.6, "C"], [5, 8.6, "B"], [4.5, 9.8, "C"], [5.5, 8.6, "D"], [6.5, 5.9, "C"], [5, 10, "C"], [5.5, 8.8, "D"], [6.5, 10, "C"], [7.0, 6.4, "D"], [5, 10, "C"], [6.5, 7.6, "D"], [8.0, 5.9, "D"], [5, 10, "D"], [3, 6.3, "D"], [6.5, 9.8, "D"], [4, 9.8, "D"], [4.5, 5.1, "C"], [5, 9.8, "D"], [5.5, 8.6, "C"], [3, 7.6, "C"], [4, 3.9, "D"], [6.5, 8.8, "D"], [6.5, 9.3, "C"], [3, 6.4, "C"], [4.5, 3.6, "D"], [4, 7.1, "C"], [6.5, 8.6, "C"], [4, 6.1, "D"], [4, 7.6, "B"], [3, 4.9, "D"], [6.5, 9.3, "D"], [6.5, 10, "B"], [3, 3.6, "D"], [4, 7.9, "C"], [6.5, 10, "B"], [6.5, 8.6, "C"], [4, 7.6, "C"], [4.5, 6.1, "D"], [4, 7.8, "D"], [5.5, 6.1, "D"], [4, 4.9, "D"], [5, 7.4, "C"], [6.5, 9.6, "C"], [6.5, 9.8, "D"], [6.5, 10, "C"], [8.0, 10, "B"], [5.5, 8.3, "D"], [4, 10, "C"], [6.5, 8.6, "C"], [5.5, 6.4, "B"], [5.5, 5.4, "D"], [5.5, 6.4, "B"], [7.0, 9.1, "C"], [5, 6.1, "D"], [5.5, 5.9, "C"], [5.5, 6.4, "C"], [5.5, 7.4, "C"], [5.5, 7.1, "D"], [5.5, 6.1, "D"], [5.5, 8.6, "C"], [5.5, 8.6, "C"], [6.5, 7.4, "C"], [6.5, 10, "C"], [4, 6.4, "D"], [5.5, 5.4, "D"], [5.5, 9.8, "C"], [6.5, 10, "B"], [4, 8.6, "D"], [4, 7.6, "C"], [3, 6.3, "D"], [5.5, 8.6, "B"], [5.5, 9.8, "C"], [4, 4.9, "D"], [4, 6.6, "D"], [4.5, 7.8, "D"], [4, 7.6, "D"], [6.5, 7.4, "C"], [4, 6.4, "D"], [4, 6.4, "C"], [6.5, 9.5, "C"], [6.5, 10, "B"], [4, 7.6, "C"], [4, 7.1, "D"], [4.5, 6.3, "D"], [5.5, 7.1, "D"], [6.5, 8.4, "B"], [5.5, 7.5, "D"], [5.5, 5.9, "D"], [3, 8.6, "C"], [4.5, 5.1, "D"], [4, 3.9, "D"], [6.5, 10, "B"], [6.5, 10, "C"], [5.5, 7.4, "D"], [4, 7.3, "D"], [4, 8.6, "D"], [5.5, 6.6, "D"], [5.5, 6.4, "D"], [4.5, 2.4, "D"], [4, 7.6, "C"], [4, 10, "C"], [4, 6.1, "D"], [4.5, 3.9, "D"], [4, 6.4, "D"], [7.0, 6.1, "D"], [6.5, 10, "B"], [5.5, 8.4, "C"], [4, 8.8, "C"], [5.5, 7.4, "B"], [5.5, 7.4, "D"], [4, 7.6, "C"], [6.0, 7.6, "C"], [3, 3.6, "D"], [5.5, 8.9, "C"], [5, 10, "C"], [6.5, 10, "B"], [4, 7.9, "C"], [4.5, 5.1, "D"], [5, 8.4, "C"], [4, 9.6, "C"], [5.5, 7.6, "D"], [5.5, 9.1, "C"], [4, 6.1, "D"], [5, 10, "C"], [6.5, 7.1, "D"], [6.5, 8.6, "C"], [4, 3.9, "D"], [5.5, 7.1, "C"], [6.5, 7.1, "D"], [6.5, 9.9, "A"], [4.5, 2.4, "D"], [6.5, 8.6, "B"], [3, 8.6, "B"], [4, 10, "C"], [4.5, 5.4, "D"], [6.5, 7.6, "D"], [6.5, 8.9, "C"], [6.5, 10, "C"], [8.0, 10, "B"], [3, 7.3, "D"], [4, 8.8, "D"], [6.5, 10, "B"], [6.5, 8.4, "C"], [4, 10, "C"], [5.5, 7.8, "D"], [5.5, 8.6, "C"], [6.5, 8.6, "D"], [4.5, 3.6, "D"], [4, 7.6, "D"], [4, 3.9, "D"], [6.5, 9.8, "A"], [6.5, 10, "B"], [4, 3.9, "D"], [3, 7.3, "D"], [5.5, 6.3, "D"], [4, 6.6, "D"], [6.5, 9.6, "C"], [3, 3.6, "D"], [5.5, 10, "C"], [3, 4.8, "D"], [3, 5.1, "D"], [5.5, 6.4, "D"], [4.5, 5.6, "D"], [4, 9.1, "C"], [4, 8.8, "D"], [5.5, 5.4, "D"], [6.5, 9.6, "C"], [5.5, 9.6, "C"], [6.5, 8.4, "C"], [4, 5.4, "D"], [4, 7.3, "D"], [3, 6.3, "D"], [5.5, 6.4, "C"], [5.5, 5.4, "D"], [4.5, 3.9, "D"], [3, 7.3, "C"], [4, 8.8, "C"], [5, 10, "B"], [3, 6.1, "C"], [3, 6.4, "B"], [5.5, 10, "C"], [3, 5.1, "D"], [7.0, 6.6, "C"], [6.5, 6.4, "C"], [5.5, 5.4, "D"], [5.5, 6.3, "D"]], "pop": {"labels": ["자세를 꼼꼼히 봐주세요", "친절해요", "수업이 체계적이에요", "상담이 자세해요", "선생님 실력이 좋아요", "시설이 깔끔해요"], "data": [233, 229, 215, 152, 143, 135]}, "pod": {"labels": ["가격이 합리적이에요", "맞춤 케어를 잘해줘요", "기구가 다양해요", "공간이 넓어요", "주차하기 편해요", "과도한 권유가 없어요", "프로그램이 다양해요"], "data": [15.6, 15.2, 13.0, 8.0, 3.3, 2.2, 1.8]}, "absa": {"labels": ["강사·지도", "몸의 변화·효과", "시설·기구", "비용·정책", "접근·운영"], "data": [100.0, 94.2, 63.0, 33.7, 12.3]}, "geoband": {"labels": ["A 인용가능", "B 보강여지", "C 약함", "D 신호없음"], "data": [2, 35, 108, 131]}, "aeoband": {"labels": ["A", "B", "C", "D"], "data": [131, 104, 38, 3]}, "geosig": {"labels": ["인용가능 정보블록", "무인지 카테고리 대응", "강사 전문성·자격", "오프사이트 교차검증"], "data": [47.8, 25.7, 5.1, 1.8]}, "recency": {"labels": ["1개월", "1-3개월", "3-6개월", "6개월+"], "data": [9, 4, 16, 247]}, "monthly": {"labels": ["2022-12", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-05", "2026-06", "2026-07"], "data": [1, 8, 17, 14, 12, 8, 8, 14, 15, 19, 5, 11, 13, 10, 6, 19, 1, 28, 4, 5, 7, 7, 2, 1, 1, 11, 10, 1, 5, 4, 8, 1]}, "before": {"labels": ["자세·체형 교정", "통증(허리·어깨·목)", "필라테스 입문", "타 센터 이전", "재활·부상 후", "산전·산후"], "data": [133, 68, 60, 15, 15, 8]}, "trigger": {"labels": ["강사·원장 실력", "상담 신뢰", "지인 추천", "체험 수업", "접근성·위치", "후기·리뷰"], "data": [95, 59, 51, 44, 29, 11]}, "sig": {"labels": ["장기 재등록(관계)", "그룹+개인 병행", "체험 후 등록", "기구(리포머·체어)", "재활·통증 특화", "1:1 개인 레슨", "원장 직접 상담·지도"], "data": [68, 45, 44, 35, 35, 33, 11]}, "instr": {"labels": ["원장님", "수현쌤", "가림쌤", "지민쌤", "유정쌤", "이유정쌤"], "data": [28, 15, 15, 7, 4, 2]}, "dow": {"labels": ["월", "화", "수", "목", "금", "토", "일"], "data": [54, 43, 49, 48, 50, 13, 19]}};
+new Chart(document.getElementById('cabsaShow'),{type:'bar',data:{labels:CD.absa.labels,datasets:[{data:CD.absa.data,backgroundColor:CD.absa.data.map(v=>v>=50?'#e75519':v<15?'#b03030':'#8a8a8a')}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x+'%'}}},scales:{x:{min:0,max:100,grid:{color:'#f0f0f0'}},y:{grid:{display:false}}}}});
+const C={ink:'#0a0a0a',g:'#8a8a8a',g2:'#555',g3:'#b8b8b8',acc:'#e75519',red:'#b03030',rule:'#f0f0f0'};
 Chart.defaults.font.family="'SUIT',sans-serif";Chart.defaults.font.size=11;Chart.defaults.plugins.legend.display=false;Chart.defaults.color='#8a8a8a';
 const BAR={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:C.rule}},y:{grid:{color:C.rule}}}};
-function acc(arr,hi){return arr.map((_,i)=>i<hi?C.acc:C.g)}
+const BARY={...BAR,indexAxis:'y'};const PCT=v=>v+'%';
+function acc(a,hi){return a.map((_,i)=>i<hi?C.acc:C.g)}
 const BC={A:C.acc,B:'#f0a072',C:C.g3,D:'#e0ddd5'};
+const DO=(el,d,cols)=>new Chart(el,{type:'doughnut',data:{labels:d.labels,datasets:[{data:d.data,backgroundColor:cols,borderColor:'#fff',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:true,position:'bottom',labels:{font:{size:10},boxWidth:9}}}}});
 new Chart(cscatter,{type:'scatter',data:{datasets:[{data:CD.scatter.map(p=>({x:p[0],y:p[1]})),pointBackgroundColor:CD.scatter.map(p=>BC[p[2]]||C.g),pointRadius:4,pointHoverRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>`SEO ${c.raw.x} · AEO ${c.raw.y}`}}},scales:{x:{title:{display:true,text:'SEO 노출 (0-10)'},min:0,max:10,grid:{color:C.rule}},y:{title:{display:true,text:'AEO 네이버AI인용 (0-10)'},min:0,max:10,grid:{color:C.rule}}}}});
-new Chart(cpop,{type:'bar',data:{labels:CD.pop.labels,datasets:[{data:CD.pop.data,backgroundColor:acc(CD.pop.data,3)}]},options:{...BAR,indexAxis:'y'}});
-new Chart(cpod,{type:'bar',data:{labels:CD.pod.labels,datasets:[{data:CD.pod.data,backgroundColor:C.ink}]},options:{...BAR,indexAxis:'y',plugins:{tooltip:{callbacks:{label:c=>c.parsed.x+'%'}}},scales:{x:{grid:{color:C.rule},min:0,max:100},y:{grid:{display:false}}}}});
-new Chart(cabsa,{type:'bar',data:{labels:CD.absa.labels,datasets:[{data:CD.absa.data,backgroundColor:CD.absa.data.map(v=>v>=50?C.acc:v<15?C.red:C.g)}]},options:{...BAR,indexAxis:'y',plugins:{tooltip:{callbacks:{label:c=>c.parsed.x+'%'}}},scales:{x:{grid:{color:C.rule},min:0,max:100},y:{grid:{display:false}}}}});
-new Chart(cgeoband,{type:'doughnut',data:{labels:CD.geoband.labels,datasets:[{data:CD.geoband.data,backgroundColor:[C.acc,'#f0a072',C.g3,'#e0ddd5'],borderColor:'#fff',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:true,position:'bottom',labels:{font:{size:10},boxWidth:9}}}}});
-new Chart(caeoband,{type:'doughnut',data:{labels:CD.aeoband.labels,datasets:[{data:CD.aeoband.data,backgroundColor:[C.acc,'#f0a072',C.g3,'#e0ddd5'],borderColor:'#fff',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:true,position:'bottom',labels:{font:{size:10},boxWidth:9}}}}});
-new Chart(cgeosig,{type:'bar',data:{labels:CD.geosig.labels,datasets:[{data:CD.geosig.data,backgroundColor:CD.geosig.data.map(v=>v>=40?C.acc:v<10?C.red:C.g)}]},options:{...BAR,indexAxis:'y',plugins:{tooltip:{callbacks:{label:c=>c.parsed.x+'%'}}},scales:{x:{grid:{color:C.rule},min:0,max:100},y:{grid:{display:false}}}}});
+new Chart(cpop,{type:'bar',data:{labels:CD.pop.labels,datasets:[{data:CD.pop.data,backgroundColor:acc(CD.pop.data,3)}]},options:BARY});
+new Chart(cpod,{type:'bar',data:{labels:CD.pod.labels,datasets:[{data:CD.pod.data,backgroundColor:C.ink}]},options:{...BARY,plugins:{tooltip:{callbacks:{label:c=>PCT(c.parsed.x)}}},scales:{x:{grid:{color:C.rule},min:0,max:100},y:{grid:{display:false}}}}});
+new Chart(cabsa,{type:'bar',data:{labels:CD.absa.labels,datasets:[{data:CD.absa.data,backgroundColor:CD.absa.data.map(v=>v>=50?C.acc:v<15?C.red:C.g)}]},options:{...BARY,plugins:{tooltip:{callbacks:{label:c=>PCT(c.parsed.x)}}},scales:{x:{grid:{color:C.rule},min:0,max:100},y:{grid:{display:false}}}}});
+DO(cgeoband,CD.geoband,[C.acc,'#f0a072',C.g3,'#e0ddd5']);
+DO(caeoband,CD.aeoband,[C.acc,'#f0a072',C.g3,'#e0ddd5']);
+new Chart(cgeosig,{type:'bar',data:{labels:CD.geosig.labels,datasets:[{data:CD.geosig.data,backgroundColor:CD.geosig.data.map(v=>v>=40?C.acc:v<10?C.red:C.g)}]},options:{...BARY,plugins:{tooltip:{callbacks:{label:c=>PCT(c.parsed.x)}}},scales:{x:{grid:{color:C.rule},min:0,max:100},y:{grid:{display:false}}}}});
+new Chart(cbefore,{type:'bar',data:{labels:CD.before.labels,datasets:[{data:CD.before.data,backgroundColor:C.g2}]},options:BARY});
+DO(ctrigger,CD.trigger,[C.acc,C.ink,C.g2,C.g,C.g3,'#ddd']);
+new Chart(csig,{type:'bar',data:{labels:CD.sig.labels,datasets:[{data:CD.sig.data,backgroundColor:C.acc}]},options:BARY});
+new Chart(cinstr,{type:'bar',data:{labels:CD.instr.labels,datasets:[{data:CD.instr.data,backgroundColor:acc(CD.instr.data,1)}]},options:BAR});
+new Chart(cdow,{type:'bar',data:{labels:CD.dow.labels,datasets:[{data:CD.dow.data,backgroundColor:CD.dow.data.map((v,i)=>i>=4&&i<5?C.acc:i>=5?C.g3:C.g)}]},options:BAR});
 new Chart(crecency,{type:'bar',data:{labels:CD.recency.labels,datasets:[{data:CD.recency.data,backgroundColor:CD.recency.data.map((v,i)=>i<2?C.acc:C.g)}]},options:BAR});
 const md=CD.monthly.data,pk=md.indexOf(Math.max(...md));
 new Chart(cmonthly,{type:'line',data:{labels:CD.monthly.labels,datasets:[{data:md,borderColor:C.ink,borderWidth:2,backgroundColor:'rgba(10,10,10,.05)',fill:true,tension:.35,pointRadius:md.map((_,i)=>i===pk?6:2),pointBackgroundColor:md.map((_,i)=>i===pk?C.acc:C.ink)}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>c.parsed.y+'건'}}},scales:{x:{grid:{display:false},ticks:{maxRotation:45,minRotation:45,font:{size:9}}},y:{grid:{color:C.rule},beginAtZero:true}}}});
