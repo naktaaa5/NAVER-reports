@@ -71,17 +71,17 @@ ul.x li b{color:var(--ink)}
 .rv-b{font-size:11px;font-weight:800;padding:3px 9px;border-radius:6px;background:#f2f2f2;color:var(--ink2);letter-spacing:.3px}
 .rv-b.g{background:rgba(231,85,25,.12);color:var(--accent)}
 .rv-meta{font-size:12px;color:var(--ink4);font-weight:600}
-.rv-q{font-size:15px;line-height:2.05;color:var(--ink2);padding:16px 18px;background:var(--soft);border-radius:10px;border-left:3px solid var(--accent)}
-.anno{border-bottom:2.5px solid;cursor:pointer;font-weight:600;padding:1px 1px 0;border-radius:3px;transition:background .15s;-webkit-tap-highlight-color:transparent}
-.anno:hover,.anno.on{background:rgba(231,85,25,.08)}
-.anno-detail{margin-top:12px;padding:13px 15px;border-radius:11px;background:#0a0a0a;color:#fff;font-size:13.5px;line-height:1.6;min-height:46px;display:flex;align-items:center;gap:11px}
-.anno-detail b{color:#fff;font-weight:800}
-.ad-hint{color:rgba(255,255,255,.55);font-size:12.5px;font-weight:500}
-.ad-dot{width:10px;height:10px;border-radius:50%;flex:none;display:inline-block}
+.rv-q{font-size:15px;line-height:2;color:var(--ink2);margin-top:2px}
+.anno{border-bottom:2px solid;cursor:pointer;font-weight:600;padding:0 1px;border-radius:2px;transition:background .15s;-webkit-tap-highlight-color:transparent}
+.anno:hover,.anno.on{background:rgba(231,85,25,.09)}
+.anno-detail{margin-top:15px;padding-top:14px;border-top:1px solid var(--rule);font-size:13.5px;line-height:1.6;color:var(--ink3);min-height:30px;display:flex;align-items:center;gap:10px}
+.anno-detail b{font-weight:800}
+.ad-hint{color:var(--ink4);font-size:12.5px;font-weight:500}
+.ad-dot{width:9px;height:9px;border-radius:50%;flex:none;display:inline-block}
 .leg{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 4px}
-.leg .lg{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--ink2);background:#fff;border:1px solid var(--rule);padding:6px 12px;border-radius:20px}
-.leg .lg i{width:15px;height:3.5px;border-radius:2px;display:inline-block;flex:none}
-.rv.thin{border-style:dashed}.rv.thin .rv-q{border-left-color:var(--ink4);background:#fafafa;color:var(--ink3)}
+.leg .lg{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--ink3);background:#fff;border:1px solid var(--rule);padding:6px 12px;border-radius:20px}
+.leg .lg i{width:14px;height:3px;border-radius:2px;display:inline-block;flex:none}
+.rv.thin .rv-q{color:var(--ink4)}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}.reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}}</style></head><body>
 <div class="topbar"><div class="tb-in"><a href="https://refeeel.com" target="_blank" rel="noopener" class="tb-b" style="text-decoration:none;color:inherit"><span class="d"></span>RE:FEEEL PLACE REPORT</a><div class="tb-p" id="prog">0%</div></div></div>
@@ -236,7 +236,7 @@ ul.x li b{color:var(--ink)}
 <section class="soft"><div class="wrap">
   <div class="ey">08 · 실제 리뷰 큐레이션 · 베스트 폼</div>
   <h2>이런 리뷰가<br><span class="hl">AI를 움직입니다.</span></h2>
-  <p class="lead">276건을 3축으로 채점해 <b>가장 &lsquo;좋은 형태&rsquo;의 리뷰 8건</b>을 추렸습니다. 리뷰 본문에서 <b>AI가 반응하는 문구</b>에 직접 <span class="hl">색을 칠했습니다</span> — 그 문구를 <b>탭하거나 마우스를 올리면</b> 왜 좋은 신호인지 아래 검은 칸에 바로 뜹니다. 앞으로 <b>리뷰 유도·답글·콘텐츠의 목표 템플릿</b>으로 쓰세요. <span style="color:var(--ink4);font-size:13px">(작성자명은 개인정보 보호를 위해 일부 가림)</span></p>
+  <p class="lead">276건을 3축으로 채점해 <b>가장 &lsquo;좋은 형태&rsquo;의 리뷰 8건</b>을 추렸습니다. 리뷰 본문에서 <b>AI가 반응하는 문구</b>에 직접 <span class="hl">색을 칠했습니다</span> — 그 문구를 <b>탭하거나 마우스를 올리면</b> 왜 좋은 신호인지 카드 하단에 바로 뜹니다. 앞으로 <b>리뷰 유도·답글·콘텐츠의 목표 템플릿</b>으로 쓰세요. <span style="color:var(--ink4);font-size:13px">(작성자명은 개인정보 보호를 위해 일부 가림)</span></p>
   <div class="leg"><span class="lg"><i style="background:#e75519"></i>수치·기간</span><span class="lg"><i style="background:#2563eb"></i>강사·기구</span><span class="lg"><i style="background:#7c3aed"></i>목적·상태</span><span class="lg"><i style="background:#0e9f6e"></i>결과·변화</span><span class="lg"><i style="background:#d97706"></i>전환 스토리</span><span class="lg"><i style="background:#0891b2"></i>지역</span></div>
   <div class="rv"><div class="rv-h"><div class="rv-sc"><span class="rv-b g">GEO 9.1 · A</span><span class="rv-b">AEO 9.9</span><span class="rv-b">SEO 6.5</span></div><div class="rv-meta">얼** · 본문 399자 · 사진 2장</div></div><div class="rv-q">&ldquo;제인생 <span class="anno" data-l="전환 스토리" data-d="계기 → 결정 흐름 — 신뢰를 주는 서사 구조" data-c="#d97706" style="border-color:#d97706">처음</span>으로 1:1 필라테스를 가림 <span class="anno" data-l="강사·기구" data-d="담당 강사·기구를 실명으로 지목 — 사람 신뢰가 전문가·시설 신호로 전환" data-c="#2563eb" style="border-color:#2563eb">원장님</span>께 받아봤어요 ! 필라테스를  하고 싶었던 마음은 항상 가지고 있었지만 , 몸이 안따라줄거 같아 겁두 나고 끊어놓고 안가는 경우도 많아서 미루고 미루다가 <span class="anno" data-l="강사·기구" data-d="담당 강사·기구를 실명으로 지목 — 사람 신뢰가 전문가·시설 신호로 전환" data-c="#2563eb" style="border-color:#2563eb">원장님</span>이 운영하시는 블로그를 보고 신뢰가 가서 마음먹고 달려갔습니다 ,,저는 온몸이 안좋아요 특히 <span class="anno" data-l="목적·상태" data-d="오기 전 증상·목적 — 브랜드를 몰라도 &lsquo;증상+지역&rsquo; 질의로 소환됩니다" data-c="#7c3aed" style="border-color:#7c3aed">골반</span>이 제일 안좋았는데 이부분을 <span class="anno" data-l="목적·상태" data-d="오기 전 증상·목적 — 브랜드를 몰라도 &lsquo;증상+지역&rsquo; 질의로 소환됩니다" data-c="#7c3aed" style="border-color:#7c3aed">자세</span>를 잡자 마자 딱 캐치해주시고 1:1 맞춤<span class="anno" data-l="목적·상태" data-d="오기 전 증상·목적 — 브랜드를 몰라도 &lsquo;증상+지역&rsquo; 질의로 소환됩니다" data-c="#7c3aed" style="border-color:#7c3aed">골반</span><span class="anno" data-l="목적·상태" data-d="오기 전 증상·목적 — 브랜드를 몰라도 &lsquo;증상+지역&rsquo; 질의로 소환됩니다" data-c="#7c3aed" style="border-color:#7c3aed">교정</span> 프로그램으로 고강도가 아닌 저에게 맞는 강도로 <span class="anno" data-l="목적·상태" data-d="오기 전 증상·목적 — 브랜드를 몰라도 &lsquo;증상+지역&rsquo; 질의로 소환됩니다" data-c="#7c3aed" style="border-color:#7c3aed">교정</span> 해주신게 넘 감동이였어요 아직 <span class="anno" data-l="수치·기간" data-d="구체적 수치·기간 — AI가 그대로 옮길 수 있는 &lsquo;사실&rsquo; 문장이 됩니다" data-c="#e75519" style="border-color:#e75519">1회</span>밖에 받지 않았지만 받고나서 걸음…&rdquo;</div><div class="anno-detail"><span class="ad-hint">↑ 색칠된 문구를 탭·마우스오버 하면 &lsquo;왜 좋은 신호인지&rsquo;가 여기 나옵니다</span></div></div><div class="rv"><div class="rv-h"><div class="rv-sc"><span class="rv-b g">GEO 8.5 · A</span><span class="rv-b">AEO 9.8</span><span class="rv-b">SEO 6.5</span></div><div class="rv-meta">산**** · 본문 328자 · 사진 1장</div></div><div class="rv-q">&ldquo;평상시에 요가, 필라테스, 헬스 pt등.. 다 <span class="anno" data-l="전환 스토리" data-d="계기 → 결정 흐름 — 신뢰를 주는 서사 구조" data-c="#d97706" style="border-color:#d97706">다녀보</span>고 운동을 좋아하는 사람입니다.
 그 중에 필테를 가장 즐겨하고 꾸준히 해온 운동으로 센터를 여러군데 많이 다녀봤어요.
